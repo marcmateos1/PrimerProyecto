@@ -2,9 +2,9 @@ using FlightLib;
 
 namespace InterfazDatos
 {
-    public partial class Form1 : Form
+    public partial class InterfazDatos : Form
     {
-        public Form1()
+        public InterfazDatos()
         {
             InitializeComponent();
         }

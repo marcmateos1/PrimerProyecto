@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulatorConsole", "Simulat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaz", "Interfaz\Interfaz.csproj", "{FFA821CE-C09B-4299-8CBF-7CB967C7C116}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfazDatos", "InterfazDatos\InterfazDatos.csproj", "{901A86EC-9038-4F9C-A127-4DCA668CBF30}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{FFA821CE-C09B-4299-8CBF-7CB967C7C116}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFA821CE-C09B-4299-8CBF-7CB967C7C116}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFA821CE-C09B-4299-8CBF-7CB967C7C116}.Release|Any CPU.Build.0 = Release|Any CPU
-		{901A86EC-9038-4F9C-A127-4DCA668CBF30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{901A86EC-9038-4F9C-A127-4DCA668CBF30}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{901A86EC-9038-4F9C-A127-4DCA668CBF30}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{901A86EC-9038-4F9C-A127-4DCA668CBF30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

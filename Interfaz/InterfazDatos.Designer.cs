@@ -1,6 +1,6 @@
 ﻿namespace InterfazDatos
 {
-    partial class Form1
+    partial class InterfazDatos
     {
         /// <summary>
         ///  Required designer variable.

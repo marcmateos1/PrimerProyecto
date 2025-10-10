@@ -1,8 +1,10 @@
+using InterfazDatos;
+
 namespace Interfaz
 {
-    public partial class Form1 : Form
+    public partial class Interfaz : Form
     {
-        public Form1()
+        public Interfaz()
         {
             InitializeComponent();
         }
@@ -10,6 +12,7 @@ namespace Interfaz
         private void button1_Click(object sender, EventArgs e)
         {
             InterfazDatos nuevoFormulario = new InterfazDatos();
+            nuevoFormulario.Show();
         }
     }
 }

@@ -9,7 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InterfazDatos\InterfazDatos.csproj" />
+    <ProjectReference Include="..\FlightLib\FlightLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="InterfazDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>
