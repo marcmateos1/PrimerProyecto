@@ -23,11 +23,9 @@ namespace FlightLib
         // Metodos
 
         public double GetX()
-        // getter del atributo x
         { return x; }
 
         public double GetY()
-        // getter del atributo y
         { return y; }
 
         public double Distancia(Position b)

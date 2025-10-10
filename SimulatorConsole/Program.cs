@@ -74,7 +74,8 @@ namespace SimulatorConsole
 
                 while (i<ciclos)
                 {
-                    risc = plan_a.Conflicto(plan_b, 10);
+                    double currentDist = plan_a.DistanceTo(plan_b);
+                    risc = plan_a.Conflicto(currentDist, 100);
                     if (risc==true)
                         Console.WriteLine("PELIGRO");
 

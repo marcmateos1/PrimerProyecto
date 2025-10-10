@@ -12,6 +12,7 @@ namespace FlightLib
 
         string id; // identificador
         Position currentPosition; // posicion actual
+        Position initalPosition;
         Position finalPosition; // posicion final
         double velocidad;
 
@@ -20,14 +21,36 @@ namespace FlightLib
         {
             this.id = id;
             this.currentPosition = new Position(cpx, cpy);
+            this.initalPosition = new Position(cpx, cpy);
             this.finalPosition = new Position(fpx, fpy);
             this.velocidad = velocidad;
         }
 
         // Metodos
+        public string GetId()
+        {
+            return this.id;
+        }
 
+        public void SetId(string id)
+        { this.id = id; }
+        public Position GetCurrentPosition()
+        {
+            return this.currentPosition;
+        }
+        public void SetCurrentPosition(Position currentPosition)
+        { this.currentPosition = currentPosition; }
+        public Position GetFinalPosition()
+        {
+            return this.finalPosition;
+        }
+        public void SetFinalPosition(Position finalPosition)
+        { this.finalPosition = finalPosition; }
+        public double GetVelocidad()
+        {
+            return this.velocidad;
+        }
         public void SetVelocidad(double velocidad)
-        // setter del atributo velocidad
         { this.velocidad = velocidad; }
 
         public void Mover(double tiempo)
@@ -56,7 +79,7 @@ namespace FlightLib
         }
 
         // Hacer un metodo que diga si un vuelo ha llegado a su destino
-        public bool EstaDestino()
+        public bool HasArrived()
         {
             bool resultado = false;
             if (currentPosition == finalPosition)
@@ -66,11 +89,11 @@ namespace FlightLib
         }
 
         // Hacer que el programa principal lea datos de dos vuelos y una distancia de seguidad y detecte el conflicto cuándo los vuelos están mas cerca de esa distancia
-        public bool Conflicto(FlightPlan b, double distanciaSeguridad)
+        public bool Conflicto(double currentDist, double distanciaSeguridad)
         {
             bool conclicto = false;
 
-            if (this.currentPosition.Distancia(b.currentPosition) < distanciaSeguridad)
+            if (currentDist < distanciaSeguridad)
                 conclicto = true;
 
             return conclicto;
@@ -84,9 +107,24 @@ namespace FlightLib
             Console.WriteLine("Identificador: {0}", id);
             Console.WriteLine("Velocidad: {0:F2}", velocidad);
             Console.WriteLine("Posición actual: ({0:F2}, {1:F2})", currentPosition.GetX(), currentPosition.GetY());
-            if (this.EstaDestino())
+            if (this.HasArrived())
                 Console.WriteLine("Ha llegado al destino");
             Console.WriteLine("******************************");
+        }
+
+        public void Restart()
+        {
+            // Reinicia la posición actual a la posición inicial
+            this.currentPosition = new Position(this.initalPosition.GetX(), this.initalPosition.GetY());
+        }
+
+        public double DistanceTo(FlightPlan plan)
+        {
+            Position p1=this.currentPosition;
+            Position p2=plan.currentPosition;
+
+            double distance = p1.Distancia(p2);
+            return distance;
         }
     }
 }
