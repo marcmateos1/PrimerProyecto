@@ -24,6 +24,10 @@ namespace FlightLib
                 return 0;
             }
         }
+        public int NumElementosLista()
+        {
+            return number;
+        }
         public FlightPlan GetFlightPlan(int i)
         {
             if (i<0 || i >= number)

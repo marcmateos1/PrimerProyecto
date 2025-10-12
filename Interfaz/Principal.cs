@@ -24,22 +24,20 @@ namespace Interfaz
         private void introducirDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InterfazDatos.Datos nuevoFormulario = new InterfazDatos.Datos(lista, this);
-            this.Hide();
             nuevoFormulario.Show();
         }
 
         private void seguridadToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Interfaz.Seguridad nuevoFormulario = new Interfaz.Seguridad(this);
-            this.Hide();
             nuevoFormulario.Show();
         }
 
         private void espacioAereoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             EspacioAereo nuevoFormulario = new EspacioAereo();
-            this.Hide();
-            nuevoFormulario.Show();
+            nuevoFormulario.SetData(lista, tiempoCiclo);
+            nuevoFormulario.ShowDialog();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace InterfazDatos
         {
             try
             {
-                FlightPlan plan = new FlightPlan(TIdentificador.Text, Convert.ToDouble(TVelocidad.Text), Convert.ToDouble(TX0.Text), Convert.ToDouble(TY0.Text), Convert.ToDouble(TXF.Text), Convert.ToDouble(TYF.Text));
+                FlightPlan plan = new FlightPlan(TIdentificador.Text, Convert.ToDouble(TX0.Text), Convert.ToDouble(TY0.Text), Convert.ToDouble(TXF.Text), Convert.ToDouble(TYF.Text), Convert.ToDouble(TVelocidad.Text));
                 lista.AddFlightPlan(plan);
                 MessageBox.Show("Plan de vuelo añadido correctamente.");
             }

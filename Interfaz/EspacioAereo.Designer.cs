@@ -28,13 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            panel1 = new Panel();
+            button1 = new Button();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ControlDark;
+            panel1.Location = new Point(21, 23);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(750, 500);
+            panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(813, 200);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 1;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
             // 
             // EspacioAereo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1001, 564);
+            Controls.Add(button1);
+            Controls.Add(panel1);
             Name = "EspacioAereo";
             Text = "EspacioAereo";
             Load += EspacioAereo_Load;
@@ -42,5 +63,8 @@
         }
 
         #endregion
+
+        private Panel panel1;
+        private Button button1;
     }
 }
