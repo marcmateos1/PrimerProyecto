@@ -29,33 +29,49 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button1 = new Button();
+            botonMover = new Button();
+            botonVolver = new Button();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
-            panel1.Location = new Point(21, 23);
+            panel1.Location = new Point(24, 31);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(750, 500);
+            panel1.Size = new Size(857, 667);
             panel1.TabIndex = 0;
             // 
-            // button1
+            // botonMover
             // 
-            button1.Location = new Point(813, 200);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            botonMover.Location = new Point(980, 230);
+            botonMover.Margin = new Padding(3, 4, 3, 4);
+            botonMover.Name = "botonMover";
+            botonMover.Size = new Size(86, 31);
+            botonMover.TabIndex = 1;
+            botonMover.Text = "Mover";
+            botonMover.UseVisualStyleBackColor = true;
+            botonMover.Click += botonMover_Click;
+            // 
+            // botonVolver
+            // 
+            botonVolver.Location = new Point(972, 383);
+            botonVolver.Name = "botonVolver";
+            botonVolver.Size = new Size(94, 29);
+            botonVolver.TabIndex = 2;
+            botonVolver.Text = "Volver";
+            botonVolver.UseVisualStyleBackColor = true;
+            botonVolver.Click += botonVolver_Click;
             // 
             // EspacioAereo
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1001, 564);
-            Controls.Add(button1);
+            ClientSize = new Size(1144, 752);
+            Controls.Add(botonVolver);
+            Controls.Add(botonMover);
             Controls.Add(panel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "EspacioAereo";
             Text = "EspacioAereo";
             Load += EspacioAereo_Load;
@@ -65,6 +81,7 @@
         #endregion
 
         private Panel panel1;
-        private Button button1;
+        private Button botonMover;
+        private Button botonVolver;
     }
 }

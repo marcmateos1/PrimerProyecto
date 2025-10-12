@@ -102,7 +102,6 @@
             label6.Size = new Size(42, 17);
             label6.TabIndex = 5;
             label6.Text = "X final";
-            label6.Click += label6_Click;
             // 
             // TIdentificador
             // 

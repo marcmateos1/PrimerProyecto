@@ -39,14 +39,21 @@
             introducirDatosToolStripMenuItem = new ToolStripMenuItem();
             seguridadToolStripMenuItem1 = new ToolStripMenuItem();
             espacioAereoToolStripMenuItem1 = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            mostrarInformacionVueloToolStripMenuItem = new ToolStripMenuItem();
+            idDelVueloToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            textoID = new ToolStripTextBox();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Location = new Point(0, 24);
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Location = new Point(0, 30);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(305, 24);
+            menuStrip1.Padding = new Padding(7, 3, 0, 3);
+            menuStrip1.Size = new Size(349, 24);
             menuStrip1.TabIndex = 3;
             // 
             // opcionesToolStripMenuItem
@@ -76,50 +83,81 @@
             // 
             // menuStrip2
             // 
+            menuStrip2.ImageScalingSize = new Size(20, 20);
             menuStrip2.Items.AddRange(new ToolStripItem[] { opcionesToolStripMenuItem1 });
             menuStrip2.Location = new Point(0, 0);
             menuStrip2.Name = "menuStrip2";
-            menuStrip2.Size = new Size(305, 24);
+            menuStrip2.Padding = new Padding(7, 3, 0, 3);
+            menuStrip2.Size = new Size(349, 30);
             menuStrip2.TabIndex = 4;
             menuStrip2.Text = "menuStrip2";
             // 
             // opcionesToolStripMenuItem1
             // 
-            opcionesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { introducirDatosToolStripMenuItem, seguridadToolStripMenuItem1, espacioAereoToolStripMenuItem1 });
+            opcionesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { introducirDatosToolStripMenuItem, seguridadToolStripMenuItem1, espacioAereoToolStripMenuItem1, toolStripMenuItem1 });
             opcionesToolStripMenuItem1.Name = "opcionesToolStripMenuItem1";
-            opcionesToolStripMenuItem1.Size = new Size(69, 20);
+            opcionesToolStripMenuItem1.Size = new Size(85, 24);
             opcionesToolStripMenuItem1.Text = "Opciones";
             // 
             // introducirDatosToolStripMenuItem
             // 
             introducirDatosToolStripMenuItem.Name = "introducirDatosToolStripMenuItem";
-            introducirDatosToolStripMenuItem.Size = new Size(159, 22);
+            introducirDatosToolStripMenuItem.Size = new Size(199, 26);
             introducirDatosToolStripMenuItem.Text = "Introducir Datos";
             introducirDatosToolStripMenuItem.Click += introducirDatosToolStripMenuItem_Click;
             // 
             // seguridadToolStripMenuItem1
             // 
             seguridadToolStripMenuItem1.Name = "seguridadToolStripMenuItem1";
-            seguridadToolStripMenuItem1.Size = new Size(159, 22);
+            seguridadToolStripMenuItem1.Size = new Size(199, 26);
             seguridadToolStripMenuItem1.Text = "Seguridad";
             seguridadToolStripMenuItem1.Click += seguridadToolStripMenuItem1_Click;
             // 
             // espacioAereoToolStripMenuItem1
             // 
             espacioAereoToolStripMenuItem1.Name = "espacioAereoToolStripMenuItem1";
-            espacioAereoToolStripMenuItem1.Size = new Size(159, 22);
+            espacioAereoToolStripMenuItem1.Size = new Size(199, 26);
             espacioAereoToolStripMenuItem1.Text = "Espacio Aereo";
             espacioAereoToolStripMenuItem1.Click += espacioAereoToolStripMenuItem1_Click;
             // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { mostrarInformacionVueloToolStripMenuItem, toolStripSeparator1, idDelVueloToolStripMenuItem, textoID });
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(199, 26);
+            toolStripMenuItem1.Text = "Informacion";
+            // 
+            // mostrarInformacionVueloToolStripMenuItem
+            // 
+            mostrarInformacionVueloToolStripMenuItem.Name = "mostrarInformacionVueloToolStripMenuItem";
+            mostrarInformacionVueloToolStripMenuItem.Size = new Size(269, 26);
+            mostrarInformacionVueloToolStripMenuItem.Text = "Mostrar Informacion Vuelo";
+            mostrarInformacionVueloToolStripMenuItem.Click += mostrarInformacionVueloToolStripMenuItem_Click;
+            // 
+            // idDelVueloToolStripMenuItem
+            // 
+            idDelVueloToolStripMenuItem.Name = "idDelVueloToolStripMenuItem";
+            idDelVueloToolStripMenuItem.Size = new Size(269, 26);
+            idDelVueloToolStripMenuItem.Text = "Id del vuelo:";
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(266, 6);
+            // 
+            // textoID
+            // 
+            textoID.Name = "textoID";
+            textoID.Size = new Size(100, 27);
+            // 
             // Principal
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(305, 312);
+            ClientSize = new Size(349, 416);
             Controls.Add(menuStrip1);
             Controls.Add(menuStrip2);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Principal";
             Text = "Air Traffic Simulator";
             Load += Principal_Load;
@@ -141,5 +179,10 @@
         private ToolStripMenuItem introducirDatosToolStripMenuItem;
         private ToolStripMenuItem seguridadToolStripMenuItem1;
         private ToolStripMenuItem espacioAereoToolStripMenuItem1;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem mostrarInformacionVueloToolStripMenuItem;
+        private ToolStripMenuItem idDelVueloToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripTextBox textoID;
     }
 }

@@ -25,19 +25,36 @@ namespace Interfaz
         {
             InterfazDatos.Datos nuevoFormulario = new InterfazDatos.Datos(lista, this);
             nuevoFormulario.Show();
+            this.Hide();
         }
 
         private void seguridadToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Interfaz.Seguridad nuevoFormulario = new Interfaz.Seguridad(this);
+            Seguridad nuevoFormulario = new Seguridad(this);
             nuevoFormulario.Show();
+            this.Hide();
         }
 
         private void espacioAereoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            EspacioAereo nuevoFormulario = new EspacioAereo();
+            EspacioAereo nuevoFormulario = new EspacioAereo(this);
             nuevoFormulario.SetData(lista, tiempoCiclo);
-            nuevoFormulario.ShowDialog();
+            nuevoFormulario.Show();
+            this.Hide();
+        }
+
+        private void mostrarInformacionVueloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Informacion nuevoFormulario = new Informacion(this, lista.SearchID((textoID.Text)));
+                nuevoFormulario.Show();
+                this.Hide();
+            }
+            catch
+            {
+                MessageBox.Show("Id no encontrada.");
+            }
         }
     }
 }

@@ -48,6 +48,18 @@ namespace FlightLib
                 i++;
             }
         }
+
+        public FlightPlan SearchID(string ID)
+        {
+            for (int i = 0; i < number; i++)
+            {
+                if (vector[i].GetId() == ID)
+                {
+                    return vector[i];
+                }
+            }
+            return null;
+        }
         public void EscribeConsola()
         {
             int i = 0;
