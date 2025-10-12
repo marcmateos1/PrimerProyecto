@@ -1,6 +1,6 @@
 ﻿namespace Interfaz
 {
-    partial class Interfaz
+    partial class Principal
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,32 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            botonDatos = new Button();
+            botonDistancia = new Button();
             SuspendLayout();
             // 
-            // button1
+            // botonDatos
             // 
-            button1.Location = new Point(316, 185);
-            button1.Name = "button1";
-            button1.Size = new Size(137, 29);
-            button1.TabIndex = 0;
-            button1.Text = "Introducir datos";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            botonDatos.Location = new Point(12, 12);
+            botonDatos.Name = "botonDatos";
+            botonDatos.Size = new Size(170, 29);
+            botonDatos.TabIndex = 0;
+            botonDatos.Text = "Introducir datos";
+            botonDatos.UseVisualStyleBackColor = true;
+            botonDatos.Click += botonDatos_Click;
             // 
-            // Form1
+            // botonDistancia
+            // 
+            botonDistancia.Location = new Point(12, 47);
+            botonDistancia.Name = "botonDistancia";
+            botonDistancia.Size = new Size(170, 29);
+            botonDistancia.TabIndex = 1;
+            botonDistancia.Text = "Distancia de seguridad";
+            botonDistancia.UseVisualStyleBackColor = true;
+            botonDistancia.Click += botonDistancia_Click;
+            // 
+            // Interfaz
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
-            Name = "Form1";
+            Controls.Add(botonDistancia);
+            Controls.Add(botonDatos);
+            Name = "Interfaz";
             Text = "Form1";
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button button1;
+        private Button botonDatos;
+        private Button botonDistancia;
     }
 }
