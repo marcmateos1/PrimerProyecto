@@ -47,9 +47,9 @@
             // 
             label1.AutoSize = true;
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new Point(33, 21);
+            label1.Location = new Point(29, 16);
             label1.Name = "label1";
-            label1.Size = new Size(96, 22);
+            label1.Size = new Size(76, 17);
             label1.TabIndex = 0;
             label1.Text = "Identificador";
             // 
@@ -57,9 +57,9 @@
             // 
             label2.AutoSize = true;
             label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Location = new Point(33, 197);
+            label2.Location = new Point(29, 148);
             label2.Name = "label2";
-            label2.Size = new Size(77, 22);
+            label2.Size = new Size(60, 17);
             label2.TabIndex = 1;
             label2.Text = "Velocidad";
             // 
@@ -67,9 +67,9 @@
             // 
             label3.AutoSize = true;
             label3.BorderStyle = BorderStyle.FixedSingle;
-            label3.Location = new Point(256, 21);
+            label3.Location = new Point(224, 16);
             label3.Name = "label3";
-            label3.Size = new Size(63, 22);
+            label3.Size = new Size(50, 17);
             label3.TabIndex = 2;
             label3.Text = "X inicial";
             // 
@@ -77,9 +77,9 @@
             // 
             label4.AutoSize = true;
             label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Location = new Point(256, 197);
+            label4.Location = new Point(224, 148);
             label4.Name = "label4";
-            label4.Size = new Size(62, 22);
+            label4.Size = new Size(50, 17);
             label4.TabIndex = 3;
             label4.Text = "Y inicial";
             // 
@@ -87,9 +87,9 @@
             // 
             label5.AutoSize = true;
             label5.BorderStyle = BorderStyle.FixedSingle;
-            label5.Location = new Point(482, 197);
+            label5.Location = new Point(422, 148);
             label5.Name = "label5";
-            label5.Size = new Size(52, 22);
+            label5.Size = new Size(42, 17);
             label5.TabIndex = 4;
             label5.Text = "Y final";
             // 
@@ -97,69 +97,77 @@
             // 
             label6.AutoSize = true;
             label6.BorderStyle = BorderStyle.FixedSingle;
-            label6.Location = new Point(501, 21);
+            label6.Location = new Point(438, 16);
             label6.Name = "label6";
-            label6.Size = new Size(53, 22);
+            label6.Size = new Size(42, 17);
             label6.TabIndex = 5;
             label6.Text = "X final";
+            label6.Click += label6_Click;
             // 
             // TIdentificador
             // 
-            TIdentificador.Location = new Point(33, 69);
+            TIdentificador.Location = new Point(29, 52);
+            TIdentificador.Margin = new Padding(3, 2, 3, 2);
             TIdentificador.Name = "TIdentificador";
-            TIdentificador.Size = new Size(125, 27);
+            TIdentificador.Size = new Size(110, 23);
             TIdentificador.TabIndex = 6;
             // 
             // TVelocidad
             // 
-            TVelocidad.Location = new Point(33, 318);
+            TVelocidad.Location = new Point(29, 238);
+            TVelocidad.Margin = new Padding(3, 2, 3, 2);
             TVelocidad.Name = "TVelocidad";
-            TVelocidad.Size = new Size(125, 27);
+            TVelocidad.Size = new Size(110, 23);
             TVelocidad.TabIndex = 7;
             // 
             // TX0
             // 
-            TX0.Location = new Point(256, 69);
+            TX0.Location = new Point(224, 52);
+            TX0.Margin = new Padding(3, 2, 3, 2);
             TX0.Name = "TX0";
-            TX0.Size = new Size(125, 27);
+            TX0.Size = new Size(110, 23);
             TX0.TabIndex = 8;
             // 
             // TY0
             // 
-            TY0.Location = new Point(256, 318);
+            TY0.Location = new Point(224, 238);
+            TY0.Margin = new Padding(3, 2, 3, 2);
             TY0.Name = "TY0";
-            TY0.Size = new Size(125, 27);
+            TY0.Size = new Size(110, 23);
             TY0.TabIndex = 9;
             // 
             // TXF
             // 
-            TXF.Location = new Point(482, 69);
+            TXF.Location = new Point(422, 52);
+            TXF.Margin = new Padding(3, 2, 3, 2);
             TXF.Name = "TXF";
-            TXF.Size = new Size(125, 27);
+            TXF.Size = new Size(110, 23);
             TXF.TabIndex = 10;
             // 
             // TYF
             // 
-            TYF.Location = new Point(482, 318);
+            TYF.Location = new Point(422, 238);
+            TYF.Margin = new Padding(3, 2, 3, 2);
             TYF.Name = "TYF";
-            TYF.Size = new Size(125, 27);
+            TYF.Size = new Size(110, 23);
             TYF.TabIndex = 11;
             // 
             // BCompilar
             // 
-            BCompilar.Location = new Point(635, 190);
+            BCompilar.Location = new Point(556, 142);
+            BCompilar.Margin = new Padding(3, 2, 3, 2);
             BCompilar.Name = "BCompilar";
-            BCompilar.Size = new Size(94, 29);
+            BCompilar.Size = new Size(82, 22);
             BCompilar.TabIndex = 12;
             BCompilar.Text = "Compilar datos";
             BCompilar.UseVisualStyleBackColor = true;
             BCompilar.Click += BCompilar_Click_1;
             // 
-            // InterfazDatos
+            // Datos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(BCompilar);
             Controls.Add(TYF);
             Controls.Add(TXF);
@@ -173,8 +181,9 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "InterfazDatos";
-            Text = "Form1";
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "Datos";
+            Text = "Introduzca los Datos";
             ResumeLayout(false);
             PerformLayout();
         }

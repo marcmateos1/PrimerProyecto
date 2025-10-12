@@ -37,9 +37,10 @@
             // 
             // botonDistancia
             // 
-            botonDistancia.Location = new Point(354, 164);
+            botonDistancia.Location = new Point(310, 123);
+            botonDistancia.Margin = new Padding(3, 2, 3, 2);
             botonDistancia.Name = "botonDistancia";
-            botonDistancia.Size = new Size(94, 29);
+            botonDistancia.Size = new Size(82, 22);
             botonDistancia.TabIndex = 0;
             botonDistancia.Text = "Introducir datos";
             botonDistancia.UseVisualStyleBackColor = true;
@@ -47,48 +48,51 @@
             // 
             // textDistancia
             // 
-            textDistancia.Location = new Point(114, 69);
+            textDistancia.Location = new Point(100, 52);
+            textDistancia.Margin = new Padding(3, 2, 3, 2);
             textDistancia.Name = "textDistancia";
-            textDistancia.Size = new Size(125, 27);
+            textDistancia.Size = new Size(110, 23);
             textDistancia.TabIndex = 2;
             // 
             // textTiempo
             // 
-            textTiempo.Location = new Point(503, 69);
+            textTiempo.Location = new Point(440, 52);
+            textTiempo.Margin = new Padding(3, 2, 3, 2);
             textTiempo.Name = "textTiempo";
-            textTiempo.Size = new Size(125, 27);
+            textTiempo.Size = new Size(110, 23);
             textTiempo.TabIndex = 3;
             // 
             // labelDistancia
             // 
             labelDistancia.AutoSize = true;
-            labelDistancia.Location = new Point(114, 46);
+            labelDistancia.Location = new Point(100, 34);
             labelDistancia.Name = "labelDistancia";
-            labelDistancia.Size = new Size(190, 20);
+            labelDistancia.Size = new Size(149, 15);
             labelDistancia.TabIndex = 4;
             labelDistancia.Text = "Distancia de Seguridad (m)";
             // 
             // labelTiempo
             // 
             labelTiempo.AutoSize = true;
-            labelTiempo.Location = new Point(503, 46);
+            labelTiempo.Location = new Point(440, 34);
             labelTiempo.Name = "labelTiempo";
-            labelTiempo.Size = new Size(136, 20);
+            labelTiempo.Size = new Size(107, 15);
             labelTiempo.TabIndex = 5;
             labelTiempo.Text = "Tiempo de ciclo (s)";
             // 
             // Seguridad
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(labelTiempo);
             Controls.Add(labelDistancia);
             Controls.Add(textTiempo);
             Controls.Add(textDistancia);
             Controls.Add(botonDistancia);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Seguridad";
-            Text = "Form1";
+            Text = "Introduzca estos parametros";
             ResumeLayout(false);
             PerformLayout();
         }

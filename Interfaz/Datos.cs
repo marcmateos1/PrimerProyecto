@@ -29,5 +29,10 @@ namespace InterfazDatos
             this.Close();
             principal.Show();
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
