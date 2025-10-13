@@ -61,6 +61,8 @@ namespace Interfaz
                 vuelos[i] = p;
 
                 panel1.Controls.Add(p);
+
+                p.Click += PictureBox_Click;
             }
         }
         private void botonMover_Click(object sender, EventArgs e)
@@ -72,32 +74,35 @@ namespace Interfaz
                 int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 500.0);
                 int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
                 vuelos[i].Location = new Point(x, y);
+                panel1.Invalidate();
             }
-        }
-
-        private void botonVolver_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            
-
             //Draw the line
             try
             {
                 System.Drawing.Graphics graphics = e.Graphics;
-                Pen myPen = new Pen(Color.Red);
-                graphics.DrawLine(myPen, Convert.ToInt32(miLista.GetFlightPlan(0).GetCurrentPosition().GetX() * panel1.Width / 500.0), Convert.ToInt32(miLista.GetFlightPlan(0).GetCurrentPosition().GetY() * panel1.Height / 500.0), Convert.ToInt32(miLista.GetFlightPlan(0).GetFinalPosition().GetX() * panel1.Width / 500.0), Convert.ToInt32(miLista.GetFlightPlan(0).GetFinalPosition().GetY() * panel1.Height / 500.0));
-                graphics.DrawLine(myPen, Convert.ToInt32(miLista.GetFlightPlan(1).GetInitialPosition().GetX() * panel1.Width / 500.0), Convert.ToInt32(miLista.GetFlightPlan(1).GetInitialPosition().GetY() * panel1.Height / 500.0), Convert.ToInt32(miLista.GetFlightPlan(1).GetFinalPosition().GetX() * panel1.Width / 500.0), Convert.ToInt32(miLista.GetFlightPlan(1).GetFinalPosition().GetY() * panel1.Height / 500.0));
+                Pen rutaPen = new Pen(Color.Red);
+                Pen zonaPen = new Pen(Color.Blue);
+                int radio = (int)(distanciaSeguridad * panel1.Width / 500.0);
 
-                myPen.Dispose();
+                for (int i = 0; i < miLista.NumElementosLista(); i++)
+                {
+                    graphics.DrawLine(rutaPen, Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetX() * panel1.Width / 500.0), Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetY() * panel1.Height / 500.0), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetX() * panel1.Width / 500.0), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetY() * panel1.Height / 500.0));
+                    
+                    int x = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetX() * panel1.Width / 500.0);
+                    int y = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetY() * panel1.Height / 500.0);
+                    graphics.DrawEllipse(zonaPen, x - radio, y - radio, radio * 2, radio * 2);
+                }
+
+                rutaPen.Dispose();
+                zonaPen.Dispose();
             }
-            catch 
+            catch
             {
-                
+
             }
 
 
@@ -126,6 +131,8 @@ namespace Interfaz
                 int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
                 vuelos[i].Location = new Point(x, y);
             }
+            panel1.Invalidate();
+
             //Comprobar si hay conflicto
             double distanciaActual = miLista.GetFlightPlan(0).GetCurrentPosition().Distancia(miLista.GetFlightPlan(1).GetCurrentPosition());
             if (miLista.GetFlightPlan(0).Conflicto(distanciaActual, distanciaSeguridad))
@@ -142,6 +149,38 @@ namespace Interfaz
             nuevoFormulario.SetData(miLista);
             nuevoFormulario.SetFlightPlans();
             nuevoFormulario.Show();
+        }
+
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            while (i < vuelos.Length)
+            {
+                if (vuelos[i] == sender)
+                {
+                    break;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+
+            try
+            {
+                Informacion nuevoFormulario = new Informacion(this, miLista.GetFlightPlan(i));
+                nuevoFormulario.Show();
+                //this.Hide();
+            }
+            catch
+            {
+                MessageBox.Show("Id no encontrada.");
+            }
+        }
+
+        private void botonVolver_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

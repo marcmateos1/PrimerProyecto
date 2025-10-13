@@ -42,19 +42,5 @@ namespace Interfaz
             nuevoFormulario.Show();
             //this.Hide();
         }
-
-        private void mostrarInformacionVueloToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Informacion nuevoFormulario = new Informacion(this, lista.SearchID((textoID.Text)));
-                nuevoFormulario.Show();
-                //this.Hide();
-            }
-            catch
-            {
-                MessageBox.Show("Id no encontrada.");
-            }
-        }
     }
 }

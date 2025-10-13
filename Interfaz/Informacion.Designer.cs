@@ -35,6 +35,8 @@
             label5 = new Label();
             label6 = new Label();
             botonVolver = new Button();
+            label7 = new Label();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -58,7 +60,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(372, 53);
+            label3.Location = new Point(372, 130);
             label3.Name = "label3";
             label3.Size = new Size(50, 20);
             label3.TabIndex = 2;
@@ -76,7 +78,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(588, 53);
+            label5.Location = new Point(588, 130);
             label5.Name = "label5";
             label5.Size = new Size(50, 20);
             label5.TabIndex = 4;
@@ -101,11 +103,31 @@
             botonVolver.UseVisualStyleBackColor = true;
             botonVolver.Click += botonVolver_Click;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(372, 53);
+            label7.Name = "label7";
+            label7.Size = new Size(50, 20);
+            label7.TabIndex = 7;
+            label7.Text = "label7";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(588, 53);
+            label8.Name = "label8";
+            label8.Size = new Size(50, 20);
+            label8.TabIndex = 8;
+            label8.Text = "label8";
+            // 
             // Informacion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label8);
+            Controls.Add(label7);
             Controls.Add(botonVolver);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -129,5 +151,7 @@
         private Label label5;
         private Label label6;
         private Button botonVolver;
+        private Label label7;
+        private Label label8;
     }
 }

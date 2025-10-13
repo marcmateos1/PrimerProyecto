@@ -38,5 +38,11 @@ namespace Interfaz
             this.Close();
             principal.Show();
         }
+
+        private void botonAtajo_Click(object sender, EventArgs e)
+        {
+            textDistancia.Text = "10";
+            textTiempo.Text = "10"; 
+        }
     }
 }

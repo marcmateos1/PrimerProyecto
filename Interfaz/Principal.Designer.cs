@@ -39,11 +39,6 @@
             introducirDatosToolStripMenuItem = new ToolStripMenuItem();
             seguridadToolStripMenuItem1 = new ToolStripMenuItem();
             espacioAereoToolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            mostrarInformacionVueloToolStripMenuItem = new ToolStripMenuItem();
-            idDelVueloToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator1 = new ToolStripSeparator();
-            textoID = new ToolStripTextBox();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -94,7 +89,7 @@
             // 
             // opcionesToolStripMenuItem1
             // 
-            opcionesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { introducirDatosToolStripMenuItem, seguridadToolStripMenuItem1, espacioAereoToolStripMenuItem1, toolStripMenuItem1 });
+            opcionesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { introducirDatosToolStripMenuItem, seguridadToolStripMenuItem1, espacioAereoToolStripMenuItem1 });
             opcionesToolStripMenuItem1.Name = "opcionesToolStripMenuItem1";
             opcionesToolStripMenuItem1.Size = new Size(85, 24);
             opcionesToolStripMenuItem1.Text = "Opciones";
@@ -102,53 +97,23 @@
             // introducirDatosToolStripMenuItem
             // 
             introducirDatosToolStripMenuItem.Name = "introducirDatosToolStripMenuItem";
-            introducirDatosToolStripMenuItem.Size = new Size(199, 26);
+            introducirDatosToolStripMenuItem.Size = new Size(224, 26);
             introducirDatosToolStripMenuItem.Text = "Introducir Datos";
             introducirDatosToolStripMenuItem.Click += introducirDatosToolStripMenuItem_Click;
             // 
             // seguridadToolStripMenuItem1
             // 
             seguridadToolStripMenuItem1.Name = "seguridadToolStripMenuItem1";
-            seguridadToolStripMenuItem1.Size = new Size(199, 26);
+            seguridadToolStripMenuItem1.Size = new Size(224, 26);
             seguridadToolStripMenuItem1.Text = "Seguridad";
             seguridadToolStripMenuItem1.Click += seguridadToolStripMenuItem1_Click;
             // 
             // espacioAereoToolStripMenuItem1
             // 
             espacioAereoToolStripMenuItem1.Name = "espacioAereoToolStripMenuItem1";
-            espacioAereoToolStripMenuItem1.Size = new Size(199, 26);
+            espacioAereoToolStripMenuItem1.Size = new Size(224, 26);
             espacioAereoToolStripMenuItem1.Text = "Espacio Aereo";
             espacioAereoToolStripMenuItem1.Click += espacioAereoToolStripMenuItem1_Click;
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { mostrarInformacionVueloToolStripMenuItem, toolStripSeparator1, idDelVueloToolStripMenuItem, textoID });
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(199, 26);
-            toolStripMenuItem1.Text = "Informacion";
-            // 
-            // mostrarInformacionVueloToolStripMenuItem
-            // 
-            mostrarInformacionVueloToolStripMenuItem.Name = "mostrarInformacionVueloToolStripMenuItem";
-            mostrarInformacionVueloToolStripMenuItem.Size = new Size(269, 26);
-            mostrarInformacionVueloToolStripMenuItem.Text = "Mostrar Informacion Vuelo";
-            mostrarInformacionVueloToolStripMenuItem.Click += mostrarInformacionVueloToolStripMenuItem_Click;
-            // 
-            // idDelVueloToolStripMenuItem
-            // 
-            idDelVueloToolStripMenuItem.Name = "idDelVueloToolStripMenuItem";
-            idDelVueloToolStripMenuItem.Size = new Size(269, 26);
-            idDelVueloToolStripMenuItem.Text = "Id del vuelo:";
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(266, 6);
-            // 
-            // textoID
-            // 
-            textoID.Name = "textoID";
-            textoID.Size = new Size(100, 27);
             // 
             // Principal
             // 
@@ -179,10 +144,5 @@
         private ToolStripMenuItem introducirDatosToolStripMenuItem;
         private ToolStripMenuItem seguridadToolStripMenuItem1;
         private ToolStripMenuItem espacioAereoToolStripMenuItem1;
-        private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem mostrarInformacionVueloToolStripMenuItem;
-        private ToolStripMenuItem idDelVueloToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripTextBox textoID;
     }
 }

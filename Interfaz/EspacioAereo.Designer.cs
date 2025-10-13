@@ -39,24 +39,25 @@
             Parar = new Button();
             Reloj = new System.Windows.Forms.Timer(components);
             ShowInfo = new Button();
+            botonVolver = new Button();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Location = new Point(339, 38);
-            panel1.Margin = new Padding(2, 3, 2, 3);
+            panel1.Location = new Point(387, 51);
+            panel1.Margin = new Padding(2, 4, 2, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(501, 501);
+            panel1.Size = new Size(573, 668);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
             // botonMover
             // 
-            botonMover.Location = new Point(109, 89);
-            botonMover.Margin = new Padding(2, 3, 2, 3);
+            botonMover.Location = new Point(125, 119);
+            botonMover.Margin = new Padding(2, 4, 2, 4);
             botonMover.Name = "botonMover";
-            botonMover.Size = new Size(106, 52);
+            botonMover.Size = new Size(121, 69);
             botonMover.TabIndex = 1;
             botonMover.Text = "Mover una iteración";
             botonMover.UseVisualStyleBackColor = true;
@@ -66,9 +67,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(311, 38);
+            label1.Location = new Point(355, 51);
             label1.Name = "label1";
-            label1.Size = new Size(23, 28);
+            label1.Size = new Size(28, 35);
             label1.TabIndex = 3;
             label1.Text = "0";
             // 
@@ -76,9 +77,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F);
-            label2.Location = new Point(339, 7);
+            label2.Location = new Point(387, 9);
             label2.Name = "label2";
-            label2.Size = new Size(23, 28);
+            label2.Size = new Size(28, 35);
             label2.TabIndex = 4;
             label2.Text = "0";
             // 
@@ -86,9 +87,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15F);
-            label3.Location = new Point(289, 510);
+            label3.Location = new Point(330, 680);
             label3.Name = "label3";
-            label3.Size = new Size(45, 28);
+            label3.Size = new Size(54, 35);
             label3.TabIndex = 5;
             label3.Text = "500";
             // 
@@ -96,17 +97,18 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 15F);
-            label4.Location = new Point(794, 7);
+            label4.Location = new Point(907, 9);
             label4.Name = "label4";
-            label4.Size = new Size(45, 28);
+            label4.Size = new Size(54, 35);
             label4.TabIndex = 6;
             label4.Text = "500";
             // 
             // simularAut
             // 
-            simularAut.Location = new Point(109, 178);
+            simularAut.Location = new Point(125, 237);
+            simularAut.Margin = new Padding(3, 4, 3, 4);
             simularAut.Name = "simularAut";
-            simularAut.Size = new Size(106, 55);
+            simularAut.Size = new Size(121, 73);
             simularAut.TabIndex = 7;
             simularAut.Text = "Simular Automaticmente";
             simularAut.UseVisualStyleBackColor = true;
@@ -114,9 +116,10 @@
             // 
             // Parar
             // 
-            Parar.Location = new Point(109, 274);
+            Parar.Location = new Point(125, 365);
+            Parar.Margin = new Padding(3, 4, 3, 4);
             Parar.Name = "Parar";
-            Parar.Size = new Size(106, 51);
+            Parar.Size = new Size(121, 68);
             Parar.TabIndex = 8;
             Parar.Text = "Parar";
             Parar.UseVisualStyleBackColor = true;
@@ -129,19 +132,31 @@
             // 
             // ShowInfo
             // 
-            ShowInfo.Location = new Point(109, 368);
+            ShowInfo.Location = new Point(125, 491);
+            ShowInfo.Margin = new Padding(3, 4, 3, 4);
             ShowInfo.Name = "ShowInfo";
-            ShowInfo.Size = new Size(106, 51);
+            ShowInfo.Size = new Size(121, 68);
             ShowInfo.TabIndex = 9;
             ShowInfo.Text = "Muestra datos de los vuelos";
             ShowInfo.UseVisualStyleBackColor = true;
             ShowInfo.Click += ShowInfo_Click;
             // 
+            // botonVolver
+            // 
+            botonVolver.Location = new Point(125, 619);
+            botonVolver.Name = "botonVolver";
+            botonVolver.Size = new Size(94, 29);
+            botonVolver.TabIndex = 10;
+            botonVolver.Text = "Volver";
+            botonVolver.UseVisualStyleBackColor = true;
+            botonVolver.Click += botonVolver_Click_1;
+            // 
             // EspacioAereo
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(925, 568);
+            ClientSize = new Size(1057, 757);
+            Controls.Add(botonVolver);
             Controls.Add(ShowInfo);
             Controls.Add(Parar);
             Controls.Add(simularAut);
@@ -151,7 +166,7 @@
             Controls.Add(label1);
             Controls.Add(botonMover);
             Controls.Add(panel1);
-            Margin = new Padding(2, 3, 2, 3);
+            Margin = new Padding(2, 4, 2, 4);
             Name = "EspacioAereo";
             Text = "EspacioAereo";
             Load += EspacioAereo_Load;
@@ -171,5 +186,6 @@
         private Button Parar;
         private System.Windows.Forms.Timer Reloj;
         private Button ShowInfo;
+        private Button botonVolver;
     }
 }
