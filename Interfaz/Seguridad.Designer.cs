@@ -37,7 +37,7 @@
             // 
             // botonDistancia
             // 
-            botonDistancia.Location = new Point(310, 123);
+            botonDistancia.Location = new Point(134, 100);
             botonDistancia.Margin = new Padding(3, 2, 3, 2);
             botonDistancia.Name = "botonDistancia";
             botonDistancia.Size = new Size(82, 22);
@@ -48,7 +48,7 @@
             // 
             // textDistancia
             // 
-            textDistancia.Location = new Point(100, 52);
+            textDistancia.Location = new Point(34, 51);
             textDistancia.Margin = new Padding(3, 2, 3, 2);
             textDistancia.Name = "textDistancia";
             textDistancia.Size = new Size(110, 23);
@@ -56,7 +56,7 @@
             // 
             // textTiempo
             // 
-            textTiempo.Location = new Point(440, 52);
+            textTiempo.Location = new Point(209, 51);
             textTiempo.Margin = new Padding(3, 2, 3, 2);
             textTiempo.Name = "textTiempo";
             textTiempo.Size = new Size(110, 23);
@@ -65,7 +65,7 @@
             // labelDistancia
             // 
             labelDistancia.AutoSize = true;
-            labelDistancia.Location = new Point(100, 34);
+            labelDistancia.Location = new Point(21, 34);
             labelDistancia.Name = "labelDistancia";
             labelDistancia.Size = new Size(149, 15);
             labelDistancia.TabIndex = 4;
@@ -74,7 +74,7 @@
             // labelTiempo
             // 
             labelTiempo.AutoSize = true;
-            labelTiempo.Location = new Point(440, 34);
+            labelTiempo.Location = new Point(209, 34);
             labelTiempo.Name = "labelTiempo";
             labelTiempo.Size = new Size(107, 15);
             labelTiempo.TabIndex = 5;
@@ -84,7 +84,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(371, 165);
             Controls.Add(labelTiempo);
             Controls.Add(labelDistancia);
             Controls.Add(textTiempo);
