@@ -36,18 +36,19 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
-            panel1.Location = new Point(24, 31);
+            panel1.Location = new Point(27, 33);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(857, 667);
+            panel1.Size = new Size(964, 700);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // botonMover
             // 
-            botonMover.Location = new Point(980, 230);
+            botonMover.Location = new Point(1058, 246);
             botonMover.Margin = new Padding(3, 4, 3, 4);
             botonMover.Name = "botonMover";
-            botonMover.Size = new Size(86, 31);
+            botonMover.Size = new Size(97, 33);
             botonMover.TabIndex = 1;
             botonMover.Text = "Mover";
             botonMover.UseVisualStyleBackColor = true;
@@ -55,9 +56,9 @@
             // 
             // botonVolver
             // 
-            botonVolver.Location = new Point(972, 383);
+            botonVolver.Location = new Point(1094, 402);
             botonVolver.Name = "botonVolver";
-            botonVolver.Size = new Size(94, 29);
+            botonVolver.Size = new Size(106, 30);
             botonVolver.TabIndex = 2;
             botonVolver.Text = "Volver";
             botonVolver.UseVisualStyleBackColor = true;
@@ -65,9 +66,9 @@
             // 
             // EspacioAereo
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1144, 752);
+            ClientSize = new Size(1287, 790);
             Controls.Add(botonVolver);
             Controls.Add(botonMover);
             Controls.Add(panel1);

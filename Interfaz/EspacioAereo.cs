@@ -17,6 +17,7 @@ namespace Interfaz
         Interfaz.Principal principal;
         FlightPlanList miLista;
         int tiempoCiclo;
+        float distanciaSeguridad;
 
         //vector de picture boxes para representar los aviones
         PictureBox[] vuelos;
@@ -27,10 +28,11 @@ namespace Interfaz
             this.principal = principal;
         }
 
-        public void SetData(FlightPlanList f, int c)
+        public void SetData(FlightPlanList f, int c, float distancia)
         {
             miLista = f;
             tiempoCiclo = c;
+            distanciaSeguridad = distancia;
         }
 
         private void EspacioAereo_Load(object sender, EventArgs e)
@@ -62,12 +64,12 @@ namespace Interfaz
         }
         private void botonMover_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < miLista.NumElementosLista(); i++)
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
                 FlightPlan plan = miLista.GetFlightPlan(i);
                 plan.Mover(tiempoCiclo);
-                int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 750.0);
-                int y = (int)(plan.GetCurrentPosition().GetY() * panel1.Height / 500.0);
+                int x = (int)(plan.GetCurrentPosition().GetX()*panel1.Width / 750.0);
+                int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
                 vuelos[i].Location = new Point(x, y);
             }
         }
@@ -75,7 +77,20 @@ namespace Interfaz
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Close();
-            principal.Show();
+            
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            System.Drawing.Graphics graphics = e.Graphics;
+
+            //Draw the line
+            Pen myPen = new Pen(Color.Red);
+            graphics.DrawLine(myPen, Convert.ToInt32(miLista.GetFlightPlan(0).GetCurrentPosition().GetX()*panel1.Width / 750.0), Convert.ToInt32(miLista.GetFlightPlan(0).GetCurrentPosition().GetY() * panel1.Height / 500.0), Convert.ToInt32(miLista.GetFlightPlan(0).GetFinalPosition().GetX() * panel1.Width / 750.0), Convert.ToInt32(miLista.GetFlightPlan(0).GetFinalPosition().GetY()* panel1.Height / 500.0));
+            //graphics.DrawLine(myPen, Convert.ToInt32(miLista.GetFlightPlan(1).GetInitialPosition().GetX()), Convert.ToInt32(miLista.GetFlightPlan(1).GetInitialPosition().GetY()), Convert.ToInt32(miLista.GetFlightPlan(1).GetFinalPosition().GetX()), Convert.ToInt32(miLista.GetFlightPlan(1).GetFinalPosition().GetY()));
+
+            myPen.Dispose();
+
         }
     }
 }

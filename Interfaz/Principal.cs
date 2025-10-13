@@ -25,22 +25,22 @@ namespace Interfaz
         {
             InterfazDatos.Datos nuevoFormulario = new InterfazDatos.Datos(lista, this);
             nuevoFormulario.Show();
-            this.Hide();
+            //this.Hide();
         }
 
         private void seguridadToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Seguridad nuevoFormulario = new Seguridad(this);
             nuevoFormulario.Show();
-            this.Hide();
+            //this.Hide();
         }
 
         private void espacioAereoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             EspacioAereo nuevoFormulario = new EspacioAereo(this);
-            nuevoFormulario.SetData(lista, tiempoCiclo);
+            nuevoFormulario.SetData(lista, tiempoCiclo, distanciaSeguridad);
             nuevoFormulario.Show();
-            this.Hide();
+            //this.Hide();
         }
 
         private void mostrarInformacionVueloToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace Interfaz
             {
                 Informacion nuevoFormulario = new Informacion(this, lista.SearchID((textoID.Text)));
                 nuevoFormulario.Show();
-                this.Hide();
+                //this.Hide();
             }
             catch
             {

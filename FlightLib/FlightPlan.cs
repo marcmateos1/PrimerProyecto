@@ -32,6 +32,11 @@ namespace FlightLib
             return this.id;
         }
 
+        public Position GetInitialPosition()
+        {
+            return this.initalPosition;
+        }
+
         public void SetId(string id)
         { this.id = id; }
         public Position GetCurrentPosition()
