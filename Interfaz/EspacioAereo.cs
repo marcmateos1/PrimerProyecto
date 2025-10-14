@@ -121,6 +121,20 @@ namespace Interfaz
                 int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
                 vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
                 panel1.Invalidate();
+
+                for (int j = i + 1; j < miLista.NumElementosLista(); j++)
+                {
+                    FlightPlan plan2 = miLista.GetFlightPlan(j);
+                    double dist = plan.DistanceTo(plan2);
+                    bool a = plan.Conflicto(dist, this.distanciaSeguridad);
+                    if (a == true)
+                    {
+
+                        MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + dist.ToString("F2") + " unidades.");
+                        break;
+                    }
+
+                }
             }
         }
 
@@ -137,7 +151,7 @@ namespace Interfaz
                 for (int i = 0; i < miLista.NumElementosLista(); i++)
                 {
                     graphics.DrawLine(rutaPen, Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetX() * panel1.Width / 500.0), Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetY() * panel1.Height / 500.0), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetX() * panel1.Width / 500.0), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetY() * panel1.Height / 500.0));
-                    
+
                     int x = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetX() * panel1.Width / 500.0);
                     int y = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetY() * panel1.Height / 500.0);
                     graphics.DrawEllipse(zonaPen, x - radio, y - radio, radio * 2, radio * 2);
@@ -189,12 +203,34 @@ namespace Interfaz
             panel1.Invalidate();
 
             //Comprobar si hay conflicto
-            double distanciaActual = miLista.GetFlightPlan(0).GetCurrentPosition().Distancia(miLista.GetFlightPlan(1).GetCurrentPosition());
-            if (miLista.GetFlightPlan(0).Conflicto(distanciaActual, distanciaSeguridad))
+
+            bool a = false;
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
-                MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + distanciaActual.ToString("F2") + " unidades.");
-                //Reloj.Stop();
+
+                FlightPlan plan = miLista.GetFlightPlan(i);
+                for (int j = i + 1; j < miLista.NumElementosLista(); j++)
+                {
+                    FlightPlan plan2 = miLista.GetFlightPlan(j);
+                    double dist = plan.DistanceTo(plan2);
+                    a = plan.Conflicto(dist, this.distanciaSeguridad);
+                    if (a == true)
+                    {
+
+                        
+                        Reloj.Stop();
+                        MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + dist.ToString("F2") + " unidades.");
+                        break;
+                    }
+
+                }
+                if (a == true)
+                { 
+                    Reloj.Stop();
+                    break;
+                }
             }
+
         }
 
         private void ShowInfo_Click(object sender, EventArgs e)
@@ -236,6 +272,21 @@ namespace Interfaz
         private void botonVolver_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonRestart_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            {
+                FlightPlan plan = miLista.GetFlightPlan(i);
+                plan.Restart();
+
+            }
         }
     }
 }

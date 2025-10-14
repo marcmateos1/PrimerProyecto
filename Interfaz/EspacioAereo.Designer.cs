@@ -40,6 +40,8 @@
             Reloj = new System.Windows.Forms.Timer(components);
             ShowInfo = new Button();
             botonVolver = new Button();
+            labelseg = new Label();
+            ButtonRestart = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -54,7 +56,7 @@
             // 
             // botonMover
             // 
-            botonMover.Location = new Point(125, 119);
+            botonMover.Location = new Point(125, 130);
             botonMover.Margin = new Padding(2, 4, 2, 4);
             botonMover.Name = "botonMover";
             botonMover.Size = new Size(121, 69);
@@ -67,7 +69,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(355, 51);
+            label1.Location = new Point(354, 51);
             label1.Name = "label1";
             label1.Size = new Size(28, 35);
             label1.TabIndex = 3;
@@ -105,7 +107,7 @@
             // 
             // simularAut
             // 
-            simularAut.Location = new Point(125, 237);
+            simularAut.Location = new Point(125, 207);
             simularAut.Margin = new Padding(3, 4, 3, 4);
             simularAut.Name = "simularAut";
             simularAut.Size = new Size(121, 73);
@@ -116,7 +118,7 @@
             // 
             // Parar
             // 
-            Parar.Location = new Point(125, 365);
+            Parar.Location = new Point(125, 288);
             Parar.Margin = new Padding(3, 4, 3, 4);
             Parar.Name = "Parar";
             Parar.Size = new Size(121, 68);
@@ -132,7 +134,7 @@
             // 
             // ShowInfo
             // 
-            ShowInfo.Location = new Point(125, 491);
+            ShowInfo.Location = new Point(125, 431);
             ShowInfo.Margin = new Padding(3, 4, 3, 4);
             ShowInfo.Name = "ShowInfo";
             ShowInfo.Size = new Size(121, 68);
@@ -143,19 +145,41 @@
             // 
             // botonVolver
             // 
-            botonVolver.Location = new Point(125, 619);
+            botonVolver.Location = new Point(125, 506);
             botonVolver.Name = "botonVolver";
-            botonVolver.Size = new Size(94, 29);
+            botonVolver.Size = new Size(121, 43);
             botonVolver.TabIndex = 10;
             botonVolver.Text = "Volver";
             botonVolver.UseVisualStyleBackColor = true;
             botonVolver.Click += botonVolver_Click_1;
+            // 
+            // labelseg
+            // 
+            labelseg.AutoSize = true;
+            labelseg.Location = new Point(89, 680);
+            labelseg.Name = "labelseg";
+            labelseg.Size = new Size(157, 20);
+            labelseg.TabIndex = 11;
+            labelseg.Text = "Comprobar Seguridad";
+            labelseg.Click += label5_Click;
+            // 
+            // ButtonRestart
+            // 
+            ButtonRestart.Location = new Point(125, 363);
+            ButtonRestart.Name = "ButtonRestart";
+            ButtonRestart.Size = new Size(121, 61);
+            ButtonRestart.TabIndex = 12;
+            ButtonRestart.Text = "Reiniciar";
+            ButtonRestart.UseVisualStyleBackColor = true;
+            ButtonRestart.Click += ButtonRestart_Click;
             // 
             // EspacioAereo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1057, 757);
+            Controls.Add(ButtonRestart);
+            Controls.Add(labelseg);
             Controls.Add(botonVolver);
             Controls.Add(ShowInfo);
             Controls.Add(Parar);
@@ -187,5 +211,7 @@
         private System.Windows.Forms.Timer Reloj;
         private Button ShowInfo;
         private Button botonVolver;
+        private Label labelseg;
+        private Button ButtonRestart;
     }
 }
