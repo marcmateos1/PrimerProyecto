@@ -52,7 +52,7 @@ namespace Interfaz
                 double velocidad = plan.GetVelocidad();
                 string posicionInicial = $"({plan.GetInitialPosition().GetX()}  ,  {plan.GetInitialPosition().GetY()})";
                 string posicionFinal = $"({plan.GetFinalPosition().GetX()}  ,  {plan.GetFinalPosition().GetY()})";
-                string posicionActual = $"({Math.Round(plan.GetCurrentPosition().GetX(),2)} , {Math.Round(plan.GetCurrentPosition().GetY(), 2)})";
+                string posicionActual = $"({Math.Round(plan.GetCurrentPosition().GetX(), 2)} , {Math.Round(plan.GetCurrentPosition().GetY(), 2)})";
 
                 // Añadir la fila con los datos
                 Taula.Rows.Add(id, velocidad, posicionInicial, posicionFinal, posicionActual);
@@ -60,14 +60,19 @@ namespace Interfaz
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Position p1= miLista.GetFlightPlan(0).GetCurrentPosition();
-            Position p2= miLista.GetFlightPlan(1).GetCurrentPosition();
+            Position p1 = miLista.GetFlightPlan(0).GetCurrentPosition();
+            Position p2 = miLista.GetFlightPlan(1).GetCurrentPosition();
 
             double distancia = p1.Distancia(p2);
             ShowDistancePlans nuevoformulario = new ShowDistancePlans();
             nuevoformulario.SetData(distancia);
             nuevoformulario.ShowDistance();
             nuevoformulario.Show();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

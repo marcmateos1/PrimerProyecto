@@ -31,13 +31,13 @@ namespace InterfazDatos
             {
                 MessageBox.Show("Error de formato.");
             }
-            
+
             //principal.Show();
         }
 
         private void atajo_Click(object sender, EventArgs e)
         {
-            TIdentificador.Text= "Avion1";
+            TIdentificador.Text = "Avion1";
             TY0.Text = "100";
             TX0.Text = "50";
             TYF.Text = "200";
@@ -50,6 +50,16 @@ namespace InterfazDatos
             TYF2.Text = "200";
             TXF2.Text = "225";
             TVelocidad2.Text = "100";
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

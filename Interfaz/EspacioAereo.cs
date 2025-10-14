@@ -41,39 +41,85 @@ namespace Interfaz
             vuelos = new PictureBox[miLista.NumElementosLista()];
             for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
-                //representar vuelo de la posicion i
+                // Representar vuelo de la posición i
                 PictureBox p = new PictureBox();
                 FlightPlan plan = miLista.GetFlightPlan(i);
-                //tamaño del elemento
+
+                // Tamaño del elemento
                 p.Width = 10;
                 p.Height = 10;
                 p.ClientSize = new Size(10, 10);
-                //posición del elemento
-                //p.Location = new Point(plan.GetCurrentPosition().GetX(), plan.GetFlightPlan(i).GetCurrentPosition().GetY());
+
+                // Calcular posición escalada
                 int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 500.0);
                 int y = (int)(plan.GetCurrentPosition().GetY() * panel1.Height / 500.0);
-                p.Location = new Point(x, y);
+
+                // Ajustar para centrar el círculo en las coordenadas
+                p.Location = new Point(x - p.Width / 2, y - p.Height / 2);
 
 
-                //p.SizeMode = PictureBoxSizeMode.StretchImage;
-                p.BackColor = Color.Red;
+                // Pero si querés que sea un CÍRCULO ROJO:
+                Bitmap bmp = new Bitmap(p.Width, p.Height);
+                using (Graphics g = Graphics.FromImage(bmp))
+                {
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    g.FillEllipse(Brushes.Red, 0, 0, p.Width - 1, p.Height - 1);
+                }
+                p.Image = bmp;
 
+                // Guardar y agregar al panel
                 vuelos[i] = p;
-
                 panel1.Controls.Add(p);
 
+                // Crear el PictureBox del destino
+                PictureBox destino = new PictureBox();
+                destino.Width = 10;
+                destino.Height = 10;
+                destino.ClientSize = new Size(10, 10);
+
+                // Calcular posición del destino (escalar igual que el vuelo)
+                int xd = (int)(plan.GetFinalPosition().GetX() * panel1.Width / 500.0);
+                int yd = (int)(plan.GetFinalPosition().GetY() * panel1.Height / 500.0);
+
+                // Centrar la cruz en el punto destino
+                destino.Location = new Point(xd - destino.Width / 2, yd - destino.Height / 2);
+
+                // Dibujar una cruz
+                Bitmap bmp2 = new Bitmap(destino.Width, destino.Height);
+                using (Graphics g = Graphics.FromImage(bmp2))
+                {
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    Pen pen = new Pen(Color.Blue, 2); // color y grosor de la cruz
+                    g.DrawLine(pen, 0, destino.Height / 2, destino.Width, destino.Height / 2); // línea horizontal
+                    g.DrawLine(pen, destino.Width / 2, 0, destino.Width / 2, destino.Height);  // línea vertical
+                }
+                destino.Image = bmp2;
+
+                // Agregar al panel
+                panel1.Controls.Add(destino);
+
+                // Evento de clic
                 p.Click += PictureBox_Click;
+
             }
         }
         private void botonMover_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
+                // Representar vuelo de la posición i
+                PictureBox p = new PictureBox();
+
+                // Tamaño del elemento
+                p.Width = 10;
+                p.Height = 10;
+                p.ClientSize = new Size(10, 10);
+
                 FlightPlan plan = miLista.GetFlightPlan(i);
                 plan.Mover(tiempoCiclo);
                 int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 500.0);
                 int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
-                vuelos[i].Location = new Point(x, y);
+                vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
                 panel1.Invalidate();
             }
         }
@@ -110,7 +156,7 @@ namespace Interfaz
 
         private void simularAut_Click(object sender, EventArgs e)
         {
-            Reloj.Interval = 500;
+            Reloj.Interval = 100;
             Reloj.Start();
         }
 
@@ -125,11 +171,20 @@ namespace Interfaz
         {
             for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
+                // Representar vuelo de la posición i
+                PictureBox p = new PictureBox();
+
+                // Tamaño del elemento
+                p.Width = 10;
+                p.Height = 10;
+                p.ClientSize = new Size(10, 10);
+
                 FlightPlan plan = miLista.GetFlightPlan(i);
                 plan.Mover(tiempoCiclo);
                 int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 500.0);
                 int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
-                vuelos[i].Location = new Point(x, y);
+                vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
+                panel1.Invalidate();
             }
             panel1.Invalidate();
 

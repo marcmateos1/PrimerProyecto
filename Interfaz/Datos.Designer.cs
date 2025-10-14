@@ -42,8 +42,6 @@
             TYF = new TextBox();
             BCompilar = new Button();
             label8 = new Label();
-            label7 = new Label();
-            label9 = new Label();
             label10 = new Label();
             label11 = new Label();
             TIdentificador2 = new TextBox();
@@ -57,13 +55,15 @@
             label14 = new Label();
             label15 = new Label();
             atajo = new Button();
+            groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new Point(69, 126);
+            label1.Location = new Point(79, 102);
             label1.Name = "label1";
             label1.Size = new Size(76, 17);
             label1.TabIndex = 0;
@@ -73,7 +73,7 @@
             // 
             label2.AutoSize = true;
             label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Location = new Point(222, 126);
+            label2.Location = new Point(232, 102);
             label2.Name = "label2";
             label2.Size = new Size(60, 17);
             label2.TabIndex = 1;
@@ -83,7 +83,7 @@
             // 
             label3.AutoSize = true;
             label3.BorderStyle = BorderStyle.FixedSingle;
-            label3.Location = new Point(83, 180);
+            label3.Location = new Point(93, 156);
             label3.Name = "label3";
             label3.Size = new Size(50, 17);
             label3.TabIndex = 2;
@@ -93,7 +93,7 @@
             // 
             label4.AutoSize = true;
             label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Location = new Point(83, 237);
+            label4.Location = new Point(93, 213);
             label4.Name = "label4";
             label4.Size = new Size(50, 17);
             label4.TabIndex = 3;
@@ -103,7 +103,7 @@
             // 
             label5.AutoSize = true;
             label5.BorderStyle = BorderStyle.FixedSingle;
-            label5.Location = new Point(222, 237);
+            label5.Location = new Point(232, 213);
             label5.Name = "label5";
             label5.Size = new Size(42, 17);
             label5.TabIndex = 4;
@@ -113,7 +113,7 @@
             // 
             label6.AutoSize = true;
             label6.BorderStyle = BorderStyle.FixedSingle;
-            label6.Location = new Point(222, 180);
+            label6.Location = new Point(232, 156);
             label6.Name = "label6";
             label6.Size = new Size(42, 17);
             label6.TabIndex = 5;
@@ -121,7 +121,7 @@
             // 
             // TIdentificador
             // 
-            TIdentificador.Location = new Point(54, 145);
+            TIdentificador.Location = new Point(64, 121);
             TIdentificador.Margin = new Padding(3, 2, 3, 2);
             TIdentificador.Name = "TIdentificador";
             TIdentificador.Size = new Size(110, 23);
@@ -129,7 +129,7 @@
             // 
             // TVelocidad
             // 
-            TVelocidad.Location = new Point(194, 145);
+            TVelocidad.Location = new Point(204, 121);
             TVelocidad.Margin = new Padding(3, 2, 3, 2);
             TVelocidad.Name = "TVelocidad";
             TVelocidad.Size = new Size(110, 23);
@@ -137,7 +137,7 @@
             // 
             // TX0
             // 
-            TX0.Location = new Point(54, 199);
+            TX0.Location = new Point(64, 175);
             TX0.Margin = new Padding(3, 2, 3, 2);
             TX0.Name = "TX0";
             TX0.Size = new Size(110, 23);
@@ -145,7 +145,7 @@
             // 
             // TY0
             // 
-            TY0.Location = new Point(54, 256);
+            TY0.Location = new Point(64, 232);
             TY0.Margin = new Padding(3, 2, 3, 2);
             TY0.Name = "TY0";
             TY0.Size = new Size(110, 23);
@@ -153,7 +153,7 @@
             // 
             // TXF
             // 
-            TXF.Location = new Point(194, 199);
+            TXF.Location = new Point(204, 175);
             TXF.Margin = new Padding(3, 2, 3, 2);
             TXF.Name = "TXF";
             TXF.Size = new Size(110, 23);
@@ -161,7 +161,7 @@
             // 
             // TYF
             // 
-            TYF.Location = new Point(194, 256);
+            TYF.Location = new Point(204, 232);
             TYF.Margin = new Padding(3, 2, 3, 2);
             TYF.Name = "TYF";
             TYF.Size = new Size(110, 23);
@@ -170,7 +170,7 @@
             // BCompilar
             // 
             BCompilar.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BCompilar.Location = new Point(281, 331);
+            BCompilar.Location = new Point(291, 307);
             BCompilar.Margin = new Padding(3, 2, 3, 2);
             BCompilar.Name = "BCompilar";
             BCompilar.Size = new Size(125, 50);
@@ -189,31 +189,11 @@
             label8.TabIndex = 14;
             label8.Text = "Introuce los datos de los dos vuelos";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(136, 82);
-            label7.Name = "label7";
-            label7.Size = new Size(82, 23);
-            label7.TabIndex = 15;
-            label7.Text = "Vuelo 1";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(473, 82);
-            label9.Name = "label9";
-            label9.Size = new Size(83, 23);
-            label9.TabIndex = 16;
-            label9.Text = "Vuelo 2";
-            // 
             // label10
             // 
             label10.AutoSize = true;
             label10.BorderStyle = BorderStyle.FixedSingle;
-            label10.Location = new Point(429, 126);
+            label10.Location = new Point(439, 102);
             label10.Name = "label10";
             label10.Size = new Size(76, 17);
             label10.TabIndex = 17;
@@ -223,7 +203,7 @@
             // 
             label11.AutoSize = true;
             label11.BorderStyle = BorderStyle.FixedSingle;
-            label11.Location = new Point(558, 126);
+            label11.Location = new Point(568, 102);
             label11.Name = "label11";
             label11.Size = new Size(60, 17);
             label11.TabIndex = 18;
@@ -231,7 +211,7 @@
             // 
             // TIdentificador2
             // 
-            TIdentificador2.Location = new Point(409, 145);
+            TIdentificador2.Location = new Point(419, 121);
             TIdentificador2.Margin = new Padding(3, 2, 3, 2);
             TIdentificador2.Name = "TIdentificador2";
             TIdentificador2.Size = new Size(110, 23);
@@ -239,7 +219,7 @@
             // 
             // TXF2
             // 
-            TXF2.Location = new Point(534, 199);
+            TXF2.Location = new Point(544, 175);
             TXF2.Margin = new Padding(3, 2, 3, 2);
             TXF2.Name = "TXF2";
             TXF2.Size = new Size(110, 23);
@@ -247,7 +227,7 @@
             // 
             // TX02
             // 
-            TX02.Location = new Point(409, 199);
+            TX02.Location = new Point(419, 175);
             TX02.Margin = new Padding(3, 2, 3, 2);
             TX02.Name = "TX02";
             TX02.Size = new Size(110, 23);
@@ -255,7 +235,7 @@
             // 
             // TVelocidad2
             // 
-            TVelocidad2.Location = new Point(534, 145);
+            TVelocidad2.Location = new Point(544, 121);
             TVelocidad2.Margin = new Padding(3, 2, 3, 2);
             TVelocidad2.Name = "TVelocidad2";
             TVelocidad2.Size = new Size(110, 23);
@@ -263,7 +243,7 @@
             // 
             // TYF2
             // 
-            TYF2.Location = new Point(534, 253);
+            TYF2.Location = new Point(544, 229);
             TYF2.Margin = new Padding(3, 2, 3, 2);
             TYF2.Name = "TYF2";
             TYF2.Size = new Size(110, 23);
@@ -271,7 +251,7 @@
             // 
             // TY02
             // 
-            TY02.Location = new Point(409, 253);
+            TY02.Location = new Point(419, 229);
             TY02.Margin = new Padding(3, 2, 3, 2);
             TY02.Name = "TY02";
             TY02.Size = new Size(110, 23);
@@ -281,7 +261,7 @@
             // 
             label12.AutoSize = true;
             label12.BorderStyle = BorderStyle.FixedSingle;
-            label12.Location = new Point(567, 180);
+            label12.Location = new Point(577, 156);
             label12.Name = "label12";
             label12.Size = new Size(42, 17);
             label12.TabIndex = 25;
@@ -291,7 +271,7 @@
             // 
             label13.AutoSize = true;
             label13.BorderStyle = BorderStyle.FixedSingle;
-            label13.Location = new Point(438, 180);
+            label13.Location = new Point(448, 156);
             label13.Name = "label13";
             label13.Size = new Size(50, 17);
             label13.TabIndex = 26;
@@ -301,7 +281,7 @@
             // 
             label14.AutoSize = true;
             label14.BorderStyle = BorderStyle.FixedSingle;
-            label14.Location = new Point(438, 234);
+            label14.Location = new Point(448, 210);
             label14.Name = "label14";
             label14.Size = new Size(50, 17);
             label14.TabIndex = 27;
@@ -311,7 +291,7 @@
             // 
             label15.AutoSize = true;
             label15.BorderStyle = BorderStyle.FixedSingle;
-            label15.Location = new Point(558, 234);
+            label15.Location = new Point(568, 210);
             label15.Name = "label15";
             label15.Size = new Size(42, 17);
             label15.TabIndex = 28;
@@ -319,7 +299,7 @@
             // 
             // atajo
             // 
-            atajo.Location = new Point(302, 396);
+            atajo.Location = new Point(312, 372);
             atajo.Name = "atajo";
             atajo.Size = new Size(75, 23);
             atajo.TabIndex = 29;
@@ -327,11 +307,33 @@
             atajo.UseVisualStyleBackColor = true;
             atajo.Click += atajo_Click;
             // 
+            // groupBox1
+            // 
+            groupBox1.BackColor = SystemColors.ActiveCaption;
+            groupBox1.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox1.Location = new Point(30, 70);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(318, 204);
+            groupBox1.TabIndex = 30;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "VUELO 1";
+            // 
+            // groupBox2
+            // 
+            groupBox2.BackColor = SystemColors.ActiveCaption;
+            groupBox2.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox2.Location = new Point(377, 70);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(318, 204);
+            groupBox2.TabIndex = 31;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "VUELO 2";
+            // 
             // Datos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(740, 452);
+            ClientSize = new Size(740, 415);
             Controls.Add(atajo);
             Controls.Add(label15);
             Controls.Add(label14);
@@ -345,8 +347,6 @@
             Controls.Add(TIdentificador2);
             Controls.Add(label11);
             Controls.Add(label10);
-            Controls.Add(label9);
-            Controls.Add(label7);
             Controls.Add(label8);
             Controls.Add(BCompilar);
             Controls.Add(TYF);
@@ -361,6 +361,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(groupBox1);
+            Controls.Add(groupBox2);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Datos";
             Text = "Introduzca los Datos";
@@ -384,8 +386,6 @@
         private TextBox TYF;
         private Button BCompilar;
         private Label label8;
-        private Label label7;
-        private Label label9;
         private Label label10;
         private Label label11;
         private TextBox TIdentificador2;
@@ -399,5 +399,7 @@
         private Label label14;
         private Label label15;
         private Button atajo;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
     }
 }
