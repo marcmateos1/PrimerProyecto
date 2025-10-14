@@ -50,7 +50,7 @@
             panel1.Location = new Point(387, 51);
             panel1.Margin = new Padding(2, 4, 2, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(573, 668);
+            panel1.Size = new Size(500, 500);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 

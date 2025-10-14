@@ -200,7 +200,7 @@ namespace Interfaz
                 vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
                 panel1.Invalidate();
             }
-            panel1.Invalidate();
+            panel1.Invalidate(); //Forzar al panel pintarse otra vez, para que pinte a cada movimiento del avion la zona de seguridad
 
             //Comprobar si hay conflicto
 
