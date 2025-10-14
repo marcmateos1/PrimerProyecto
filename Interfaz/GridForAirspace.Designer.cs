@@ -37,7 +37,7 @@
             // Taula
             // 
             Taula.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Taula.Location = new Point(56, 45);
+            Taula.Location = new Point(59, 44);
             Taula.Name = "Taula";
             Taula.Size = new Size(543, 205);
             Taula.TabIndex = 0;
@@ -46,8 +46,8 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(Taula);
-            groupBox1.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(76, 47);
+            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox1.Location = new Point(68, 43);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(653, 303);
             groupBox1.TabIndex = 1;
@@ -59,7 +59,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 391);
             Controls.Add(groupBox1);
             Name = "GridForAirspace";
             Text = "GridForAirspace";
