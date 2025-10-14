@@ -46,6 +46,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(Taula);
+            groupBox1.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(76, 47);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(653, 303);
