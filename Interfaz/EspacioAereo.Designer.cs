@@ -42,6 +42,8 @@
             botonVolver = new Button();
             labelseg = new Label();
             ButtonRestart = new Button();
+            button1 = new Button();
+            botocon = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -56,7 +58,7 @@
             // 
             // botonMover
             // 
-            botonMover.Location = new Point(125, 130);
+            botonMover.Location = new Point(125, 64);
             botonMover.Margin = new Padding(2, 4, 2, 4);
             botonMover.Name = "botonMover";
             botonMover.Size = new Size(121, 69);
@@ -107,7 +109,7 @@
             // 
             // simularAut
             // 
-            simularAut.Location = new Point(125, 207);
+            simularAut.Location = new Point(125, 141);
             simularAut.Margin = new Padding(3, 4, 3, 4);
             simularAut.Name = "simularAut";
             simularAut.Size = new Size(121, 73);
@@ -118,7 +120,7 @@
             // 
             // Parar
             // 
-            Parar.Location = new Point(125, 288);
+            Parar.Location = new Point(125, 222);
             Parar.Margin = new Padding(3, 4, 3, 4);
             Parar.Name = "Parar";
             Parar.Size = new Size(121, 68);
@@ -134,7 +136,7 @@
             // 
             // ShowInfo
             // 
-            ShowInfo.Location = new Point(125, 431);
+            ShowInfo.Location = new Point(125, 365);
             ShowInfo.Margin = new Padding(3, 4, 3, 4);
             ShowInfo.Name = "ShowInfo";
             ShowInfo.Size = new Size(121, 68);
@@ -145,7 +147,7 @@
             // 
             // botonVolver
             // 
-            botonVolver.Location = new Point(125, 506);
+            botonVolver.Location = new Point(125, 508);
             botonVolver.Name = "botonVolver";
             botonVolver.Size = new Size(121, 43);
             botonVolver.TabIndex = 10;
@@ -165,7 +167,7 @@
             // 
             // ButtonRestart
             // 
-            ButtonRestart.Location = new Point(125, 363);
+            ButtonRestart.Location = new Point(125, 297);
             ButtonRestart.Name = "ButtonRestart";
             ButtonRestart.Size = new Size(121, 61);
             ButtonRestart.TabIndex = 12;
@@ -173,11 +175,30 @@
             ButtonRestart.UseVisualStyleBackColor = true;
             ButtonRestart.Click += ButtonRestart_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 0;
+            // 
+            // botocon
+            // 
+            botocon.Location = new Point(125, 440);
+            botocon.Name = "botocon";
+            botocon.Size = new Size(121, 59);
+            botocon.TabIndex = 13;
+            botocon.Text = "Conflicto";
+            botocon.UseVisualStyleBackColor = true;
+            botocon.Click += botocon_Click;
+            // 
             // EspacioAereo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1057, 757);
+            Controls.Add(botocon);
+            Controls.Add(button1);
             Controls.Add(ButtonRestart);
             Controls.Add(labelseg);
             Controls.Add(botonVolver);
@@ -213,5 +234,7 @@
         private Button botonVolver;
         private Label labelseg;
         private Button ButtonRestart;
+        private Button button1;
+        private Button botocon;
     }
 }

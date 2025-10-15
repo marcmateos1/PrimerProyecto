@@ -217,7 +217,7 @@ namespace Interfaz
                     if (a == true)
                     {
 
-                        
+
                         Reloj.Stop();
                         MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + dist.ToString("F2") + " unidades.");
                         break;
@@ -225,7 +225,7 @@ namespace Interfaz
 
                 }
                 if (a == true)
-                { 
+                {
                     Reloj.Stop();
                     break;
                 }
@@ -287,6 +287,43 @@ namespace Interfaz
                 plan.Restart();
 
             }
+        }
+
+        private void botocon_Click(object sender, EventArgs e)
+        {
+            FlightPlan plan= miLista.GetFlightPlan(0);
+            FlightPlan plan2=miLista.GetFlightPlan(1);
+            bool a = false;
+            bool planarrived = false;
+            bool planarrived2=false;
+            int i = 0;
+            while (planarrived==false || planarrived2 == false)
+            {
+                double dist = plan.DistanceTo(plan2);
+                 a = plan.Conflicto(dist, this.distanciaSeguridad);
+                if (a == true)
+                {
+
+                    break;
+                }
+                plan.Mover(tiempoCiclo);
+                plan2.Mover(tiempoCiclo);
+                planarrived = plan.HasArrived();
+                planarrived2 = plan2.HasArrived();
+                i++;
+            }
+            plan.SetCurrentPosition(plan.GetInitialPosition());
+            plan2.SetCurrentPosition(plan2.GetInitialPosition());
+            if (a == true)
+            {
+                MessageBox.Show("Habrá conflicto en la trayectoria en la iteración "+i.ToString("F2"));
+
+            }
+            else
+            {
+                MessageBox.Show("No hi haurà perill");
+            }
+
         }
     }
 }
