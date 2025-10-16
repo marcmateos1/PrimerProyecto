@@ -170,10 +170,10 @@ namespace Interfaz
 
         private void simularAut_Click(object sender, EventArgs e)
         {
-                Reloj.Interval = 100;
-                Reloj.Start();
+            Reloj.Interval = 100;
+            Reloj.Start();
         }
-        
+
         private void Parar_Click(object sender, EventArgs e)
         {
             Reloj.Stop();
@@ -289,18 +289,18 @@ namespace Interfaz
             }
         }
 
-        private void botocon_Click(object sender, EventArgs e)
+        private void Conflicte_Click(object sender, EventArgs e)
         {
-            FlightPlan plan= miLista.GetFlightPlan(0);
-            FlightPlan plan2=miLista.GetFlightPlan(1);
+            FlightPlan plan = miLista.GetFlightPlan(0);
+            FlightPlan plan2 = miLista.GetFlightPlan(1);
             bool a = false;
             bool planarrived = false;
-            bool planarrived2=false;
+            bool planarrived2 = false;
             int i = 0;
-            while (planarrived==false || planarrived2 == false)
+            while (planarrived == false || planarrived2 == false)
             {
                 double dist = plan.DistanceTo(plan2);
-                 a = plan.Conflicto(dist, this.distanciaSeguridad);
+                a = plan.Conflicto(dist, this.distanciaSeguridad);
                 if (a == true)
                 {
 
@@ -316,7 +316,7 @@ namespace Interfaz
             plan2.SetCurrentPosition(plan2.GetInitialPosition());
             if (a == true)
             {
-                MessageBox.Show("Habrá conflicto en la trayectoria en la iteración "+i.ToString("F2"));
+                MessageBox.Show("Habrá conflicto en la trayectoria en la iteración " + i.ToString("F2"));
                 Conflicto nuevoFormulario = new Conflicto();
                 DialogResult respuesta = nuevoFormulario.ShowDialog();
                 if (DialogResult == DialogResult.Yes)
@@ -329,7 +329,6 @@ namespace Interfaz
             {
                 MessageBox.Show("No hi haurà perill");
             }
-
         }
     }
 }
