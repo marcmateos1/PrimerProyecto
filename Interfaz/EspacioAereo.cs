@@ -290,9 +290,13 @@ namespace Interfaz
         }
 
         private void Conflicte_Click(object sender, EventArgs e)
-        {
+        {   
             FlightPlan plan = miLista.GetFlightPlan(0);
             FlightPlan plan2 = miLista.GetFlightPlan(1);
+
+            Position p1 = plan.GetCurrentPosition();
+            Position p2 = plan2.GetCurrentPosition();   
+
             bool a = false;
             bool planarrived = false;
             bool planarrived2 = false;
@@ -303,7 +307,6 @@ namespace Interfaz
                 a = plan.Conflicto(dist, this.distanciaSeguridad);
                 if (a == true)
                 {
-
                     break;
                 }
                 plan.Mover(tiempoCiclo);
@@ -312,8 +315,8 @@ namespace Interfaz
                 planarrived2 = plan2.HasArrived();
                 i++;
             }
-            plan.SetCurrentPosition(plan.GetInitialPosition());
-            plan2.SetCurrentPosition(plan2.GetInitialPosition());
+            plan.SetCurrentPosition(p1);
+            plan2.SetCurrentPosition(p2);
             if (a == true)
             {
                 MessageBox.Show("Habrá conflicto en la trayectoria en la iteración " + i.ToString("F2"));
