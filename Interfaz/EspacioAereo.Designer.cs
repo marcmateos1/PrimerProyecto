@@ -190,7 +190,6 @@
             botocon.TabIndex = 13;
             botocon.Text = "Conflicto";
             botocon.UseVisualStyleBackColor = true;
-            botocon.Click += botocon_Click;
             // 
             // EspacioAereo
             // 

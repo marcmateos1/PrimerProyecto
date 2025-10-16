@@ -170,10 +170,10 @@ namespace Interfaz
 
         private void simularAut_Click(object sender, EventArgs e)
         {
-            Reloj.Interval = 100;
-            Reloj.Start();
+                Reloj.Interval = 100;
+                Reloj.Start();
         }
-
+        
         private void Parar_Click(object sender, EventArgs e)
         {
             Reloj.Stop();
@@ -317,6 +317,12 @@ namespace Interfaz
             if (a == true)
             {
                 MessageBox.Show("Habrá conflicto en la trayectoria en la iteración "+i.ToString("F2"));
+                Conflicto nuevoFormulario = new Conflicto();
+                DialogResult respuesta = nuevoFormulario.ShowDialog();
+                if (DialogResult == DialogResult.Yes)
+                {
+
+                }
 
             }
             else
