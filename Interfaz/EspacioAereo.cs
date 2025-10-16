@@ -29,6 +29,7 @@ namespace Interfaz
             this.principal = principal;
         }
 
+
         public void SetData(FlightPlanList f, int c, float distancia)
         {
             miLista = f;
@@ -287,15 +288,15 @@ namespace Interfaz
                 plan.Restart();
 
             }
+            
         }
-
         private void Conflicte_Click(object sender, EventArgs e)
-        {   
+        {
             FlightPlan plan = miLista.GetFlightPlan(0);
             FlightPlan plan2 = miLista.GetFlightPlan(1);
 
             Position p1 = plan.GetCurrentPosition();
-            Position p2 = plan2.GetCurrentPosition();   
+            Position p2 = plan2.GetCurrentPosition();
 
             bool a = false;
             bool planarrived = false;
@@ -320,12 +321,12 @@ namespace Interfaz
             if (a == true)
             {
                 MessageBox.Show("Habrá conflicto en la trayectoria en la iteración " + i.ToString("F2"));
-                Conflicto nuevoFormulario = new Conflicto();
-                DialogResult respuesta = nuevoFormulario.ShowDialog();
-                if (DialogResult == DialogResult.Yes)
-                {
+                //Conflicto nuevoFormulario = new Conflicto();
+                //DialogResult respuesta = nuevoFormulario.ShowDialog();
+                //if (DialogResult == DialogResult.Yes)
+                //{
 
-                }
+                //}
 
             }
             else
