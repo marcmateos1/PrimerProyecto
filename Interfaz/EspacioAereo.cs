@@ -27,6 +27,7 @@ namespace Interfaz
         {
             InitializeComponent();
             this.principal = principal;
+
         }
 
 
@@ -35,6 +36,58 @@ namespace Interfaz
             miLista = f;
             tiempoCiclo = c;
             distanciaSeguridad = distancia;
+            try
+            {
+                FlightPlan plan = miLista.GetFlightPlan(0);
+                FlightPlan plan2 = miLista.GetFlightPlan(1);
+
+                Position p1 = plan.GetCurrentPosition();
+                Position p2 = plan2.GetCurrentPosition();
+
+                bool a = false;
+                bool planarrived = false;
+                bool planarrived2 = false;
+                int i = 0;
+                while (planarrived == false || planarrived2 == false)
+                {
+                    double dist = plan.DistanceTo(plan2);
+                    a = plan.Conflicto(dist, this.distanciaSeguridad);
+                    if (a == true)
+                    {
+                        break;
+                    }
+                    plan.Mover(tiempoCiclo);
+                    plan2.Mover(tiempoCiclo);
+                    planarrived = plan.HasArrived();
+                    planarrived2 = plan2.HasArrived();
+                    i++;
+                }
+                plan.SetCurrentPosition(p1);
+                plan2.SetCurrentPosition(p2);
+                if (a == true)
+                {
+                    Conflicto nuevoFormulario = new Conflicto();
+                    DialogResult respuesta = nuevoFormulario.ShowDialog();
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        double nuevaVelocidad = plan2.GetVelocidad() * 0.8;
+                        plan2.SetVelocidad(nuevaVelocidad);
+
+                        MessageBox.Show(
+                            $"Se ha reducido la velocidad del vuelo {plan2.GetId()} para evitar el conflicto.",
+                            "Conflicto resuelto automáticamente",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Información no cargada");
+            }
+            
         }
 
         private void EspacioAereo_Load(object sender, EventArgs e)
@@ -286,7 +339,7 @@ namespace Interfaz
             {
                 FlightPlan plan = miLista.GetFlightPlan(i);
                 plan.Restart();
-
+                this.Close();
             }
             
         }

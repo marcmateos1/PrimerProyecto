@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace Interfaz
 {
     public partial class Conflicto : Form
     {
+        FlightPlanList miLista;
         public Conflicto()
         {
             InitializeComponent();
