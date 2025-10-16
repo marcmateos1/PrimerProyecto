@@ -36,17 +36,19 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(251, 136);
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(31, 33);
             label1.Name = "label1";
-            label1.Size = new Size(279, 20);
+            label1.Size = new Size(387, 30);
             label1.TabIndex = 0;
             label1.Text = "Conflicto detectado: desea solucionarlo?";
             // 
             // button1
             // 
-            button1.Location = new Point(251, 195);
+            button1.Location = new Point(99, 95);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(82, 22);
             button1.TabIndex = 1;
             button1.Text = "Si";
             button1.UseVisualStyleBackColor = true;
@@ -54,22 +56,24 @@
             // 
             // button2
             // 
-            button2.Location = new Point(436, 195);
+            button2.Location = new Point(250, 95);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(94, 29);
+            button2.Size = new Size(82, 22);
             button2.TabIndex = 2;
             button2.Text = "No";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += this.button2_Click;
+            button2.Click += button2_Click;
             // 
             // Conflicto
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(463, 171);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Conflicto";
             Text = "Form1";
             ResumeLayout(false);
