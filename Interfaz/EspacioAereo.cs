@@ -70,12 +70,19 @@ namespace Interfaz
                     DialogResult respuesta = nuevoFormulario.ShowDialog();
                     if (respuesta == DialogResult.Yes)
                     {
-                        while (a)
+                        double velocidad_0 = plan2.GetVelocidad();
+                        while (a == true)
                         {
-                            double nuevaVelocidad = plan2.GetVelocidad() * 0.98;
+                            double nuevaVelocidad = plan2.GetVelocidad() * 0.99;
                             plan2.SetVelocidad(nuevaVelocidad);
                             double dist = plan.DistanceTo(plan2);
                             a = plan.Conflicto(dist, this.distanciaSeguridad);
+                            if (nuevaVelocidad < 1)
+                            {
+                                a = false;
+                                MessageBox.Show("No se ha podido solucionar el conflicto.");
+                                plan2.SetVelocidad(velocidad_0);
+                            }
                         }
                         MessageBox.Show(
                             $"Se ha reducido la velocidad del vuelo {plan2.GetId()} para evitar el conflicto.",
