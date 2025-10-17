@@ -52,7 +52,7 @@ namespace Interfaz
                 {
                     double dist = plan.DistanceTo(plan2);
                     a = plan.Conflicto(dist, this.distanciaSeguridad);
-                    if (a == true)
+                    if (a)
                     {
                         break;
                     }
@@ -64,15 +64,19 @@ namespace Interfaz
                 }
                 plan.SetCurrentPosition(p1);
                 plan2.SetCurrentPosition(p2);
-                if (a == true)
+                if (a)
                 {
                     Conflicto nuevoFormulario = new Conflicto();
                     DialogResult respuesta = nuevoFormulario.ShowDialog();
                     if (respuesta == DialogResult.Yes)
                     {
-                        double nuevaVelocidad = plan2.GetVelocidad() * 0.8;
-                        plan2.SetVelocidad(nuevaVelocidad);
-
+                        while (a)
+                        {
+                            double nuevaVelocidad = plan2.GetVelocidad() * 0.98;
+                            plan2.SetVelocidad(nuevaVelocidad);
+                            double dist = plan.DistanceTo(plan2);
+                            a = plan.Conflicto(dist, this.distanciaSeguridad);
+                        }
                         MessageBox.Show(
                             $"Se ha reducido la velocidad del vuelo {plan2.GetId()} para evitar el conflicto.",
                             "Conflicto resuelto automáticamente",
@@ -255,7 +259,11 @@ namespace Interfaz
 
         private void Reloj_Tick_1(object sender, EventArgs e)
         {
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            if (miLista.GetFlightPlan(0).GetCurrentPosition()== miLista.GetFlightPlan(0).GetFinalPosition() && miLista.GetFlightPlan(1).GetCurrentPosition() == miLista.GetFlightPlan(1).GetFinalPosition())
+            {
+                Reloj.Stop();
+            }
+                for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
                 // Representar vuelo de la posición i
                 PictureBox p = new PictureBox();
@@ -358,14 +366,14 @@ namespace Interfaz
 
         private void ButtonRestart_Click(object sender, EventArgs e)
         {
+            Reloj.Stop();
             for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
                 FlightPlan plan = miLista.GetFlightPlan(i);
                 plan.Restart();
-                MessageBox.Show("Es reinicia l'espai aeri");
-                this.Close();
             }
-            
+            MessageBox.Show("Es reinicia l'espai aeri");
+            this.Close();
         }
         private void Conflicte_Click(object sender, EventArgs e)
         {

@@ -19,8 +19,6 @@ namespace Interfaz
         {
             InitializeComponent();
             this.principal = principal;
-            textDistancia.Text = Convert.ToString(distanciaSeguridad);
-            textTiempo.Text = Convert.ToString(tiempoCiclo);
         }
 
         private void botonDistancia_Click(object sender, EventArgs e)
