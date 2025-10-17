@@ -41,7 +41,7 @@ namespace Interfaz
 
         private void botonAtajo_Click(object sender, EventArgs e)
         {
-            textDistancia.Text = "10";
+            textDistancia.Text = "100";
             textTiempo.Text = "10"; 
         }
     }

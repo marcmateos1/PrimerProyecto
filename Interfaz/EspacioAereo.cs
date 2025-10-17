@@ -200,14 +200,14 @@ namespace Interfaz
                 System.Drawing.Graphics graphics = e.Graphics;
                 Pen rutaPen = new Pen(Color.Red);
                 Pen zonaPen = new Pen(Color.Blue);
-                int radio = (int)(distanciaSeguridad * panel1.Width / 500.0);
+                int radio = (int)(distanciaSeguridad * panel1.Width / 500);
 
                 for (int i = 0; i < miLista.NumElementosLista(); i++)
                 {
-                    graphics.DrawLine(rutaPen, Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetX() * panel1.Width / 500.0), Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetY() * panel1.Height / 500.0), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetX() * panel1.Width / 500.0), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetY() * panel1.Height / 500.0));
+                    graphics.DrawLine(rutaPen, Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetX() * panel1.Width / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetY() * panel1.Height / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetX() * panel1.Width / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetY() * panel1.Height / 500));
 
-                    int x = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetX() * panel1.Width / 500.0);
-                    int y = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetY() * panel1.Height / 500.0);
+                    int x = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetX() * panel1.Width / 500);
+                    int y = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetY() * panel1.Height / 500);
                     graphics.DrawEllipse(zonaPen, x - radio, y - radio, radio * 2, radio * 2);
                 }
 
@@ -284,6 +284,7 @@ namespace Interfaz
                     break;
                 }
             }
+            panel1.Invalidate();
 
         }
 
