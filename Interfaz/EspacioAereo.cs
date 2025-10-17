@@ -345,47 +345,51 @@ namespace Interfaz
         }
         private void Conflicte_Click(object sender, EventArgs e)
         {
-            FlightPlan plan = miLista.GetFlightPlan(0);
-            FlightPlan plan2 = miLista.GetFlightPlan(1);
-
-            Position p1 = plan.GetCurrentPosition();
-            Position p2 = plan2.GetCurrentPosition();
-
-            bool a = false;
-            bool planarrived = false;
-            bool planarrived2 = false;
-            int i = 0;
-            while (planarrived == false || planarrived2 == false)
+            try
             {
-                double dist = plan.DistanceTo(plan2);
-                a = plan.Conflicto(dist, this.distanciaSeguridad);
+                FlightPlan plan = miLista.GetFlightPlan(0);
+                FlightPlan plan2 = miLista.GetFlightPlan(1);
+
+                Position p1 = plan.GetCurrentPosition();
+                Position p2 = plan2.GetCurrentPosition();
+
+                bool a = false;
+                bool planarrived = false;
+                bool planarrived2 = false;
+                int i = 0;
+                while (planarrived == false || planarrived2 == false)
+                {
+                    double dist = plan.DistanceTo(plan2);
+                    a = plan.Conflicto(dist, this.distanciaSeguridad);
+                    if (a == true)
+                    {
+                        break;
+                    }
+                    plan.Mover(tiempoCiclo);
+                    plan2.Mover(tiempoCiclo);
+                    planarrived = plan.HasArrived();
+                    planarrived2 = plan2.HasArrived();
+                    i++;
+                }
+                plan.SetCurrentPosition(p1);
+                plan2.SetCurrentPosition(p2);
                 if (a == true)
                 {
-                    break;
+                    MessageBox.Show("Habrá conflicto en la trayectoria en la iteración " + i.ToString("F2"));
+                    //Conflicto nuevoFormulario = new Conflicto();
+                    //DialogResult respuesta = nuevoFormulario.ShowDialog();
+                    //if (DialogResult == DialogResult.Yes)
+                    //{
+
+                    //}
+
                 }
-                plan.Mover(tiempoCiclo);
-                plan2.Mover(tiempoCiclo);
-                planarrived = plan.HasArrived();
-                planarrived2 = plan2.HasArrived();
-                i++;
+                else
+                {
+                    MessageBox.Show("No hi haurà perill");
+                }
             }
-            plan.SetCurrentPosition(p1);
-            plan2.SetCurrentPosition(p2);
-            if (a == true)
-            {
-                MessageBox.Show("Habrá conflicto en la trayectoria en la iteración " + i.ToString("F2"));
-                //Conflicto nuevoFormulario = new Conflicto();
-                //DialogResult respuesta = nuevoFormulario.ShowDialog();
-                //if (DialogResult == DialogResult.Yes)
-                //{
-
-                //}
-
-            }
-            else
-            {
-                MessageBox.Show("No hi haurà perill");
-            }
+            catch (Exception) { MessageBox.Show("Dades no entrades correctament: no es pot trobar cap conflicte"); }
         }
     }
 }
