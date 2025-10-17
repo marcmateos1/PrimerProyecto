@@ -36,7 +36,7 @@ namespace Interfaz
             miLista = f;
             tiempoCiclo = c;
             distanciaSeguridad = distancia;
-            try
+            if (miLista.NumElementosLista() == 2)
             {
                 FlightPlan plan = miLista.GetFlightPlan(0);
                 FlightPlan plan2 = miLista.GetFlightPlan(1);
@@ -83,7 +83,7 @@ namespace Interfaz
 
                 }
             }
-            catch
+            else
             {
                 MessageBox.Show("Información no cargada");
             }
