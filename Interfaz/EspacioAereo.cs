@@ -180,18 +180,32 @@ namespace Interfaz
                 vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
                 panel1.Invalidate();
 
+            }
+
+            bool a = false;
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            {
+
+                FlightPlan plan = miLista.GetFlightPlan(i);
                 for (int j = i + 1; j < miLista.NumElementosLista(); j++)
                 {
                     FlightPlan plan2 = miLista.GetFlightPlan(j);
                     double dist = plan.DistanceTo(plan2);
-                    bool a = plan.Conflicto(dist, this.distanciaSeguridad);
+                    a = plan.Conflicto(dist, this.distanciaSeguridad);
                     if (a == true)
                     {
 
+
+                        Reloj.Stop();
                         MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + dist.ToString("F2") + " unidades.");
                         break;
                     }
 
+                }
+                if (a == true)
+                {
+                    Reloj.Stop();
+                    break;
                 }
             }
         }
