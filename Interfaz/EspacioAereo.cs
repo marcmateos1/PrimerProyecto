@@ -36,7 +36,7 @@ namespace Interfaz
             miLista = f;
             tiempoCiclo = c;
             distanciaSeguridad = distancia;
-            if (miLista.NumElementosLista() == 2)
+            if (miLista.NumElementosLista() == 2 && tiempoCiclo != 0 && distanciaSeguridad !=0)
             {
                 FlightPlan plan = miLista.GetFlightPlan(0);
                 FlightPlan plan2 = miLista.GetFlightPlan(1);

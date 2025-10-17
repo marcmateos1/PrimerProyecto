@@ -12,13 +12,15 @@ namespace Interfaz
 {
     public partial class Seguridad : Form
     {
-        int tiempoCiclo;
-        int distanciaSeguridad;
+        int tiempoCiclo=0;
+        int distanciaSeguridad=0;
         Interfaz.Principal principal;
         public Seguridad(Interfaz.Principal principal)
         {
             InitializeComponent();
             this.principal = principal;
+            textDistancia.Text = Convert.ToString(distanciaSeguridad);
+            textTiempo.Text = Convert.ToString(tiempoCiclo);
         }
 
         private void botonDistancia_Click(object sender, EventArgs e)

@@ -12,6 +12,28 @@ namespace InterfazDatos
             InitializeComponent();
             this.lista = lista;
             this.principal = principal;
+            if (lista.NumElementosLista() == 2)
+            {
+                TIdentificador.Text = lista.GetFlightPlan(0).GetId();
+                TVelocidad.Text = lista.GetFlightPlan(0).GetVelocidad().ToString();
+                TX0.Text = lista.GetFlightPlan(0).GetInitialPosition().GetX().ToString();
+                TY0.Text = lista.GetFlightPlan(0).GetInitialPosition().GetY().ToString();
+                TXF.Text = lista.GetFlightPlan(0).GetFinalPosition().GetX().ToString();
+                TYF.Text = lista.GetFlightPlan(0).GetFinalPosition().GetY().ToString();
+                TIdentificador2.Text = lista.GetFlightPlan(1).GetId();
+                TVelocidad2.Text = lista.GetFlightPlan(1).GetVelocidad().ToString();
+                TX02.Text = lista.GetFlightPlan(1).GetInitialPosition().GetX().ToString();
+                TY02.Text = lista.GetFlightPlan(1).GetInitialPosition().GetY().ToString();
+                TXF2.Text = lista.GetFlightPlan(1).GetFinalPosition().GetX().ToString();
+                TYF2.Text = lista.GetFlightPlan(1).GetFinalPosition().GetY().ToString();
+            }
+        }
+
+        private void Datos_Load(object sender, EventArgs e)
+        {
+            {
+                
+            }
         }
 
         private void BCompilar_Click_1(object sender, EventArgs e)

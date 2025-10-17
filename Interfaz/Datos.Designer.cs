@@ -63,9 +63,9 @@
             // 
             label1.AutoSize = true;
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new Point(79, 102);
+            label1.Location = new Point(90, 136);
             label1.Name = "label1";
-            label1.Size = new Size(76, 17);
+            label1.Size = new Size(96, 22);
             label1.TabIndex = 0;
             label1.Text = "Identificador";
             // 
@@ -73,9 +73,9 @@
             // 
             label2.AutoSize = true;
             label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Location = new Point(232, 102);
+            label2.Location = new Point(265, 136);
             label2.Name = "label2";
-            label2.Size = new Size(60, 17);
+            label2.Size = new Size(77, 22);
             label2.TabIndex = 1;
             label2.Text = "Velocidad";
             // 
@@ -83,9 +83,9 @@
             // 
             label3.AutoSize = true;
             label3.BorderStyle = BorderStyle.FixedSingle;
-            label3.Location = new Point(93, 156);
+            label3.Location = new Point(106, 208);
             label3.Name = "label3";
-            label3.Size = new Size(50, 17);
+            label3.Size = new Size(63, 22);
             label3.TabIndex = 2;
             label3.Text = "X inicial";
             // 
@@ -93,9 +93,9 @@
             // 
             label4.AutoSize = true;
             label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Location = new Point(93, 213);
+            label4.Location = new Point(106, 284);
             label4.Name = "label4";
-            label4.Size = new Size(50, 17);
+            label4.Size = new Size(62, 22);
             label4.TabIndex = 3;
             label4.Text = "Y inicial";
             // 
@@ -103,9 +103,9 @@
             // 
             label5.AutoSize = true;
             label5.BorderStyle = BorderStyle.FixedSingle;
-            label5.Location = new Point(232, 213);
+            label5.Location = new Point(265, 284);
             label5.Name = "label5";
-            label5.Size = new Size(42, 17);
+            label5.Size = new Size(52, 22);
             label5.TabIndex = 4;
             label5.Text = "Y final";
             // 
@@ -113,69 +113,62 @@
             // 
             label6.AutoSize = true;
             label6.BorderStyle = BorderStyle.FixedSingle;
-            label6.Location = new Point(232, 156);
+            label6.Location = new Point(265, 208);
             label6.Name = "label6";
-            label6.Size = new Size(42, 17);
+            label6.Size = new Size(53, 22);
             label6.TabIndex = 5;
             label6.Text = "X final";
             // 
             // TIdentificador
             // 
-            TIdentificador.Location = new Point(64, 121);
-            TIdentificador.Margin = new Padding(3, 2, 3, 2);
+            TIdentificador.Location = new Point(73, 161);
             TIdentificador.Name = "TIdentificador";
-            TIdentificador.Size = new Size(110, 23);
+            TIdentificador.Size = new Size(125, 27);
             TIdentificador.TabIndex = 6;
             // 
             // TVelocidad
             // 
-            TVelocidad.Location = new Point(204, 121);
-            TVelocidad.Margin = new Padding(3, 2, 3, 2);
+            TVelocidad.Location = new Point(233, 161);
             TVelocidad.Name = "TVelocidad";
-            TVelocidad.Size = new Size(110, 23);
+            TVelocidad.Size = new Size(125, 27);
             TVelocidad.TabIndex = 7;
             // 
             // TX0
             // 
-            TX0.Location = new Point(64, 175);
-            TX0.Margin = new Padding(3, 2, 3, 2);
+            TX0.Location = new Point(73, 233);
             TX0.Name = "TX0";
-            TX0.Size = new Size(110, 23);
+            TX0.Size = new Size(125, 27);
             TX0.TabIndex = 8;
             // 
             // TY0
             // 
-            TY0.Location = new Point(64, 232);
-            TY0.Margin = new Padding(3, 2, 3, 2);
+            TY0.Location = new Point(73, 309);
             TY0.Name = "TY0";
-            TY0.Size = new Size(110, 23);
+            TY0.Size = new Size(125, 27);
             TY0.TabIndex = 9;
             // 
             // TXF
             // 
-            TXF.Location = new Point(204, 175);
-            TXF.Margin = new Padding(3, 2, 3, 2);
+            TXF.Location = new Point(233, 233);
             TXF.Name = "TXF";
-            TXF.Size = new Size(110, 23);
+            TXF.Size = new Size(125, 27);
             TXF.TabIndex = 10;
             // 
             // TYF
             // 
-            TYF.Location = new Point(204, 232);
-            TYF.Margin = new Padding(3, 2, 3, 2);
+            TYF.Location = new Point(233, 309);
             TYF.Name = "TYF";
-            TYF.Size = new Size(110, 23);
+            TYF.Size = new Size(125, 27);
             TYF.TabIndex = 11;
             // 
             // BCompilar
             // 
             BCompilar.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BCompilar.Location = new Point(291, 307);
-            BCompilar.Margin = new Padding(3, 2, 3, 2);
+            BCompilar.Location = new Point(333, 409);
             BCompilar.Name = "BCompilar";
-            BCompilar.Size = new Size(125, 50);
+            BCompilar.Size = new Size(143, 67);
             BCompilar.TabIndex = 12;
-            BCompilar.Text = "Compilar datos";
+            BCompilar.Text = "Introducir datos";
             BCompilar.UseVisualStyleBackColor = true;
             BCompilar.Click += BCompilar_Click_1;
             // 
@@ -183,9 +176,9 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Stencil", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(121, 21);
+            label8.Location = new Point(138, 28);
             label8.Name = "label8";
-            label8.Size = new Size(479, 29);
+            label8.Size = new Size(605, 35);
             label8.TabIndex = 14;
             label8.Text = "Introuce los datos de los dos vuelos";
             // 
@@ -193,9 +186,9 @@
             // 
             label10.AutoSize = true;
             label10.BorderStyle = BorderStyle.FixedSingle;
-            label10.Location = new Point(439, 102);
+            label10.Location = new Point(502, 136);
             label10.Name = "label10";
-            label10.Size = new Size(76, 17);
+            label10.Size = new Size(96, 22);
             label10.TabIndex = 17;
             label10.Text = "Identificador";
             // 
@@ -203,67 +196,61 @@
             // 
             label11.AutoSize = true;
             label11.BorderStyle = BorderStyle.FixedSingle;
-            label11.Location = new Point(568, 102);
+            label11.Location = new Point(649, 136);
             label11.Name = "label11";
-            label11.Size = new Size(60, 17);
+            label11.Size = new Size(77, 22);
             label11.TabIndex = 18;
             label11.Text = "Velocidad";
             // 
             // TIdentificador2
             // 
-            TIdentificador2.Location = new Point(419, 121);
-            TIdentificador2.Margin = new Padding(3, 2, 3, 2);
+            TIdentificador2.Location = new Point(479, 161);
             TIdentificador2.Name = "TIdentificador2";
-            TIdentificador2.Size = new Size(110, 23);
+            TIdentificador2.Size = new Size(125, 27);
             TIdentificador2.TabIndex = 19;
             // 
             // TXF2
             // 
-            TXF2.Location = new Point(544, 175);
-            TXF2.Margin = new Padding(3, 2, 3, 2);
+            TXF2.Location = new Point(622, 233);
             TXF2.Name = "TXF2";
-            TXF2.Size = new Size(110, 23);
+            TXF2.Size = new Size(125, 27);
             TXF2.TabIndex = 20;
             // 
             // TX02
             // 
-            TX02.Location = new Point(419, 175);
-            TX02.Margin = new Padding(3, 2, 3, 2);
+            TX02.Location = new Point(479, 233);
             TX02.Name = "TX02";
-            TX02.Size = new Size(110, 23);
+            TX02.Size = new Size(125, 27);
             TX02.TabIndex = 21;
             // 
             // TVelocidad2
             // 
-            TVelocidad2.Location = new Point(544, 121);
-            TVelocidad2.Margin = new Padding(3, 2, 3, 2);
+            TVelocidad2.Location = new Point(622, 161);
             TVelocidad2.Name = "TVelocidad2";
-            TVelocidad2.Size = new Size(110, 23);
+            TVelocidad2.Size = new Size(125, 27);
             TVelocidad2.TabIndex = 22;
             // 
             // TYF2
             // 
-            TYF2.Location = new Point(544, 229);
-            TYF2.Margin = new Padding(3, 2, 3, 2);
+            TYF2.Location = new Point(622, 305);
             TYF2.Name = "TYF2";
-            TYF2.Size = new Size(110, 23);
+            TYF2.Size = new Size(125, 27);
             TYF2.TabIndex = 23;
             // 
             // TY02
             // 
-            TY02.Location = new Point(419, 229);
-            TY02.Margin = new Padding(3, 2, 3, 2);
+            TY02.Location = new Point(479, 305);
             TY02.Name = "TY02";
-            TY02.Size = new Size(110, 23);
+            TY02.Size = new Size(125, 27);
             TY02.TabIndex = 24;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.BorderStyle = BorderStyle.FixedSingle;
-            label12.Location = new Point(577, 156);
+            label12.Location = new Point(659, 208);
             label12.Name = "label12";
-            label12.Size = new Size(42, 17);
+            label12.Size = new Size(53, 22);
             label12.TabIndex = 25;
             label12.Text = "X final";
             // 
@@ -271,9 +258,9 @@
             // 
             label13.AutoSize = true;
             label13.BorderStyle = BorderStyle.FixedSingle;
-            label13.Location = new Point(448, 156);
+            label13.Location = new Point(512, 208);
             label13.Name = "label13";
-            label13.Size = new Size(50, 17);
+            label13.Size = new Size(63, 22);
             label13.TabIndex = 26;
             label13.Text = "X inicial";
             // 
@@ -281,9 +268,9 @@
             // 
             label14.AutoSize = true;
             label14.BorderStyle = BorderStyle.FixedSingle;
-            label14.Location = new Point(448, 210);
+            label14.Location = new Point(512, 280);
             label14.Name = "label14";
-            label14.Size = new Size(50, 17);
+            label14.Size = new Size(62, 22);
             label14.TabIndex = 27;
             label14.Text = "Y inicial";
             // 
@@ -291,17 +278,18 @@
             // 
             label15.AutoSize = true;
             label15.BorderStyle = BorderStyle.FixedSingle;
-            label15.Location = new Point(568, 210);
+            label15.Location = new Point(649, 280);
             label15.Name = "label15";
-            label15.Size = new Size(42, 17);
+            label15.Size = new Size(52, 22);
             label15.TabIndex = 28;
             label15.Text = "Y final";
             // 
             // atajo
             // 
-            atajo.Location = new Point(312, 372);
+            atajo.Location = new Point(357, 496);
+            atajo.Margin = new Padding(3, 4, 3, 4);
             atajo.Name = "atajo";
-            atajo.Size = new Size(75, 23);
+            atajo.Size = new Size(86, 31);
             atajo.TabIndex = 29;
             atajo.Text = "Atajo";
             atajo.UseVisualStyleBackColor = true;
@@ -311,9 +299,11 @@
             // 
             groupBox1.BackColor = SystemColors.ActiveCaption;
             groupBox1.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(30, 70);
+            groupBox1.Location = new Point(34, 93);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(318, 204);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(363, 272);
             groupBox1.TabIndex = 30;
             groupBox1.TabStop = false;
             groupBox1.Text = "VUELO 1";
@@ -322,18 +312,20 @@
             // 
             groupBox2.BackColor = SystemColors.ActiveCaption;
             groupBox2.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(377, 70);
+            groupBox2.Location = new Point(431, 93);
+            groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(318, 204);
+            groupBox2.Padding = new Padding(3, 4, 3, 4);
+            groupBox2.Size = new Size(363, 272);
             groupBox2.TabIndex = 31;
             groupBox2.TabStop = false;
             groupBox2.Text = "VUELO 2";
             // 
             // Datos
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(740, 415);
+            ClientSize = new Size(846, 553);
             Controls.Add(atajo);
             Controls.Add(label15);
             Controls.Add(label14);
@@ -363,7 +355,6 @@
             Controls.Add(label1);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Datos";
             Text = "Introduzca los Datos";
             ResumeLayout(false);
