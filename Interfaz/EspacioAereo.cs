@@ -218,7 +218,7 @@ namespace Interfaz
                 System.Drawing.Graphics graphics = e.Graphics;
                 Pen rutaPen = new Pen(Color.Red);
                 Pen zonaPen = new Pen(Color.Blue);
-                int radio = (int)(distanciaSeguridad * panel1.Width / 500);
+                int radio = (int)(distanciaSeguridad * panel1.Width / 1000);
 
                 for (int i = 0; i < miLista.NumElementosLista(); i++)
                 {
