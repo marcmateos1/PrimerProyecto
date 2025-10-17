@@ -37,9 +37,14 @@ namespace Interfaz
 
         private void espacioAereoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            EspacioAereo nuevoFormulario = new EspacioAereo(this);
-            nuevoFormulario.SetData(lista, tiempoCiclo, distanciaSeguridad);
-            nuevoFormulario.Show();
+            try
+            {
+                EspacioAereo nuevoFormulario = new EspacioAereo(this);
+                nuevoFormulario.SetData(lista, tiempoCiclo, distanciaSeguridad);
+                nuevoFormulario.Show();
+            }catch(Exception){
+                MessageBox.Show("Entra correctament totes els dades");
+            }
             //this.Hide();
         }
     }
