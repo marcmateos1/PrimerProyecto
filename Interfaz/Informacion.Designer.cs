@@ -40,6 +40,8 @@
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
+            velocidadBox = new TextBox();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -106,7 +108,7 @@
             // 
             // botonVolver
             // 
-            botonVolver.Location = new Point(221, 306);
+            botonVolver.Location = new Point(12, 307);
             botonVolver.Margin = new Padding(3, 2, 3, 2);
             botonVolver.Name = "botonVolver";
             botonVolver.Size = new Size(82, 22);
@@ -171,11 +173,30 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Posiciones Finales";
             // 
+            // velocidadBox
+            // 
+            velocidadBox.Location = new Point(235, 16);
+            velocidadBox.Name = "velocidadBox";
+            velocidadBox.Size = new Size(100, 23);
+            velocidadBox.TabIndex = 12;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(207, 307);
+            button1.Name = "button1";
+            button1.Size = new Size(128, 23);
+            button1.TabIndex = 13;
+            button1.Text = "Actualitzar velocitat";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Informacion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(369, 338);
+            Controls.Add(button1);
+            Controls.Add(velocidadBox);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(botonVolver);
@@ -210,5 +231,7 @@
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
+        private TextBox velocidadBox;
+        private Button button1;
     }
 }

@@ -105,6 +105,7 @@ namespace Interfaz
         {
             try
             {
+
                 vuelos = new PictureBox[miLista.NumElementosLista()];
                 for (int i = 0; i < miLista.NumElementosLista(); i++)
                 {
@@ -168,10 +169,13 @@ namespace Interfaz
                     // Evento de clic
                     p.Click += PictureBox_Click;
 
+                    panel1.Invalidate();
+
                 }
             }
             catch (Exception) { MessageBox.Show("Dades entrades no correctament"); }
         }
+
         private void botonMover_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < miLista.NumElementosLista(); i++)
@@ -351,9 +355,9 @@ namespace Interfaz
 
             try
             {
-                Informacion nuevoFormulario = new Informacion(this, miLista.GetFlightPlan(i));
+                Informacion nuevoFormulario = new Informacion(this, miLista, i);
                 nuevoFormulario.Show();
-                //this.Hide();
+                miLista = nuevoFormulario.MyList();
             }
             catch
             {
@@ -373,14 +377,7 @@ namespace Interfaz
 
         private void ButtonRestart_Click(object sender, EventArgs e)
         {
-            Reloj.Stop();
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-                FlightPlan plan = miLista.GetFlightPlan(i);
-                plan.Restart();
-            }
-            MessageBox.Show("Es reinicia l'espai aeri");
-            this.Close();
+            Reiniciar();
         }
         private void Conflicte_Click(object sender, EventArgs e)
         {
@@ -429,6 +426,22 @@ namespace Interfaz
                 }
             }
             catch (Exception) { MessageBox.Show("Dades no entrades correctament: no es pot trobar cap conflicte"); }
+        }
+
+        public void Reiniciar()
+        {
+            Reloj.Stop();
+            // Quitar todos los controles (vuelos, destinos, etc.)
+            panel1.Controls.Clear();
+
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            {
+                FlightPlan plan = miLista.GetFlightPlan(i);
+                plan.Restart();
+            }
+            MessageBox.Show("Es reinicia l'espai aeri");
+            // Volver a cargar los vuelos
+            EspacioAereo_Load(this, EventArgs.Empty);
         }
     }
 }

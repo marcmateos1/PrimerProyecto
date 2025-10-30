@@ -15,16 +15,21 @@ namespace Interfaz
     {
         Interfaz.EspacioAereo espacioAereo;
         FlightPlan plan;
-        public Informacion(Interfaz.EspacioAereo espacioAereo, FlightPlan plan)
+        FlightPlanList list;
+        int posicion;
+        public Informacion(Interfaz.EspacioAereo espacioAereo, FlightPlanList list, int posicion)
         {
             InitializeComponent();
             this.espacioAereo = espacioAereo;
-            this.plan = plan;
+            this.list = list;
+            this.posicion = posicion;
         }
         private void Informacion_Load_1(object sender, EventArgs e)
         {
+            FlightPlan plan = list.GetFlightPlan(posicion);
+
             label1.Text = $"Id: {plan.GetId()}";
-            label2.Text = $"Velocidad: {plan.GetVelocidad():F2}";
+            velocidadBox.Text = Convert.ToString(plan.GetVelocidad());
             label3.Text = $"X actual: {plan.GetCurrentPosition().GetX():F2}";
             label4.Text = $"X final: {plan.GetFinalPosition().GetX():F2}";
             label5.Text = $"Y actual: {plan.GetCurrentPosition().GetY():F2}";
@@ -40,6 +45,24 @@ namespace Interfaz
             espacioAereo.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try { 
+            double speed = Convert.ToDouble(velocidadBox.Text);
+            Console.WriteLine(speed);
+            Console.ReadLine();
+            list.GetFlightPlan(posicion).SetVelocidad(speed);
+            MessageBox.Show("Velocidad actualizada");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Formato de velocidad no válido");
+            }
+        }
 
+        public FlightPlanList MyList()
+        {
+            return list;
+        }
     }
 }
