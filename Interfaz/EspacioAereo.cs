@@ -439,9 +439,10 @@ namespace Interfaz
                 FlightPlan plan = miLista.GetFlightPlan(i);
                 plan.Restart();
             }
-            MessageBox.Show("Es reinicia l'espai aeri");
+
             // Volver a cargar los vuelos
             EspacioAereo_Load(this, EventArgs.Empty);
+            MessageBox.Show("Es reinicia l'espai aeri");
         }
     }
 }
