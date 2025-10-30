@@ -131,5 +131,63 @@ namespace FlightLib
             double distance = p1.Distancia(p2);
             return distance;
         }
+
+        public bool PredecirConflicto(FlightPlan plan2, double distanciaSeguridad)
+        {
+            Position pa0 = this.initalPosition; 
+            Position paF = this.finalPosition; 
+            double vA = this.velocidad / 60.0;
+            double dA = pa0.Distancia(paF);
+            double tA = dA / vA;
+            double vaX = vA * (paF.GetX() - pa0.GetX()) / dA;
+            double vaY = vA * (paF.GetY() - pa0.GetY()) / dA;
+
+            Position pb0 = plan2.initalPosition;
+            Position pbF = plan2.finalPosition;
+            double vB = plan2.velocidad / 60.0; //Unitats: minuts
+            double dB = pb0.Distancia(pbF);
+            double tB = dB / vB;
+            double vbX = (dB == 0) ? 0 : vB * (pbF.GetX() - pb0.GetX()) / dB;
+            double vbY = (dB == 0) ? 0 : vB * (pbF.GetY() - pb0.GetY()) / dB;
+
+            double x0 = pa0.GetX() - pb0.GetX();
+            double y0 = pa0.GetY() - pb0.GetY();
+            double vX = vaX - vbX;
+            double vY = vaY - vbY;
+
+            double a = vX * vX + vY * vY; 
+            double b = 2 * (x0 * vX + y0 * vY);
+
+            if (Math.Abs(a) == 0) 
+            {
+                return pa0.Distancia(pb0) < distanciaSeguridad;
+            }
+
+            double t_min = -b / (2 * a);
+            double T_common = Math.Min(tA, tB);
+            double t_check;
+
+            if (t_min < 0)
+            {
+                t_check = 0;
+            }
+            else if (t_min > T_common)
+            {
+                t_check = T_common;
+            }
+            else
+            {
+                t_check = t_min;
+            }
+
+            double paX_min = pa0.GetX() + vaX * t_check;
+            double paY_min = pa0.GetY() + vaY * t_check;
+            Position pa_min = new Position(paX_min, paY_min);
+            double pbX_min = pb0.GetX() + vbX * t_check;
+            double pbY_min = pb0.GetY() + vbY * t_check;
+            Position pb_min = new Position(pbX_min, pbY_min);
+
+            return pa_min.Distancia(pb_min) < distanciaSeguridad;
+        }
     }
 }

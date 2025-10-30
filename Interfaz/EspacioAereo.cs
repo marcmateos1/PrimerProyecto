@@ -51,7 +51,7 @@ namespace Interfaz
                 while (planarrived == false || planarrived2 == false)
                 {
                     double dist = plan.DistanceTo(plan2);
-                    a = plan.Conflicto(dist, this.distanciaSeguridad);
+                    a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
                     if (a)
                     {
                         break;
@@ -76,7 +76,7 @@ namespace Interfaz
                             double nuevaVelocidad = plan2.GetVelocidad() * 0.99;
                             plan2.SetVelocidad(nuevaVelocidad);
                             double dist = plan.DistanceTo(plan2);
-                            a = plan.Conflicto(dist, this.distanciaSeguridad);
+                            a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
                             if (nuevaVelocidad < 1)
                             {
                                 a = false;
@@ -383,35 +383,10 @@ namespace Interfaz
         {
             try
             {
-                FlightPlan plan = miLista.GetFlightPlan(0);
-                FlightPlan plan2 = miLista.GetFlightPlan(1);
-
-                Position p1 = plan.GetCurrentPosition();
-                Position p2 = plan2.GetCurrentPosition();
-
-                bool a = false;
-                bool planarrived = false;
-                bool planarrived2 = false;
-                int i = 0;
-                while (planarrived == false || planarrived2 == false)
-                {
-                    double dist = plan.DistanceTo(plan2);
-                    a = plan.Conflicto(dist, this.distanciaSeguridad);
-                    if (a == true)
-                    {
-                        break;
-                    }
-                    plan.Mover(tiempoCiclo);
-                    plan2.Mover(tiempoCiclo);
-                    planarrived = plan.HasArrived();
-                    planarrived2 = plan2.HasArrived();
-                    i++;
-                }
-                plan.SetCurrentPosition(p1);
-                plan2.SetCurrentPosition(p2);
+                bool a = miLista.GetFlightPlan(0).PredecirConflicto(miLista.GetFlightPlan(1), distanciaSeguridad);
                 if (a == true)
                 {
-                    MessageBox.Show("Habrá conflicto en la trayectoria en la iteración " + i.ToString("F2"));
+                    MessageBox.Show("Habrá conflicto en la trayectoria.");
                     //Conflicto nuevoFormulario = new Conflicto();
                     //DialogResult respuesta = nuevoFormulario.ShowDialog();
                     //if (DialogResult == DialogResult.Yes)
