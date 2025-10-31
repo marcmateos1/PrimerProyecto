@@ -136,19 +136,17 @@ namespace FlightLib
         {
             Position pa0 = this.initalPosition; 
             Position paF = this.finalPosition; 
-            double vA = this.velocidad / 60.0;
             double dA = pa0.Distancia(paF);
-            double tA = dA / vA;
-            double vaX = vA * (paF.GetX() - pa0.GetX()) / dA;
-            double vaY = vA * (paF.GetY() - pa0.GetY()) / dA;
+            double tA = dA / (this.velocidad / 60); //minuts
+            double vaX = (this.velocidad / 60)* (paF.GetX() - pa0.GetX()) / dA;
+            double vaY = (this.velocidad / 60)* (paF.GetY() - pa0.GetY()) / dA;
 
             Position pb0 = plan2.initalPosition;
             Position pbF = plan2.finalPosition;
-            double vB = plan2.velocidad / 60.0; //Unitats: minuts
             double dB = pb0.Distancia(pbF);
-            double tB = dB / vB;
-            double vbX = (dB == 0) ? 0 : vB * (pbF.GetX() - pb0.GetX()) / dB;
-            double vbY = (dB == 0) ? 0 : vB * (pbF.GetY() - pb0.GetY()) / dB;
+            double tB = dB / (plan2.velocidad / 60);
+            double vbX = (plan2.velocidad / 60) * (pbF.GetX() - pb0.GetX()) / dB;
+            double vbY = (plan2.velocidad / 60) * (pbF.GetY() - pb0.GetY()) / dB;
 
             double x0 = pa0.GetX() - pb0.GetX();
             double y0 = pa0.GetY() - pb0.GetY();
@@ -188,6 +186,23 @@ namespace FlightLib
             Position pb_min = new Position(pbX_min, pbY_min);
 
             return pa_min.Distancia(pb_min) < distanciaSeguridad;
+        }
+
+        public int ReducirVelocidad(FlightPlan plan2, double distanciaSeguridad)
+        {
+            double velocidad_0 = plan2.GetVelocidad();
+            while (this.PredecirConflicto(plan2, distanciaSeguridad))
+            {
+                double nuevaVelocidad = this.velocidad * 0.99;
+                this.velocidad = nuevaVelocidad;
+                double dist = this.DistanceTo(plan2);
+                if (nuevaVelocidad < 10e-10)
+                {
+                    plan2.SetVelocidad(velocidad_0);
+                    return 0;
+                }
+            }
+            return 1;
         }
     }
 }

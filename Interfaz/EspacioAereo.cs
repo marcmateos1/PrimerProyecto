@@ -70,20 +70,7 @@ namespace Interfaz
                     DialogResult respuesta = nuevoFormulario.ShowDialog();
                     if (respuesta == DialogResult.Yes)
                     {
-                        double velocidad_0 = plan2.GetVelocidad();
-                        while (a == true)
-                        {
-                            double nuevaVelocidad = plan2.GetVelocidad() * 0.99;
-                            plan2.SetVelocidad(nuevaVelocidad);
-                            double dist = plan.DistanceTo(plan2);
-                            a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
-                            if (nuevaVelocidad < 1)
-                            {
-                                a = false;
-                                MessageBox.Show("No se ha podido solucionar el conflicto.");
-                                plan2.SetVelocidad(velocidad_0);
-                            }
-                        }
+                        plan2.ReducirVelocidad(plan, distanciaSeguridad);
                         MessageBox.Show(
                             $"Se ha reducido la velocidad del vuelo {plan2.GetId()} para evitar el conflicto.",
                             "Conflicto resuelto automáticamente",
@@ -206,7 +193,7 @@ namespace Interfaz
                 {
                     FlightPlan plan2 = miLista.GetFlightPlan(j);
                     double dist = plan.DistanceTo(plan2);
-                    a = plan.Conflicto(dist, this.distanciaSeguridad);
+                    a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
                     if (a == true)
                     {
 
@@ -242,6 +229,7 @@ namespace Interfaz
                     int x = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetX() * panel1.Width / 500);
                     int y = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetY() * panel1.Height / 500);
                     graphics.DrawEllipse(zonaPen, x - radio, y - radio, radio * 2, radio * 2);
+
                 }
 
                 rutaPen.Dispose();
@@ -304,7 +292,7 @@ namespace Interfaz
                 {
                     FlightPlan plan2 = miLista.GetFlightPlan(j);
                     double dist = plan.DistanceTo(plan2);
-                    a = plan.Conflicto(dist, this.distanciaSeguridad);
+                    a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
                     if (a == true)
                     {
 
@@ -387,13 +375,6 @@ namespace Interfaz
                 if (a == true)
                 {
                     MessageBox.Show("Habrá conflicto en la trayectoria.");
-                    //Conflicto nuevoFormulario = new Conflicto();
-                    //DialogResult respuesta = nuevoFormulario.ShowDialog();
-                    //if (DialogResult == DialogResult.Yes)
-                    //{
-
-                    //}
-
                 }
                 else
                 {
