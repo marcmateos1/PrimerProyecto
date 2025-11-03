@@ -36,50 +36,38 @@ namespace Interfaz
             miLista = f;
             tiempoCiclo = c;
             distanciaSeguridad = distancia;
-            if (miLista.NumElementosLista() == 2 && tiempoCiclo != 0 && distanciaSeguridad !=0)
+            if (miLista.NumElementosLista() != 0 && tiempoCiclo != 0 && distanciaSeguridad !=0)
             {
-                FlightPlan plan = miLista.GetFlightPlan(0);
-                FlightPlan plan2 = miLista.GetFlightPlan(1);
-
-                Position p1 = plan.GetCurrentPosition();
-                Position p2 = plan2.GetCurrentPosition();
-
-                bool a = false;
-                bool planarrived = false;
-                bool planarrived2 = false;
-                int i = 0;
-                while (planarrived == false || planarrived2 == false)
+                for (int i=0; i<miLista.NumElementosLista(); i++)
                 {
-                    double dist = plan.DistanceTo(plan2);
-                    a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
-                    if (a)
+                    FlightPlan plan = miLista.GetFlightPlan(i);
+                    for (int j=0; j+1<miLista.NumElementosLista(); j++)
                     {
-                        break;
-                    }
-                    plan.Mover(tiempoCiclo);
-                    plan2.Mover(tiempoCiclo);
-                    planarrived = plan.HasArrived();
-                    planarrived2 = plan2.HasArrived();
-                    i++;
-                }
-                plan.SetCurrentPosition(p1);
-                plan2.SetCurrentPosition(p2);
-                if (a)
-                {
-                    Conflicto nuevoFormulario = new Conflicto();
-                    DialogResult respuesta = nuevoFormulario.ShowDialog();
-                    if (respuesta == DialogResult.Yes)
-                    {
-                        plan2.ReducirVelocidad(plan, distanciaSeguridad);
-                        MessageBox.Show(
-                            $"Se ha reducido la velocidad del vuelo {plan2.GetId()} para evitar el conflicto.",
-                            "Conflicto resuelto automáticamente",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
-                    }
+                        FlightPlan plan2 = miLista.GetFlightPlan(j);
+                        if (plan != plan2)
+                        {
+                            bool a = false;
+                            a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
+                            if (a)
+                            {
+                                Conflicto nuevoFormulario = new Conflicto();
+                                DialogResult respuesta = nuevoFormulario.ShowDialog();
+                                if (respuesta == DialogResult.Yes)
+                                {
+                                    plan.ReducirVelocidad(plan2, distanciaSeguridad);
+                                    MessageBox.Show(
+                                        $"Se ha reducido la velocidad del vuelo {plan.GetId()} para evitar el conflicto.",
+                                        "Conflicto resuelto automáticamente",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information
+                                    );
+                                }
 
+                            }
+                        }
+                    }
                 }
+
             }
             else
             {
@@ -92,7 +80,6 @@ namespace Interfaz
         {
             try
             {
-
                 vuelos = new PictureBox[miLista.NumElementosLista()];
                 for (int i = 0; i < miLista.NumElementosLista(); i++)
                 {
@@ -165,51 +152,9 @@ namespace Interfaz
 
         private void botonMover_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-                // Representar vuelo de la posición i
-                PictureBox p = new PictureBox();
-
-                // Tamaño del elemento
-                p.Width = 10;
-                p.Height = 10;
-                p.ClientSize = new Size(10, 10);
-
-                FlightPlan plan = miLista.GetFlightPlan(i);
-                plan.Mover(tiempoCiclo);
-                int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 500.0);
-                int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
-                vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
-                panel1.Invalidate();
-
-            }
-
+            MoverFlightPlans(miLista);
             bool a = false;
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-
-                FlightPlan plan = miLista.GetFlightPlan(i);
-                for (int j = i + 1; j < miLista.NumElementosLista(); j++)
-                {
-                    FlightPlan plan2 = miLista.GetFlightPlan(j);
-                    double dist = plan.DistanceTo(plan2);
-                    a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
-                    if (a == true)
-                    {
-
-
-                        Reloj.Stop();
-                        MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + dist.ToString("F2") + " unidades.");
-                        break;
-                    }
-
-                }
-                if (a == true)
-                {
-                    Reloj.Stop();
-                    break;
-                }
-            }
+            BucleConflicto(a);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -254,61 +199,19 @@ namespace Interfaz
             Reloj.Stop();
         }
 
-
-
         private void Reloj_Tick_1(object sender, EventArgs e)
         {
             if (miLista.GetFlightPlan(0).GetCurrentPosition()== miLista.GetFlightPlan(0).GetFinalPosition() && miLista.GetFlightPlan(1).GetCurrentPosition() == miLista.GetFlightPlan(1).GetFinalPosition())
             {
                 Reloj.Stop();
             }
-                for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-                // Representar vuelo de la posición i
-                PictureBox p = new PictureBox();
-
-                // Tamaño del elemento
-                p.Width = 10;
-                p.Height = 10;
-                p.ClientSize = new Size(10, 10);
-
-                FlightPlan plan = miLista.GetFlightPlan(i);
-                plan.Mover(tiempoCiclo);
-                int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 500.0);
-                int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
-                vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
-                panel1.Invalidate();
-            }
+            //Mover los vuelos de la lista
+            MoverFlightPlans(miLista);
             panel1.Invalidate(); //Forzar al panel pintarse otra vez, para que pinte a cada movimiento del avion la zona de seguridad
 
             //Comprobar si hay conflicto
-
             bool a = false;
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-
-                FlightPlan plan = miLista.GetFlightPlan(i);
-                for (int j = i + 1; j < miLista.NumElementosLista(); j++)
-                {
-                    FlightPlan plan2 = miLista.GetFlightPlan(j);
-                    double dist = plan.DistanceTo(plan2);
-                    a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
-                    if (a == true)
-                    {
-
-
-                        Reloj.Stop();
-                        MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + dist.ToString("F2") + " unidades.");
-                        break;
-                    }
-
-                }
-                if (a == true)
-                {
-                    Reloj.Stop();
-                    break;
-                }
-            }
+            BucleConflicto(a);
             panel1.Invalidate();
 
         }
@@ -399,6 +302,53 @@ namespace Interfaz
             // Volver a cargar los vuelos
             EspacioAereo_Load(this, EventArgs.Empty);
             MessageBox.Show("Es reinicia l'espai aeri");
+        }
+
+        public void MoverFlightPlans(FlightPlanList miLista)
+        {
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            {
+                // Representar vuelo de la posición i
+                PictureBox p = new PictureBox();
+
+                // Tamaño del elemento
+                p.Width = 10;
+                p.Height = 10;
+                p.ClientSize = new Size(10, 10);
+
+                FlightPlan plan = miLista.GetFlightPlan(i);
+                plan.Mover(tiempoCiclo);
+                int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 500.0);
+                int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
+                vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
+                panel1.Invalidate();
+
+            }
+        }
+
+        public void BucleConflicto(bool a)
+        {
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            {
+                FlightPlan plan = miLista.GetFlightPlan(i);
+                for (int j = i + 1; j < miLista.NumElementosLista(); j++)
+                {
+                    FlightPlan plan2 = miLista.GetFlightPlan(j);
+                    double dist = plan.DistanceTo(plan2);
+                    a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
+                    if (a == true)
+                    {
+                        Reloj.Stop();
+                        MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + dist.ToString("F2") + " unidades.");
+                        break;
+                    }
+                }
+                if (a == true)
+                {
+                    Reloj.Stop();
+                    break;
+                }
+            }
         }
     }
 }
