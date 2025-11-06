@@ -73,15 +73,5 @@ namespace InterfazDatos
             TXF2.Text = "225";
             TVelocidad2.Text = "100";
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

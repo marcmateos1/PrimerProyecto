@@ -36,12 +36,12 @@ namespace Interfaz
             miLista = f;
             tiempoCiclo = c;
             distanciaSeguridad = distancia;
-            if (miLista.NumElementosLista() != 0 && tiempoCiclo != 0 && distanciaSeguridad !=0)
+            if (miLista.NumElementosLista() != 0 && tiempoCiclo != 0 && distanciaSeguridad != 0)
             {
-                for (int i=0; i<miLista.NumElementosLista(); i++)
+                for (int i = 0; i < miLista.NumElementosLista(); i++)
                 {
                     FlightPlan plan = miLista.GetFlightPlan(i);
-                    for (int j=0; j+1<miLista.NumElementosLista(); j++)
+                    for (int j = 0; j + 1 < miLista.NumElementosLista(); j++)
                     {
                         FlightPlan plan2 = miLista.GetFlightPlan(j);
                         if (plan != plan2)
@@ -50,7 +50,7 @@ namespace Interfaz
                             a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
                             if (a)
                             {
-                                Conflicto nuevoFormulario = new Conflicto();
+                                Conflicto nuevoFormulario = new Conflicto(miLista.GetFlightPlan(i).GetId(), miLista.GetFlightPlan(j).GetId());
                                 DialogResult respuesta = nuevoFormulario.ShowDialog();
                                 if (respuesta == DialogResult.Yes)
                                 {
@@ -73,7 +73,7 @@ namespace Interfaz
             {
                 MessageBox.Show("Información no cargada");
             }
-            
+
         }
 
         private void EspacioAereo_Load(object sender, EventArgs e)
@@ -201,7 +201,7 @@ namespace Interfaz
 
         private void Reloj_Tick_1(object sender, EventArgs e)
         {
-            if (miLista.GetFlightPlan(0).GetCurrentPosition()== miLista.GetFlightPlan(0).GetFinalPosition() && miLista.GetFlightPlan(1).GetCurrentPosition() == miLista.GetFlightPlan(1).GetFinalPosition())
+            if (miLista.LlegadoDestino())
             {
                 Reloj.Stop();
             }
@@ -335,20 +335,29 @@ namespace Interfaz
                 {
                     FlightPlan plan2 = miLista.GetFlightPlan(j);
                     double dist = plan.DistanceTo(plan2);
-                    a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
-                    if (a == true)
+                    a = (plan.DistanceTo(plan2) < distanciaSeguridad);
+                    if (a)
                     {
                         Reloj.Stop();
                         MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + dist.ToString("F2") + " unidades.");
                         break;
                     }
                 }
-                if (a == true)
+                if (a)
                 {
                     Reloj.Stop();
                     break;
                 }
             }
+        }
+
+        private void guardarBtn_Click(object sender, EventArgs e)
+        {
+            Reloj.Stop();
+            FilenameCargarLista nuevoFormulario = new FilenameCargarLista();
+            nuevoFormulario.ShowDialog();
+            miLista.GuardarPlan(nuevoFormulario.filename); //Guarda con el nombre dado en el nuevo formulario
+            Reloj.Start();
         }
     }
 }

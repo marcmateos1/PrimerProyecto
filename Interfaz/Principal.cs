@@ -42,10 +42,32 @@ namespace Interfaz
                 EspacioAereo nuevoFormulario = new EspacioAereo(this);
                 nuevoFormulario.SetData(lista, tiempoCiclo, distanciaSeguridad);
                 nuevoFormulario.Show();
-            }catch(Exception){
+            }
+            catch (Exception)
+            {
                 MessageBox.Show("Entra correctament totes els dades");
             }
             //this.Hide();
+        }
+
+        private void cargarListaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FilenameCargarLista nuevoFormulario = new FilenameCargarLista();
+            nuevoFormulario.ShowDialog();
+            lista.Clean();
+            int resultado = lista.CargarLista(nuevoFormulario.filename + ".txt");
+            if (resultado == -2)
+            {
+                MessageBox.Show("Error de formato en el documento de texto.");
+            }
+            else if (resultado == -1)
+            {
+                MessageBox.Show("No se ha encontrado dicho documento.");
+            }
+            else
+            {
+                MessageBox.Show("Lista cargada correctamente.");
+            }
         }
     }
 }

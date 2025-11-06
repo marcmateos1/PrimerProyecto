@@ -39,6 +39,7 @@
             introducirDatosToolStripMenuItem = new ToolStripMenuItem();
             seguridadToolStripMenuItem1 = new ToolStripMenuItem();
             espacioAereoToolStripMenuItem1 = new ToolStripMenuItem();
+            cargarListaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -89,7 +90,7 @@
             // 
             // opcionesToolStripMenuItem1
             // 
-            opcionesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { introducirDatosToolStripMenuItem, seguridadToolStripMenuItem1, espacioAereoToolStripMenuItem1 });
+            opcionesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { introducirDatosToolStripMenuItem, cargarListaToolStripMenuItem, seguridadToolStripMenuItem1, espacioAereoToolStripMenuItem1 });
             opcionesToolStripMenuItem1.Name = "opcionesToolStripMenuItem1";
             opcionesToolStripMenuItem1.Size = new Size(85, 24);
             opcionesToolStripMenuItem1.Text = "Opciones";
@@ -114,6 +115,13 @@
             espacioAereoToolStripMenuItem1.Size = new Size(224, 26);
             espacioAereoToolStripMenuItem1.Text = "Espacio Aereo";
             espacioAereoToolStripMenuItem1.Click += espacioAereoToolStripMenuItem1_Click;
+            // 
+            // cargarListaToolStripMenuItem
+            // 
+            cargarListaToolStripMenuItem.Name = "cargarListaToolStripMenuItem";
+            cargarListaToolStripMenuItem.Size = new Size(224, 26);
+            cargarListaToolStripMenuItem.Text = "Cargar Lista";
+            cargarListaToolStripMenuItem.Click += cargarListaToolStripMenuItem_Click;
             // 
             // Principal
             // 
@@ -144,5 +152,6 @@
         private ToolStripMenuItem introducirDatosToolStripMenuItem;
         private ToolStripMenuItem seguridadToolStripMenuItem1;
         private ToolStripMenuItem espacioAereoToolStripMenuItem1;
+        private ToolStripMenuItem cargarListaToolStripMenuItem;
     }
 }

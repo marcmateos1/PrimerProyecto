@@ -43,6 +43,7 @@
             labelseg = new Label();
             ButtonRestart = new Button();
             Conflicte = new Button();
+            guardarBtn = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -146,7 +147,7 @@
             // 
             // botonVolver
             // 
-            botonVolver.Location = new Point(125, 508);
+            botonVolver.Location = new Point(125, 516);
             botonVolver.Name = "botonVolver";
             botonVolver.Size = new Size(121, 43);
             botonVolver.TabIndex = 10;
@@ -176,20 +177,31 @@
             // 
             // Conflicte
             // 
-            Conflicte.Location = new Point(145, 456);
+            Conflicte.Location = new Point(125, 441);
             Conflicte.Margin = new Padding(3, 4, 3, 4);
             Conflicte.Name = "Conflicte";
-            Conflicte.Size = new Size(86, 31);
+            Conflicte.Size = new Size(121, 68);
             Conflicte.TabIndex = 13;
             Conflicte.Text = "Conflicte";
             Conflicte.UseVisualStyleBackColor = true;
             Conflicte.Click += Conflicte_Click;
+            // 
+            // guardarBtn
+            // 
+            guardarBtn.Location = new Point(991, 64);
+            guardarBtn.Name = "guardarBtn";
+            guardarBtn.Size = new Size(121, 69);
+            guardarBtn.TabIndex = 14;
+            guardarBtn.Text = "Guardar Plan";
+            guardarBtn.UseVisualStyleBackColor = true;
+            guardarBtn.Click += guardarBtn_Click;
             // 
             // EspacioAereo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1183, 757);
+            Controls.Add(guardarBtn);
             Controls.Add(Conflicte);
             Controls.Add(ButtonRestart);
             Controls.Add(labelseg);
@@ -227,5 +239,6 @@
         private Label labelseg;
         private Button ButtonRestart;
         private Button Conflicte;
+        private Button guardarBtn;
     }
 }

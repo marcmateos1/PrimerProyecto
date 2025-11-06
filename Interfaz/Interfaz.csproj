@@ -18,4 +18,10 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="lista.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

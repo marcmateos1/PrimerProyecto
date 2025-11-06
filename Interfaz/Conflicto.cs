@@ -13,9 +13,13 @@ namespace Interfaz
 {
     public partial class Conflicto : Form
     {
+        string id1;
+        string id2;
         FlightPlanList miLista;
-        public Conflicto()
+        public Conflicto(string id1, string id2)
         {
+            this.id1 = id1;
+            this.id2 = id2;
             InitializeComponent();
         }
 
@@ -28,6 +32,11 @@ namespace Interfaz
         {
             this.DialogResult = DialogResult.No;
             this.Close();
+        }
+
+        private void Conflicto_Load_1(object sender, EventArgs e)
+        {
+            label2.Text = "Conflicto entre " + id1 + "y " + id2 + ".";
         }
     }
 }
