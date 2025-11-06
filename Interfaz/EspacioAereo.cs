@@ -41,7 +41,7 @@ namespace Interfaz
                 for (int i = 0; i < miLista.NumElementosLista(); i++)
                 {
                     FlightPlan plan = miLista.GetFlightPlan(i);
-                    for (int j = 0; j + 1 < miLista.NumElementosLista(); j++)
+                    for (int j = i; j + 1 < miLista.NumElementosLista(); j++)
                     {
                         FlightPlan plan2 = miLista.GetFlightPlan(j);
                         if (plan != plan2)
