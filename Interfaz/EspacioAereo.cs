@@ -19,6 +19,7 @@ namespace Interfaz
         FlightPlanList miLista;
         int tiempoCiclo;
         float distanciaSeguridad;
+        FlightPlanList backUpList;
 
         //vector de picture boxes para representar los aviones
         PictureBox[] vuelos;
@@ -71,7 +72,7 @@ namespace Interfaz
             }
             else
             {
-                MessageBox.Show("Información no cargada");
+                MessageBox.Show("Asegurate de cargar los vuelos o introducir los parametros de seguridad");
             }
 
         }
@@ -152,7 +153,7 @@ namespace Interfaz
 
         private void botonMover_Click(object sender, EventArgs e)
         {
-            MoverFlightPlans(miLista);
+            MoverFlightPlans(miLista, tiempoCiclo);
             bool a = false;
             BucleConflicto(a);
         }
@@ -206,7 +207,7 @@ namespace Interfaz
                 Reloj.Stop();
             }
             //Mover los vuelos de la lista
-            MoverFlightPlans(miLista);
+            MoverFlightPlans(miLista, tiempoCiclo);
             panel1.Invalidate(); //Forzar al panel pintarse otra vez, para que pinte a cada movimiento del avion la zona de seguridad
 
             //Comprobar si hay conflicto
@@ -304,8 +305,9 @@ namespace Interfaz
             MessageBox.Show("Es reinicia l'espai aeri");
         }
 
-        public void MoverFlightPlans(FlightPlanList miLista)
+        public void MoverFlightPlans(FlightPlanList miLista, int tiempo)
         {
+            backUpList = miLista.GiveLista();
             for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
                 // Representar vuelo de la posición i
@@ -317,7 +319,7 @@ namespace Interfaz
                 p.ClientSize = new Size(10, 10);
 
                 FlightPlan plan = miLista.GetFlightPlan(i);
-                plan.Mover(tiempoCiclo);
+                plan.Mover(tiempo);
                 int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 500.0);
                 int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
                 vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
@@ -358,6 +360,14 @@ namespace Interfaz
             nuevoFormulario.ShowDialog();
             miLista.GuardarPlan(nuevoFormulario.filename); //Guarda con el nombre dado en el nuevo formulario
             Reloj.Start();
+        }
+
+        private void Retroceder_Click(object sender, EventArgs e)
+        {
+            miLista = backUpList.GiveLista();
+            panel1.Controls.Clear();
+            EspacioAereo_Load(this, EventArgs.Empty);
+
         }
     }
 }

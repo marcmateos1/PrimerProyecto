@@ -131,7 +131,23 @@ namespace FlightLib
             double distance = p1.Distancia(p2);
             return distance;
         }
+        public FlightPlan Clone()
+        {
+            // Creamos copias nuevas de las posiciones (para no compartir las mismas referencias)
+            Position copiaCurrent = new Position(this.currentPosition.GetX(), this.currentPosition.GetY());
+            Position copiaInitial = new Position(this.initalPosition.GetX(), this.initalPosition.GetY());
+            Position copiaFinal = new Position(this.finalPosition.GetX(), this.finalPosition.GetY());
 
+            // Creamos un nuevo FlightPlan con los mismos datos
+            FlightPlan clon = new FlightPlan(this.id, this.currentPosition.GetX(), this.currentPosition.GetY(), this.finalPosition.GetX(), this.finalPosition.GetY(), this.velocidad);
+
+            // Sobrescribimos las posiciones con las copias
+            clon.currentPosition = copiaCurrent;
+            clon.initalPosition = copiaInitial;
+            clon.finalPosition = copiaFinal;
+
+            return clon;
+        }
         public bool PredecirConflicto(FlightPlan plan2, double distanciaSeguridad)
         {
             Position pa0 = this.initalPosition; 

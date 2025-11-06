@@ -102,6 +102,16 @@ namespace FlightLib
                 return -2;
             }
         }
+        public FlightPlanList GiveLista()
+        {
+            FlightPlanList clon = new FlightPlanList();
+            for(int i = 0; i < this.number; i++)
+            {
+                FlightPlan planCopia = this.GetFlightPlan(i).Clone();
+                clon.AddFlightPlan(planCopia);
+            }
+            return clon;
+        }
          
         public void GuardarPlan(string filename)
         {
