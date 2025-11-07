@@ -15,11 +15,6 @@ namespace Interfaz
         {
             lista = new FlightPlanList();
         }
-        private void Principal_Load(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void introducirDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -32,7 +27,6 @@ namespace Interfaz
         {
             Seguridad nuevoFormulario = new Seguridad(this);
             nuevoFormulario.Show();
-            //this.Hide();
         }
 
         private void espacioAereoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -52,22 +46,31 @@ namespace Interfaz
 
         private void cargarListaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FilenameCargarLista nuevoFormulario = new FilenameCargarLista();
-            nuevoFormulario.ShowDialog();
-            int resultado = lista.CargarLista(nuevoFormulario.filename + ".txt");
-            if (resultado == -2)
+            OpenFileDialog nuevoFormulario = new OpenFileDialog();
+            nuevoFormulario.Title = "Cargar Lista de Vuelos";
+            nuevoFormulario.Filter = "Archivos de Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*"; //Muestra los archivos .txt
+            nuevoFormulario.DefaultExt = "txt";
+            nuevoFormulario.CheckFileExists = true; 
+            nuevoFormulario.CheckPathExists = true; //Existe el archivo y la ruta
+
+            if (nuevoFormulario.ShowDialog() == DialogResult.OK) //El usuario abre el archivo
             {
-                MessageBox.Show("Error de formato en el documento de texto.");
-            }
-            else if (resultado == -1)
-            {
-                MessageBox.Show("No se ha encontrado dicho documento.");
-            }
-            else
-            {
-                lista.Clean();
-                lista.CargarLista(nuevoFormulario.filename + ".txt");
-                MessageBox.Show("Lista cargada correctamente.");
+                string filePath = nuevoFormulario.FileName;
+                int resultado = lista.CargarLista(filePath); //Limpia la lista y llama a la funció
+                if (resultado == -2)
+                {
+                    MessageBox.Show("Error de formato en el documento de texto.");
+                }
+                else if (resultado == -1)
+                {
+                    MessageBox.Show("No se ha encontrado dicho documento.");
+                }
+                else
+                {
+                    MessageBox.Show("Lista cargada correctamente.");
+                    lista.Clean();
+                    lista.CargarLista(filePath);
+                }
             }
         }
     }

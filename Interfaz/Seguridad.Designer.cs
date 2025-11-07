@@ -101,6 +101,7 @@
             Controls.Add(botonDistancia);
             Name = "Seguridad";
             Text = "Introduzca estos parametros";
+            Load += Seguridad_Load;
             ResumeLayout(false);
             PerformLayout();
         }

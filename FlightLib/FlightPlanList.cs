@@ -117,7 +117,7 @@ namespace FlightLib
          
         public void GuardarPlan(string filename)
         {
-            StreamWriter w = new StreamWriter(filename+".txt"); //Guarda el archivo con este nombre.
+            StreamWriter w = new StreamWriter(filename); //Guarda el archivo con este nombre.
             for(int i = 0; i < number; i++)
             {
                 w.WriteLine(this.GetFlightPlan(i).GetId() + " " +this.GetFlightPlan(i).GetCurrentPosition().GetX().ToString() + " " +this.GetFlightPlan(i).GetCurrentPosition().GetY().ToString() + " " +this.GetFlightPlan(i).GetFinalPosition().GetX().ToString() + " " +this.GetFlightPlan(i).GetFinalPosition().GetY().ToString() + " " +this.GetFlightPlan(i).GetVelocidad().ToString());

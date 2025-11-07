@@ -12,13 +12,21 @@ namespace Interfaz
 {
     public partial class Seguridad : Form
     {
-        int tiempoCiclo=0;
-        int distanciaSeguridad=0;
         Interfaz.Principal principal;
+        int tiempoCiclo = 0;
+        int distanciaSeguridad = 0;
         public Seguridad(Interfaz.Principal principal)
         {
             InitializeComponent();
             this.principal = principal;
+        }
+        private void Seguridad_Load(object sender, EventArgs e)
+        {
+            if (principal.tiempoCiclo != 0 && principal.distanciaSeguridad != 0)
+            {
+                textTiempo.Text = Convert.ToString(principal.tiempoCiclo);
+                textDistancia.Text = Convert.ToString(principal.distanciaSeguridad);
+            }
         }
 
         private void botonDistancia_Click(object sender, EventArgs e)
@@ -36,13 +44,14 @@ namespace Interfaz
                 MessageBox.Show("Error de formato.");
             }
             this.Close();
-            principal.Show();
         }
 
         private void botonAtajo_Click(object sender, EventArgs e)
         {
             textDistancia.Text = "100";
-            textTiempo.Text = "10"; 
+            textTiempo.Text = "10";
         }
+
+
     }
 }

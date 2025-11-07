@@ -133,7 +133,6 @@
             MainMenuStrip = menuStrip1;
             Name = "Principal";
             Text = "Air Traffic Simulator";
-            Load += Principal_Load;
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
             ResumeLayout(false);

@@ -356,12 +356,22 @@ namespace Interfaz
         private void guardarBtn_Click(object sender, EventArgs e)
         {
             Reloj.Stop();
-            FilenameCargarLista nuevoFormulario = new FilenameCargarLista();
-            nuevoFormulario.ShowDialog();
-            miLista.GuardarPlan(nuevoFormulario.filename); //Guarda con el nombre dado en el nuevo formulario
+
+            SaveFileDialog nuevoFormulario = new SaveFileDialog(); //Crea un nuevo formulario del tipo para guardar como
+            nuevoFormulario.Title = "Guardar Lista de Vuelos";
+            nuevoFormulario.Filter = "Archivos de Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
+            nuevoFormulario.DefaultExt = "txt";
+            nuevoFormulario.AddExtension = true; //Agrega .txt automáticamente si el usuario no lo escribe
+
+            if (nuevoFormulario.ShowDialog() == DialogResult.OK) //El usuario guarda
+            {
+                string filePath = nuevoFormulario.FileName;
+                miLista.GuardarPlan(filePath);
+                MessageBox.Show("Lista guardada correctamente en: " + filePath);
+            }
+
             Reloj.Start();
         }
-
         private void Retroceder_Click(object sender, EventArgs e)
         {
             miLista = backUpList.GiveLista();
