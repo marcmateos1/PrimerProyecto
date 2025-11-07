@@ -54,7 +54,6 @@ namespace Interfaz
         {
             FilenameCargarLista nuevoFormulario = new FilenameCargarLista();
             nuevoFormulario.ShowDialog();
-            lista.Clean();
             int resultado = lista.CargarLista(nuevoFormulario.filename + ".txt");
             if (resultado == -2)
             {
@@ -66,6 +65,8 @@ namespace Interfaz
             }
             else
             {
+                lista.Clean();
+                lista.CargarLista(nuevoFormulario.filename + ".txt");
                 MessageBox.Show("Lista cargada correctamente.");
             }
         }

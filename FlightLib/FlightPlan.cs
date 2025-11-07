@@ -27,6 +27,7 @@ namespace FlightLib
         }
 
         // Metodos
+        //Gets i Sets
         public string GetId()
         {
             return this.id;
@@ -51,6 +52,8 @@ namespace FlightLib
         }
         public void SetFinalPosition(Position finalPosition)
         { this.finalPosition = finalPosition; }
+        public void SetInitialPosition(Position initialPosition)
+        { this.initalPosition = initialPosition; }
         public double GetVelocidad()
         {
             return this.velocidad;
@@ -87,7 +90,7 @@ namespace FlightLib
         public bool HasArrived()
         {
             bool resultado = false;
-            if (currentPosition == finalPosition)
+            if (currentPosition == finalPosition) //Que la posicion inicial y la final sean iguales
                 resultado = true;
 
             return resultado;
@@ -98,7 +101,7 @@ namespace FlightLib
         {
             bool conclicto = false;
 
-            if (currentDist < distanciaSeguridad)
+            if (currentDist < distanciaSeguridad) //que la distancia entre dos vuelos sea menor a la de seguridad
                 conclicto = true;
 
             return conclicto;
@@ -128,7 +131,7 @@ namespace FlightLib
             Position p1=this.currentPosition;
             Position p2=plan.currentPosition;
 
-            double distance = p1.Distancia(p2);
+            double distance = p1.Distancia(p2); //Calcula la distancia entre dos vuelos
             return distance;
         }
         public FlightPlan Clone()
@@ -150,6 +153,7 @@ namespace FlightLib
         }
         public bool PredecirConflicto(FlightPlan plan2, double distanciaSeguridad)
         {
+            //Predice si habrà conflicto segun la formula analitica de la distancia derivada, que da una parabola con la distancia minima que habrà durante la simulacion.
             Position pa0 = this.initalPosition; 
             Position paF = this.finalPosition; 
             double dA = pa0.Distancia(paF);
@@ -194,6 +198,7 @@ namespace FlightLib
                 t_check = t_min;
             }
 
+            //Si la distancia mínima es menor a la de segiridad devuelve false
             double paX_min = pa0.GetX() + vaX * t_check;
             double paY_min = pa0.GetY() + vaY * t_check;
             Position pa_min = new Position(paX_min, paY_min);
@@ -209,7 +214,7 @@ namespace FlightLib
             double velocidad_0 = plan2.GetVelocidad();
             while (this.PredecirConflicto(plan2, distanciaSeguridad))
             {
-                double nuevaVelocidad = this.velocidad * 0.99;
+                double nuevaVelocidad = this.velocidad * 0.99; //Reduce la velocidad de un vuelo de 1% en 1% hasta que ya no haya conflicto
                 this.velocidad = nuevaVelocidad;
                 double dist = this.DistanceTo(plan2);
                 if (nuevaVelocidad < 10e-10)

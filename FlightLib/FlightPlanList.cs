@@ -9,13 +9,14 @@ namespace FlightLib
 {
     public class FlightPlanList
     {
+        //Parametros
         FlightPlan[] vector= new FlightPlan[10];
         int number = 0;
 
         public void Clean()
         {
             this.vector = new FlightPlan[10];
-            number = 0;
+            number = 0; //borra todos los elementos de la lista
         }
         public int AddFlightPlan(FlightPlan p)
         {
@@ -25,7 +26,7 @@ namespace FlightLib
             }
             else 
             {
-                vector[number] = p;
+                vector[number] = p; //Si la lista no está llena, añade el plan dado como parametro y aumenta el contador
                 number = number + 1;
                 return 0;
             }
@@ -42,7 +43,7 @@ namespace FlightLib
             }
             else
             {
-                return vector[i];
+                return vector[i]; //Retorna el plan en la posicion dada como parametro
             }
         }
         public void Mover(double tiempo)
@@ -50,7 +51,7 @@ namespace FlightLib
             int i = 0;
             while (i < number)
             {
-                vector[i].Mover(tiempo);
+                vector[i].Mover(tiempo); //Mueve según la formula de MRU
                 i++;
             }
         }
@@ -61,7 +62,7 @@ namespace FlightLib
             {
                 if (vector[i].GetId() == ID)
                 {
-                    return vector[i];
+                    return vector[i]; //Busca segun la ID del avion, y cuando lo encuentra lo devuelve y acaba el bucle
                 }
             }
             return null;
@@ -71,7 +72,7 @@ namespace FlightLib
             int i = 0;
             while (i<number)
             {
-                vector[i].EscribeConsola();
+                vector[i].EscribeConsola(); //Escribe todos los parametros en la consola
                 i++;
             }
         }
@@ -104,6 +105,7 @@ namespace FlightLib
         }
         public FlightPlanList GiveLista()
         {
+            //Crea un objeto nuevo con los mismos valores para tener un backup de la lista original
             FlightPlanList clon = new FlightPlanList();
             for(int i = 0; i < this.number; i++)
             {
