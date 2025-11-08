@@ -371,7 +371,7 @@ namespace Interfaz
                 MessageBox.Show("Lista guardada correctamente en: " + filePath);
             }
 
-            Reloj.Start();
+            //Reloj.Start();
         }
         private void Retroceder_Click(object sender, EventArgs e)
         {
