@@ -19,7 +19,7 @@ namespace Interfaz
         FlightPlanList miLista;
         int tiempoCiclo;
         float distanciaSeguridad;
-        FlightPlanList backUpList;
+        Stack<FlightPlanList> s = new Stack<FlightPlanList>();
 
         //vector de picture boxes para representar los aviones
         PictureBox[] vuelos;
@@ -307,7 +307,8 @@ namespace Interfaz
 
         public void MoverFlightPlans(FlightPlanList miLista, int tiempo)
         {
-            backUpList = miLista.GiveLista();
+            FlightPlanList backUpList = miLista.GiveLista();
+            s.Push(backUpList);
             for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
                 // Representar vuelo de la posición i
@@ -374,9 +375,13 @@ namespace Interfaz
         }
         private void Retroceder_Click(object sender, EventArgs e)
         {
-            miLista = backUpList.GiveLista();
-            panel1.Controls.Clear();
-            EspacioAereo_Load(this, EventArgs.Empty);
+            if (s.Count > 0)
+            {
+                miLista = s.Pop();
+                panel1.Controls.Clear();
+                EspacioAereo_Load(this, EventArgs.Empty);
+            }
+            
 
         }
     }
