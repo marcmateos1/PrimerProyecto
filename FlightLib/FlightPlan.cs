@@ -15,6 +15,7 @@ namespace FlightLib
         Position initalPosition;
         Position finalPosition; // posicion final
         double velocidad;
+        string compania;
 
         // Constructures
         public FlightPlan(string id, double cpx, double cpy, double fpx, double fpy, double velocidad)
@@ -24,42 +25,72 @@ namespace FlightLib
             this.initalPosition = new Position(cpx, cpy);
             this.finalPosition = new Position(fpx, fpy);
             this.velocidad = velocidad;
+            this.compania = " ";
         }
+
+        public FlightPlan(string id, double cpx, double cpy, double fpx, double fpy, double velocidad, string compania)
+        {
+            this.id = id;
+            this.currentPosition = new Position(cpx, cpy);
+            this.initalPosition = new Position(cpx, cpy);
+            this.finalPosition = new Position(fpx, fpy);
+            this.velocidad = velocidad;
+            this.compania = compania;
+        }
+
+
 
         // Metodos
         //Gets i Sets
+        
+        public void SetId(string id)
+        { this.id = id; }
+        public void SetCurrentPosition(Position currentPosition)
+        { this.currentPosition = currentPosition; }
+        public void SetInitialPosition(Position initialPosition)
+        { this.initalPosition = initialPosition; }
+        public void SetFinalPosition(Position finalPosition)
+        { this.finalPosition = finalPosition; }
+        public void SetVelocidad(double velocidad)
+        { this.velocidad = velocidad; }
+        public void SetCompania(string compania)
+        {
+            this.compania = compania;
+        }
+        
         public string GetId()
         {
             return this.id;
         }
-
-        public Position GetInitialPosition()
-        {
-            return this.initalPosition;
-        }
-
-        public void SetId(string id)
-        { this.id = id; }
         public Position GetCurrentPosition()
         {
             return this.currentPosition;
         }
-        public void SetCurrentPosition(Position currentPosition)
-        { this.currentPosition = currentPosition; }
+        public Position GetInitialPosition()
+        {
+            return this.initalPosition;
+        }
         public Position GetFinalPosition()
         {
             return this.finalPosition;
         }
-        public void SetFinalPosition(Position finalPosition)
-        { this.finalPosition = finalPosition; }
-        public void SetInitialPosition(Position initialPosition)
-        { this.initalPosition = initialPosition; }
         public double GetVelocidad()
         {
             return this.velocidad;
         }
-        public void SetVelocidad(double velocidad)
-        { this.velocidad = velocidad; }
+        public string GetCompania()
+        {
+            return (this.compania);
+        }
+        public double GetDistanciaRestante()
+        {
+            return currentPosition.Distancia(finalPosition);
+        }
+
+
+
+
+
 
         public void Mover(double tiempo)
         // Mueve el vuelo a la posición correspondiente a viajar durante el tiempo que se recibe como parámetro
@@ -69,6 +100,13 @@ namespace FlightLib
 
             //Calculamos las razones trigonométricas
             double hipotenusa = Math.Sqrt((finalPosition.GetX() - currentPosition.GetX()) * (finalPosition.GetX() - currentPosition.GetX()) + (finalPosition.GetY() - currentPosition.GetY()) * (finalPosition.GetY() - currentPosition.GetY()));
+            
+            if (hipotenusa <= 1e-9)
+            {
+                currentPosition = finalPosition;
+                return;
+            }
+            
             double coseno = (finalPosition.GetX() - currentPosition.GetX()) / hipotenusa;
             double seno = (finalPosition.GetY() - currentPosition.GetY()) / hipotenusa;
 
@@ -89,11 +127,8 @@ namespace FlightLib
         // Hacer un metodo que diga si un vuelo ha llegado a su destino
         public bool HasArrived()
         {
-            bool resultado = false;
-            if (currentPosition == finalPosition) //Que la posicion inicial y la final sean iguales
-                resultado = true;
-
-            return resultado;
+            return currentPosition.GetX() == finalPosition.GetX() &&
+           currentPosition.GetY() == finalPosition.GetY();
         }
 
         // Hacer que el programa principal lea datos de dos vuelos y una distancia de seguidad y detecte el conflicto cuándo los vuelos están mas cerca de esa distancia
@@ -113,8 +148,10 @@ namespace FlightLib
             Console.WriteLine("******************************");
             Console.WriteLine("Datos del vuelo: ");
             Console.WriteLine("Identificador: {0}", id);
+            Console.WriteLine("Compañía: {0}", compania);
             Console.WriteLine("Velocidad: {0:F2}", velocidad);
             Console.WriteLine("Posición actual: ({0:F2}, {1:F2})", currentPosition.GetX(), currentPosition.GetY());
+            Console.WriteLine("Distancia restante: {0:F2}", GetDistanciaRestante());
             if (this.HasArrived())
                 Console.WriteLine("Ha llegado al destino");
             Console.WriteLine("******************************");
@@ -142,8 +179,17 @@ namespace FlightLib
             Position copiaFinal = new Position(this.finalPosition.GetX(), this.finalPosition.GetY());
 
             // Creamos un nuevo FlightPlan con los mismos datos
-            FlightPlan clon = new FlightPlan(this.id, this.currentPosition.GetX(), this.currentPosition.GetY(), this.finalPosition.GetX(), this.finalPosition.GetY(), this.velocidad);
+            FlightPlan clon;
 
+            // Si company está vacía, usar constructor antiguo (para compatibilidad). Si no, usar el de 7 parámetros.
+            if (this.compania == null || this.compania == "")
+            {
+                clon = new FlightPlan(this.id, copiaCurrent.GetX(), copiaCurrent.GetY(), copiaFinal.GetX(), copiaFinal.GetY(), this.velocidad);
+            }
+            else
+            {
+                clon = new FlightPlan(this.id, copiaCurrent.GetX(), copiaCurrent.GetY(), copiaFinal.GetX(), copiaFinal.GetY(), this.velocidad,  this.compania);
+            }
             // Sobrescribimos las posiciones con las copias
             clon.currentPosition = copiaCurrent;
             clon.initalPosition = copiaInitial;

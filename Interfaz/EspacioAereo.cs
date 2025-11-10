@@ -31,6 +31,67 @@ namespace Interfaz
 
         }
 
+        public string UsuarioActual { get; private set; }
+
+        Label labelUsuario2;
+        Button btnLogout2;
+
+        public void SetUser(string username)
+        {
+            UsuarioActual = username;
+            if (labelUsuario2 != null)
+                labelUsuario2.Text = $"Usuario: {username}";
+        }
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show(
+                "¿Quieres cerrar sesión?",
+                "Cerrar sesión",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (r == DialogResult.Yes)
+            {
+                this.Close(); // Cierra EspacioAereo
+                principal.Show(); // Vuelve al menú principal o login
+            }
+        }
+
+
+
+        private void btnCargarArchivo_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Seleccionar fichero de vuelos";
+            ofd.Filter = "Archivos de Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string path = ofd.FileName;
+                FlightPlanList nueva = new FlightPlanList();
+                int r = nueva.CargarLista(path);
+                if (r == 0)
+                {
+                    miLista = nueva;
+                    // Limpiar panel y recargar
+                    panel1.Controls.Clear();
+                    EspacioAereo_Load(this, EventArgs.Empty);
+                    MessageBox.Show("Fichero cargado correctamente.");
+                }
+                else if (r == -1)
+                {
+                    MessageBox.Show("No se encontró el fichero.");
+                }
+                else
+                {
+                    MessageBox.Show("Error leyendo fichero (formato incorrecto).");
+                }
+            }
+        }
+
+
+
 
         public void SetData(FlightPlanList f, int c, float distancia)
         {
@@ -81,6 +142,13 @@ namespace Interfaz
         {
             try
             {
+                if (miLista == null || miLista.NumElementosLista() == 0)
+                {
+                    // Nada que dibujar
+                    return;
+                }
+
+                panel1.Controls.Clear(); // limpiar por si acaso
                 vuelos = new PictureBox[miLista.NumElementosLista()];
                 for (int i = 0; i < miLista.NumElementosLista(); i++)
                 {
@@ -163,6 +231,7 @@ namespace Interfaz
             //Draw the line
             try
             {
+                if (miLista == null) return;
                 System.Drawing.Graphics graphics = e.Graphics;
                 Pen rutaPen = new Pen(Color.Red);
                 Pen zonaPen = new Pen(Color.Blue);
@@ -275,14 +344,17 @@ namespace Interfaz
         {
             try
             {
-                bool a = miLista.GetFlightPlan(0).PredecirConflicto(miLista.GetFlightPlan(1), distanciaSeguridad);
-                if (a == true)
+                if (miLista != null && miLista.NumElementosLista() >= 2)
                 {
-                    MessageBox.Show("Habrá conflicto en la trayectoria.");
-                }
-                else
-                {
-                    MessageBox.Show("No hi haurà perill");
+                    bool a = miLista.GetFlightPlan(0).PredecirConflicto(miLista.GetFlightPlan(1), distanciaSeguridad);
+                    if (a == true)
+                    {
+                        MessageBox.Show("Habrá conflicto en la trayectoria.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hi haurà perill");
+                    }
                 }
             }
             catch (Exception) { MessageBox.Show("Dades no entrades correctament: no es pot trobar cap conflicte"); }
@@ -307,6 +379,7 @@ namespace Interfaz
 
         public void MoverFlightPlans(FlightPlanList miLista, int tiempo)
         {
+            if (miLista == null) return;
             FlightPlanList backUpList = miLista.GiveLista();
             s.Push(backUpList);
             for (int i = 0; i < miLista.NumElementosLista(); i++)
@@ -331,6 +404,7 @@ namespace Interfaz
 
         public void BucleConflicto(bool a)
         {
+            if (miLista == null) return;
             for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
                 FlightPlan plan = miLista.GetFlightPlan(i);
@@ -381,7 +455,12 @@ namespace Interfaz
                 panel1.Controls.Clear();
                 EspacioAereo_Load(this, EventArgs.Empty);
             }
-            
+
+
+        }
+
+        private void labelUsuario2_Click(object sender, EventArgs e)
+        {
 
         }
     }
