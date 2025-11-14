@@ -56,7 +56,7 @@ namespace Interfaz
             if (nuevoFormulario.ShowDialog() == DialogResult.OK) //El usuario abre el archivo
             {
                 string filePath = nuevoFormulario.FileName;
-                int resultado = lista.CargarLista(filePath); //Limpia la lista y llama a la funció
+                int resultado = lista.CargarLista(filePath); //Limpia la lista y llama a la función
                 if (resultado == -2)
                 {
                     MessageBox.Show("Error de formato en el documento de texto.");
@@ -65,7 +65,7 @@ namespace Interfaz
                 {
                     MessageBox.Show("No se ha encontrado dicho documento.");
                 }
-                else
+                else if (resultado == 0)
                 {
                     MessageBox.Show("Lista cargada correctamente.");
                     lista.Clean();

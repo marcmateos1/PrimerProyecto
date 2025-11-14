@@ -87,65 +87,17 @@ namespace FlightLib
         {
             try //Comprueba que existe un archivo con ese nombre o con el formato adecuado
             {
-                string[] lineas = File.ReadAllLines(filename);
-                this.vector = new FlightPlan[10];
-                number = 0;
-
-                foreach (string lineaRaw in lineas)
+                StreamReader r = new StreamReader(filename);
+                string linea = r.ReadLine();
+                while (linea != null)
                 {
-                    string linea = lineaRaw.Trim();
-                    if (string.IsNullOrEmpty(linea)) continue;
-
-                    string[] trozos;
-                    // robustez!
-                    if (linea.Contains(";"))
-                        trozos = linea.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-                    else
-                        trozos = linea.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    try
-                    {
-                        if (trozos.Length == 6)
-                        {
-                            // ID xi yi xf yf velocidad
-                            string id = trozos[0];
-                            double xi = Convert.ToDouble(trozos[1], CultureInfo.InvariantCulture);
-                            double yi = Convert.ToDouble(trozos[2], CultureInfo.InvariantCulture);
-                            double xf = Convert.ToDouble(trozos[3], CultureInfo.InvariantCulture);
-                            double yf = Convert.ToDouble(trozos[4], CultureInfo.InvariantCulture);
-                            double velocidad = Convert.ToDouble(trozos[5], CultureInfo.InvariantCulture);
-
-                            FlightPlan plan = new FlightPlan(id, xi, yi, xf, yf, velocidad);
-                            this.AddFlightPlan(plan);
-                        }
-                        else if (trozos.Length >= 7)
-                        {
-                            // ID company xi yi xf yf velocidad
-                            string id = trozos[0];
-                            string company = trozos[1];
-                            double xi = Convert.ToDouble(trozos[2], CultureInfo.InvariantCulture);
-                            double yi = Convert.ToDouble(trozos[3], CultureInfo.InvariantCulture);
-                            double xf = Convert.ToDouble(trozos[4], CultureInfo.InvariantCulture);
-                            double yf = Convert.ToDouble(trozos[5], CultureInfo.InvariantCulture);
-                            double velocidad = Convert.ToDouble(trozos[6], CultureInfo.InvariantCulture);
-
-                            FlightPlan plan = new FlightPlan(id, xi, yi, xf, yf, velocidad, company);
-                            this.AddFlightPlan(plan);
-                        }
-                        else
-                        {
-                            // línea mal formada se ignorar
-                            // podrías acumular errores para avisar al usuario
-                            continue;
-                        }
-                    }
-                    catch
-                    {
-                        // parse error -> ignorar línea y continuar
-                        continue;
-                    }
+                    string[] trozos = linea.Split(' ');
+                    FlightPlan plan = new FlightPlan(trozos[0], Convert.ToDouble(trozos[1]), Convert.ToDouble(trozos[2]), Convert.ToDouble(trozos[3]), Convert.ToDouble(trozos[4]), Convert.ToDouble(trozos[5]));
+                    this.AddFlightPlan(plan);
+                    linea = r.ReadLine(); //Por cada linea que lee crea un nuevo Flight plan con los parametros que se encuentran separados por un espacio
                 }
 
+                r.Close();
                 return 0;
             }
             catch (FileNotFoundException)
@@ -157,62 +109,43 @@ namespace FlightLib
                 return -2;
             }
         }
-        public FlightPlanList GiveLista()
-        {
-            //Crea un objeto nuevo con los mismos valores para tener un backup de la lista original
-            FlightPlanList clon = new FlightPlanList();
-            for(int i = 0; i < this.number; i++)
-            {
-                FlightPlan planCopia = this.GetFlightPlan(i).Clone();
-                clon.AddFlightPlan(planCopia);
-            }
-            return clon;
-        }
-         
+
         public void GuardarPlan(string filename)
         {
-            try
+            StreamWriter w = new StreamWriter(filename + ".txt"); //Guarda el archivo con este nombre.
+            for (int i = 0; i < number; i++)
             {
-                using (StreamWriter w = new StreamWriter(filename))
-                {
-                    for (int i = 0; i < number; i++)
-                    {
-                        FlightPlan p = this.GetFlightPlan(i);
-                        string id = p.GetId();
-                        string comp = p.GetCompania();
-                        if (string.IsNullOrEmpty(comp)) comp = ""; // no nulo
-                        double cpx = p.GetCurrentPosition().GetX();
-                        double cpy = p.GetCurrentPosition().GetY();
-                        double fpx = p.GetFinalPosition().GetX();
-                        double fpy = p.GetFinalPosition().GetY();
-                        double vel = p.GetVelocidad();
-
-                        // formato: ID;company;cpx;cpy;fpx;fpy;vel
-                        w.WriteLine($"{id};{comp};{cpx.ToString(CultureInfo.InvariantCulture)};{cpy.ToString(CultureInfo.InvariantCulture)};{fpx.ToString(CultureInfo.InvariantCulture)};{fpy.ToString(CultureInfo.InvariantCulture)};{vel.ToString(CultureInfo.InvariantCulture)}");
-                    }
-                }
+                w.WriteLine(this.GetFlightPlan(i).GetId() + " " + this.GetFlightPlan(i).GetCurrentPosition().GetX().ToString() + " " + this.GetFlightPlan(i).GetCurrentPosition().GetY().ToString() + " " + this.GetFlightPlan(i).GetFinalPosition().GetX().ToString() + " " + this.GetFlightPlan(i).GetFinalPosition().GetY().ToString() + " " + this.GetFlightPlan(i).GetVelocidad().ToString());
             }
-            catch
-            {
-                // si hay error de IO, dejamos que el llamador lo capture
-            }
+            w.Close(); //Escribe cada avion en una linea diferente con sus parametros separados por espacio. La posicion inicial de los aviones guardados es la actual que tenian, para poder seguir donde lo dejastes.
         }
 
         public bool LlegadoDestino()
         {
             int llegado = 0;
-            for(int i = 0; i < number; i++)
+            for (int i = 0; i < number; i++)
             {
                 if (this.GetFlightPlan(i).GetCurrentPosition() == this.GetFlightPlan(i).GetFinalPosition())
                 {
                     llegado++;
                 }
             }
-            if(llegado == number) //Todos los aviones han llegado, es decir, su posicion actual es la final
+            if (llegado == number) //Todos los aviones han llegado, es decir, su posicion actual es la final
             {
                 return true;
             }
             return false;
+        }
+        public FlightPlanList GiveLista()
+        {
+            //Crea un objeto nuevo con los mismos valores para tener un backup de la lista original
+            FlightPlanList clon = new FlightPlanList();
+            for (int i = 0; i < this.number; i++)
+            {
+                FlightPlan planCopia = this.GetFlightPlan(i).Clone();
+                clon.AddFlightPlan(planCopia);
+            }
+            return clon;
         }
     }
 }
