@@ -61,14 +61,17 @@ namespace Interfaz
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Position p1 = miLista.GetFlightPlan(0).GetCurrentPosition();
-            Position p2 = miLista.GetFlightPlan(1).GetCurrentPosition();
-
-            double distancia = p1.Distancia(p2);
-            ShowDistancePlans nuevoformulario = new ShowDistancePlans();
-            nuevoformulario.SetData(distancia);
-            nuevoformulario.ShowDistance();
-            nuevoformulario.Show();
+            int fila = e.RowIndex;
+            if (fila != 0)
+            {
+                int indice = fila - 1;
+                FlightPlan plan = this.miLista.GetFlightPlan(indice);
+                ShowDistancePlans nuevoformulario = new ShowDistancePlans();
+                nuevoformulario.SetData(miLista, plan);
+                nuevoformulario.ShowDistancePlans_Load();
+                nuevoformulario.ShowDialog();
+                
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

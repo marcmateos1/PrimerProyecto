@@ -28,33 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            Taula2 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)Taula2).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // Taula2
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(22, 45);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
-            label1.Click += label1_Click;
+            Taula2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Taula2.Location = new Point(78, 43);
+            Taula2.Name = "Taula2";
+            Taula2.RowHeadersWidth = 51;
+            Taula2.Size = new Size(533, 244);
+            Taula2.TabIndex = 0;
             // 
             // ShowDistancePlans
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(500, 123);
-            Controls.Add(label1);
+            ClientSize = new Size(963, 360);
+            Controls.Add(Taula2);
+            Margin = new Padding(4);
             Name = "ShowDistancePlans";
             Text = "ShowDistancePlans";
+            ((System.ComponentModel.ISupportInitialize)Taula2).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private DataGridView Taula2;
     }
 }
