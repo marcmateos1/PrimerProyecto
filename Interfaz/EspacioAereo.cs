@@ -33,8 +33,7 @@ namespace Interfaz
 
         public string UsuarioActual { get; private set; }
 
-        Label labelUsuario2;
-        Button btnLogout2;
+
 
         public void SetUser(string username)
         {
