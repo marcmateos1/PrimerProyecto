@@ -33,11 +33,18 @@ namespace Interfaz
         {
             try
             {
-                tiempoCiclo = Convert.ToInt32(textTiempo.Text);
-                distanciaSeguridad = Convert.ToInt32(textDistancia.Text);
-                MessageBox.Show("Datos cargados correctamente.");
-                principal.tiempoCiclo = tiempoCiclo;
-                principal.distanciaSeguridad = distanciaSeguridad;
+                if (Convert.ToInt32(textTiempo.Text) > 0 && Convert.ToInt32(textDistancia.Text) > 0)
+                {
+                    tiempoCiclo = Convert.ToInt32(textTiempo.Text);
+                    distanciaSeguridad = Convert.ToInt32(textDistancia.Text);
+                    MessageBox.Show("Datos cargados correctamente.");
+                    principal.tiempoCiclo = tiempoCiclo;
+                    principal.distanciaSeguridad = distanciaSeguridad;
+                }
+                else
+                {
+                    MessageBox.Show("No se admiten datos negativos.");
+                }
             }
             catch
             {
