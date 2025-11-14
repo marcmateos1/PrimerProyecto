@@ -88,10 +88,17 @@ namespace FlightLib
             try //Comprueba que existe un archivo con ese nombre o con el formato adecuado
             {
                 StreamReader r = new StreamReader(filename);
-                string linea = r.ReadLine();
+                string linea = r.ReadLine(); //Que ignore saltos de linea o otros al inicio y final del programa
                 while (linea != null)
                 {
-                    string[] trozos = linea.Split(' ');
+                    linea = linea.Trim('\n', '\r',' ','\t');
+                    if (linea.Length == 0)
+                    {
+                        linea = r.ReadLine();
+                        continue;
+                    }
+
+                    string[] trozos = linea.Split(' ','\t');
                     FlightPlan plan = new FlightPlan(trozos[0], Convert.ToDouble(trozos[1]), Convert.ToDouble(trozos[2]), Convert.ToDouble(trozos[3]), Convert.ToDouble(trozos[4]), Convert.ToDouble(trozos[5]));
                     this.AddFlightPlan(plan);
                     linea = r.ReadLine(); //Por cada linea que lee crea un nuevo Flight plan con los parametros que se encuentran separados por un espacio
