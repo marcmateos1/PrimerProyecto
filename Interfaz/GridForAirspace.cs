@@ -28,36 +28,33 @@ namespace Interfaz
         }
         private void GridForAirspace_Load(object sender, EventArgs e)
         {
-
-        }
-
-        public void SetFlightPlans()
-        {
             try
             {
-                // Asegúrate de que el DataGridView tenga las columnas correctas
-                Taula.Columns.Clear(); // Limpiar si ya existen columnas
-                Taula.Columns.Add("ID", "ID");
-                Taula.Columns.Add("Velocidad", "Velocidad");
-                Taula.Columns.Add("PosicionInicial", "Posición Inicial");
-                Taula.Columns.Add("PosicionFinal", "Posición Final");
-                Taula.Columns.Add("PosicionActual", "Posición Actual");
+                int j = this.miLista.NumElementosLista();
+                Taula.RowCount = j + 1;
+                Taula.ColumnCount = 5;
+                Taula.ColumnHeadersVisible = false;
+                Taula.RowHeadersVisible = false;
+                Taula.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                Taula[0, 0].Value = ("ID");
+                Taula[1, 0].Value = ("Velocidad");
+                Taula[2, 0].Value = ("PosicionInicial");
+                Taula[3, 0].Value = ("PosicionFinal");
+                Taula[4, 0].Value = ("PosicionActual");
 
-                // Añadir las filas con la información de los FlightPlans
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < j; i++)
                 {
-
-
                     FlightPlan plan = this.miLista.GetFlightPlan(i);
-
                     string id = plan.GetId();
                     double velocidad = plan.GetVelocidad();
                     string posicionInicial = $"({plan.GetInitialPosition().GetX()}  ,  {plan.GetInitialPosition().GetY()})";
                     string posicionFinal = $"({plan.GetFinalPosition().GetX()}  ,  {plan.GetFinalPosition().GetY()})";
                     string posicionActual = $"({Math.Round(plan.GetCurrentPosition().GetX(), 2)} , {Math.Round(plan.GetCurrentPosition().GetY(), 2)})";
-
-                    // Añadir la fila con los datos
-                    Taula.Rows.Add(id, velocidad, posicionInicial, posicionFinal, posicionActual);
+                    Taula[0, i + 1].Value = id;
+                    Taula[1, i + 1].Value = velocidad;
+                    Taula[2, i + 1].Value = posicionInicial;
+                    Taula[3, i + 1].Value = posicionFinal;
+                    Taula[4, i + 1].Value = posicionActual;
                 }
             }
             catch (Exception) { MessageBox.Show("Informació no carregada correctament"); }

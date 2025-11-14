@@ -40,21 +40,26 @@ namespace InterfazDatos
         {
             try
             {
-                lista.Clean();
-                FlightPlan plan = new FlightPlan(TIdentificador.Text, Convert.ToDouble(TX0.Text), Convert.ToDouble(TY0.Text), Convert.ToDouble(TXF.Text), Convert.ToDouble(TYF.Text), Convert.ToDouble(TVelocidad.Text));
-                lista.AddFlightPlan(plan);
-                FlightPlan plan2 = new FlightPlan(TIdentificador2.Text, Convert.ToDouble(TX02.Text), Convert.ToDouble(TY02.Text), Convert.ToDouble(TXF2.Text), Convert.ToDouble(TYF2.Text), Convert.ToDouble(TVelocidad2.Text));
-                lista.AddFlightPlan(plan2);
+                if (Convert.ToInt32(TVelocidad.Text) > 0 && Convert.ToInt32(TVelocidad2.Text) > 0)
+                {
+                    lista.Clean();
+                    FlightPlan plan = new FlightPlan(TIdentificador.Text, Convert.ToDouble(TX0.Text), Convert.ToDouble(TY0.Text), Convert.ToDouble(TXF.Text), Convert.ToDouble(TYF.Text), Convert.ToDouble(TVelocidad.Text));
+                    lista.AddFlightPlan(plan);
+                    FlightPlan plan2 = new FlightPlan(TIdentificador2.Text, Convert.ToDouble(TX02.Text), Convert.ToDouble(TY02.Text), Convert.ToDouble(TXF2.Text), Convert.ToDouble(TYF2.Text), Convert.ToDouble(TVelocidad2.Text));
+                    lista.AddFlightPlan(plan2);
 
-                MessageBox.Show("Plan de vuelo añadido correctamente.");
-                this.Close();
+                    MessageBox.Show("Plan de vuelo añadido correctamente.");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No se admiten velocidades negativas.");
+                }
             }
             catch
             {
                 MessageBox.Show("Error de formato.");
             }
-
-            //principal.Show();
         }
 
         private void atajo_Click(object sender, EventArgs e)

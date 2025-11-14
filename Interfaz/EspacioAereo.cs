@@ -290,9 +290,7 @@ namespace Interfaz
             try
             {
                 GridForAirspace nuevoFormulario = new GridForAirspace();
-                //nuevoFormulario.SetFlightPlans(FlightPlanList this.miLista);
                 nuevoFormulario.SetData(miLista);
-                nuevoFormulario.SetFlightPlans();
                 nuevoFormulario.Show();
             }
             catch (Exception) { MessageBox.Show("Dades no entrades correctament"); }
