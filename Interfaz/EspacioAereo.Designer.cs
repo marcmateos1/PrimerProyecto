@@ -46,7 +46,6 @@
             guardarBtn = new Button();
             Retroceder = new Button();
             labelUsuario2 = new Label();
-            btnLogout2 = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -213,28 +212,16 @@
             // labelUsuario2
             // 
             labelUsuario2.AutoSize = true;
-            labelUsuario2.Location = new Point(1022, 234);
+            labelUsuario2.Location = new Point(553, 22);
             labelUsuario2.Name = "labelUsuario2";
-            labelUsuario2.Size = new Size(59, 20);
+            labelUsuario2.Size = new Size(0, 20);
             labelUsuario2.TabIndex = 16;
-            labelUsuario2.Text = "Usuario";
-            labelUsuario2.Click += labelUsuario2_Click;
-            // 
-            // btnLogout2
-            // 
-            btnLogout2.Location = new Point(991, 274);
-            btnLogout2.Name = "btnLogout2";
-            btnLogout2.Size = new Size(121, 29);
-            btnLogout2.TabIndex = 17;
-            btnLogout2.Text = "Cerrar Sesión";
-            btnLogout2.UseVisualStyleBackColor = true;
             // 
             // EspacioAereo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1183, 757);
-            Controls.Add(btnLogout2);
             Controls.Add(labelUsuario2);
             Controls.Add(Retroceder);
             Controls.Add(guardarBtn);
@@ -278,6 +265,5 @@
         private Button guardarBtn;
         private Button Retroceder;
         private Label labelUsuario2;
-        private Button btnLogout2;
     }
 }

@@ -33,14 +33,14 @@ namespace Interfaz
 
         public string UsuarioActual { get; private set; }
 
-
-
-        public void SetUser(string username)
-        {
-            UsuarioActual = username;
-            if (labelUsuario2 != null)
-                labelUsuario2.Text = $"Usuario: {username}";
+        public void SetUser(string username) 
+        {   UsuarioActual = username; 
+            if (labelUsuario2 != null) 
+                labelUsuario2.Text = $"Usuario: {username}"; 
         }
+        
+
+
         private void BtnLogout_Click(object sender, EventArgs e)
         {
             DialogResult r = MessageBox.Show(
