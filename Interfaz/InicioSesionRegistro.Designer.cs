@@ -88,7 +88,7 @@
             NuevaContraseña.Size = new Size(125, 27);
             NuevaContraseña.TabIndex = 3;
             NuevaContraseña.UseSystemPasswordChar = true;
-            NuevaContraseña.TextChanged += this.NuevaContraseña_TextChanged;
+            //NuevaContraseña.TextChanged += this.NuevaContraseña_TextChanged;
             // 
             // textNuevoUsuario
             // 

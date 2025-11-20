@@ -220,9 +220,17 @@ namespace Interfaz
 
         private void botonMover_Click(object sender, EventArgs e)
         {
-            MoverFlightPlans(miLista, tiempoCiclo);
-            bool a = false;
-            BucleConflicto(a);
+            bool b = miLista.LlegadoDestino();
+            if (b == false)
+            {
+                MoverFlightPlans(miLista, tiempoCiclo);
+                bool a = false;
+                BucleConflicto(a);
+            }
+            else
+            {
+                MessageBox.Show("Tots els avions han arribat al seu destí.");
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -273,15 +281,20 @@ namespace Interfaz
             if (miLista.LlegadoDestino())
             {
                 Reloj.Stop();
+                MessageBox.Show("Tots els avions han arribat al seu destí.");
             }
-            //Mover los vuelos de la lista
-            MoverFlightPlans(miLista, tiempoCiclo);
-            panel1.Invalidate(); //Forzar al panel pintarse otra vez, para que pinte a cada movimiento del avion la zona de seguridad
+            else
+            {
+                //Mover los vuelos de la lista
+                MoverFlightPlans(miLista, tiempoCiclo);
+                panel1.Invalidate(); //Forzar al panel pintarse otra vez, para que pinte a cada movimiento del avion la zona de seguridad
 
-            //Comprobar si hay conflicto
-            bool a = false;
-            BucleConflicto(a);
-            panel1.Invalidate();
+                //Comprobar si hay conflicto
+                bool a = false;
+                BucleConflicto(a);
+                panel1.Invalidate();
+            }
+            
 
         }
 
@@ -368,7 +381,7 @@ namespace Interfaz
                 FlightPlan plan = miLista.GetFlightPlan(i);
                 plan.Restart();
             }
-
+            s.Clear(); // Limpiar la pila de estados
             // Volver a cargar los vuelos
             EspacioAereo_Load(this, EventArgs.Empty);
             MessageBox.Show("Es reinicia l'espai aeri");
