@@ -24,7 +24,7 @@ namespace Interfaz
         //vector de picture boxes para representar los aviones
         PictureBox[] vuelos;
 
-        public EspacioAereo(Interfaz.Principal principal)
+        public EspacioAereo(Interfaz.Principal principal) //iniciar l'espai aeri
         {
             InitializeComponent();
             this.principal = principal;
@@ -33,67 +33,14 @@ namespace Interfaz
 
         public string UsuarioActual { get; private set; }
 
-        public void SetUser(string username) 
+        //METODES I FUNCIONS NECESSARIES
+        public void SetUser(string username) //identificar l'usuari i determinarlo per la simulacio
         {   UsuarioActual = username; 
             if (labelUsuario2 != null) 
                 labelUsuario2.Text = $"Usuario: {username}"; 
         }
-        
 
-
-        private void BtnLogout_Click(object sender, EventArgs e)
-        {
-            //tancar sessio
-            DialogResult r = MessageBox.Show(
-                "¿Quieres cerrar sesión?",
-                "Cerrar sesión",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (r == DialogResult.Yes)
-            {
-                this.Close(); // Cierra EspacioAereo
-                principal.Show(); // Vuelve al menú principal o login
-            }
-        }
-
-
-
-        private void btnCargarArchivo_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Seleccionar fichero de vuelos";
-            ofd.Filter = "Archivos de Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
-
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                string path = ofd.FileName;
-                FlightPlanList nueva = new FlightPlanList();
-                int r = nueva.CargarLista(path);
-                if (r == 0)
-                {
-                    miLista = nueva;
-                    // Limpiar panel y recargar
-                    panel1.Controls.Clear();
-                    EspacioAereo_Load(this, EventArgs.Empty);
-                    MessageBox.Show("Fichero cargado correctamente.");
-                }
-                else if (r == -1)
-                {
-                    MessageBox.Show("No se encontró el fichero.");
-                }
-                else
-                {
-                    MessageBox.Show("Error leyendo fichero (formato incorrecto).");
-                }
-            }
-        }
-
-
-
-
-        public void SetData(FlightPlanList f, int c, float distancia)
+        public void SetData(FlightPlanList f, int c, float distancia) //iniciatitzar les dades
         {
             miLista = f;
             tiempoCiclo = c;
@@ -138,7 +85,126 @@ namespace Interfaz
 
         }
 
-        private void EspacioAereo_Load(object sender, EventArgs e)
+        public void Reiniciar()//funcio reiniciar la simulacio
+        {
+            Reloj.Stop();
+            // Quitar todos los controles (vuelos, destinos, etc.)
+            panel1.Controls.Clear();
+
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            {
+                FlightPlan plan = miLista.GetFlightPlan(i);
+                plan.Restart();
+            }
+            s.Clear(); // Limpiar la pila de estados
+            // Volver a cargar los vuelos
+            EspacioAereo_Load(this, EventArgs.Empty);
+            MessageBox.Show("Es reinicia l'espai aeri");
+        }
+
+        public void MoverFlightPlans(FlightPlanList miLista, int tiempo) //funcio per moure els flightplans una iteracio
+        {
+            if (miLista == null) return;
+            FlightPlanList backUpList = miLista.GiveLista();
+            s.Push(backUpList);
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            {
+                // Representar vuelo de la posición i
+                PictureBox p = new PictureBox();
+
+                // Tamaño del elemento
+                p.Width = 10;
+                p.Height = 10;
+                p.ClientSize = new Size(10, 10);
+
+                FlightPlan plan = miLista.GetFlightPlan(i);
+                plan.Mover(tiempo);
+                int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 500.0);
+                int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
+                vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
+                panel1.Invalidate();
+
+            }
+        }
+
+        public void BucleConflicto(bool a) //funcio per detectar conflicte
+        {
+            if (miLista == null) return;
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            {
+                FlightPlan plan = miLista.GetFlightPlan(i);
+                for (int j = i + 1; j < miLista.NumElementosLista(); j++)
+                {
+                    FlightPlan plan2 = miLista.GetFlightPlan(j);
+                    double dist = plan.DistanceTo(plan2);
+                    a = (plan.DistanceTo(plan2) < distanciaSeguridad);
+                    if (a)
+                    {
+                        Reloj.Stop();
+                        MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + dist.ToString("F2") + " unidades."); //missatge si hi ha conflicte
+                        break;
+                    }
+                }
+                if (a)
+                {
+                    Reloj.Stop(); //para la simulacio si hi ha conflicte
+                    break;
+                }
+            }
+        }
+
+        //METODES I FUNCIONS DE CADA BOTO
+
+        private void BtnLogout_Click(object sender, EventArgs e) //boto per LOGOUT
+        {
+            //tancar sessio
+            DialogResult r = MessageBox.Show(
+                "¿Quieres cerrar sesión?",
+                "Cerrar sesión",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (r == DialogResult.Yes)
+            {
+                this.Close(); // Cierra EspacioAereo
+                principal.Show(); // Vuelve al menú principal o login
+            }
+        }
+
+        private void btnCargarArchivo_Click(object sender, EventArgs e) //boto per carregar l'arxiu txt
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Seleccionar fichero de vuelos";
+            ofd.Filter = "Archivos de Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string path = ofd.FileName;
+                FlightPlanList nueva = new FlightPlanList();
+                int r = nueva.CargarLista(path);
+                if (r == 0)
+                {
+                    miLista = nueva;
+                    // Limpiar panel y recargar
+                    panel1.Controls.Clear();
+                    EspacioAereo_Load(this, EventArgs.Empty);
+                    MessageBox.Show("Fichero cargado correctamente.");
+                }
+                else if (r == -1)
+                {
+                    MessageBox.Show("No se encontró el fichero.");
+                }
+                else
+                {
+                    MessageBox.Show("Error leyendo fichero (formato incorrecto).");//missatge en cas d'error
+                }
+            }
+        }
+
+
+
+        private void EspacioAereo_Load(object sender, EventArgs e)//boto per carregar l'espai aeri
         {
             try
             {
@@ -219,7 +285,7 @@ namespace Interfaz
             catch (Exception) { MessageBox.Show("Dades entrades no correctament"); }
         }
 
-        private void botonMover_Click(object sender, EventArgs e)
+        private void botonMover_Click(object sender, EventArgs e)//boto per moure una iteracio
         {
             bool b = miLista.LlegadoDestino();
             if (b == false)
@@ -230,11 +296,11 @@ namespace Interfaz
             }
             else
             {
-                MessageBox.Show("Tots els avions han arribat al seu destí.");
+                MessageBox.Show("Tots els avions han arribat al seu destí.");//quan arriben, ja no es mouen mes
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)//boto per dibuixar l'elipse (dist seguretat) al voltant de l'avio
         {
             //Draw the line
             try
@@ -266,18 +332,18 @@ namespace Interfaz
 
         }
 
-        private void simularAut_Click(object sender, EventArgs e)
+        private void simularAut_Click(object sender, EventArgs e)//boto per comencar la simulacio automatica
         {
             Reloj.Interval = 100;
             Reloj.Start();
         }
 
-        private void Parar_Click(object sender, EventArgs e)
+        private void Parar_Click(object sender, EventArgs e)//boto per parar la simulacio
         {
             Reloj.Stop();
         }
 
-        private void Reloj_Tick_1(object sender, EventArgs e)
+        private void Reloj_Tick_1(object sender, EventArgs e)//si han arribat, no fer res. sino, moure les iteracions automaticament
         {
             if (miLista.LlegadoDestino())
             {
@@ -298,8 +364,55 @@ namespace Interfaz
             
 
         }
+        private void Conflicte_Click(object sender, EventArgs e)//detectar si hi ha conflicte
+        {
+            try
+            {
+                if (miLista != null && miLista.NumElementosLista() >= 2)
+                {
+                    bool a = miLista.GetFlightPlan(0).PredecirConflicto(miLista.GetFlightPlan(1), distanciaSeguridad);
+                    if (a == true)
+                    {
+                        MessageBox.Show("Habrá conflicto en la trayectoria.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hi haurà perill");
+                    }
+                }
+            }
+            catch (Exception) { MessageBox.Show("Dades no entrades correctament: no es pot trobar cap conflicte"); }
+        }
 
-        private void ShowInfo_Click(object sender, EventArgs e)
+        private void botonVolver_Click_1(object sender, EventArgs e)//boto per tornar
+        {
+            this.Close();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonRestart_Click(object sender, EventArgs e)//boto per reiniciar la simulacio
+        {
+            Reiniciar();
+        }
+        private void Retroceder_Click(object sender, EventArgs e) //tirar una iteracio endarrere
+        {
+            if (s.Count > 0)
+            {
+                miLista = s.Pop();
+                panel1.Controls.Clear();
+                EspacioAereo_Load(this, EventArgs.Empty);
+            }
+
+
+        }
+
+
+
+        private void ShowInfo_Click(object sender, EventArgs e)//quan es clica sobre un avio, s'obre el grid amb la info
         {
             try
             {
@@ -337,109 +450,8 @@ namespace Interfaz
             }
         }
 
-        private void botonVolver_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ButtonRestart_Click(object sender, EventArgs e)
-        {
-            Reiniciar();
-        }
-        private void Conflicte_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (miLista != null && miLista.NumElementosLista() >= 2)
-                {
-                    bool a = miLista.GetFlightPlan(0).PredecirConflicto(miLista.GetFlightPlan(1), distanciaSeguridad);
-                    if (a == true)
-                    {
-                        MessageBox.Show("Habrá conflicto en la trayectoria.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("No hi haurà perill");
-                    }
-                }
-            }
-            catch (Exception) { MessageBox.Show("Dades no entrades correctament: no es pot trobar cap conflicte"); }
-        }
-
-        public void Reiniciar()
-        {
-            Reloj.Stop();
-            // Quitar todos los controles (vuelos, destinos, etc.)
-            panel1.Controls.Clear();
-
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-                FlightPlan plan = miLista.GetFlightPlan(i);
-                plan.Restart();
-            }
-            s.Clear(); // Limpiar la pila de estados
-            // Volver a cargar los vuelos
-            EspacioAereo_Load(this, EventArgs.Empty);
-            MessageBox.Show("Es reinicia l'espai aeri");
-        }
-
-        public void MoverFlightPlans(FlightPlanList miLista, int tiempo)
-        {
-            if (miLista == null) return;
-            FlightPlanList backUpList = miLista.GiveLista();
-            s.Push(backUpList);
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-                // Representar vuelo de la posición i
-                PictureBox p = new PictureBox();
-
-                // Tamaño del elemento
-                p.Width = 10;
-                p.Height = 10;
-                p.ClientSize = new Size(10, 10);
-
-                FlightPlan plan = miLista.GetFlightPlan(i);
-                plan.Mover(tiempo);
-                int x = (int)(plan.GetCurrentPosition().GetX() * panel1.Width / 500.0);
-                int y = (int)((plan.GetCurrentPosition().GetY() * panel1.Height / 500.0));
-                vuelos[i].Location = new Point(x - p.Width / 2, y - p.Height / 2);
-                panel1.Invalidate();
-
-            }
-        }
-
-        public void BucleConflicto(bool a)
-        {
-            if (miLista == null) return;
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-                FlightPlan plan = miLista.GetFlightPlan(i);
-                for (int j = i + 1; j < miLista.NumElementosLista(); j++)
-                {
-                    FlightPlan plan2 = miLista.GetFlightPlan(j);
-                    double dist = plan.DistanceTo(plan2);
-                    a = (plan.DistanceTo(plan2) < distanciaSeguridad);
-                    if (a)
-                    {
-                        Reloj.Stop();
-                        MessageBox.Show("¡Conflicto detectado! La distancia entre los aviones es de " + dist.ToString("F2") + " unidades.");
-                        break;
-                    }
-                }
-                if (a)
-                {
-                    Reloj.Stop();
-                    break;
-                }
-            }
-        }
-
-        private void guardarBtn_Click(object sender, EventArgs e)
+        private void guardarBtn_Click(object sender, EventArgs e) //guardar la llisat de vols en un txt
         {
             Reloj.Stop();
 
@@ -458,17 +470,7 @@ namespace Interfaz
 
             //Reloj.Start();
         }
-        private void Retroceder_Click(object sender, EventArgs e)
-        {
-            if (s.Count > 0)
-            {
-                miLista = s.Pop();
-                panel1.Controls.Clear();
-                EspacioAereo_Load(this, EventArgs.Empty);
-            }
 
-
-        }
 
         private void labelUsuario2_Click(object sender, EventArgs e)
         {

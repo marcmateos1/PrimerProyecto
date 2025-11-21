@@ -20,7 +20,7 @@ namespace FlightLib
             this.y = y;
         }
 
-        // Metodos
+        // Metodos GETS
 
         public double GetX()
         { return x; }
@@ -28,6 +28,7 @@ namespace FlightLib
         public double GetY()
         { return y; }
 
+        //metode distnacia
         public double Distancia(Position b)
         // retorna la distancia entre los dos Postion
         {

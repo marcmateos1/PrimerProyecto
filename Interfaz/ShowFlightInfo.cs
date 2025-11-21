@@ -19,12 +19,13 @@ namespace Interfaz
             InitializeComponent();
         }
 
-        public void SetFlightPlan(FlightPlan f)
+        public void SetFlightPlan(FlightPlan f) //determina el flightplan a utilitzar
         {
             this.myFlight = f;
         }
 
-        public void ShowFlightInfo_Load(object  sender, EventArgs e)
+        public void ShowFlightInfo_Load(object  sender, EventArgs e) //mostrar les coordenaeds X i Y i la velocitat al flightplan
+
         {
             //Determinar les coordenaeds X i Y i la velocitat al flightplan
             Xbox.Text = Convert.ToString(myFlight.GetCurrentPosition().GetX());

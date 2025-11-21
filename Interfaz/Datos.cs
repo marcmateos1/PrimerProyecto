@@ -30,13 +30,6 @@ namespace InterfazDatos
             }
         }
 
-        private void Datos_Load(object sender, EventArgs e)
-        {
-            {
-                
-            }
-        }
-
         private void BCompilar_Click_1(object sender, EventArgs e)
         {
             try
