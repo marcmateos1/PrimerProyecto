@@ -41,7 +41,7 @@
             buttonIniciarSesion = new Button();
             textContraseña = new TextBox();
             labelContraseña = new Label();
-            textInicioSesion = new TextBox();
+            textUsuario = new TextBox();
             labelInicioSesion = new Label();
             panelRegistro.SuspendLayout();
             panelInicioSesion.SuspendLayout();
@@ -88,7 +88,6 @@
             NuevaContraseña.Size = new Size(125, 27);
             NuevaContraseña.TabIndex = 3;
             NuevaContraseña.UseSystemPasswordChar = true;
-            //NuevaContraseña.TextChanged += this.NuevaContraseña_TextChanged;
             // 
             // textNuevoUsuario
             // 
@@ -121,7 +120,7 @@
             panelInicioSesion.Controls.Add(buttonIniciarSesion);
             panelInicioSesion.Controls.Add(textContraseña);
             panelInicioSesion.Controls.Add(labelContraseña);
-            panelInicioSesion.Controls.Add(textInicioSesion);
+            panelInicioSesion.Controls.Add(textUsuario);
             panelInicioSesion.Controls.Add(labelInicioSesion);
             panelInicioSesion.Location = new Point(62, 31);
             panelInicioSesion.Name = "panelInicioSesion";
@@ -165,12 +164,13 @@
             labelContraseña.TabIndex = 2;
             labelContraseña.Text = "Contraseña:";
             // 
-            // textInicioSesion
+            // textUsuario
             // 
-            textInicioSesion.Location = new Point(155, 110);
-            textInicioSesion.Name = "textInicioSesion";
-            textInicioSesion.Size = new Size(125, 27);
-            textInicioSesion.TabIndex = 1;
+            textUsuario.Location = new Point(155, 110);
+            textUsuario.Name = "textUsuario";
+            textUsuario.Size = new Size(125, 27);
+            textUsuario.TabIndex = 1;
+            textUsuario.TextChanged += textInicioSesion_TextChanged;
             // 
             // labelInicioSesion
             // 
@@ -205,7 +205,7 @@
         private Label labelInicioSesion;
         private TextBox textContraseña;
         private Label labelContraseña;
-        private TextBox textInicioSesion;
+        private TextBox textUsuario;
         private Button buttonRegistrarse;
         private Button buttonIniciarSesion;
         private Button buttonCancelarRegistro;

@@ -18,8 +18,8 @@ namespace Interfaz
         {
             InitializeComponent();
 
-            string userFile = Path.Combine(Environment.CurrentDirectory, "users.txt");
-            users = new UserList(userFile);
+            string dbFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "users.db"); // misma ruta que Program.cs
+            users = new UserList(dbFile);
 
             panelInicioSesion.Visible = true;
             panelRegistro.Visible = false;
@@ -28,7 +28,7 @@ namespace Interfaz
         // Iniciar sesión
         private void buttonIniciarSesion_Click(object sender, EventArgs e)
         {
-            string user = textInicioSesion.Text.Trim();
+            string user = textUsuario.Text.Trim();
             string pass = textContraseña.Text;
 
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
@@ -38,20 +38,19 @@ namespace Interfaz
                 return;
             }
 
+            // Conecta con la base de datos
+
             if (users.Authenticate(user, pass))
             {
-                MessageBox.Show("Inicio de sesión correcto.", "OK",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Abrir el menú principal
+                MessageBox.Show("Login correcto");
+                // Aquí abrirías el menú principal
                 Principal menu = new Principal();
                 menu.Show();
-
                 this.Hide(); // Oculta el login
             }
             else
             {
-                MessageBox.Show("Usuario o contraseña incorrectos.", "Error",
+                MessageBox.Show("Usuario o contraseña incorrectos", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -103,9 +102,12 @@ namespace Interfaz
                 return;
             }
 
-            // Crear usuario y guardar
             users.AddUser(new User(user, pass));
-            users.SaveToFile();
+
+            MessageBox.Show("Usuario creado correctamente.", "Registro",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
 
             MessageBox.Show("Usuario creado correctamente.", "Registro",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -114,8 +116,13 @@ namespace Interfaz
             panelRegistro.Visible = false;
             panelInicioSesion.Visible = true;
 
-            textInicioSesion.Text = user;
+            textUsuario.Text = user;
             textContraseña.Text = "";
+        }
+
+        private void textInicioSesion_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

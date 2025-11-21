@@ -1,110 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
+
+
+
+
+
+
+
+
 
 namespace Interfaz
 {
     public class UserList
     {
-        List<User> list = new List<User>();
-        string filePath;
+        private SQLiteConnection cnx;
 
-        public UserList(string storageFile)
+        // Constructor → abre la BD
+        public UserList(string dbFile)
         {
-            filePath = storageFile;
-            LoadFromFile();
+            string dataSource = "Data Source=" + dbFile;
+            cnx = new SQLiteConnection(dataSource);
+            cnx.Open();
         }
 
-        public void AddUser(User u)
-        {
-            list.Add(u);
-        }
-
-        public int Count()
-        {
-            return list.Count;
-        }
-
-        public User Get(int i)
-        {
-            return list[i];
-        }
-
+        // Comprueba si existe usuario
         public bool UsernameExists(string username)
         {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].GetUsername() == username) return true;
-            }
-            return false;
+            string sql = $"SELECT 1 FROM users WHERE username='{Escape(username)}' LIMIT 1;";
+            SQLiteDataAdapter adp = new SQLiteDataAdapter(sql, cnx);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+
+            return dt.Rows.Count > 0;
         }
 
+        // Añadir usuario
+        public void AddUser(User u)
+        {
+            string sql = $"INSERT INTO users (username, password) VALUES ('{Escape(u.GetUsername())}', '{Escape(u.GetPassword())}');";
+            SQLiteCommand cmd = new SQLiteCommand(sql, cnx);
+            cmd.ExecuteNonQuery();
+        }
+
+        // Validar login
         public bool Authenticate(string username, string password)
         {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].GetUsername() == username && list[i].GetPassword() == password)
-                    return true;
-            }
-            return false;
+            string sql = $"SELECT 1 FROM users WHERE username='{Escape(username)}' AND password='{Escape(password)}' LIMIT 1;";
+            SQLiteDataAdapter adp = new SQLiteDataAdapter(sql, cnx);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+
+            return dt.Rows.Count > 0;
         }
 
-        public void SaveToFile()
-        {
-            try
-            {
-                StreamWriter w = new StreamWriter(filePath, false);
-                for (int i = 0; i < list.Count; i++)
-                {
-                    //sername password
-                    w.WriteLine(list[i].GetUsername() + " " + list[i].GetPassword());
-                }
-                w.Close();
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        public void LoadFromFile()
-        {
-            list.Clear();
-            try
-            {
-                if (!File.Exists(filePath))
-                {
-                    // Para crear fichero vacío
-                    StreamWriter sw = new StreamWriter(filePath);
-                    sw.Close();
-                    return;
-                }
-
-                StreamReader r = new StreamReader(filePath);
-                string line = r.ReadLine();
-                while (line != null)
-                {
-                    line = line.Trim();
-                    if (line.Length > 0)
-                    {
-                        string[] parts = line.Split(' ');
-                        if (parts.Length >= 2)
-                        {
-                            string user = parts[0];
-                            string pass = parts[1];
-                            User u = new User(user, pass);
-                            list.Add(u);
-                        }
-                    }
-                    line = r.ReadLine();
-                }
-                r.Close();
-            }
-            catch (Exception)
-            {
-                
-            }
-        }
+        // Evita errores con comillas
+        private string Escape(string s) => s.Replace("'", "''");
     }
 }
