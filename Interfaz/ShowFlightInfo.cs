@@ -26,9 +26,9 @@ namespace Interfaz
 
         public void ShowFlightInfo_Load(object  sender, EventArgs e)
         {
-            //determinar les coordenaeds X i Y i la velocitat al flightplan
+            //Determinar les coordenaeds X i Y i la velocitat al flightplan
             Xbox.Text = Convert.ToString(myFlight.GetCurrentPosition().GetX());
-            Ybox.Text = Convert.ToString(myFlight.GetCurrentPosition().GetX());
+            Ybox.Text = Convert.ToString(myFlight.GetCurrentPosition().GetY());
             Velocitybox.Text = Convert.ToString(myFlight.GetVelocidad());
         }
 

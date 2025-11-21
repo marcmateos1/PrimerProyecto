@@ -30,6 +30,7 @@
         private void InitializeComponent()
         {
             panelRegistro = new Panel();
+            label2 = new Label();
             buttonCancelarRegistro = new Button();
             buttonCrearUsuario = new Button();
             NuevaContraseña = new TextBox();
@@ -37,29 +38,44 @@
             labelNuevaContraseña = new Label();
             labelNuevoUsuario = new Label();
             panelInicioSesion = new Panel();
+            label3 = new Label();
             buttonRegistrarse = new Button();
             buttonIniciarSesion = new Button();
             textContraseña = new TextBox();
             labelContraseña = new Label();
             textUsuario = new TextBox();
             labelInicioSesion = new Label();
+            label1 = new Label();
             panelRegistro.SuspendLayout();
             panelInicioSesion.SuspendLayout();
             SuspendLayout();
             // 
             // panelRegistro
             // 
+            panelRegistro.Controls.Add(label2);
             panelRegistro.Controls.Add(buttonCancelarRegistro);
             panelRegistro.Controls.Add(buttonCrearUsuario);
             panelRegistro.Controls.Add(NuevaContraseña);
             panelRegistro.Controls.Add(textNuevoUsuario);
             panelRegistro.Controls.Add(labelNuevaContraseña);
             panelRegistro.Controls.Add(labelNuevoUsuario);
-            panelRegistro.Location = new Point(424, 31);
+            panelRegistro.Location = new Point(424, 111);
             panelRegistro.Name = "panelRegistro";
-            panelRegistro.Size = new Size(345, 374);
+            panelRegistro.Size = new Size(345, 294);
             panelRegistro.TabIndex = 0;
             panelRegistro.Visible = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Rubik", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(122, 44);
+            label2.Name = "label2";
+            label2.RightToLeft = RightToLeft.Yes;
+            label2.Size = new Size(112, 24);
+            label2.TabIndex = 6;
+            label2.Text = "REGISTRO";
+            label2.Click += label2_Click;
             // 
             // buttonCancelarRegistro
             // 
@@ -116,16 +132,29 @@
             // 
             // panelInicioSesion
             // 
+            panelInicioSesion.Controls.Add(label3);
             panelInicioSesion.Controls.Add(buttonRegistrarse);
             panelInicioSesion.Controls.Add(buttonIniciarSesion);
             panelInicioSesion.Controls.Add(textContraseña);
             panelInicioSesion.Controls.Add(labelContraseña);
             panelInicioSesion.Controls.Add(textUsuario);
             panelInicioSesion.Controls.Add(labelInicioSesion);
-            panelInicioSesion.Location = new Point(62, 31);
+            panelInicioSesion.Location = new Point(50, 111);
             panelInicioSesion.Name = "panelInicioSesion";
-            panelInicioSesion.Size = new Size(327, 374);
+            panelInicioSesion.Size = new Size(327, 294);
             panelInicioSesion.TabIndex = 1;
+            panelInicioSesion.Paint += panelInicioSesion_Paint;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Rubik", 11.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(91, 44);
+            label3.Name = "label3";
+            label3.Size = new Size(153, 24);
+            label3.TabIndex = 6;
+            label3.Text = "INICIO SESIÓN";
+            label3.Click += label3_Click;
             // 
             // buttonRegistrarse
             // 
@@ -181,11 +210,24 @@
             labelInicioSesion.TabIndex = 0;
             labelInicioSesion.Text = "Usuario:";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Font = new Font("Sitka Banner", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(222, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(368, 89);
+            label1.TabIndex = 2;
+            label1.Text = "BIENVENUTI";
+            label1.Click += label1_Click;
+            // 
             // InicioSesionRegistro
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(panelInicioSesion);
             Controls.Add(panelRegistro);
             Name = "InicioSesionRegistro";
@@ -195,10 +237,13 @@
             panelInicioSesion.ResumeLayout(false);
             panelInicioSesion.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
 
         #endregion
+
+        //Components trets de la Toolbox:
 
         private Panel panelRegistro;
         private Panel panelInicioSesion;
@@ -214,5 +259,8 @@
         private TextBox textNuevoUsuario;
         private Label labelNuevaContraseña;
         private Label labelNuevoUsuario;
+        private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }

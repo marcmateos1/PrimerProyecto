@@ -9,17 +9,19 @@ namespace Interfaz
     public class User
     {
 
-        //Atributos
+        //Atributs
 
         string username;
         string password;
 
+        //Constructor
         public User(string username, string password)
         {
             this.username = username;
             this.password = password;
         }
 
+        //Mètodes
         public string GetUsername() 
             { return this.username; }
         public string GetPassword() 
