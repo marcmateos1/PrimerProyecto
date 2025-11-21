@@ -11,7 +11,7 @@ namespace FlightLib
         // Atributos
 
         string id; // identificador
-        Position currentPosition; // posicion actual
+        Position currentPosition; // posicion actuall
         Position initalPosition;
         Position finalPosition; // posicion final
         double velocidad;
