@@ -19,12 +19,12 @@ namespace Interfaz
         {
             InitializeComponent();
         }
-        public void SetData(FlightPlanList miLista, FlightPlan plan)
+        public void SetData(FlightPlanList miLista, FlightPlan plan) //carregar les dades i indicar quines farem servir
         {
             this.miLista = miLista;
             this.plan = plan;
         }
-        public void ShowDistancePlans_Load()
+        public void ShowDistancePlans_Load() 
         {
             //crear l'estil i mides del grid 
             Taula2.RowCount = miLista.NumElementosLista();

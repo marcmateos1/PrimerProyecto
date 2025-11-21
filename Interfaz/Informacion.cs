@@ -62,7 +62,7 @@ namespace Interfaz
             }
         }
 
-        public FlightPlanList MyList()
+        public FlightPlanList MyList() //retorna la llista
         {
             return list;
         }

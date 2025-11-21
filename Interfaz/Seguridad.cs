@@ -21,7 +21,7 @@ namespace Interfaz
             InitializeComponent();
             this.principal = principal;
         }
-        private void Seguridad_Load(object sender, EventArgs e)
+        private void Seguridad_Load(object sender, EventArgs e)//carregar les dades a entrar
         {
             if (principal.tiempoCiclo != 0 && principal.distanciaSeguridad != 0)
             {

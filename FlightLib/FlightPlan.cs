@@ -87,11 +87,7 @@ namespace FlightLib
             return currentPosition.Distancia(finalPosition);
         }
 
-
-
-
-
-
+        //FUNCIONS I METODES DE LA CLASSE FLIGHTPLAN
         public void Mover(double tiempo)
         // Mueve el vuelo a la posición correspondiente a viajar durante el tiempo que se recibe como parámetro
         {
@@ -124,12 +120,39 @@ namespace FlightLib
 
         }
 
+        public double DistanceTo(FlightPlan plan)
+        {
+            Position p1 = this.currentPosition;
+            Position p2 = plan.currentPosition;
+
+            double distance = p1.Distancia(p2); //Calcula la distancia entre dos vuelos
+            return distance;
+        }
         // Hacer un metodo que diga si un vuelo ha llegado a su destino
         public bool HasArrived()
         {
             return currentPosition.GetX() == finalPosition.GetX() &&
            currentPosition.GetY() == finalPosition.GetY();
         }
+
+
+        public int ReducirVelocidad(FlightPlan plan2, double distanciaSeguridad)
+        {
+            double velocidad_0 = plan2.GetVelocidad();
+            while (this.PredecirConflicto(plan2, distanciaSeguridad))
+            {
+                double nuevaVelocidad = this.velocidad * 0.99; //Reduce la velocidad de un vuelo de 1% en 1% hasta que ya no haya conflicto
+                this.velocidad = nuevaVelocidad;
+                double dist = this.DistanceTo(plan2);
+                if (nuevaVelocidad < 10e-10)
+                {
+                    plan2.SetVelocidad(velocidad_0);
+                    return 0;
+                }
+            }
+            return 1;
+        }
+
 
         // Hacer que el programa principal lea datos de dos vuelos y una distancia de seguidad y detecte el conflicto cuándo los vuelos están mas cerca de esa distancia
         public bool Conflicto(double currentDist, double distanciaSeguridad)
@@ -142,70 +165,15 @@ namespace FlightLib
             return conclicto;
         }
 
-        public void EscribeConsola()
-        // escribe en consola los datos del plan de vuelo
-        {
-            Console.WriteLine("******************************");
-            Console.WriteLine("Datos del vuelo: ");
-            Console.WriteLine("Identificador: {0}", id);
-            Console.WriteLine("Compañía: {0}", compania);
-            Console.WriteLine("Velocidad: {0:F2}", velocidad);
-            Console.WriteLine("Posición actual: ({0:F2}, {1:F2})", currentPosition.GetX(), currentPosition.GetY());
-            Console.WriteLine("Distancia restante: {0:F2}", GetDistanciaRestante());
-            if (this.HasArrived())
-                Console.WriteLine("Ha llegado al destino");
-            Console.WriteLine("******************************");
-        }
-
-        public void Restart()
-        {
-            // Reinicia la posición actual a la posición inicial
-            this.currentPosition = new Position(this.initalPosition.GetX(), this.initalPosition.GetY());
-        }
-
-        public double DistanceTo(FlightPlan plan)
-        {
-            Position p1=this.currentPosition;
-            Position p2=plan.currentPosition;
-
-            double distance = p1.Distancia(p2); //Calcula la distancia entre dos vuelos
-            return distance;
-        }
-        public FlightPlan Clone()
-        {
-            // Creamos copias nuevas de las posiciones (para no compartir las mismas referencias)
-            Position copiaCurrent = new Position(this.currentPosition.GetX(), this.currentPosition.GetY());
-            Position copiaInitial = new Position(this.initalPosition.GetX(), this.initalPosition.GetY());
-            Position copiaFinal = new Position(this.finalPosition.GetX(), this.finalPosition.GetY());
-
-            // Creamos un nuevo FlightPlan con los mismos datos
-            FlightPlan clon;
-
-            // Si company está vacía, usar constructor antiguo (para compatibilidad). Si no, usar el de 7 parámetros.
-            if (this.compania == null || this.compania == "")
-            {
-                clon = new FlightPlan(this.id, copiaCurrent.GetX(), copiaCurrent.GetY(), copiaFinal.GetX(), copiaFinal.GetY(), this.velocidad);
-            }
-            else
-            {
-                clon = new FlightPlan(this.id, copiaCurrent.GetX(), copiaCurrent.GetY(), copiaFinal.GetX(), copiaFinal.GetY(), this.velocidad,  this.compania);
-            }
-            // Sobrescribimos las posiciones con las copias
-            clon.currentPosition = copiaCurrent;
-            clon.initalPosition = copiaInitial;
-            clon.finalPosition = copiaFinal;
-
-            return clon;
-        }
         public bool PredecirConflicto(FlightPlan plan2, double distanciaSeguridad)
         {
             //Predice si habrà conflicto segun la formula analitica de la distancia derivada, que da una parabola con la distancia minima que habrà durante la simulacion.
-            Position pa0 = this.initalPosition; 
-            Position paF = this.finalPosition; 
+            Position pa0 = this.initalPosition;
+            Position paF = this.finalPosition;
             double dA = pa0.Distancia(paF);
             double tA = dA / (this.velocidad / 60); //minuts
-            double vaX = (this.velocidad / 60)* (paF.GetX() - pa0.GetX()) / dA;
-            double vaY = (this.velocidad / 60)* (paF.GetY() - pa0.GetY()) / dA;
+            double vaX = (this.velocidad / 60) * (paF.GetX() - pa0.GetX()) / dA;
+            double vaY = (this.velocidad / 60) * (paF.GetY() - pa0.GetY()) / dA;
 
             Position pb0 = plan2.initalPosition;
             Position pbF = plan2.finalPosition;
@@ -219,10 +187,10 @@ namespace FlightLib
             double vX = vaX - vbX;
             double vY = vaY - vbY;
 
-            double a = vX * vX + vY * vY; 
+            double a = vX * vX + vY * vY;
             double b = 2 * (x0 * vX + y0 * vY);
 
-            if (Math.Abs(a) == 0) 
+            if (Math.Abs(a) == 0)
             {
                 return pa0.Distancia(pb0) < distanciaSeguridad;
             }
@@ -255,21 +223,55 @@ namespace FlightLib
             return pa_min.Distancia(pb_min) < distanciaSeguridad;
         }
 
-        public int ReducirVelocidad(FlightPlan plan2, double distanciaSeguridad)
+        public void EscribeConsola()
+        // escribe en consola los datos del plan de vuelo
         {
-            double velocidad_0 = plan2.GetVelocidad();
-            while (this.PredecirConflicto(plan2, distanciaSeguridad))
-            {
-                double nuevaVelocidad = this.velocidad * 0.99; //Reduce la velocidad de un vuelo de 1% en 1% hasta que ya no haya conflicto
-                this.velocidad = nuevaVelocidad;
-                double dist = this.DistanceTo(plan2);
-                if (nuevaVelocidad < 10e-10)
-                {
-                    plan2.SetVelocidad(velocidad_0);
-                    return 0;
-                }
-            }
-            return 1;
+            Console.WriteLine("******************************");
+            Console.WriteLine("Datos del vuelo: ");
+            Console.WriteLine("Identificador: {0}", id);
+            Console.WriteLine("Compañía: {0}", compania);
+            Console.WriteLine("Velocidad: {0:F2}", velocidad);
+            Console.WriteLine("Posición actual: ({0:F2}, {1:F2})", currentPosition.GetX(), currentPosition.GetY());
+            Console.WriteLine("Distancia restante: {0:F2}", GetDistanciaRestante());
+            if (this.HasArrived())
+                Console.WriteLine("Ha llegado al destino");
+            Console.WriteLine("******************************");
         }
+
+        public void Restart()
+        {
+            // Reinicia la posición actual a la posición inicial
+            this.currentPosition = new Position(this.initalPosition.GetX(), this.initalPosition.GetY());
+        }
+
+
+        public FlightPlan Clone()
+        {
+            // Creamos copias nuevas de las posiciones (para no compartir las mismas referencias)
+            Position copiaCurrent = new Position(this.currentPosition.GetX(), this.currentPosition.GetY());
+            Position copiaInitial = new Position(this.initalPosition.GetX(), this.initalPosition.GetY());
+            Position copiaFinal = new Position(this.finalPosition.GetX(), this.finalPosition.GetY());
+
+            // Creamos un nuevo FlightPlan con los mismos datos
+            FlightPlan clon;
+
+            // Si company está vacía, usar constructor antiguo (para compatibilidad). Si no, usar el de 7 parámetros.
+            if (this.compania == null || this.compania == "")
+            {
+                clon = new FlightPlan(this.id, copiaCurrent.GetX(), copiaCurrent.GetY(), copiaFinal.GetX(), copiaFinal.GetY(), this.velocidad);
+            }
+            else
+            {
+                clon = new FlightPlan(this.id, copiaCurrent.GetX(), copiaCurrent.GetY(), copiaFinal.GetX(), copiaFinal.GetY(), this.velocidad,  this.compania);
+            }
+            // Sobrescribimos las posiciones con las copias
+            clon.currentPosition = copiaCurrent;
+            clon.initalPosition = copiaInitial;
+            clon.finalPosition = copiaFinal;
+
+            return clon;
+        }
+
+
     }
 }

@@ -14,7 +14,7 @@ namespace FlightLib
         FlightPlan[] vector= new FlightPlan[10];
         int number = 0;
 
-        private void EnsureCapacity()
+        private void EnsureCapacity() //mirar la llargada de la llista
         {
             if (number >= vector.Length)
             {
@@ -24,12 +24,13 @@ namespace FlightLib
             }
         }
 
-
         public void Clean()
         {
             this.vector = new FlightPlan[10];
             number = 0; //borra todos los elementos de la lista
         }
+
+        //metode per afegir un flightplan a la llista
         public int AddFlightPlan(FlightPlan p)
         {
             EnsureCapacity();
@@ -37,11 +38,11 @@ namespace FlightLib
             number = number + 1;
             return 0;
         }
-        public int NumElementosLista()
+        public int NumElementosLista() //retorna la llargada de la llista
         {
             return number;
         }
-        public FlightPlan GetFlightPlan(int i)
+        public FlightPlan GetFlightPlan(int i) //metode getflightplan (get d'un valor de la llista)
         {
             if (i<0 || i >= number)
             {
@@ -52,27 +53,48 @@ namespace FlightLib
                 return vector[i]; //Retorna el plan en la posicion dada como parametro
             }
         }
-        public void Mover(double tiempo)
-        {
-            int i = 0;
-            while (i < number)
-            {
-                vector[i].Mover(tiempo); //Mueve según la formula de MRU
-                i++;
-            }
-        }
-
-        public FlightPlan SearchID(string ID)
+        public FlightPlan SearchID(string ID)//Busca segun la ID del avion, y cuando lo encuentra lo devuelve y acaba el bucle
         {
             for (int i = 0; i < number; i++)
             {
                 if (vector[i].GetId() == ID)
                 {
-                    return vector[i]; //Busca segun la ID del avion, y cuando lo encuentra lo devuelve y acaba el bucle
+                    return vector[i];
                 }
             }
             return null;
         }
+
+
+        //ALTRES METODES DE LA CLASSE FLIGHTPLANLIST
+
+        public void Mover(double tiempo) //metode per moure es flightplans
+        {
+            int i = 0;
+            while (i < number)
+            { 
+                vector[i].Mover(tiempo); //Mueve según la formula de MRU
+                i++;
+            }
+        }
+
+        public bool LlegadoDestino() //saber quan tots els avions arriben al desti
+        {
+            int llegado = 0;
+            for (int i = 0; i < number; i++)
+            {
+                if (this.GetFlightPlan(i).GetCurrentPosition() == this.GetFlightPlan(i).GetFinalPosition())
+                {
+                    llegado++;
+                }
+            }
+            if (llegado == number) //Todos los aviones han llegado, es decir, su posicion actual es la final
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void EscribeConsola()
         {
             int i = 0;
@@ -83,7 +105,9 @@ namespace FlightLib
             }
         }
 
-        public int CargarLista(string filename)
+
+        //METODES AMB RELACIO A FLIGHTPLANS EN UN ARXIU TXT
+        public int CargarLista(string filename) //carrega la llista de flightplans des dun arxiu txt
         {
             try //Comprueba que existe un archivo con ese nombre o con el formato adecuado
             {
@@ -117,7 +141,7 @@ namespace FlightLib
             }
         }
 
-        public void GuardarPlan(string filename)
+        public void GuardarPlan(string filename)//guarda el flightplan a larxiu
         {
             StreamWriter w = new StreamWriter(filename + ".txt"); //Guarda el archivo con este nombre.
             for (int i = 0; i < number; i++)
@@ -127,25 +151,9 @@ namespace FlightLib
             w.Close(); //Escribe cada avion en una linea diferente con sus parametros separados por espacio. La posicion inicial de los aviones guardados es la actual que tenian, para poder seguir donde lo dejastes.
         }
 
-        public bool LlegadoDestino()
+
+        public FlightPlanList GiveLista() //Crea un objeto nuevo con los mismos valores para tener un backup de la lista original
         {
-            int llegado = 0;
-            for (int i = 0; i < number; i++)
-            {
-                if (this.GetFlightPlan(i).GetCurrentPosition() == this.GetFlightPlan(i).GetFinalPosition())
-                {
-                    llegado++;
-                }
-            }
-            if (llegado == number) //Todos los aviones han llegado, es decir, su posicion actual es la final
-            {
-                return true;
-            }
-            return false;
-        }
-        public FlightPlanList GiveLista()
-        {
-            //Crea un objeto nuevo con los mismos valores para tener un backup de la lista original
             FlightPlanList clon = new FlightPlanList();
             for (int i = 0; i < this.number; i++)
             {

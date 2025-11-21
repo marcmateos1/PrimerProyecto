@@ -26,13 +26,13 @@ namespace Interfaz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //boto de si (per resoldre el conflicte)
+            //boto de SI (per resoldre el conflicte)
             this.DialogResult = DialogResult.Yes;
             this.Close();
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            //boto de no (deixarho com esta)
+            //boto de NO (deixarho com esta)
             this.DialogResult = DialogResult.No;
             this.Close();
         }

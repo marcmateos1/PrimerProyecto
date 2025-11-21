@@ -56,7 +56,7 @@ namespace Interfaz
             }
         }
 
-        // Registro
+        // Registre
 
         private void buttonRegistrarse_Click(object sender, EventArgs e)
         {
@@ -67,7 +67,7 @@ namespace Interfaz
             NuevaContraseña.Text = "";
         }
 
-        // Cancelar Registro
+        // Cancelar Registre
 
         private void buttonCancelarRegistro_Click(object sender, EventArgs e)
         {
@@ -75,7 +75,7 @@ namespace Interfaz
             panelInicioSesion.Visible = true;
         }
 
-        // Crear Usuario
+        // Crear Usuari
 
         private void buttonCrearUsuario_Click(object sender, EventArgs e)
         {

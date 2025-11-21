@@ -17,6 +17,8 @@ namespace Interfaz
             this.password = password;
         }
 
+
+        //metodes gets
         public string GetUsername() 
             { return this.username; }
         public string GetPassword() 
