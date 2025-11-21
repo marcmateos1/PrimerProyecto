@@ -14,6 +14,7 @@ namespace InterfazDatos
             this.principal = principal;
             if (lista.NumElementosLista() == 2)
             {
+                //atribuir cada textbox a un atribut de cada flight plan
                 TIdentificador.Text = lista.GetFlightPlan(0).GetId();
                 TVelocidad.Text = lista.GetFlightPlan(0).GetVelocidad().ToString();
                 TX0.Text = lista.GetFlightPlan(0).GetInitialPosition().GetX().ToString();
@@ -42,6 +43,7 @@ namespace InterfazDatos
             {
                 if (Convert.ToInt32(TVelocidad.Text) > 0 && Convert.ToInt32(TVelocidad2.Text) > 0)
                 {
+                    //afegir els valors a un flightpan, i despres a una flightplanlist reals
                     lista.Clean();
                     FlightPlan plan = new FlightPlan(TIdentificador.Text, Convert.ToDouble(TX0.Text), Convert.ToDouble(TY0.Text), Convert.ToDouble(TXF.Text), Convert.ToDouble(TYF.Text), Convert.ToDouble(TVelocidad.Text));
                     lista.AddFlightPlan(plan);
@@ -58,12 +60,13 @@ namespace InterfazDatos
             }
             catch
             {
-                MessageBox.Show("Error de formato.");
+                MessageBox.Show("Error de formato."); //per errors de format, no s'entren dades i es demana de tornarhi
             }
         }
 
         private void atajo_Click(object sender, EventArgs e)
         {
+            //tenim un boto "atajo" per fer mes rapid el provar el codi, amb uns valors ja predeterminats
             TIdentificador.Text = "Avion1";
             TY0.Text = "100";
             TX0.Text = "50";

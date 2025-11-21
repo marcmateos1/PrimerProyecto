@@ -26,6 +26,7 @@ namespace Interfaz
         }
         public void ShowDistancePlans_Load()
         {
+            //crear l'estil i mides del grid 
             Taula2.RowCount = miLista.NumElementosLista();
             Taula2.ColumnCount = 2;
             Taula2.ColumnHeadersVisible = false;
@@ -38,7 +39,7 @@ namespace Interfaz
             for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
                 FlightPlan otroplan = miLista.GetFlightPlan(i);
-                if (otroplan != plan)
+                if (otroplan != plan)//indicar els valors del cada cela del grid (a l'atribut corresponent)
                 {
                     double distancia = plan.DistanceTo(otroplan);
                     Taula2[0, j + 1].Value = (otroplan.GetId());

@@ -34,7 +34,7 @@ namespace Interfaz
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
                 MessageBox.Show("Rellena usuario y contraseña.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning); //retorna el missatge si no sha entrat correctament
                 return;
             }
 
