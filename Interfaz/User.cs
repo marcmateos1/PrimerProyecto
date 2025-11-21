@@ -8,6 +8,9 @@ namespace Interfaz
 {
     public class User
     {
+
+        //Atributos
+
         string username;
         string password;
 

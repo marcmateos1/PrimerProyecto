@@ -112,7 +112,7 @@ namespace Interfaz
             MessageBox.Show("Usuario creado correctamente.", "Registro",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Volver a pantalla de inicio de sesión
+            // Volver a pantalla de inicio de sesiónn
             panelRegistro.Visible = false;
             panelInicioSesion.Visible = true;
 
