@@ -30,6 +30,7 @@ namespace Interfaz
         {
             try
             {
+                //crear mides i disseny del datagridview
                 int j = this.miLista.NumElementosLista();
                 Taula.RowCount = j + 1;
                 Taula.ColumnCount = 5;
@@ -41,7 +42,7 @@ namespace Interfaz
                 Taula[2, 0].Value = ("PosicionInicial");
                 Taula[3, 0].Value = ("PosicionFinal");
                 Taula[4, 0].Value = ("PosicionActual");
-
+                //posar els valors al datagridview
                 for (int i = 0; i < j; i++)
                 {
                     FlightPlan plan = this.miLista.GetFlightPlan(i);
@@ -61,6 +62,7 @@ namespace Interfaz
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //nou forms quan es clica dins una cela
             int fila = e.RowIndex;
             if (fila != 0)
             {

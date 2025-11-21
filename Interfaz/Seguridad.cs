@@ -12,6 +12,7 @@ namespace Interfaz
 {
     public partial class Seguridad : Form
     {
+        //iniciar les dades
         Interfaz.Principal principal;
         int tiempoCiclo = 0;
         int distanciaSeguridad = 0;
@@ -31,6 +32,7 @@ namespace Interfaz
 
         private void botonDistancia_Click(object sender, EventArgs e)
         {
+            //posar els valors dels textbox al flightplan
             try
             {
                 if (Convert.ToInt32(textTiempo.Text) > 0 && Convert.ToInt32(textDistancia.Text) > 0)
@@ -55,6 +57,7 @@ namespace Interfaz
 
         private void botonAtajo_Click(object sender, EventArgs e)
         {
+            //boto atajo per anar mes rapid, que dona uns valors de base
             textDistancia.Text = "100";
             textTiempo.Text = "10";
         }

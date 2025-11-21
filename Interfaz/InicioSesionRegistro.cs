@@ -17,7 +17,7 @@ namespace Interfaz
         public InicioSesionRegistro()
         {
             InitializeComponent();
-
+            //iniciar variables
             string userFile = Path.Combine(Environment.CurrentDirectory, "users.txt");
             users = new UserList(userFile);
 
@@ -34,14 +34,14 @@ namespace Interfaz
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
                 MessageBox.Show("Rellena usuario y contraseña.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning); //retorna el missatge si no sha entrat correctament
                 return;
             }
 
             if (users.Authenticate(user, pass))
             {
                 MessageBox.Show("Inicio de sesión correcto.", "OK",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information); //sessio iniciada correctament
 
                 // Abrir el menú principal
                 Principal menu = new Principal();
@@ -52,7 +52,7 @@ namespace Interfaz
             else
             {
                 MessageBox.Show("Usuario o contraseña incorrectos.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Error); //missatge en cas d'error
             }
         }
 

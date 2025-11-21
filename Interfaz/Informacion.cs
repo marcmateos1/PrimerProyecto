@@ -19,6 +19,7 @@ namespace Interfaz
         int posicion;
         public Informacion(Interfaz.EspacioAereo espacioAereo, FlightPlanList list, int posicion)
         {
+            //iniciar el forms i inicialitzar les classes necessaries
             InitializeComponent();
             this.espacioAereo = espacioAereo;
             this.list = list;
@@ -27,7 +28,7 @@ namespace Interfaz
         private void Informacion_Load_1(object sender, EventArgs e)
         {
             FlightPlan plan = list.GetFlightPlan(posicion);
-
+            //posar tota la info al forms
             label1.Text = $"Id: {plan.GetId()}";
             velocidadBox.Text = Convert.ToString(plan.GetVelocidad());
             label3.Text = $"X actual: {plan.GetCurrentPosition().GetX():F2}";
@@ -47,6 +48,7 @@ namespace Interfaz
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //canviar la velocitat dins el forms
             try { 
             double speed = Convert.ToDouble(velocidadBox.Text);
             Console.WriteLine(speed);

@@ -13,11 +13,13 @@ namespace Interfaz
         }
         private void Interfaz_Load(object sender, EventArgs e)
         {
+            //creem el nou flightplanlist que es fara servir d'ara endvannt
             lista = new FlightPlanList();
         }
 
         private void introducirDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //obrir el forms de posar les dades
             InterfazDatos.Datos nuevoFormulario = new InterfazDatos.Datos(lista, this);
             nuevoFormulario.Show();
             //this.Hide();
@@ -25,12 +27,14 @@ namespace Interfaz
 
         private void seguridadToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            //obrir el forms de seguretat
             Seguridad nuevoFormulario = new Seguridad(this);
             nuevoFormulario.Show();
         }
 
         private void espacioAereoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            //obrir lespai aeri
             try
             {
                 EspacioAereo nuevoFormulario = new EspacioAereo(this);
@@ -46,6 +50,7 @@ namespace Interfaz
 
         private void cargarListaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //carregar els vols des del fixter txt
             OpenFileDialog nuevoFormulario = new OpenFileDialog();
             nuevoFormulario.Title = "Cargar Lista de Vuelos";
             nuevoFormulario.Filter = "Archivos de Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*"; //Muestra los archivos .txt

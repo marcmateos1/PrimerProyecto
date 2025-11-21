@@ -43,6 +43,7 @@ namespace Interfaz
 
         private void BtnLogout_Click(object sender, EventArgs e)
         {
+            //tancar sessio
             DialogResult r = MessageBox.Show(
                 "¿Quieres cerrar sesión?",
                 "Cerrar sesión",
