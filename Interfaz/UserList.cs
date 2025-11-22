@@ -6,60 +6,49 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 
-
-
-
-
-
-
-
-
 namespace Interfaz
 {
     public class UserList
     {
-        //Per a connecat amb la base de dades
-        private SQLiteConnection cnx;
 
-        // Constructor
-        public UserList(string dbFile)
+        private Database db;  // Guardamos referencia al Database
+
+
+        // Constructor que recibe la instancia de Database
+        public UserList(Database database)
         {
-            string dataSource = "Data Source=" + dbFile;
-            cnx = new SQLiteConnection(dataSource);
-            cnx.Open();
+            db = database;
         }
 
-        // Comprova si existeix l'usuari
+
+        // Comprueba si un nombre de usuario ya existe en la base de datos
         public bool UsernameExists(string username)
         {
-            string sql = $"SELECT 1 FROM users WHERE username='{Escape(username)}' LIMIT 1;";
-            SQLiteDataAdapter adp = new SQLiteDataAdapter(sql, cnx);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-
+            string sql = $"SELECT 1 FROM usuarios WHERE usuario='{Escape(username)}' LIMIT 1;";
+            DataTable dt = db.Select(sql);
             return dt.Rows.Count > 0;
         }
 
-        // Afegir usuari nou
+
+        // Añade un nuevo usuario a la base de datos
         public void AddUser(User u)
         {
-            string sql = $"INSERT INTO users (username, password) VALUES ('{Escape(u.GetUsername())}', '{Escape(u.GetPassword())}');";
-            SQLiteCommand cmd = new SQLiteCommand(sql, cnx);
-            cmd.ExecuteNonQuery();
+            string sql = $"INSERT INTO usuarios (usuario, contraseña) VALUES ('{Escape(u.GetUsername())}', '{Escape(u.GetPassword())}');";
+            db.Execute(sql);
         }
 
-        // Validar Inici de Sessió
-        public bool Authenticate(string username, string password)
+        public bool Authenticate(string username, string password) // Verifica las credenciales del usuario
         {
-            string sql = $"SELECT 1 FROM users WHERE username='{Escape(username)}' AND password='{Escape(password)}' LIMIT 1;";
-            SQLiteDataAdapter adp = new SQLiteDataAdapter(sql, cnx);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-
+            string sql = $"SELECT 1 FROM usuarios WHERE usuario='{Escape(username)}' AND contraseña='{Escape(password)}' LIMIT 1;";
+            DataTable dt = db.Select(sql);
             return dt.Rows.Count > 0;
         }
 
-        // Evita errors amb comilles
-        private string Escape(string s) => s.Replace("'", "''");
+        // Escapa caracteres especiales para evitar inyecciones SQL
+        private string Escape(string s)
+        {
+            string resultado = s.Replace("'", "''");
+            return resultado;
+        }
     }
 }

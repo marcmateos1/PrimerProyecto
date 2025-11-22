@@ -75,7 +75,6 @@
             label2.Size = new Size(112, 24);
             label2.TabIndex = 6;
             label2.Text = "REGISTRO";
-            label2.Click += label2_Click;
             // 
             // buttonCancelarRegistro
             // 
@@ -143,7 +142,6 @@
             panelInicioSesion.Name = "panelInicioSesion";
             panelInicioSesion.Size = new Size(327, 294);
             panelInicioSesion.TabIndex = 1;
-            panelInicioSesion.Paint += panelInicioSesion_Paint;
             // 
             // label3
             // 
@@ -154,7 +152,6 @@
             label3.Size = new Size(153, 24);
             label3.TabIndex = 6;
             label3.Text = "INICIO SESIÓN";
-            label3.Click += label3_Click;
             // 
             // buttonRegistrarse
             // 
@@ -199,7 +196,6 @@
             textUsuario.Name = "textUsuario";
             textUsuario.Size = new Size(125, 27);
             textUsuario.TabIndex = 1;
-            textUsuario.TextChanged += textInicioSesion_TextChanged;
             // 
             // labelInicioSesion
             // 
@@ -217,10 +213,9 @@
             label1.Font = new Font("Sitka Banner", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(222, 19);
             label1.Name = "label1";
-            label1.Size = new Size(368, 89);
+            label1.Size = new Size(370, 89);
             label1.TabIndex = 2;
-            label1.Text = "BIENVENUTI";
-            label1.Click += label1_Click;
+            label1.Text = "BIENVENIDO";
             // 
             // InicioSesionRegistro
             // 

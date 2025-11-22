@@ -35,17 +35,17 @@
             // Taula2
             // 
             Taula2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Taula2.Location = new Point(78, 43);
+            Taula2.Location = new Point(69, 41);
             Taula2.Name = "Taula2";
             Taula2.RowHeadersWidth = 51;
-            Taula2.Size = new Size(533, 244);
+            Taula2.Size = new Size(474, 232);
             Taula2.TabIndex = 0;
             // 
             // ShowDistancePlans
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(963, 360);
+            ClientSize = new Size(856, 343);
             Controls.Add(Taula2);
             Margin = new Padding(4);
             Name = "ShowDistancePlans";

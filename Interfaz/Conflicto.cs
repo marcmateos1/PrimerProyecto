@@ -13,12 +13,17 @@ namespace Interfaz
 {
     public partial class Conflicto : Form
     {
+
+        //Atributos
         string id1;
         string id2;
         FlightPlanList miLista;
+
+
+        //Constructor
         public Conflicto(string id1, string id2)
         {
-            //indicar quins vols (atributs id de la classe flightplan) s'agafen per arreglar el conficlte
+            //indicar qué vuelos (atributos id de la clase flightplan) se cogen para arreglar el conflicto
             this.id1 = id1;
             this.id2 = id2;
             InitializeComponent();
@@ -26,20 +31,26 @@ namespace Interfaz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //boto de SI (per resoldre el conflicte)
+            //botón de SI (para resolver el conflicto)
             this.DialogResult = DialogResult.Yes;
             this.Close();
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            //boto de NO (deixarho com esta)
+            //botón de NO (dejarlo como está)
             this.DialogResult = DialogResult.No;
             this.Close();
         }
 
+        //Escribe en label4 que hay un conflicto entre id1 i id2
         private void Conflicto_Load_1(object sender, EventArgs e)
         {
-            label2.Text = "Conflicto entre " + id1 + "y " + id2 + ".";
+            label4.Text = "Conflicto entre " + id1 + "y " + id2 + ".";
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        { 
+            
         }
     }
 }

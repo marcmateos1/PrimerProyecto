@@ -12,33 +12,40 @@ namespace Interfaz
 {
     public partial class InicioSesionRegistro : Form
     {
+
+        // Atributos
+        private Database db;
         private UserList users;
 
-        public InicioSesionRegistro()
+
+        // Recibe la ruta del archivo de base de datos
+        public InicioSesionRegistro(string dbFile)
         {
             InitializeComponent();
 
-            string dbFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "users.db"); // misma ruta que Program.cs
-            users = new UserList(dbFile);
+            // Inicializar Database y UserList
+            db = new Database(dbFile);  // constructor modificado para aceptar ruta
+            users = new UserList(db);
 
             panelInicioSesion.Visible = true;
             panelRegistro.Visible = false;
         }
 
+
         // Iniciar sesión
         private void buttonIniciarSesion_Click(object sender, EventArgs e)
         {
+            // Validar entrada
             string user = textUsuario.Text.Trim();
             string pass = textContraseña.Text;
 
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
-                MessageBox.Show("Rellena usuario y contraseña.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); //retorna el missatge si no sha entrat correctament
+                MessageBox.Show("Rellena usuario y contraseña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); //retorna el missatge si no sha entrat correctament
                 return;
             }
 
-            // Conecta con la base de datos
+            // Nos connectamos con la base de datos
 
             if (users.Authenticate(user, pass))
             {
@@ -50,32 +57,31 @@ namespace Interfaz
             }
             else
             {
-                MessageBox.Show("Usuario o contraseña incorrectos", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Registre
 
+        // Registrarse
         private void buttonRegistrarse_Click(object sender, EventArgs e)
         {
             panelInicioSesion.Visible = false;
-            panelRegistro.Visible = true;
+            panelRegistro.Visible = true; //Ponemos invisible el panel de inicio de sesión y visible el de registro
 
             textNuevoUsuario.Text = "";
             NuevaContraseña.Text = "";
         }
 
-        // Cancelar Registre
 
+        // Cancelar Registr
         private void buttonCancelarRegistro_Click(object sender, EventArgs e)
         {
             panelRegistro.Visible = false;
             panelInicioSesion.Visible = true;
         }
 
-        // Crear Usuari
 
+        // Crear Usuario
         private void buttonCrearUsuario_Click(object sender, EventArgs e)
         {
             string user = textNuevoUsuario.Text.Trim();
@@ -83,71 +89,33 @@ namespace Interfaz
 
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
-                MessageBox.Show("Rellena usuario y contraseña.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Rellena usuario y contraseña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (users.UsernameExists(user))
             {
-                MessageBox.Show("Ese usuario ya existe.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ese usuario ya existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (pass.Length < 4)
             {
-                MessageBox.Show("La contraseña debe tener al menos 4 caracteres.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La contraseña debe tener al menos 4 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             users.AddUser(new User(user, pass));
 
-            MessageBox.Show("Usuario creado correctamente.", "Registro",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-
-            MessageBox.Show("Usuario creado correctamente.", "Registro",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Usuario creado correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Volver a pantalla de inicio de sesiónn
             panelRegistro.Visible = false;
             panelInicioSesion.Visible = true;
 
+            // Rellenar el campo de usuario y limpiar la contraseña
             textUsuario.Text = user;
             textContraseña.Text = "";
-        }
-
-        private void textInicioSesion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelInicioSesion_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

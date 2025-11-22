@@ -38,9 +38,10 @@
             // 
             // botonDistancia
             // 
-            botonDistancia.Location = new Point(153, 133);
+            botonDistancia.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            botonDistancia.Location = new Point(72, 165);
             botonDistancia.Name = "botonDistancia";
-            botonDistancia.Size = new Size(94, 29);
+            botonDistancia.Size = new Size(195, 82);
             botonDistancia.TabIndex = 0;
             botonDistancia.Text = "Introducir datos";
             botonDistancia.UseVisualStyleBackColor = true;
@@ -48,14 +49,14 @@
             // 
             // textDistancia
             // 
-            textDistancia.Location = new Point(39, 68);
+            textDistancia.Location = new Point(89, 89);
             textDistancia.Name = "textDistancia";
             textDistancia.Size = new Size(125, 27);
             textDistancia.TabIndex = 2;
             // 
             // textTiempo
             // 
-            textTiempo.Location = new Point(239, 68);
+            textTiempo.Location = new Point(373, 89);
             textTiempo.Name = "textTiempo";
             textTiempo.Size = new Size(125, 27);
             textTiempo.TabIndex = 3;
@@ -63,26 +64,29 @@
             // labelDistancia
             // 
             labelDistancia.AutoSize = true;
-            labelDistancia.Location = new Point(24, 45);
+            labelDistancia.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelDistancia.Location = new Point(27, 41);
             labelDistancia.Name = "labelDistancia";
-            labelDistancia.Size = new Size(190, 20);
+            labelDistancia.Size = new Size(269, 26);
             labelDistancia.TabIndex = 4;
-            labelDistancia.Text = "Distancia de Seguridad (m)";
+            labelDistancia.Text = "Distancia De Seguridad [m]";
             // 
             // labelTiempo
             // 
             labelTiempo.AutoSize = true;
-            labelTiempo.Location = new Point(239, 45);
+            labelTiempo.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelTiempo.Location = new Point(337, 41);
             labelTiempo.Name = "labelTiempo";
-            labelTiempo.Size = new Size(136, 20);
+            labelTiempo.Size = new Size(207, 26);
             labelTiempo.TabIndex = 5;
-            labelTiempo.Text = "Tiempo de ciclo (s)";
+            labelTiempo.Text = "Tiempo De Ciclio [s]";
             // 
             // botonAtajo
             // 
-            botonAtajo.Location = new Point(153, 168);
+            botonAtajo.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            botonAtajo.Location = new Point(310, 165);
             botonAtajo.Name = "botonAtajo";
-            botonAtajo.Size = new Size(94, 29);
+            botonAtajo.Size = new Size(161, 82);
             botonAtajo.TabIndex = 6;
             botonAtajo.Text = "Atajo";
             botonAtajo.UseVisualStyleBackColor = true;
@@ -92,7 +96,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(424, 220);
+            ClientSize = new Size(599, 286);
             Controls.Add(botonAtajo);
             Controls.Add(labelTiempo);
             Controls.Add(labelDistancia);

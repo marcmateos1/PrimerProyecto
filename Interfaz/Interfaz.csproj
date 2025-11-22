@@ -17,6 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\SQLITEbd\System.Data.SQLite_DLL\System.Data.SQLite.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Datos.cs">
       <SubType>Form</SubType>
     </Compile>

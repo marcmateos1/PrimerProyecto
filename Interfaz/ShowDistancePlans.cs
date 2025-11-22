@@ -13,20 +13,29 @@ namespace Interfaz
 {
     public partial class ShowDistancePlans : Form
     {
+
+        //Atributs
         FlightPlanList miLista;
         FlightPlan plan;
+
+        //Constructor
         public ShowDistancePlans()
         {
             InitializeComponent();
         }
-        public void SetData(FlightPlanList miLista, FlightPlan plan) //carregar les dades i indicar quines farem servir
+
+
+        //Método para establecer los datos de la clase
+        public void SetData(FlightPlanList miLista, FlightPlan plan)
         {
             this.miLista = miLista;
             this.plan = plan;
         }
+
+
         public void ShowDistancePlans_Load() 
         {
-            //crear l'estil i mides del grid 
+            //Crear el estilo y medida del grid
             Taula2.RowCount = miLista.NumElementosLista();
             Taula2.ColumnCount = 2;
             Taula2.ColumnHeadersVisible = false;
@@ -39,7 +48,7 @@ namespace Interfaz
             for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
                 FlightPlan otroplan = miLista.GetFlightPlan(i);
-                if (otroplan != plan)//indicar els valors del cada cela del grid (a l'atribut corresponent)
+                if (otroplan != plan)//Inidicar los valores de cada celda del grid (al atributo que corresponde)
                 {
                     double distancia = plan.DistanceTo(otroplan);
                     Taula2[0, j + 1].Value = (otroplan.GetId());

@@ -5,8 +5,14 @@ namespace InterfazDatos
 {
     public partial class Datos : Form
     {
+
+
+        // Atributos
         FlightPlanList lista;
         Interfaz.Principal principal;
+
+
+        // Constructor (Recibe una FlightPlanList y inicializa los controles de la ventanna, si la lista tiene 2 vuelos los textbox se llenan con sus atributos)
         public Datos(FlightPlanList lista, Interfaz.Principal principal)
         {
             InitializeComponent();
@@ -14,7 +20,7 @@ namespace InterfazDatos
             this.principal = principal;
             if (lista.NumElementosLista() == 2)
             {
-                //atribuir cada textbox a un atribut de cada flight plan
+                //Atribuir cada textbox a un atributo de cada flightplan
                 TIdentificador.Text = lista.GetFlightPlan(0).GetId();
                 TVelocidad.Text = lista.GetFlightPlan(0).GetVelocidad().ToString();
                 TX0.Text = lista.GetFlightPlan(0).GetInitialPosition().GetX().ToString();
@@ -30,13 +36,14 @@ namespace InterfazDatos
             }
         }
 
+
         private void BCompilar_Click_1(object sender, EventArgs e)
         {
             try
             {
                 if (Convert.ToInt32(TVelocidad.Text) > 0 && Convert.ToInt32(TVelocidad2.Text) > 0)
                 {
-                    //afegir els valors a un flightpan, i despres a una flightplanlist reals
+                    //Meter los valores a un flightpan, y después a un flightplanlist reals
                     lista.Clean();
                     FlightPlan plan = new FlightPlan(TIdentificador.Text, Convert.ToDouble(TX0.Text), Convert.ToDouble(TY0.Text), Convert.ToDouble(TXF.Text), Convert.ToDouble(TYF.Text), Convert.ToDouble(TVelocidad.Text));
                     lista.AddFlightPlan(plan);
@@ -53,13 +60,14 @@ namespace InterfazDatos
             }
             catch
             {
-                MessageBox.Show("Error de formato."); //per errors de format, no s'entren dades i es demana de tornarhi
+                MessageBox.Show("Error de formato."); //Para errores de formato, se piden otra vez los datos
             }
         }
 
+
         private void atajo_Click(object sender, EventArgs e)
         {
-            //tenim un boto "atajo" per fer mes rapid el provar el codi, amb uns valors ja predeterminats
+            //Tenemos un botón "atajo" para probar más rápido el código con valores predeterminados (ya que estar todo el rato poniéndolos es cansino)
             TIdentificador.Text = "Avion1";
             TY0.Text = "100";
             TX0.Text = "50";

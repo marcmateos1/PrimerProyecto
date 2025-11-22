@@ -14,7 +14,7 @@ namespace FlightLib
         FlightPlan[] vector= new FlightPlan[10];
         int number = 0;
 
-        private void EnsureCapacity() //mirar la llargada de la llista
+        private void EnsureCapacity() //Ver la longitud de la lista
         {
             if (number >= vector.Length)
             {
@@ -30,7 +30,7 @@ namespace FlightLib
             number = 0; //borra todos los elementos de la lista
         }
 
-        //metode per afegir un flightplan a la llista
+        //Método para poner un flightplan a la lista
         public int AddFlightPlan(FlightPlan p)
         {
             EnsureCapacity();
@@ -38,11 +38,11 @@ namespace FlightLib
             number = number + 1;
             return 0;
         }
-        public int NumElementosLista() //retorna la llargada de la llista
+        public int NumElementosLista() //retorna la longitud de la llista
         {
             return number;
         }
-        public FlightPlan GetFlightPlan(int i) //metode getflightplan (get d'un valor de la llista)
+        public FlightPlan GetFlightPlan(int i) //metodo getflightplan (get de un valor de la lista)
         {
             if (i<0 || i >= number)
             {
@@ -66,9 +66,9 @@ namespace FlightLib
         }
 
 
-        //ALTRES METODES DE LA CLASSE FLIGHTPLANLIST
+        //OTROS MÉTODOS DE LA CLASE FLIGHTPLANLIST
 
-        public void Mover(double tiempo) //metode per moure es flightplans
+        public void Mover(double tiempo) //método para mover los flightplans
         {
             int i = 0;
             while (i < number)
@@ -78,7 +78,7 @@ namespace FlightLib
             }
         }
 
-        public bool LlegadoDestino() //saber quan tots els avions arriben al desti
+        public bool LlegadoDestino() //saber cuando todos los aviones llegan al destino
         {
             int llegado = 0;
             for (int i = 0; i < number; i++)
@@ -106,8 +106,8 @@ namespace FlightLib
         }
 
 
-        //METODES AMB RELACIO A FLIGHTPLANS EN UN ARXIU TXT
-        public int CargarLista(string filename) //carrega la llista de flightplans des dun arxiu txt
+        //METODOS CON RELACiÓN A FLIGHTPLANS EN UN ARXIVO TXT
+        public int CargarLista(string filename) //Carga la lista de flightplans des de un archivo txt
         {
             try //Comprueba que existe un archivo con ese nombre o con el formato adecuado
             {

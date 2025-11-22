@@ -15,32 +15,27 @@ namespace Interfaz
 {
     public partial class EspacioAereo : Form
     {
+
+        //Atributos
         Interfaz.Principal principal;
         FlightPlanList miLista;
         int tiempoCiclo;
         float distanciaSeguridad;
         Stack<FlightPlanList> s = new Stack<FlightPlanList>();
-
         //vector de picture boxes para representar los aviones
         PictureBox[] vuelos;
 
+        //Constructor
         public EspacioAereo(Interfaz.Principal principal) //iniciar l'espai aeri
         {
             InitializeComponent();
             this.principal = principal;
-
         }
 
-        public string UsuarioActual { get; private set; }
 
-        //METODES I FUNCIONS NECESSARIES
-        public void SetUser(string username) //identificar l'usuari i determinarlo per la simulacio
-        {   UsuarioActual = username; 
-            if (labelUsuario2 != null) 
-                labelUsuario2.Text = $"Usuario: {username}"; 
-        }
+        //METODOS I FUNCIONWS NECESARIAS PARA LA SIMULACION
 
-        public void SetData(FlightPlanList f, int c, float distancia) //iniciatitzar les dades
+        public void SetData(FlightPlanList f, int c, float distancia) //inicializar los datos
         {
             miLista = f;
             tiempoCiclo = c;
@@ -85,7 +80,8 @@ namespace Interfaz
 
         }
 
-        public void Reiniciar()//funcio reiniciar la simulacio
+
+        public void Reiniciar()//función reiniciar la simulación
         {
             Reloj.Stop();
             // Quitar todos los controles (vuelos, destinos, etc.)
@@ -102,7 +98,8 @@ namespace Interfaz
             MessageBox.Show("Es reinicia l'espai aeri");
         }
 
-        public void MoverFlightPlans(FlightPlanList miLista, int tiempo) //funcio per moure els flightplans una iteracio
+
+        public void MoverFlightPlans(FlightPlanList miLista, int tiempo) //función para mover los flightplans una iteración
         {
             if (miLista == null) return;
             FlightPlanList backUpList = miLista.GiveLista();
@@ -127,7 +124,8 @@ namespace Interfaz
             }
         }
 
-        public void BucleConflicto(bool a) //funcio per detectar conflicte
+
+        public void BucleConflicto(bool a) //función para detectar conflicto
         {
             if (miLista == null) return;
             for (int i = 0; i < miLista.NumElementosLista(); i++)
@@ -147,64 +145,29 @@ namespace Interfaz
                 }
                 if (a)
                 {
-                    Reloj.Stop(); //para la simulacio si hi ha conflicte
+                    Reloj.Stop(); //para la simulación si hay conflicto
                     break;
                 }
             }
         }
 
-        //METODES I FUNCIONS DE CADA BOTO
 
-        private void BtnLogout_Click(object sender, EventArgs e) //boto per LOGOUT
+        //METODOS I FUNCIONES DE CADA BOTÓN
+
+        // Botón para cerrar sesión y volver al inicio de sesión
+        private void buttonCerrarSesion_Click(object sender, EventArgs e)
         {
-            //tancar sessio
-            DialogResult r = MessageBox.Show(
-                "¿Quieres cerrar sesión?",
-                "Cerrar sesión",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
+            this.Hide(); // Oculta EspacioAereo
+            principal.Close(); // Cierra Principal
+            string dbFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\SQLITEbd\basedatos.db");
+            dbFile = Path.GetFullPath(dbFile);
 
-            if (r == DialogResult.Yes)
-            {
-                this.Close(); // Cierra EspacioAereo
-                principal.Show(); // Vuelve al menú principal o login
-            }
-        }
-
-        private void btnCargarArchivo_Click(object sender, EventArgs e) //boto per carregar l'arxiu txt
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Seleccionar fichero de vuelos";
-            ofd.Filter = "Archivos de Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
-
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                string path = ofd.FileName;
-                FlightPlanList nueva = new FlightPlanList();
-                int r = nueva.CargarLista(path);
-                if (r == 0)
-                {
-                    miLista = nueva;
-                    // Limpiar panel y recargar
-                    panel1.Controls.Clear();
-                    EspacioAereo_Load(this, EventArgs.Empty);
-                    MessageBox.Show("Fichero cargado correctamente.");
-                }
-                else if (r == -1)
-                {
-                    MessageBox.Show("No se encontró el fichero.");
-                }
-                else
-                {
-                    MessageBox.Show("Error leyendo fichero (formato incorrecto).");//missatge en cas d'error
-                }
-            }
+            InicioSesionRegistro loginForm = new InicioSesionRegistro(dbFile);
+            loginForm.Show();
         }
 
 
-
-        private void EspacioAereo_Load(object sender, EventArgs e)//boto per carregar l'espai aeri
+        private void EspacioAereo_Load(object sender, EventArgs e)//botón para cargar el espacio aéreo
         {
             try
             {
@@ -285,7 +248,8 @@ namespace Interfaz
             catch (Exception) { MessageBox.Show("Dades entrades no correctament"); }
         }
 
-        private void botonMover_Click(object sender, EventArgs e)//boto per moure una iteracio
+
+        private void botonMover_Click(object sender, EventArgs e)//botón para mover una iteración
         {
             bool b = miLista.LlegadoDestino();
             if (b == false)
@@ -296,13 +260,14 @@ namespace Interfaz
             }
             else
             {
-                MessageBox.Show("Tots els avions han arribat al seu destí.");//quan arriben, ja no es mouen mes
+                MessageBox.Show("Tots els avions han arribat al seu destí.");//cuando llegan ya no se mueven más..
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)//boto per dibuixar l'elipse (dist seguretat) al voltant de l'avio
+
+        private void panel1_Paint(object sender, PaintEventArgs e)//botón para dibujar la elipse (dist seguridad) alrededor del avión
         {
-            //Draw the line
+            //Dibujar las rutas y las zonas de seguridad, así como los aviones en sus posiciones actuales y las líneas
             try
             {
                 if (miLista == null) return;
@@ -332,18 +297,18 @@ namespace Interfaz
 
         }
 
-        private void simularAut_Click(object sender, EventArgs e)//boto per comencar la simulacio automatica
+        private void simularAut_Click(object sender, EventArgs e)// Boton para iniciar la simulacion automatica
         {
             Reloj.Interval = 100;
             Reloj.Start();
         }
 
-        private void Parar_Click(object sender, EventArgs e)//boto per parar la simulacio
+        private void Parar_Click(object sender, EventArgs e)// Boton para parar la simulacion automatica
         {
             Reloj.Stop();
         }
 
-        private void Reloj_Tick_1(object sender, EventArgs e)//si han arribat, no fer res. sino, moure les iteracions automaticament
+        private void Reloj_Tick_1(object sender, EventArgs e)// Si ha llegado al destino se para la simulación. Si no es así sigue automáticamente
         {
             if (miLista.LlegadoDestino())
             {
@@ -361,10 +326,12 @@ namespace Interfaz
                 BucleConflicto(a);
                 panel1.Invalidate();
             }
-            
+
 
         }
-        private void Conflicte_Click(object sender, EventArgs e)//detectar si hi ha conflicte
+
+
+        private void Conflicte_Click(object sender, EventArgs e)// Detectar si hay conflicto
         {
             try
             {
@@ -384,21 +351,20 @@ namespace Interfaz
             catch (Exception) { MessageBox.Show("Dades no entrades correctament: no es pot trobar cap conflicte"); }
         }
 
-        private void botonVolver_Click_1(object sender, EventArgs e)//boto per tornar
+
+        private void botonVolver_Click_1(object sender, EventArgs e)// botón para volver al menú principal
         {
             this.Close();
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void ButtonRestart_Click(object sender, EventArgs e)//boto per reiniciar la simulacio
+        private void ButtonRestart_Click(object sender, EventArgs e)// botón para reiniciar la simulación
         {
             Reiniciar();
         }
-        private void Retroceder_Click(object sender, EventArgs e) //tirar una iteracio endarrere
+
+
+        private void Retroceder_Click(object sender, EventArgs e) // botón para retroceder un paso/iteración en la simulación
         {
             if (s.Count > 0)
             {
@@ -411,8 +377,7 @@ namespace Interfaz
         }
 
 
-
-        private void ShowInfo_Click(object sender, EventArgs e)//quan es clica sobre un avio, s'obre el grid amb la info
+        private void ShowInfo_Click(object sender, EventArgs e)// botón para mostrar la información de los aviones al clicarlos
         {
             try
             {
@@ -423,6 +388,8 @@ namespace Interfaz
             catch (Exception) { MessageBox.Show("Dades no entrades correctament"); }
         }
 
+
+        // Evento al clicar un PictureBox (avión)
         private void PictureBox_Click(object sender, EventArgs e)
         {
             int i = 0;
@@ -451,7 +418,7 @@ namespace Interfaz
         }
 
 
-        private void guardarBtn_Click(object sender, EventArgs e) //guardar la llisat de vols en un txt
+        private void guardarBtn_Click(object sender, EventArgs e) // Botón para guardar la lista de vuelos en un archivo txt
         {
             Reloj.Stop();
 
@@ -469,12 +436,6 @@ namespace Interfaz
             }
 
             //Reloj.Start();
-        }
-
-
-        private void labelUsuario2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

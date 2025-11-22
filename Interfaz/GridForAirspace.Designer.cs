@@ -37,30 +37,35 @@
             // Taula
             // 
             Taula.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Taula.Location = new Point(59, 44);
+            Taula.Location = new Point(67, 59);
+            Taula.Margin = new Padding(3, 4, 3, 4);
             Taula.Name = "Taula";
-            Taula.Size = new Size(543, 205);
+            Taula.RowHeadersWidth = 51;
+            Taula.Size = new Size(621, 273);
             Taula.TabIndex = 0;
             Taula.CellContentClick += dataGridView1_CellContentClick;
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(Taula);
-            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(68, 43);
+            groupBox1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.Location = new Point(78, 57);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(653, 303);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(746, 404);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Informacion de todos los vuelos";
+            groupBox1.Text = "INFORMACIÓN DE TODOS LOS VUELOS";
             groupBox1.Enter += groupBox1_Enter;
             // 
             // GridForAirspace
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 391);
+            ClientSize = new Size(914, 521);
             Controls.Add(groupBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "GridForAirspace";
             Text = "GridForAirspace";
             Load += GridForAirspace_Load;

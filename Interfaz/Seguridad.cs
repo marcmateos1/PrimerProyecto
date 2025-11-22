@@ -12,16 +12,21 @@ namespace Interfaz
 {
     public partial class Seguridad : Form
     {
-        //iniciar les dades
+
+        //Atributos/Inicialitzaciones
         Interfaz.Principal principal;
         int tiempoCiclo = 0;
         int distanciaSeguridad = 0;
+
+        //Constructor
         public Seguridad(Interfaz.Principal principal)
         {
             InitializeComponent();
             this.principal = principal;
         }
-        private void Seguridad_Load(object sender, EventArgs e)//carregar les dades a entrar
+
+
+        private void Seguridad_Load(object sender, EventArgs e)// Comprueba que los valores del principal no sean 0 y los pone en los textbox
         {
             if (principal.tiempoCiclo != 0 && principal.distanciaSeguridad != 0)
             {
@@ -32,7 +37,7 @@ namespace Interfaz
 
         private void botonDistancia_Click(object sender, EventArgs e)
         {
-            //posar els valors dels textbox al flightplan
+            //Pone los valores de los textbox en los atributos de la clase principal
             try
             {
                 if (Convert.ToInt32(textTiempo.Text) > 0 && Convert.ToInt32(textDistancia.Text) > 0)
@@ -57,7 +62,7 @@ namespace Interfaz
 
         private void botonAtajo_Click(object sender, EventArgs e)
         {
-            //boto atajo per anar mes rapid, que dona uns valors de base
+            //Botón "atajo" para ir más rápido.
             textDistancia.Text = "100";
             textTiempo.Text = "10";
         }

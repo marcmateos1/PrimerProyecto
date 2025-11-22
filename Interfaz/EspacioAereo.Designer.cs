@@ -40,18 +40,19 @@
             Reloj = new System.Windows.Forms.Timer(components);
             ShowInfo = new Button();
             botonVolver = new Button();
-            labelseg = new Label();
             ButtonRestart = new Button();
             Conflicte = new Button();
             guardarBtn = new Button();
             Retroceder = new Button();
             labelUsuario2 = new Label();
+            label5 = new Label();
+            buttonCerrarSesión = new Button();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Location = new Point(387, 51);
+            panel1.Location = new Point(409, 141);
             panel1.Margin = new Padding(2, 4, 2, 4);
             panel1.Name = "panel1";
             panel1.Size = new Size(500, 500);
@@ -60,72 +61,75 @@
             // 
             // botonMover
             // 
-            botonMover.Location = new Point(125, 64);
+            botonMover.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            botonMover.Location = new Point(45, 179);
             botonMover.Margin = new Padding(2, 4, 2, 4);
             botonMover.Name = "botonMover";
-            botonMover.Size = new Size(121, 69);
+            botonMover.Size = new Size(290, 76);
             botonMover.TabIndex = 1;
-            botonMover.Text = "Mover una iteración";
+            botonMover.Text = "Mover Una Iteración";
             botonMover.UseVisualStyleBackColor = true;
             botonMover.Click += botonMover_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(354, 51);
+            label1.Font = new Font("SimSun", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(378, 141);
             label1.Name = "label1";
-            label1.Size = new Size(28, 35);
+            label1.Size = new Size(26, 25);
             label1.TabIndex = 3;
             label1.Text = "0";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15F);
-            label2.Location = new Point(387, 9);
+            label2.Font = new Font("SimSun", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(409, 112);
             label2.Name = "label2";
-            label2.Size = new Size(28, 35);
+            label2.Size = new Size(26, 25);
             label2.TabIndex = 4;
             label2.Text = "0";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15F);
-            label3.Location = new Point(328, 551);
+            label3.Font = new Font("SimSun", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(367, 645);
             label3.Name = "label3";
-            label3.Size = new Size(54, 35);
+            label3.Size = new Size(54, 25);
             label3.TabIndex = 5;
             label3.Text = "500";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 15F);
-            label4.Location = new Point(907, 9);
+            label4.Font = new Font("SimSun", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(897, 112);
             label4.Name = "label4";
-            label4.Size = new Size(54, 35);
+            label4.Size = new Size(54, 25);
             label4.TabIndex = 6;
             label4.Text = "500";
             // 
             // simularAut
             // 
-            simularAut.Location = new Point(125, 141);
+            simularAut.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            simularAut.Location = new Point(45, 296);
             simularAut.Margin = new Padding(3, 4, 3, 4);
             simularAut.Name = "simularAut";
-            simularAut.Size = new Size(121, 73);
+            simularAut.Size = new Size(290, 76);
             simularAut.TabIndex = 7;
-            simularAut.Text = "Simular Automaticmente";
+            simularAut.Text = "Simular Automáticamente";
             simularAut.UseVisualStyleBackColor = true;
             simularAut.Click += simularAut_Click;
             // 
             // Parar
             // 
-            Parar.Location = new Point(125, 221);
+            Parar.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Parar.Location = new Point(964, 527);
             Parar.Margin = new Padding(3, 4, 3, 4);
             Parar.Name = "Parar";
-            Parar.Size = new Size(121, 68);
+            Parar.Size = new Size(153, 76);
             Parar.TabIndex = 8;
             Parar.Text = "Parar";
             Parar.UseVisualStyleBackColor = true;
@@ -138,10 +142,11 @@
             // 
             // ShowInfo
             // 
-            ShowInfo.Location = new Point(125, 365);
+            ShowInfo.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ShowInfo.Location = new Point(45, 411);
             ShowInfo.Margin = new Padding(3, 4, 3, 4);
             ShowInfo.Name = "ShowInfo";
-            ShowInfo.Size = new Size(121, 68);
+            ShowInfo.Size = new Size(290, 76);
             ShowInfo.TabIndex = 9;
             ShowInfo.Text = "Muestra datos de los vuelos";
             ShowInfo.UseVisualStyleBackColor = true;
@@ -149,29 +154,21 @@
             // 
             // botonVolver
             // 
-            botonVolver.Location = new Point(125, 516);
+            botonVolver.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            botonVolver.Location = new Point(692, 664);
             botonVolver.Name = "botonVolver";
-            botonVolver.Size = new Size(121, 43);
+            botonVolver.Size = new Size(121, 57);
             botonVolver.TabIndex = 10;
             botonVolver.Text = "Volver";
             botonVolver.UseVisualStyleBackColor = true;
             botonVolver.Click += botonVolver_Click_1;
             // 
-            // labelseg
-            // 
-            labelseg.AutoSize = true;
-            labelseg.Location = new Point(89, 680);
-            labelseg.Name = "labelseg";
-            labelseg.Size = new Size(157, 20);
-            labelseg.TabIndex = 11;
-            labelseg.Text = "Comprobar Seguridad";
-            labelseg.Click += label5_Click;
-            // 
             // ButtonRestart
             // 
-            ButtonRestart.Location = new Point(125, 297);
+            ButtonRestart.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ButtonRestart.Location = new Point(964, 296);
             ButtonRestart.Name = "ButtonRestart";
-            ButtonRestart.Size = new Size(121, 61);
+            ButtonRestart.Size = new Size(153, 76);
             ButtonRestart.TabIndex = 12;
             ButtonRestart.Text = "Reiniciar";
             ButtonRestart.UseVisualStyleBackColor = true;
@@ -179,31 +176,34 @@
             // 
             // Conflicte
             // 
-            Conflicte.Location = new Point(125, 441);
+            Conflicte.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Conflicte.Location = new Point(964, 411);
             Conflicte.Margin = new Padding(3, 4, 3, 4);
             Conflicte.Name = "Conflicte";
-            Conflicte.Size = new Size(121, 68);
+            Conflicte.Size = new Size(153, 76);
             Conflicte.TabIndex = 13;
-            Conflicte.Text = "Conflicte";
+            Conflicte.Text = "Conflicto";
             Conflicte.UseVisualStyleBackColor = true;
             Conflicte.Click += Conflicte_Click;
             // 
             // guardarBtn
             // 
-            guardarBtn.Location = new Point(991, 64);
+            guardarBtn.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guardarBtn.Location = new Point(45, 527);
             guardarBtn.Name = "guardarBtn";
-            guardarBtn.Size = new Size(121, 69);
+            guardarBtn.Size = new Size(290, 76);
             guardarBtn.TabIndex = 14;
-            guardarBtn.Text = "Guardar Plan";
+            guardarBtn.Text = "Guardar Plan De Vuelo";
             guardarBtn.UseVisualStyleBackColor = true;
             guardarBtn.Click += guardarBtn_Click;
             // 
             // Retroceder
             // 
-            Retroceder.Location = new Point(991, 163);
+            Retroceder.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Retroceder.Location = new Point(964, 179);
             Retroceder.Margin = new Padding(3, 4, 3, 4);
             Retroceder.Name = "Retroceder";
-            Retroceder.Size = new Size(121, 52);
+            Retroceder.Size = new Size(153, 76);
             Retroceder.TabIndex = 15;
             Retroceder.Text = "Retroceder";
             Retroceder.UseVisualStyleBackColor = true;
@@ -217,26 +217,48 @@
             labelUsuario2.Size = new Size(0, 20);
             labelUsuario2.TabIndex = 16;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Times New Roman", 28.2F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            label5.Location = new Point(464, 42);
+            label5.Name = "label5";
+            label5.Size = new Size(380, 53);
+            label5.TabIndex = 17;
+            label5.Text = "ESPACIO AÉREO";
+            // 
+            // buttonCerrarSesión
+            // 
+            buttonCerrarSesión.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonCerrarSesión.Location = new Point(484, 664);
+            buttonCerrarSesión.Name = "buttonCerrarSesión";
+            buttonCerrarSesión.Size = new Size(158, 57);
+            buttonCerrarSesión.TabIndex = 18;
+            buttonCerrarSesión.Text = "Cerrar Sesión";
+            buttonCerrarSesión.UseVisualStyleBackColor = true;
+            buttonCerrarSesión.Click += buttonCerrarSesion_Click;
+            // 
             // EspacioAereo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1183, 757);
+            Controls.Add(buttonCerrarSesión);
+            Controls.Add(label5);
+            Controls.Add(botonMover);
+            Controls.Add(simularAut);
+            Controls.Add(guardarBtn);
             Controls.Add(labelUsuario2);
             Controls.Add(Retroceder);
-            Controls.Add(guardarBtn);
             Controls.Add(Conflicte);
             Controls.Add(ButtonRestart);
-            Controls.Add(labelseg);
             Controls.Add(botonVolver);
             Controls.Add(ShowInfo);
             Controls.Add(Parar);
-            Controls.Add(simularAut);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(botonMover);
             Controls.Add(panel1);
             Margin = new Padding(2, 4, 2, 4);
             Name = "EspacioAereo";
@@ -265,5 +287,7 @@
         private Button guardarBtn;
         private Button Retroceder;
         private Label labelUsuario2;
+        private Label label5;
+        private Button buttonCerrarSesión;
     }
 }

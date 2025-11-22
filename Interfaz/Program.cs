@@ -1,7 +1,11 @@
 
 using System;
+using System.IO;
 using System.Windows.Forms;
-using System.Data.SQLite;   // <-- Importante: requiere System.Data.SQLite.Core
+using System.Data.SQLite;
+using System;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Interfaz
 {
@@ -12,41 +16,17 @@ namespace Interfaz
         {
             ApplicationConfiguration.Initialize();
 
-            // Ruta del archivo users.db
-            string dbFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "users.db");
+            // Ruta relativa desde el ejecutable hasta SQLITEbd\basedatos.db
+            string dbFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\SQLITEbd\basedatos.db");
+            dbFile = Path.GetFullPath(dbFile); // Normalizmos la ruta
 
-            // Crear la BD si no existe
-            CreateDatabaseIfNeeded(dbFile);
-
-            // Lanzar el login
-            InicioSesionRegistro loginForm = new InicioSesionRegistro();
-            Application.Run(loginForm);
-        }
-
-        // ------------------------------------------------------
-        // CREA users.db SI NO EXISTE + CREA TABLA "users"
-        // ------------------------------------------------------
-        public static void CreateDatabaseIfNeeded(string dbFile)
-        {
+            // Comprobar que la base de datos existe
             if (!File.Exists(dbFile))
-            {
-                // Crear archivo .db
-                SQLiteConnection.CreateFile(dbFile);
+                throw new FileNotFoundException("No se encontró la base de datos en: " + dbFile);
 
-                using (SQLiteConnection cnx = new SQLiteConnection("Data Source=" + dbFile))
-                {
-                    cnx.Open();
-                    string sql = @"
-                        CREATE TABLE users (
-                            username TEXT PRIMARY KEY,
-                            password TEXT
-                        );
-                    ";
-
-                    SQLiteCommand cmd = new SQLiteCommand(sql, cnx);
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            // Lanzar el login, pasando la ruta al constructor
+            InicioSesionRegistro loginForm = new InicioSesionRegistro(dbFile);
+            Application.Run(loginForm);
         }
     }
 }
