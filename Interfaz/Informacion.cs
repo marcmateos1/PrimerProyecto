@@ -61,12 +61,17 @@ namespace Interfaz
             // Actualizar la velocidad dentro del forms
             try
             { 
-            double speed = Convert.ToDouble(velocidadBox.Text);
-            Console.WriteLine(speed);
-            Console.ReadLine();
-            list.GetFlightPlan(posicion).SetVelocidad(speed);
-            MessageBox.Show("Velocidad actualizada");
+                double speed = Convert.ToDouble(velocidadBox.Text);
+
+                if (speed >= 0)
+                {
+                    list.GetFlightPlan(posicion).SetVelocidad(speed);
+                    MessageBox.Show("Velocidad actualizada");
+                }
+            else
+            MessageBox.Show("La velocidad debe ser un valor positivo");
             }
+
             catch (FormatException)
             {
                 MessageBox.Show("Formato de velocidad no válido");

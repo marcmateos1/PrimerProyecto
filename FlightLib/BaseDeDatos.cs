@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Collections.Generic;
 
-namespace Interfaz
+namespace FlightLib
 {
-    public class Database
+    public class BaseDeDatos
     {
-        // Atributo privado para la conexión SQLite
-        private SQLiteConnection cnx;
+        //Atributo privado para la conexión SQLite
+         private SQLiteConnection cnx;
 
         // Constructor que recibe la ruta del archivo. Cuando se crea un objeto Database, le pasa la ruta del archivo de base de datos (dbFile).
-        public Database(string dbFile)
+        public BaseDeDatos(string dbFile)
         {
             if (!File.Exists(dbFile))
                 throw new FileNotFoundException("No se encontró la base de datos en: " + dbFile);  //Si no encuentra el archivo, pues tenemos una excepción

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Interfaz
+namespace FlightLib
 {
-    public class User
+    public class Usuarios
     {
-
         //Atributos
 
         string username;
@@ -16,7 +15,7 @@ namespace Interfaz
 
 
         //Constructor
-        public User(string username, string password)
+        public Usuarios(string username, string password)
         {
             this.username = username;
             this.password = password;
@@ -24,9 +23,9 @@ namespace Interfaz
 
 
         // Getters / Métodos
-        public string GetUsername() 
-            { return this.username; }
-        public string GetPassword() 
-            { return this.password; }
+        public string GetUsername()
+        { return this.username; }
+        public string GetPassword()
+        { return this.password; }
     }
 }
