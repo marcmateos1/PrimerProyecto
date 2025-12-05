@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 using System.IO;
 using System.Collections.Generic;
 
@@ -9,8 +9,7 @@ namespace FlightLib
     public class BaseDeDatos
     {
         //Atributo privado para la conexión SQLite
-         private SQLiteConnection cnx;
-
+        private  SqliteConnection cnx;
         // Constructor que recibe la ruta del archivo. Cuando se crea un objeto Database, le pasa la ruta del archivo de base de datos (dbFile).
         public BaseDeDatos(string dbFile)
         {
@@ -18,7 +17,7 @@ namespace FlightLib
                 throw new FileNotFoundException("No se encontró la base de datos en: " + dbFile);  //Si no encuentra el archivo, pues tenemos una excepción
 
             string dataSource = "Data Source=" + dbFile;
-            cnx = new SQLiteConnection(dataSource);
+            cnx = new SqliteConnection(dataSource);
             cnx.Open();
         }
 
@@ -26,8 +25,12 @@ namespace FlightLib
         public DataTable Select(string sql)
         {
             DataTable dt = new DataTable();
-            SQLiteDataAdapter adp = new SQLiteDataAdapter(sql, cnx);
-            adp.Fill(dt);
+            //Metodo de usar el select para Microsoft.Data.Sqlite
+            using (var cmd = new SqliteCommand(sql, cnx))
+            using (var reader = cmd.ExecuteReader())
+            {
+                dt.Load(reader);
+            }
             return dt;
         }
 
@@ -35,7 +38,7 @@ namespace FlightLib
         // Método para ejecutar comandos INSERT, UPDATE, DELETE
         public int Execute(string sql)
         {
-            using (var cmd = new SQLiteCommand(sql, cnx))
+            using (var cmd = new SqliteCommand(sql, cnx))
             {
                 return cmd.ExecuteNonQuery();
             }
