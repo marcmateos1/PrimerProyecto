@@ -4,18 +4,16 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SQLite;
 
-namespace Interfaz
+namespace FlightLib
 {
-    public class UserList
+    public class ListaUsuarios
     {
-
-        private Database db;  // Guardamos referencia al Database
+        public BaseDeDatos db;  // Guardamos referencia al Database
 
 
         // Constructor que recibe la instancia de Database
-        public UserList(Database database)
+        public ListaUsuarios(BaseDeDatos database)
         {
             db = database;
         }
@@ -31,7 +29,7 @@ namespace Interfaz
 
 
         // Añade un nuevo usuario a la base de datos
-        public void AddUser(User u)
+        public void AddUser(Usuarios u)
         {
             string sql = $"INSERT INTO usuarios (usuario, contraseña) VALUES ('{Escape(u.GetUsername())}', '{Escape(u.GetPassword())}');";
             db.Execute(sql);

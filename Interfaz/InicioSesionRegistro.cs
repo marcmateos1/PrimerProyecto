@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FlightLib;
+using System.Data.SQLite;
+
+
 
 namespace Interfaz
 {
@@ -14,8 +18,8 @@ namespace Interfaz
     {
 
         // Atributos
-        private Database db;
-        private UserList users;
+        BaseDeDatos db;
+        ListaUsuarios users;
 
 
         // Recibe la ruta del archivo de base de datos
@@ -24,8 +28,8 @@ namespace Interfaz
             InitializeComponent();
 
             // Inicializar Database y UserList
-            db = new Database(dbFile);  // constructor modificado para aceptar ruta
-            users = new UserList(db);
+            db = new BaseDeDatos(dbFile);  // constructor modificado para aceptar ruta
+            users = new ListaUsuarios(db);
 
             panelInicioSesion.Visible = true;
             panelRegistro.Visible = false;
@@ -73,7 +77,7 @@ namespace Interfaz
         }
 
 
-        // Cancelar Registr
+        // Cancelar Registro
         private void buttonCancelarRegistro_Click(object sender, EventArgs e)
         {
             panelRegistro.Visible = false;
@@ -105,7 +109,7 @@ namespace Interfaz
                 return;
             }
 
-            users.AddUser(new User(user, pass));
+            users.AddUser(new Usuarios(user, pass));
 
             MessageBox.Show("Usuario creado correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
