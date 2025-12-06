@@ -63,7 +63,11 @@ namespace Interfaz
             {
                 string filePath = nuevoFormulario.FileName;
                 int resultado = lista.CargarLista(filePath); //Limpia la lista y llama a la función
-                if (resultado == -2)
+                if (resultado == -3)
+                {
+                    MessageBox.Show("No se permiten valores de velocidad negativos.");
+                }
+                else if (resultado == -2)
                 {
                     MessageBox.Show("Error de formato en el documento de texto.");
                 }

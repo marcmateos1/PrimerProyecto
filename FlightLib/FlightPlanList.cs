@@ -123,8 +123,15 @@ namespace FlightLib
                     }
 
                     string[] trozos = linea.Split(' ','\t');
-                    FlightPlan plan = new FlightPlan(trozos[0], Convert.ToDouble(trozos[1]), Convert.ToDouble(trozos[2]), Convert.ToDouble(trozos[3]), Convert.ToDouble(trozos[4]), Convert.ToDouble(trozos[5]));
-                    this.AddFlightPlan(plan);
+                    if (Convert.ToDouble(trozos[5]) >= 0)
+                    {
+                        FlightPlan plan = new FlightPlan(trozos[0], Convert.ToDouble(trozos[1]), Convert.ToDouble(trozos[2]), Convert.ToDouble(trozos[3]), Convert.ToDouble(trozos[4]), Convert.ToDouble(trozos[5]));
+                        this.AddFlightPlan(plan);
+                    }
+                    else
+                    {
+                        return -3;
+                    }
                     linea = r.ReadLine(); //Por cada linea que lee crea un nuevo Flight plan con los parametros que se encuentran separados por un espacio
                 }
 
