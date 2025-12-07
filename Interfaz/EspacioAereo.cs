@@ -305,6 +305,10 @@ namespace Interfaz
                 Pen zonaPen = new Pen(Color.Blue);
                 int radio = (int)(distanciaSeguridad * panel1.Width / 1000);
 
+                //Parametros para escribir el id
+                Font fuente = new Font("Arial", 8);
+                Brush pincelTexto = Brushes.Black;
+
                 for (int i = 0; i < miLista.NumElementosLista(); i++)
                 {
                     graphics.DrawLine(rutaPen, Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetX() * panel1.Width / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetY() * panel1.Height / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetX() * panel1.Width / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetY() * panel1.Height / 500));
@@ -312,6 +316,10 @@ namespace Interfaz
                     int x = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetX() * panel1.Width / 500);
                     int y = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetY() * panel1.Height / 500);
                     graphics.DrawEllipse(zonaPen, x - radio, y - radio, radio * 2, radio * 2);
+
+                    //Escribir el id
+                    string id = miLista.GetFlightPlan(i).GetId();   // Ajusta si el método tiene otro nombre
+                    graphics.DrawString(id, fuente, pincelTexto, x + 6, y - 15);
 
                 }
 
