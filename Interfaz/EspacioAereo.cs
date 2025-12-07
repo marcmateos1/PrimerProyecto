@@ -25,10 +25,6 @@ namespace Interfaz
         //vector de picture boxes para representar los aviones
         PictureBox[] vuelos;
 
-        List<Position> finalPositionBackup = new List<Position>();
-        List<int> indicesCambioRuta = new List<int>();
-
-
         //Constructor
         public EspacioAereo(Interfaz.Principal principal) //iniciar l'espai aeri
         {
@@ -65,11 +61,9 @@ namespace Interfaz
                                 else
                                 {
                                     MessageBox.Show("No se ha podido solucionar el conflicto reduciendo la velocidad, se cambiaran las rutas.");
-                                    finalPositionBackup.Add(plan.CambiarRumbo(plan2, distanciaSeguridad));
-                                    int indice = miLista.Indice(plan);
-                                    if (indice != -1)
+                                    if(!plan.CambiarRumbo(plan2, distanciaSeguridad))
                                     {
-                                        indicesCambioRuta.Add(indice);
+                                        MessageBox.Show("No se puede evitar el conflicto.");
                                     }
                                 }
                             }
@@ -113,12 +107,6 @@ namespace Interfaz
             // Volver a cargar los vuelos
             EspacioAereo_Load(this, EventArgs.Empty);
             MessageBox.Show("Es reinicia l'espai aeri");
-            for(int i = 0; i<indicesCambioRuta.Count; i++)
-            {
-                miLista.GetFlightPlan(indicesCambioRuta[i]).SetFinalPosition(finalPositionBackup[i]);
-            }
-            indicesCambioRuta.Clear();
-            finalPositionBackup.Clear();
             DetectarYResolverConflictos();
         }
 
@@ -339,7 +327,8 @@ namespace Interfaz
             Reloj.Interval = 100;
             Reloj.Start();
 
-            if (finalPositionBackup != null)
+
+            if (Desviados())
             {
                 reloj2.Interval = 100;
                 reloj2.Start();
@@ -483,38 +472,49 @@ namespace Interfaz
 
         private void ComprobarDesvio()
         {
-            for (int i = 0; i < indicesCambioRuta.Count; i++)
+            Stack<FlightPlan> desvios = new Stack<FlightPlan>();
+
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
             {
-                for (int j = 0; j < miLista.NumElementosLista(); j++)
+                if (miLista.GetFlightPlan(i).GetFinalPosition() != miLista.GetFlightPlan(i).GetOriginalFinalPosition())
                 {
-                    if (j != indicesCambioRuta[i])
+                    desvios.Push(miLista.GetFlightPlan(i));
+                }
+            }
+            
+            foreach(FlightPlan plan in desvios)
+            {
+                for(int i = 0; i< miLista.NumElementosLista(); i++)
+                {
+                    if (!plan.RetomarRumbo(miLista.GetFlightPlan(i), distanciaSeguridad))
                     {
-                        if (!miLista.GetFlightPlan(indicesCambioRuta[i]).RetomarRumbo(miLista.GetFlightPlan(j), distanciaSeguridad, finalPositionBackup[i]))
-                        {
-                            indicesEliminar.Push(i);
-                            RefrescarPanel();
-                        }
+                        RefrescarPanel();
                     }
                 }
             }
-            while (0 < indicesEliminar.Count)
-            {
-                int i = indicesEliminar.Pop();
-                indicesCambioRuta.RemoveAt(i);
-                finalPositionBackup.RemoveAt(i);
-            }
         }
 
-        Stack<int> indicesEliminar = new Stack<int>();
         private void reloj2_Tick(object sender, EventArgs e) //Reloj usado para devolver al avion a su rumbo normal en caso de que se desvie (Asi no hay que hacer una comprobacion en cada tick en caso que no haya ningun desvio)
         {
             ComprobarDesvio();
-
-            if (indicesCambioRuta.Count == 0)
+            
+            if (!Desviados())
             {
                 reloj2.Stop();
             }
+        }
 
+        private bool Desviados()
+        {
+            bool found = false;
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            {
+                if (miLista.GetFlightPlan(i).GetFinalPosition() == miLista.GetFlightPlan(i).GetOriginalFinalPosition())
+                {
+                    found = true;
+                }
+            }
+            return found;
         }
     }
 }

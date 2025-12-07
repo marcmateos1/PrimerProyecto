@@ -153,7 +153,7 @@ namespace FlightLib
             StreamWriter w = new StreamWriter(filename + ".txt"); //Guarda el archivo con este nombre.
             for (int i = 0; i < number; i++)
             {
-                w.WriteLine(this.GetFlightPlan(i).GetId() + " " + this.GetFlightPlan(i).GetCurrentPosition().GetX().ToString() + " " + this.GetFlightPlan(i).GetCurrentPosition().GetY().ToString() + " " + this.GetFlightPlan(i).GetFinalPosition().GetX().ToString() + " " + this.GetFlightPlan(i).GetFinalPosition().GetY().ToString() + " " + this.GetFlightPlan(i).GetVelocidad().ToString());
+                w.WriteLine(this.GetFlightPlan(i).GetId() + " " + this.GetFlightPlan(i).GetCurrentPosition().GetX().ToString() + " " + this.GetFlightPlan(i).GetCurrentPosition().GetY().ToString() + " " + this.GetFlightPlan(i).GetOriginalFinalPosition().GetX().ToString() + " " + this.GetFlightPlan(i).GetOriginalFinalPosition().GetY().ToString() + " " + this.GetFlightPlan(i).GetVelocidad().ToString());
             }
             w.Close(); //Escribe cada avion en una linea diferente con sus parametros separados por espacio. La posicion inicial de los aviones guardados es la actual que tenian, para poder seguir donde lo dejastes.
         }

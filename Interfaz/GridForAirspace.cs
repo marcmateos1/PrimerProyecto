@@ -49,7 +49,7 @@ namespace Interfaz
                     string id = plan.GetId();
                     double velocidad = plan.GetVelocidad();
                     string posicionInicial = $"({plan.GetInitialPosition().GetX()}  ,  {plan.GetInitialPosition().GetY()})";
-                    string posicionFinal = $"({plan.GetFinalPosition().GetX()}  ,  {plan.GetFinalPosition().GetY()})";
+                    string posicionFinal = $"({plan.GetOriginalFinalPosition().GetX()}  ,  {plan.GetOriginalFinalPosition().GetY()})";
                     string posicionActual = $"({Math.Round(plan.GetCurrentPosition().GetX(), 2)} , {Math.Round(plan.GetCurrentPosition().GetY(), 2)})";
                     Taula[0, i + 1].Value = id;
                     Taula[1, i + 1].Value = velocidad;

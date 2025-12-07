@@ -14,6 +14,7 @@ namespace FlightLib
         Position currentPosition; // posicion actual
         Position initalPosition; // posicion inicial
         Position finalPosition; // posicion final
+        Position originalFinalPosition; 
         double velocidad;
 
         // Constructor
@@ -24,6 +25,7 @@ namespace FlightLib
             this.initalPosition = new Position(cpx, cpy);
             this.finalPosition = new Position(fpx, fpy);
             this.velocidad = velocidad;
+            originalFinalPosition = this.finalPosition;
         }
 
 
@@ -53,6 +55,11 @@ namespace FlightLib
         { return this.velocidad;}
         public double GetDistanciaRestante()
         { return currentPosition.Distancia(finalPosition); }
+
+        public Position GetOriginalFinalPosition()
+        {
+            return originalFinalPosition;
+        }
 
 
 
@@ -140,18 +147,17 @@ namespace FlightLib
             return conclicto;
         }
 
-
         public bool PredecirConflicto(FlightPlan plan2, double distanciaSeguridad)
         {
             //Predice si habrá conflicto según la fórmula analítica de la distancia derivada, que da una parábola con la distancia minima que habrá durante la simulacion.
-            Position pa0 = this.initalPosition;
+            Position pa0 = this.currentPosition;
             Position paF = this.finalPosition;
             double dA = pa0.Distancia(paF);
             double tA = dA / (this.velocidad / 60); //minutos
             double vaX = (this.velocidad / 60) * (paF.GetX() - pa0.GetX()) / dA;
             double vaY = (this.velocidad / 60) * (paF.GetY() - pa0.GetY()) / dA;
 
-            Position pb0 = plan2.initalPosition;
+            Position pb0 = plan2.currentPosition;
             Position pbF = plan2.finalPosition;
             double dB = pb0.Distancia(pbF);
             double tB = dB / (plan2.velocidad / 60);
@@ -199,9 +205,66 @@ namespace FlightLib
             return pa_min.Distancia(pb_min) < distanciaSeguridad;
         }
 
-        public Position CambiarRumbo(FlightPlan plan2, double distanciaSeguridad)
+        public bool PredecirConflicto2(FlightPlan plan2, double distanciaSeguridad)
         {
-            Position backup = new Position(finalPosition.GetX(), finalPosition.GetY());
+            //Predice si habrá conflicto según la fórmula analítica de la distancia derivada, que da una parábola con la distancia minima que habrá durante la simulacion.
+            Position pa0 = this.currentPosition;
+            Position paF = this.originalFinalPosition;
+            double dA = pa0.Distancia(paF);
+            double tA = dA / (this.velocidad / 60); //minutos
+            double vaX = (this.velocidad / 60) * (paF.GetX() - pa0.GetX()) / dA;
+            double vaY = (this.velocidad / 60) * (paF.GetY() - pa0.GetY()) / dA;
+
+            Position pb0 = plan2.currentPosition;
+            Position pbF = plan2.finalPosition;
+            double dB = pb0.Distancia(pbF);
+            double tB = dB / (plan2.velocidad / 60);
+            double vbX = (plan2.velocidad / 60) * (pbF.GetX() - pb0.GetX()) / dB;
+            double vbY = (plan2.velocidad / 60) * (pbF.GetY() - pb0.GetY()) / dB;
+
+            double x0 = pa0.GetX() - pb0.GetX();
+            double y0 = pa0.GetY() - pb0.GetY();
+            double vX = vaX - vbX;
+            double vY = vaY - vbY;
+
+            double a = vX * vX + vY * vY;
+            double b = 2 * (x0 * vX + y0 * vY);
+
+            if (Math.Abs(a) == 0)
+            {
+                return pa0.Distancia(pb0) < distanciaSeguridad;
+            }
+
+            double t_min = -b / (2 * a);
+            double T_common = Math.Min(tA, tB);
+            double t_check;
+
+            if (t_min < 0)
+            {
+                t_check = 0;
+            }
+            else if (t_min > T_common)
+            {
+                t_check = T_common;
+            }
+            else
+            {
+                t_check = t_min;
+            }
+
+            //Si la distancia mínima es menor a la de segiridad devuelve true (true si hay conflicto)
+            double paX_min = pa0.GetX() + vaX * t_check;
+            double paY_min = pa0.GetY() + vaY * t_check;
+            Position pa_min = new Position(paX_min, paY_min);
+            double pbX_min = pb0.GetX() + vbX * t_check;
+            double pbY_min = pb0.GetY() + vbY * t_check;
+            Position pb_min = new Position(pbX_min, pbY_min);
+
+            return pa_min.Distancia(pb_min) < distanciaSeguridad;
+        }
+
+        public bool CambiarRumbo(FlightPlan plan2, double distanciaSeguridad)
+        {
             double distancia = finalPosition.Distancia(initalPosition);
             double angle = Math.Atan2(finalPosition.GetX() - initalPosition.GetX(),finalPosition.GetY() - initalPosition.GetY());
             int iteraciones = 0;
@@ -215,27 +278,23 @@ namespace FlightLib
                 iteraciones += 1;
             }
 
-            if (iteraciones < 628)
+            if (iteraciones > 628)
             {
-                return backup;
+                finalPosition = originalFinalPosition;
+                return false;
             }
             else
             {
-                finalPosition = backup;
-                return null;
+                return true;
             }
         }
 
-        public bool RetomarRumbo(FlightPlan plan2, double distanciaSeguridad, Position backup)
+        public bool RetomarRumbo(FlightPlan plan2, double distanciaSeguridad)
         {
-            FlightPlan planA = new FlightPlan("id", currentPosition.GetX(),currentPosition.GetY(), backup.GetX(),backup.GetY(), velocidad);
-            FlightPlan planB = new FlightPlan("id", plan2.GetCurrentPosition().GetX(), plan2.GetCurrentPosition().GetY(), plan2.GetFinalPosition().GetX(), plan2.GetFinalPosition().GetY(), plan2.GetVelocidad());
-            //Position currentFinalPosition = new Position(finalPosition.GetX(),finalPosition.GetY());
-            //finalPosition = backup;
-            bool conflicto = planA.PredecirConflicto(planB, distanciaSeguridad);
+            bool conflicto = this.PredecirConflicto2(plan2, distanciaSeguridad);
             if (!conflicto)
             {
-                finalPosition = backup;
+                finalPosition = originalFinalPosition;
             }
             return conflicto;
         }
@@ -260,6 +319,7 @@ namespace FlightLib
         {
             // Reinicia la posición actual a la posición inicial
             this.currentPosition = new Position(this.initalPosition.GetX(), this.initalPosition.GetY());
+            this.finalPosition = originalFinalPosition;
         }
 
 
@@ -280,6 +340,13 @@ namespace FlightLib
             clon.currentPosition = copiaCurrent;
             clon.initalPosition = copiaInitial;
             clon.finalPosition = copiaFinal;
+
+
+            if (this.originalFinalPosition != null)
+            {
+                clon.originalFinalPosition = new Position(this.originalFinalPosition.GetX(), this.originalFinalPosition.GetY());
+            }
+
 
             return clon;
         }
