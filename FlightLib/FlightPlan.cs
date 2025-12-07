@@ -111,9 +111,9 @@ namespace FlightLib
 
 
         // Si hay conflicto, reducir la velocidad de uno hasta que no haya conflicto o la velocidad sea 0
-        public int ReducirVelocidad(FlightPlan plan2, double distanciaSeguridad)
+        public bool ReducirVelocidad(FlightPlan plan2, double distanciaSeguridad)
         {
-            double velocidad_0 = plan2.GetVelocidad();
+            double velocidad_0 = this.velocidad;
             while (this.PredecirConflicto(plan2, distanciaSeguridad))
             {
                 double nuevaVelocidad = this.velocidad * 0.99; //Reduce la velocidad de un vuelo de 1% en 1% hasta que ya no haya conflicto
@@ -121,11 +121,11 @@ namespace FlightLib
                 double dist = this.DistanceTo(plan2);
                 if (nuevaVelocidad < 10e-10)
                 {
-                    plan2.SetVelocidad(velocidad_0);
-                    return 0;
+                    this.velocidad = velocidad_0;
+                    return false;
                 }
             }
-            return 1;
+            return true;
         }
 
 
@@ -188,7 +188,7 @@ namespace FlightLib
                 t_check = t_min;
             }
 
-            //Si la distancia mínima es menor a la de segiridad devuelve false
+            //Si la distancia mínima es menor a la de segiridad devuelve true (true si hay conflicto)
             double paX_min = pa0.GetX() + vaX * t_check;
             double paY_min = pa0.GetY() + vaY * t_check;
             Position pa_min = new Position(paX_min, paY_min);
@@ -197,6 +197,47 @@ namespace FlightLib
             Position pb_min = new Position(pbX_min, pbY_min);
 
             return pa_min.Distancia(pb_min) < distanciaSeguridad;
+        }
+
+        public Position CambiarRumbo(FlightPlan plan2, double distanciaSeguridad)
+        {
+            Position backup = new Position(finalPosition.GetX(), finalPosition.GetY());
+            double distancia = finalPosition.Distancia(initalPosition);
+            double angle = Math.Atan2(finalPosition.GetX() - initalPosition.GetX(),finalPosition.GetY() - initalPosition.GetY());
+            int iteraciones = 0;
+
+            while (this.PredecirConflicto(plan2, distanciaSeguridad) && iteraciones < 628) //Una vuelta entera cambiando el angulo
+            {
+                angle = angle - 0.01;
+                double xf = initalPosition.GetX() + distancia * Math.Sin(angle);
+                double yf = initalPosition.GetY() + distancia * Math.Cos(angle);
+                finalPosition = new Position(xf, yf);
+                iteraciones += 1;
+            }
+
+            if (iteraciones < 628)
+            {
+                return backup;
+            }
+            else
+            {
+                finalPosition = backup;
+                return null;
+            }
+        }
+
+        public bool RetomarRumbo(FlightPlan plan2, double distanciaSeguridad, Position backup)
+        {
+            FlightPlan planA = new FlightPlan("id", currentPosition.GetX(),currentPosition.GetY(), backup.GetX(),backup.GetY(), velocidad);
+            FlightPlan planB = new FlightPlan("id", plan2.GetCurrentPosition().GetX(), plan2.GetCurrentPosition().GetY(), plan2.GetFinalPosition().GetX(), plan2.GetFinalPosition().GetY(), plan2.GetVelocidad());
+            //Position currentFinalPosition = new Position(finalPosition.GetX(),finalPosition.GetY());
+            //finalPosition = backup;
+            bool conflicto = planA.PredecirConflicto(planB, distanciaSeguridad);
+            if (!conflicto)
+            {
+                finalPosition = backup;
+            }
+            return conflicto;
         }
 
 

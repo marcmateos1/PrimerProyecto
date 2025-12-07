@@ -169,5 +169,30 @@ namespace FlightLib
             }
             return clon;
         }
+        
+        public int Indice(FlightPlan plan)
+        {
+            int i = 0;
+            bool found = false;
+            while (i<number && !found)
+            {
+                if (vector[i] == plan)
+                {
+                    found = true;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            if (found)
+            {
+                return i;
+            }
+            else
+            {
+                return -1;
+            }
+        }
     }
 }

@@ -47,6 +47,7 @@
             labelUsuario2 = new Label();
             label5 = new Label();
             buttonCerrarSesión = new Button();
+            reloj2 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // panel1
@@ -238,6 +239,10 @@
             buttonCerrarSesión.UseVisualStyleBackColor = true;
             buttonCerrarSesión.Click += buttonCerrarSesion_Click;
             // 
+            // reloj2
+            // 
+            reloj2.Tick += reloj2_Tick;
+            // 
             // EspacioAereo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -289,5 +294,6 @@
         private Label labelUsuario2;
         private Label label5;
         private Button buttonCerrarSesión;
+        private System.Windows.Forms.Timer reloj2;
     }
 }

@@ -25,6 +25,10 @@ namespace Interfaz
         //vector de picture boxes para representar los aviones
         PictureBox[] vuelos;
 
+        List<Position> finalPositionBackup = new List<Position>();
+        List<int> indicesCambioRuta = new List<int>();
+
+
         //Constructor
         public EspacioAereo(Interfaz.Principal principal) //iniciar l'espai aeri
         {
@@ -35,6 +39,48 @@ namespace Interfaz
 
         //METODOS I FUNCIONWS NECESARIAS PARA LA SIMULACION
 
+        private void DetectarYResolverConflictos()
+        {
+            for (int i = 0; i < miLista.NumElementosLista(); i++)
+            {
+                FlightPlan plan = miLista.GetFlightPlan(i);
+                for (int j = 0; j + 1 < miLista.NumElementosLista(); j++)
+                {
+                    FlightPlan plan2 = miLista.GetFlightPlan(j);
+                    if (plan != plan2)
+                    {
+                        bool a = false;
+                        a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
+                        if (a)
+                        {
+                            Conflicto nuevoFormulario = new Conflicto(miLista.GetFlightPlan(i).GetId(), miLista.GetFlightPlan(j).GetId());
+                            DialogResult respuesta = nuevoFormulario.ShowDialog();
+                            if (respuesta == DialogResult.Yes)
+                            {
+                                bool resultado = plan.ReducirVelocidad(plan2, distanciaSeguridad);
+                                if (resultado)
+                                {
+                                    MessageBox.Show($"Se ha reducido la velocidad del vuelo {plan.GetId()} para evitar el conflicto.", "Conflicto resuelto automáticamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se ha podido solucionar el conflicto reduciendo la velocidad, se cambiaran las rutas.");
+                                    finalPositionBackup.Add(plan.CambiarRumbo(plan2, distanciaSeguridad));
+                                    int indice = miLista.Indice(plan);
+                                    if (indice != -1)
+                                    {
+                                        indicesCambioRuta.Add(indice);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+
         public void SetData(FlightPlanList f, int c, float distancia) //inicializar los datos
         {
             miLista = f;
@@ -42,36 +88,7 @@ namespace Interfaz
             distanciaSeguridad = distancia;
             if (miLista.NumElementosLista() != 0 && tiempoCiclo != 0 && distanciaSeguridad != 0)
             {
-                for (int i = 0; i < miLista.NumElementosLista(); i++)
-                {
-                    FlightPlan plan = miLista.GetFlightPlan(i);
-                    for (int j = 0; j + 1 < miLista.NumElementosLista(); j++)
-                    {
-                        FlightPlan plan2 = miLista.GetFlightPlan(j);
-                        if (plan != plan2)
-                        {
-                            bool a = false;
-                            a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
-                            if (a)
-                            {
-                                Conflicto nuevoFormulario = new Conflicto(miLista.GetFlightPlan(i).GetId(), miLista.GetFlightPlan(j).GetId());
-                                DialogResult respuesta = nuevoFormulario.ShowDialog();
-                                if (respuesta == DialogResult.Yes)
-                                {
-                                    plan.ReducirVelocidad(plan2, distanciaSeguridad);
-                                    MessageBox.Show(
-                                        $"Se ha reducido la velocidad del vuelo {plan.GetId()} para evitar el conflicto.",
-                                        "Conflicto resuelto automáticamente",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Information
-                                    );
-                                }
-
-                            }
-                        }
-                    }
-                }
-
+                DetectarYResolverConflictos();
             }
             else
             {
@@ -96,6 +113,13 @@ namespace Interfaz
             // Volver a cargar los vuelos
             EspacioAereo_Load(this, EventArgs.Empty);
             MessageBox.Show("Es reinicia l'espai aeri");
+            for(int i = 0; i<indicesCambioRuta.Count; i++)
+            {
+                miLista.GetFlightPlan(indicesCambioRuta[i]).SetFinalPosition(finalPositionBackup[i]);
+            }
+            indicesCambioRuta.Clear();
+            finalPositionBackup.Clear();
+            DetectarYResolverConflictos();
         }
 
 
@@ -168,6 +192,11 @@ namespace Interfaz
 
 
         private void EspacioAereo_Load(object sender, EventArgs e)//botón para cargar el espacio aéreo
+        {
+            RefrescarPanel();
+        }
+
+        private void RefrescarPanel()
         {
             try
             {
@@ -248,7 +277,6 @@ namespace Interfaz
             catch (Exception) { MessageBox.Show("Dades entrades no correctament"); }
         }
 
-
         private void botonMover_Click(object sender, EventArgs e)//botón para mover una iteración
         {
             bool b = miLista.LlegadoDestino();
@@ -262,6 +290,7 @@ namespace Interfaz
             {
                 MessageBox.Show("Tots els avions han arribat al seu destí.");//cuando llegan ya no se mueven más..
             }
+            ComprobarDesvio();
         }
 
 
@@ -301,6 +330,12 @@ namespace Interfaz
         {
             Reloj.Interval = 100;
             Reloj.Start();
+
+            if (finalPositionBackup != null)
+            {
+                reloj2.Interval = 100;
+                reloj2.Start();
+            }
         }
 
         private void Parar_Click(object sender, EventArgs e)// Boton para parar la simulacion automatica
@@ -372,7 +407,7 @@ namespace Interfaz
                 panel1.Controls.Clear();
                 EspacioAereo_Load(this, EventArgs.Empty);
             }
-
+            reloj2.Start();
 
         }
 
@@ -436,6 +471,42 @@ namespace Interfaz
             }
 
             //Reloj.Start();
+        }
+
+        private void ComprobarDesvio()
+        {
+            for (int i = 0; i < indicesCambioRuta.Count; i++)
+            {
+                for (int j = 0; j < miLista.NumElementosLista(); j++)
+                {
+                    if (j != indicesCambioRuta[i])
+                    {
+                        if (!miLista.GetFlightPlan(indicesCambioRuta[i]).RetomarRumbo(miLista.GetFlightPlan(j), distanciaSeguridad, finalPositionBackup[i]))
+                        {
+                            indicesEliminar.Push(i);
+                            RefrescarPanel();
+                        }
+                    }
+                }
+            }
+            while (0 < indicesEliminar.Count)
+            {
+                int i = indicesEliminar.Pop();
+                indicesCambioRuta.RemoveAt(i);
+                finalPositionBackup.RemoveAt(i);
+            }
+        }
+
+        Stack<int> indicesEliminar = new Stack<int>();
+        private void reloj2_Tick(object sender, EventArgs e) //Reloj usado para devolver al avion a su rumbo normal en caso de que se desvie (Asi no hay que hacer una comprobacion en cada tick en caso que no haya ningun desvio)
+        {
+            ComprobarDesvio();
+
+            if (indicesCambioRuta.Count == 0)
+            {
+                reloj2.Stop();
+            }
+
         }
     }
 }
