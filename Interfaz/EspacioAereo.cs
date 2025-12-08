@@ -43,7 +43,7 @@ namespace Interfaz
                 for (int j = 0; j + 1 < miLista.NumElementosLista(); j++)
                 {
                     FlightPlan plan2 = miLista.GetFlightPlan(j);
-                    if (plan != plan2)
+                    if (plan != plan2) //Compara todos los aviones de la lista (menos consigo mismo)
                     {
                         bool a = false;
                         a = plan.PredecirConflicto(plan2, this.distanciaSeguridad);
@@ -53,7 +53,7 @@ namespace Interfaz
                             DialogResult respuesta = nuevoFormulario.ShowDialog();
                             if (respuesta == DialogResult.Yes)
                             {
-                                bool resultado = plan.ReducirVelocidad(plan2, distanciaSeguridad);
+                                bool resultado = plan.ReducirVelocidad(plan2, distanciaSeguridad); //Intenta resolver el conflicto cambiando velocidades
                                 if (resultado)
                                 {
                                     MessageBox.Show($"Se ha reducido la velocidad del vuelo {plan.GetId()} para evitar el conflicto.", "Conflicto resuelto automáticamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -61,7 +61,7 @@ namespace Interfaz
                                 else
                                 {
                                     MessageBox.Show("No se ha podido solucionar el conflicto reduciendo la velocidad, se cambiaran las rutas.");
-                                    if(!plan.CambiarRumbo(plan2, distanciaSeguridad))
+                                    if(!plan.CambiarRumbo(plan2, distanciaSeguridad)) //Resuelve el conflicto cambiando rutas
                                     {
                                         MessageBox.Show("No se puede evitar el conflicto.");
                                     }
@@ -108,6 +108,7 @@ namespace Interfaz
             EspacioAereo_Load(this, EventArgs.Empty);
             MessageBox.Show("Es reinicia l'espai aeri");
             DetectarYResolverConflictos();
+            RefrescarPanel();
         }
 
 
@@ -278,7 +279,10 @@ namespace Interfaz
             {
                 MessageBox.Show("Tots els avions han arribat al seu destí.");//cuando llegan ya no se mueven más..
             }
-            ComprobarDesvio();
+            if (miLista.ComprobarDesvio(distanciaSeguridad))
+            {
+                RefrescarPanel();
+            }
         }
 
 
@@ -328,7 +332,7 @@ namespace Interfaz
             Reloj.Start();
 
 
-            if (Desviados())
+            if (miLista.Desviados())
             {
                 reloj2.Interval = 100;
                 reloj2.Start();
@@ -470,35 +474,14 @@ namespace Interfaz
             //Reloj.Start();
         }
 
-        private void ComprobarDesvio()
-        {
-            Stack<FlightPlan> desvios = new Stack<FlightPlan>();
-
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-                if (miLista.GetFlightPlan(i).GetFinalPosition() != miLista.GetFlightPlan(i).GetOriginalFinalPosition())
-                {
-                    desvios.Push(miLista.GetFlightPlan(i));
-                }
-            }
-            
-            foreach(FlightPlan plan in desvios)
-            {
-                for(int i = 0; i< miLista.NumElementosLista(); i++)
-                {
-                    if (!plan.RetomarRumbo(miLista.GetFlightPlan(i), distanciaSeguridad))
-                    {
-                        RefrescarPanel();
-                    }
-                }
-            }
-        }
-
         private void reloj2_Tick(object sender, EventArgs e) //Reloj usado para devolver al avion a su rumbo normal en caso de que se desvie (Asi no hay que hacer una comprobacion en cada tick en caso que no haya ningun desvio)
         {
-            ComprobarDesvio();
-            
-            if (!Desviados())
+            if (miLista.ComprobarDesvio(distanciaSeguridad))
+            {
+                RefrescarPanel();
+            }
+
+            if (!miLista.Desviados())
             {
                 reloj2.Stop();
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -193,6 +194,45 @@ namespace FlightLib
             {
                 return -1;
             }
+        }
+
+        public bool ComprobarDesvio(double distanciaSeguridad)
+        {
+            List<FlightPlan> desvios = new List<FlightPlan>();
+            bool retomados = false;
+
+            for (int i = 0; i < number; i++)
+            {
+                if (vector[i].GetFinalPosition() != vector[i].GetOriginalFinalPosition())
+                {
+                    desvios.Add(vector[i]); //Añade todos los aviones desviados a la lista (aquellos cuyo destino final haya sido modificado).
+                }
+            }
+
+            foreach (FlightPlan plan in desvios)
+            {
+                for (int i = 0; i < number; i++)
+                {
+                    if (!plan.RetomarRumbo(vector[i], distanciaSeguridad)) //Compueba que puedan retomar su rumbo
+                    {
+                        retomados = true; //Para refrescar el panel si alguno lo retoma.
+                    }
+                }
+            }
+            return retomados;
+        }
+
+        public bool Desviados() //Busca si hay algun avion desviado
+        {
+            bool found = false;
+            for (int i = 0; i < number; i++)
+            {
+                if (vector[i].GetFinalPosition() == vector[i].GetOriginalFinalPosition())
+                {
+                    found = true;
+                }
+            }
+            return found;
         }
     }
 }

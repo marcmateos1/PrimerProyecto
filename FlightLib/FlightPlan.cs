@@ -261,7 +261,7 @@ namespace FlightLib
             Position pb_min = new Position(pbX_min, pbY_min);
 
             return pa_min.Distancia(pb_min) < distanciaSeguridad;
-        }
+        }//Igual que el metodo anterior, pero comparando el destino original final para ver si los aviones desviados pueden volver a su ruta original.
 
         public bool CambiarRumbo(FlightPlan plan2, double distanciaSeguridad)
         {
@@ -269,6 +269,7 @@ namespace FlightLib
             double angle = Math.Atan2(finalPosition.GetX() - initalPosition.GetX(),finalPosition.GetY() - initalPosition.GetY());
             int iteraciones = 0;
 
+            //Barre una vuelta entera cambiando la posicion final a una de misma distancia, pero con 0.01 radian de diferencia hasta encontrar el momento en que pasara tangente con el segundo avion, es decir, el desvio minimo para evitar el conflicto.
             while (this.PredecirConflicto(plan2, distanciaSeguridad) && iteraciones < 628) //Una vuelta entera cambiando el angulo
             {
                 angle = angle - 0.01;
@@ -278,7 +279,7 @@ namespace FlightLib
                 iteraciones += 1;
             }
 
-            if (iteraciones > 628)
+            if (iteraciones > 628) //Ha dado una vuelta entera y no ha encontrado nada (los aviones ya empiezan en peligro)
             {
                 finalPosition = originalFinalPosition;
                 return false;
@@ -294,9 +295,9 @@ namespace FlightLib
             bool conflicto = this.PredecirConflicto2(plan2, distanciaSeguridad);
             if (!conflicto)
             {
-                finalPosition = originalFinalPosition;
+                finalPosition = originalFinalPosition; //False, no habra conflicto, retoma rumbo
             }
-            return conflicto;
+            return conflicto; //True si habra conflicto, no podran retomar rumbo
         }
 
 
