@@ -149,6 +149,15 @@ namespace FlightLib
             }
         }
 
+        //Reiniciar Todos los flightplans a su posicion original
+        public void ReiniciarPlanes()
+        {
+            for (int i = 0; i < this.NumElementosLista(); i++)
+            {
+                FlightPlan plan = this.GetFlightPlan(i);
+                plan.Restart();
+            }
+        }
         public void GuardarPlan(string filename)//guarda el flightplan a larxiu
         {
             StreamWriter w = new StreamWriter(filename + ".txt"); //Guarda el archivo con este nombre.

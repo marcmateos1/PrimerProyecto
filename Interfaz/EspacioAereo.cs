@@ -92,26 +92,6 @@ namespace Interfaz
         }
 
 
-        public void Reiniciar()//función reiniciar la simulación
-        {
-            Reloj.Stop();
-            // Quitar todos los controles (vuelos, destinos, etc.)
-            panel1.Controls.Clear();
-
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-                FlightPlan plan = miLista.GetFlightPlan(i);
-                plan.Restart();
-            }
-            s.Clear(); // Limpiar la pila de estados
-            // Volver a cargar los vuelos
-            EspacioAereo_Load(this, EventArgs.Empty);
-            MessageBox.Show("Es reinicia l'espai aeri");
-            DetectarYResolverConflictos();
-            RefrescarPanel();
-        }
-
-
         public void MoverFlightPlans(FlightPlanList miLista, int tiempo) //función para mover los flightplans una iteración
         {
             if (miLista == null) return;
@@ -396,7 +376,17 @@ namespace Interfaz
 
         private void ButtonRestart_Click(object sender, EventArgs e)// botón para reiniciar la simulación
         {
-            Reiniciar();
+            Reloj.Stop();
+            miLista.ReiniciarPlanes();
+            
+            // Quitar todos los controles (vuelos, destinos, etc.)
+            panel1.Controls.Clear();
+            s.Clear(); // Limpiar la pila de estados
+            // Volver a cargar los vuelos
+            EspacioAereo_Load(this, EventArgs.Empty);
+            MessageBox.Show("Es reinicia l'espai aeri");
+            DetectarYResolverConflictos();
+            RefrescarPanel();
         }
 
 
