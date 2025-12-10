@@ -8,7 +8,7 @@ namespace FlightLib
 {
     public class BaseDeDatos
     {
-        //Atributo privado para la conexión SQLitesdgsdgsgsdfdsgs
+        //Atributo privado para la conexión SQLite
         private  SqliteConnection cnx;
         // Constructor que recibe la ruta del archivo. Cuando se crea un objeto Database, le pasa la ruta del archivo de base de datos (dbFile).
         public BaseDeDatos(string dbFile)
