@@ -94,7 +94,6 @@
             label4.Size = new Size(50, 20);
             label4.TabIndex = 5;
             label4.Text = "label4";
-            label4.Click += label4_Click;
             // 
             // Conflicto
             // 

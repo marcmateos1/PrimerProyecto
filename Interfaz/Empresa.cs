@@ -28,7 +28,7 @@ namespace Interfaz
             PanelRegEmpresa.BackColor = Color.FromArgb(100, Color.White);
             PanelLogInEmpresa.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
             PanelRegEmpresa.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
- 
+
 
         }
 
@@ -72,7 +72,7 @@ namespace Interfaz
             PanelRegEmpresa.BackColor = Color.FromArgb(100, Color.White);
             PanelLogInEmpresa.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
             PanelRegEmpresa.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
- 
+
 
             regNom.Text = "";
             regTel.Text = "";
@@ -110,7 +110,7 @@ namespace Interfaz
             PanelLogInEmpresa.BackColor = Color.FromArgb(100, Color.White);
             PanelRegEmpresa.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
             PanelLogInEmpresa.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
- 
+
 
             // Rellenar el campo de usuario y limpiar la contraseña
             logInNom.Text = name;
@@ -128,6 +128,11 @@ namespace Interfaz
         }
 
         private void RegEmpresa_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Empresa_Load(object sender, EventArgs e)
         {
 
         }

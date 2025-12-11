@@ -11,7 +11,7 @@ namespace Interfaz
         public int tiempoCiclo;
         BaseDeDatos db;
         string a;
-        
+
 
 
         // Constructor
@@ -91,6 +91,11 @@ namespace Interfaz
         {
             Empresa empresa = new Empresa(a);
             empresa.Show();
+        }
+
+        private void opcionesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

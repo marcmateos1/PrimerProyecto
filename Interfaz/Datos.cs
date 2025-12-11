@@ -82,5 +82,15 @@ namespace InterfazDatos
             TXF2.Text = "225";
             TVelocidad2.Text = "100";
         }
+
+        private void Datos_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

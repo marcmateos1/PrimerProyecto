@@ -53,8 +53,9 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Location = new Point(409, 141);
+            panel1.Location = new Point(482, 255);
             panel1.Margin = new Padding(2, 4, 2, 4);
             panel1.Name = "panel1";
             panel1.Size = new Size(500, 500);
@@ -63,8 +64,9 @@
             // 
             // botonMover
             // 
+            botonMover.Anchor = AnchorStyles.None;
             botonMover.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            botonMover.Location = new Point(45, 179);
+            botonMover.Location = new Point(45, 226);
             botonMover.Margin = new Padding(2, 4, 2, 4);
             botonMover.Name = "botonMover";
             botonMover.Size = new Size(290, 76);
@@ -75,9 +77,10 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("SimSun", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(378, 141);
+            label1.Location = new Point(451, 255);
             label1.Name = "label1";
             label1.Size = new Size(26, 25);
             label1.TabIndex = 3;
@@ -85,9 +88,10 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("SimSun", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(409, 112);
+            label2.Location = new Point(482, 226);
             label2.Name = "label2";
             label2.Size = new Size(26, 25);
             label2.TabIndex = 4;
@@ -95,9 +99,10 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("SimSun", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(367, 645);
+            label3.Location = new Point(440, 759);
             label3.Name = "label3";
             label3.Size = new Size(54, 25);
             label3.TabIndex = 5;
@@ -105,9 +110,10 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("SimSun", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(897, 112);
+            label4.Location = new Point(970, 226);
             label4.Name = "label4";
             label4.Size = new Size(54, 25);
             label4.TabIndex = 6;
@@ -115,8 +121,9 @@
             // 
             // simularAut
             // 
+            simularAut.Anchor = AnchorStyles.None;
             simularAut.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            simularAut.Location = new Point(45, 296);
+            simularAut.Location = new Point(45, 384);
             simularAut.Margin = new Padding(3, 4, 3, 4);
             simularAut.Name = "simularAut";
             simularAut.Size = new Size(290, 76);
@@ -127,8 +134,9 @@
             // 
             // Parar
             // 
+            Parar.Anchor = AnchorStyles.None;
             Parar.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Parar.Location = new Point(964, 448);
+            Parar.Location = new Point(1139, 582);
             Parar.Margin = new Padding(3, 4, 3, 4);
             Parar.Name = "Parar";
             Parar.Size = new Size(153, 76);
@@ -144,8 +152,9 @@
             // 
             // ShowInfo
             // 
+            ShowInfo.Anchor = AnchorStyles.None;
             ShowInfo.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ShowInfo.Location = new Point(45, 411);
+            ShowInfo.Location = new Point(45, 544);
             ShowInfo.Margin = new Padding(3, 4, 3, 4);
             ShowInfo.Name = "ShowInfo";
             ShowInfo.Size = new Size(290, 76);
@@ -156,8 +165,9 @@
             // 
             // botonVolver
             // 
+            botonVolver.Anchor = AnchorStyles.None;
             botonVolver.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            botonVolver.Location = new Point(692, 664);
+            botonVolver.Location = new Point(766, 861);
             botonVolver.Name = "botonVolver";
             botonVolver.Size = new Size(121, 57);
             botonVolver.TabIndex = 10;
@@ -167,8 +177,9 @@
             // 
             // ButtonRestart
             // 
+            ButtonRestart.Anchor = AnchorStyles.None;
             ButtonRestart.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ButtonRestart.Location = new Point(964, 243);
+            ButtonRestart.Location = new Point(1139, 308);
             ButtonRestart.Name = "ButtonRestart";
             ButtonRestart.Size = new Size(153, 76);
             ButtonRestart.TabIndex = 12;
@@ -178,8 +189,9 @@
             // 
             // Conflicte
             // 
+            Conflicte.Anchor = AnchorStyles.None;
             Conflicte.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Conflicte.Location = new Point(964, 347);
+            Conflicte.Location = new Point(1139, 449);
             Conflicte.Margin = new Padding(3, 4, 3, 4);
             Conflicte.Name = "Conflicte";
             Conflicte.Size = new Size(153, 76);
@@ -190,8 +202,9 @@
             // 
             // guardarBtn
             // 
+            guardarBtn.Anchor = AnchorStyles.None;
             guardarBtn.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guardarBtn.Location = new Point(45, 527);
+            guardarBtn.Location = new Point(45, 708);
             guardarBtn.Name = "guardarBtn";
             guardarBtn.Size = new Size(290, 76);
             guardarBtn.TabIndex = 14;
@@ -201,8 +214,9 @@
             // 
             // Retroceder
             // 
+            Retroceder.Anchor = AnchorStyles.None;
             Retroceder.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Retroceder.Location = new Point(964, 141);
+            Retroceder.Location = new Point(1139, 175);
             Retroceder.Margin = new Padding(3, 4, 3, 4);
             Retroceder.Name = "Retroceder";
             Retroceder.Size = new Size(153, 76);
@@ -221,9 +235,10 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 28.2F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            label5.Location = new Point(464, 42);
+            label5.Location = new Point(507, 67);
             label5.Name = "label5";
             label5.Size = new Size(380, 53);
             label5.TabIndex = 17;
@@ -231,8 +246,9 @@
             // 
             // buttonCerrarSesión
             // 
+            buttonCerrarSesión.Anchor = AnchorStyles.None;
             buttonCerrarSesión.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonCerrarSesión.Location = new Point(484, 664);
+            buttonCerrarSesión.Location = new Point(523, 861);
             buttonCerrarSesión.Name = "buttonCerrarSesión";
             buttonCerrarSesión.Size = new Size(158, 57);
             buttonCerrarSesión.TabIndex = 18;
@@ -246,8 +262,9 @@
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.None;
             button1.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(964, 565);
+            button1.Location = new Point(1139, 720);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(153, 76);
@@ -260,7 +277,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1183, 757);
+            ClientSize = new Size(1329, 984);
             Controls.Add(button1);
             Controls.Add(buttonCerrarSesión);
             Controls.Add(label5);
@@ -282,6 +299,7 @@
             Margin = new Padding(2, 4, 2, 4);
             Name = "EspacioAereo";
             Text = "EspacioAereo";
+            WindowState = FormWindowState.Maximized;
             Load += EspacioAereo_Load;
             ResumeLayout(false);
             PerformLayout();

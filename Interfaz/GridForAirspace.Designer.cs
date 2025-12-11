@@ -36,8 +36,9 @@
             // 
             // Taula
             // 
+            Taula.Anchor = AnchorStyles.None;
             Taula.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Taula.Location = new Point(67, 59);
+            Taula.Location = new Point(139, 96);
             Taula.Margin = new Padding(3, 4, 3, 4);
             Taula.Name = "Taula";
             Taula.RowHeadersWidth = 51;
@@ -47,13 +48,14 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.None;
             groupBox1.Controls.Add(Taula);
             groupBox1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(78, 57);
+            groupBox1.Location = new Point(12, 30);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(746, 404);
+            groupBox1.Size = new Size(890, 478);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "INFORMACIÓN DE TODOS LOS VUELOS";
@@ -68,6 +70,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "GridForAirspace";
             Text = "GridForAirspace";
+            WindowState = FormWindowState.Maximized;
             Load += GridForAirspace_Load;
             ((System.ComponentModel.ISupportInitialize)Taula).EndInit();
             groupBox1.ResumeLayout(false);

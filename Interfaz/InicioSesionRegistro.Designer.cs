@@ -55,6 +55,7 @@
             label10 = new Label();
             regNom = new TextBox();
             label11 = new Label();
+            button1 = new Button();
             panelRegistro.SuspendLayout();
             panelInicioSesion.SuspendLayout();
             SuspendLayout();
@@ -73,7 +74,6 @@
             panelRegistro.Name = "panelRegistro";
             panelRegistro.Size = new Size(345, 294);
             panelRegistro.TabIndex = 0;
-            panelRegistro.Paint += panelRegistro_Paint;
             // 
             // label2
             // 
@@ -221,11 +221,10 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Font = new Font("Sitka Banner", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(370, 137);
             label1.Name = "label1";
-            label1.Size = new Size(370, 89);
+            label1.Size = new Size(368, 87);
             label1.TabIndex = 2;
             label1.Text = "BIENVENIDO";
             // 
@@ -292,11 +291,24 @@
             label11.Size = new Size(100, 23);
             label11.TabIndex = 0;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.None;
+            button1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(433, 752);
+            button1.Name = "button1";
+            button1.Size = new Size(229, 48);
+            button1.TabIndex = 3;
+            button1.Text = "CERRAR PROGRAMA";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // InicioSesionRegistro
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1116, 910);
+            Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(panelInicioSesion);
             Controls.Add(panelRegistro);
@@ -343,5 +355,6 @@
         private Label label10;
         private TextBox regNom;
         private Label label11;
+        private Button button1;
     }
 }

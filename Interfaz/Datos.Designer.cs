@@ -66,10 +66,10 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.Control;
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(63, 43);
+            label1.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(66, 43);
             label1.Name = "label1";
-            label1.Size = new Size(84, 19);
+            label1.Size = new Size(102, 22);
             label1.TabIndex = 0;
             label1.Text = "Identificador";
             // 
@@ -78,32 +78,35 @@
             label2.AutoSize = true;
             label2.BackColor = SystemColors.Control;
             label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(228, 43);
+            label2.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(278, 43);
             label2.Name = "label2";
-            label2.Size = new Size(67, 19);
+            label2.Size = new Size(80, 22);
             label2.TabIndex = 1;
             label2.Text = "Velocidad";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = SystemColors.Control;
             label3.BorderStyle = BorderStyle.FixedSingle;
-            label3.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(106, 208);
+            label3.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(84, 137);
             label3.Name = "label3";
-            label3.Size = new Size(57, 19);
+            label3.Size = new Size(70, 22);
             label3.TabIndex = 2;
             label3.Text = "X inicial";
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = SystemColors.Control;
             label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(106, 284);
+            label4.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.WindowText;
+            label4.Location = new Point(84, 238);
             label4.Name = "label4";
-            label4.Size = new Size(57, 19);
+            label4.Size = new Size(69, 22);
             label4.TabIndex = 3;
             label4.Text = "Y inicial";
             // 
@@ -112,10 +115,10 @@
             label5.AutoSize = true;
             label5.BackColor = SystemColors.Control;
             label5.BorderStyle = BorderStyle.FixedSingle;
-            label5.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(237, 191);
+            label5.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(287, 238);
             label5.Name = "label5";
-            label5.Size = new Size(49, 19);
+            label5.Size = new Size(59, 22);
             label5.TabIndex = 4;
             label5.Text = "Y final";
             // 
@@ -124,59 +127,66 @@
             label6.AutoSize = true;
             label6.BackColor = SystemColors.Control;
             label6.BorderStyle = BorderStyle.FixedSingle;
-            label6.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(237, 115);
+            label6.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(287, 137);
             label6.Name = "label6";
-            label6.Size = new Size(49, 19);
+            label6.Size = new Size(60, 22);
             label6.TabIndex = 5;
             label6.Text = "X final";
             // 
             // TIdentificador
             // 
-            TIdentificador.Location = new Point(73, 161);
+            TIdentificador.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TIdentificador.Location = new Point(52, 75);
             TIdentificador.Name = "TIdentificador";
-            TIdentificador.Size = new Size(125, 27);
+            TIdentificador.Size = new Size(125, 39);
             TIdentificador.TabIndex = 6;
             // 
             // TVelocidad
             // 
-            TVelocidad.Location = new Point(233, 161);
+            TVelocidad.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TVelocidad.Location = new Point(248, 75);
             TVelocidad.Name = "TVelocidad";
-            TVelocidad.Size = new Size(125, 27);
+            TVelocidad.Size = new Size(125, 39);
             TVelocidad.TabIndex = 7;
             // 
             // TX0
             // 
-            TX0.Location = new Point(73, 233);
+            TX0.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TX0.Location = new Point(52, 171);
             TX0.Name = "TX0";
-            TX0.Size = new Size(125, 27);
+            TX0.Size = new Size(125, 39);
             TX0.TabIndex = 8;
             // 
             // TY0
             // 
-            TY0.Location = new Point(73, 309);
+            TY0.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TY0.Location = new Point(52, 269);
             TY0.Name = "TY0";
-            TY0.Size = new Size(125, 27);
+            TY0.Size = new Size(125, 39);
             TY0.TabIndex = 9;
             // 
             // TXF
             // 
-            TXF.Location = new Point(233, 233);
+            TXF.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TXF.Location = new Point(248, 172);
             TXF.Name = "TXF";
-            TXF.Size = new Size(125, 27);
+            TXF.Size = new Size(125, 39);
             TXF.TabIndex = 10;
             // 
             // TYF
             // 
-            TYF.Location = new Point(233, 309);
+            TYF.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TYF.Location = new Point(248, 269);
             TYF.Name = "TYF";
-            TYF.Size = new Size(125, 27);
+            TYF.Size = new Size(125, 39);
             TYF.TabIndex = 11;
             // 
             // BCompilar
             // 
+            BCompilar.Anchor = AnchorStyles.None;
             BCompilar.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BCompilar.Location = new Point(301, 383);
+            BCompilar.Location = new Point(505, 753);
             BCompilar.Name = "BCompilar";
             BCompilar.Size = new Size(221, 74);
             BCompilar.TabIndex = 12;
@@ -186,108 +196,121 @@
             // 
             // label8
             // 
+            label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
-            label8.Font = new Font("Times New Roman", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label8.Location = new Point(73, 30);
+            label8.Font = new Font("Times New Roman", 25.8000011F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label8.Location = new Point(215, 101);
             label8.Name = "label8";
-            label8.Size = new Size(694, 35);
+            label8.Size = new Size(1007, 51);
             label8.TabIndex = 14;
             label8.Text = "INTRODUCE LOS DATOS DE LOS DOS VUELOS";
+            label8.Click += label8_Click;
             // 
             // label10
             // 
             label10.AutoSize = true;
+            label10.BackColor = SystemColors.Control;
             label10.BorderStyle = BorderStyle.FixedSingle;
-            label10.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(502, 136);
+            label10.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(65, 43);
             label10.Name = "label10";
-            label10.Size = new Size(84, 19);
+            label10.Size = new Size(102, 22);
             label10.TabIndex = 17;
             label10.Text = "Identificador";
             // 
             // label11
             // 
             label11.AutoSize = true;
+            label11.BackColor = SystemColors.Control;
             label11.BorderStyle = BorderStyle.FixedSingle;
-            label11.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(649, 136);
+            label11.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(277, 40);
             label11.Name = "label11";
-            label11.Size = new Size(67, 19);
+            label11.Size = new Size(80, 22);
             label11.TabIndex = 18;
             label11.Text = "Velocidad";
             // 
             // TIdentificador2
             // 
-            TIdentificador2.Location = new Point(479, 161);
+            TIdentificador2.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TIdentificador2.Location = new Point(55, 75);
             TIdentificador2.Name = "TIdentificador2";
-            TIdentificador2.Size = new Size(125, 27);
+            TIdentificador2.Size = new Size(125, 39);
             TIdentificador2.TabIndex = 19;
             // 
             // TXF2
             // 
-            TXF2.Location = new Point(622, 233);
+            TXF2.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TXF2.Location = new Point(253, 172);
             TXF2.Name = "TXF2";
-            TXF2.Size = new Size(125, 27);
+            TXF2.Size = new Size(125, 39);
             TXF2.TabIndex = 20;
             // 
             // TX02
             // 
-            TX02.Location = new Point(479, 233);
+            TX02.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TX02.Location = new Point(55, 171);
             TX02.Name = "TX02";
-            TX02.Size = new Size(125, 27);
+            TX02.Size = new Size(125, 39);
             TX02.TabIndex = 21;
             // 
             // TVelocidad2
             // 
-            TVelocidad2.Location = new Point(622, 161);
+            TVelocidad2.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TVelocidad2.Location = new Point(253, 75);
             TVelocidad2.Name = "TVelocidad2";
-            TVelocidad2.Size = new Size(125, 27);
+            TVelocidad2.Size = new Size(125, 39);
             TVelocidad2.TabIndex = 22;
             // 
             // TYF2
             // 
-            TYF2.Location = new Point(622, 305);
+            TYF2.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TYF2.Location = new Point(253, 269);
             TYF2.Name = "TYF2";
-            TYF2.Size = new Size(125, 27);
+            TYF2.Size = new Size(125, 39);
             TYF2.TabIndex = 23;
             // 
             // TY02
             // 
-            TY02.Location = new Point(479, 305);
+            TY02.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TY02.Location = new Point(55, 269);
             TY02.Name = "TY02";
-            TY02.Size = new Size(125, 27);
+            TY02.Size = new Size(125, 39);
             TY02.TabIndex = 24;
             // 
             // label12
             // 
             label12.AutoSize = true;
+            label12.BackColor = SystemColors.Control;
             label12.BorderStyle = BorderStyle.FixedSingle;
-            label12.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.Location = new Point(659, 208);
+            label12.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.Location = new Point(287, 137);
             label12.Name = "label12";
-            label12.Size = new Size(49, 19);
+            label12.Size = new Size(60, 22);
             label12.TabIndex = 25;
             label12.Text = "X final";
             // 
             // label13
             // 
             label13.AutoSize = true;
+            label13.BackColor = SystemColors.Control;
             label13.BorderStyle = BorderStyle.FixedSingle;
-            label13.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new Point(512, 208);
+            label13.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label13.Location = new Point(84, 137);
             label13.Name = "label13";
-            label13.Size = new Size(57, 19);
+            label13.Size = new Size(70, 22);
             label13.TabIndex = 26;
             label13.Text = "X inicial";
             // 
             // label14
             // 
             label14.AutoSize = true;
+            label14.BackColor = SystemColors.Control;
             label14.BorderStyle = BorderStyle.FixedSingle;
-            label14.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.Location = new Point(512, 280);
+            label14.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label14.Location = new Point(85, 238);
             label14.Name = "label14";
-            label14.Size = new Size(57, 19);
+            label14.Size = new Size(69, 22);
             label14.TabIndex = 27;
             label14.Text = "Y inicial";
             // 
@@ -296,20 +319,21 @@
             label15.AutoSize = true;
             label15.BackColor = SystemColors.Control;
             label15.BorderStyle = BorderStyle.FixedSingle;
-            label15.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.Location = new Point(228, 187);
+            label15.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label15.Location = new Point(287, 238);
             label15.Name = "label15";
-            label15.Size = new Size(49, 19);
+            label15.Size = new Size(59, 22);
             label15.TabIndex = 28;
             label15.Text = "Y final";
             // 
             // atajo
             // 
+            atajo.Anchor = AnchorStyles.None;
             atajo.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            atajo.Location = new Point(341, 464);
+            atajo.Location = new Point(809, 753);
             atajo.Margin = new Padding(3, 4, 3, 4);
             atajo.Name = "atajo";
-            atajo.Size = new Size(146, 62);
+            atajo.Size = new Size(146, 74);
             atajo.TabIndex = 29;
             atajo.Text = "Atajo";
             atajo.UseVisualStyleBackColor = true;
@@ -317,31 +341,52 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.None;
             groupBox1.BackColor = SystemColors.ActiveCaption;
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label2);
-            groupBox1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(34, 93);
+            groupBox1.Controls.Add(TXF);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(TIdentificador);
+            groupBox1.Controls.Add(TVelocidad);
+            groupBox1.Controls.Add(TX0);
+            groupBox1.Controls.Add(TY0);
+            groupBox1.Controls.Add(TYF);
+            groupBox1.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.Location = new Point(236, 293);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(363, 272);
+            groupBox1.Size = new Size(435, 329);
             groupBox1.TabIndex = 30;
             groupBox1.TabStop = false;
             groupBox1.Text = "VUELO 1";
             // 
             // groupBox2
             // 
+            groupBox2.Anchor = AnchorStyles.None;
             groupBox2.BackColor = SystemColors.ActiveCaption;
             groupBox2.Controls.Add(label15);
-            groupBox2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(431, 93);
+            groupBox2.Controls.Add(label14);
+            groupBox2.Controls.Add(TYF2);
+            groupBox2.Controls.Add(label13);
+            groupBox2.Controls.Add(label10);
+            groupBox2.Controls.Add(label12);
+            groupBox2.Controls.Add(label11);
+            groupBox2.Controls.Add(TY02);
+            groupBox2.Controls.Add(TIdentificador2);
+            groupBox2.Controls.Add(TXF2);
+            groupBox2.Controls.Add(TVelocidad2);
+            groupBox2.Controls.Add(TX02);
+            groupBox2.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox2.Location = new Point(821, 293);
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(363, 272);
+            groupBox2.Size = new Size(435, 329);
             groupBox2.TabIndex = 31;
             groupBox2.TabStop = false;
             groupBox2.Text = "VUELO 2";
@@ -350,33 +395,16 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(846, 553);
+            ClientSize = new Size(1471, 921);
             Controls.Add(atajo);
-            Controls.Add(label14);
-            Controls.Add(label13);
-            Controls.Add(label12);
-            Controls.Add(TY02);
-            Controls.Add(TYF2);
-            Controls.Add(TVelocidad2);
-            Controls.Add(TX02);
-            Controls.Add(TXF2);
-            Controls.Add(TIdentificador2);
-            Controls.Add(label11);
-            Controls.Add(label10);
             Controls.Add(label8);
             Controls.Add(BCompilar);
-            Controls.Add(TYF);
-            Controls.Add(TXF);
-            Controls.Add(TY0);
-            Controls.Add(TX0);
-            Controls.Add(TVelocidad);
-            Controls.Add(TIdentificador);
-            Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Name = "Datos";
             Text = "Introduzca los Datos";
+            WindowState = FormWindowState.Maximized;
+            Load += Datos_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);

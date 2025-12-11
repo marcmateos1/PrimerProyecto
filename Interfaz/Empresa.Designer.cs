@@ -128,7 +128,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(48, 140);
+            label10.Location = new Point(56, 140);
             label10.Name = "label10";
             label10.Size = new Size(70, 20);
             label10.TabIndex = 2;
@@ -144,7 +144,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(56, 93);
+            label11.Location = new Point(59, 93);
             label11.Name = "label11";
             label11.Size = new Size(67, 20);
             label11.TabIndex = 0;
@@ -169,7 +169,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(53, 198);
+            label7.Location = new Point(56, 198);
             label7.Name = "label7";
             label7.Size = new Size(46, 20);
             label7.TabIndex = 8;
@@ -240,7 +240,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(56, 93);
+            label6.Location = new Point(51, 93);
             label6.Name = "label6";
             label6.Size = new Size(67, 20);
             label6.TabIndex = 0;
@@ -267,6 +267,7 @@
             Controls.Add(PanelLogInEmpresa);
             Name = "Empresa";
             Text = "Empresa";
+            Load += Empresa_Load;
             PanelRegEmpresa.ResumeLayout(false);
             PanelRegEmpresa.PerformLayout();
             PanelLogInEmpresa.ResumeLayout(false);

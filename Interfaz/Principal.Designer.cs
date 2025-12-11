@@ -96,6 +96,7 @@
             opcionesToolStripMenuItem1.Name = "opcionesToolStripMenuItem1";
             opcionesToolStripMenuItem1.Size = new Size(134, 37);
             opcionesToolStripMenuItem1.Text = "Opciones";
+            opcionesToolStripMenuItem1.Click += opcionesToolStripMenuItem1_Click;
             // 
             // introducirDatosToolStripMenuItem
             // 
@@ -142,6 +143,7 @@
             MainMenuStrip = menuStrip1;
             Name = "Principal";
             Text = "Air Traffic Simulator";
+            WindowState = FormWindowState.Maximized;
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
             ResumeLayout(false);

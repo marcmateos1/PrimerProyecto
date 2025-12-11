@@ -33,7 +33,9 @@ namespace Interfaz
 
 
             panelInicioSesion.BackColor = Color.FromArgb(255, Color.White); // visible
+            panelInicioSesion.Enabled = true; // activar panel inicio de sesión
             panelRegistro.BackColor = Color.FromArgb(100, Color.White);
+            panelRegistro.Enabled = false;
             panelInicioSesion.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
             panelRegistro.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
 
@@ -75,8 +77,10 @@ namespace Interfaz
         {
 
             panelRegistro.BackColor = Color.FromArgb(255, Color.White); // visible
-            panelInicioSesion.BackColor = Color.FromArgb(100, Color.White);
+            panelRegistro.Enabled = true;
             panelRegistro.BorderStyle = BorderStyle.FixedSingle;    // ahora panel registro activo
+            panelInicioSesion.BackColor = Color.FromArgb(100, Color.White);
+            panelInicioSesion.Enabled = false; // activar panel inicio de sesión
             panelInicioSesion.BorderStyle = BorderStyle.None;
 
             textNuevoUsuario.Text = "";
@@ -89,7 +93,9 @@ namespace Interfaz
         {
 
             panelInicioSesion.BackColor = Color.FromArgb(255, Color.White); // visible
+            panelInicioSesion.Enabled = true; // activar panel inicio de sesión
             panelRegistro.BackColor = Color.FromArgb(100, Color.White);
+            panelRegistro.Enabled = false;
             panelInicioSesion.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
             panelRegistro.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
 
@@ -127,7 +133,9 @@ namespace Interfaz
             // Volver a pantalla de inicio de sesión
 
             panelInicioSesion.BackColor = Color.FromArgb(255, Color.White); // visible
+            panelInicioSesion.Enabled = true; // activar panel inicio de sesión
             panelRegistro.BackColor = Color.FromArgb(100, Color.White);
+            panelRegistro.Enabled = false;
             panelInicioSesion.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
             panelRegistro.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
 
@@ -140,9 +148,10 @@ namespace Interfaz
 
         }
 
-        private void panelRegistro_Paint(object sender, PaintEventArgs e)
-        {
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

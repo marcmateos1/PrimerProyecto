@@ -47,10 +47,5 @@ namespace Interfaz
         {
             label4.Text = "Conflicto entre " + id1 + "y " + id2 + ".";
         }
-
-        private void label4_Click(object sender, EventArgs e)
-        { 
-            
-        }
     }
 }
