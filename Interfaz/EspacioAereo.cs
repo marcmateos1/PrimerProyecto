@@ -26,6 +26,7 @@ namespace Interfaz
         Stack<FlightPlanList> s = new Stack<FlightPlanList>();
         //vector de picture boxes para representar los aviones
         PictureBox[] vuelos;
+        Queue<FlightPlan> llistaCf=new Queue<FlightPlan>();
 
         //Constructor
         public EspacioAereo(Interfaz.Principal principal) //iniciar l'espai aeri
@@ -36,6 +37,7 @@ namespace Interfaz
 
 
         //METODOS I FUNCIONWS NECESARIAS PARA LA SIMULACION
+        
 
         private void DetectarYResolverConflictos()
         {
@@ -58,6 +60,8 @@ namespace Interfaz
                                 bool resultado = plan.ReducirVelocidad(plan2, distanciaSeguridad); //Intenta resolver el conflicto cambiando velocidades
                                 if (resultado)
                                 {
+                                    llistaCf.Enqueue(plan);
+                                    llistaCf.Enqueue(plan2);
                                     MessageBox.Show($"Se ha reducido la velocidad del vuelo {plan.GetId()} para evitar el conflicto.", "Conflicto resuelto automáticamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 else
@@ -495,8 +499,12 @@ namespace Interfaz
         private void button1_Click(object sender, EventArgs e)
         {
             StreamWriter W = new StreamWriter("parte.txt");
-            W.WriteLine("Per evitar un conflicte entre avions, s'ha reduït la velocitat de l'avió",miLista.GetFlightPlan(0));
-            W.WriteLine("De l'empresa", c.GetName(), "Amb telèfon:", c.GetTel(), "Amb correu:", c.GetEmail());
+            while (0 < llistaCf.Count)
+            {
+                W.WriteLine("S'ha reduït la velocitat de l'avió ",llistaCf.Dequeue().GetId(),"per tal d'evitar un xoc amb el vol ",llistaCf.Dequeue().GetId());
+                W.WriteLine("Contacteu amb l'empresa", c.GetName(), "  Amb telèfon:", c.GetTel(), "  Amb correu:", c.GetEmail());
+            }
+
             W.Close();
         }
     }
