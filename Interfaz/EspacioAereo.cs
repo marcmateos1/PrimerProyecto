@@ -442,7 +442,7 @@ namespace Interfaz
 
             try
             {
-                Informacion nuevoFormulario = new Informacion(this, miLista, i);
+                Informacion nuevoFormulario = new Informacion(this, miLista, i, db);
                 nuevoFormulario.Show();
                 miLista = nuevoFormulario.MyList();
             }

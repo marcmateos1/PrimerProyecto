@@ -16,21 +16,22 @@ namespace Interfaz
         
         //Atributos
         Interfaz.EspacioAereo espacioAereo;
-        FlightPlan plan;
         FlightPlanList list;
         CompaniesList cList;
         Companies c;
         int posicion;
+        BaseDeDatos db;
 
 
         //Constructor
-        public Informacion(Interfaz.EspacioAereo espacioAereo, FlightPlanList list, int posicion)
+        public Informacion(Interfaz.EspacioAereo espacioAereo, FlightPlanList list, int posicion, BaseDeDatos db)
         {
             //iniciar el forms i inicializar las clases necesarias
             InitializeComponent();
             this.espacioAereo = espacioAereo;
             this.list = list;
             this.posicion = posicion;
+            this.db = db;
         }
 
 
