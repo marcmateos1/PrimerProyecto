@@ -47,7 +47,7 @@ namespace Interfaz
                 Taula[5, 0].Value = ("Nombre Empresa");
                 Taula[6, 0].Value = ("Teléfono Empresa");
                 Taula[7, 0].Value = ("Mail Empresa");
-+
+
                 //posar els valors al datagridview
                 for (int i = 0; i < j; i++)
                 {

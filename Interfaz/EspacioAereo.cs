@@ -222,8 +222,8 @@ namespace Interfaz
                     destino.ClientSize = new Size(10, 10);
 
                     // Calcular posición del destino (escalar igual que el vuelo)
-                    int xd = (int)(plan.GetFinalPosition().GetX() * panel1.Width / 500.0);
-                    int yd = (int)(plan.GetFinalPosition().GetY() * panel1.Height / 500.0);
+                    int xd = (int)(plan.GetOriginalFinalPosition().GetX() * panel1.Width / 500.0);
+                    int yd = (int)(plan.GetOriginalFinalPosition().GetY() * panel1.Height / 500.0);
 
                     // Centrar la cruz en el punto destino
                     destino.Location = new Point(xd - destino.Width / 2, yd - destino.Height / 2);
@@ -279,8 +279,9 @@ namespace Interfaz
             {
                 if (miLista == null) return;
                 System.Drawing.Graphics graphics = e.Graphics;
-                Pen rutaPen = new Pen(Color.Red);
-                Pen zonaPen = new Pen(Color.Blue);
+                Pen rutaPen = new Pen(Color.Black);
+                Pen zonaPen = new Pen(Color.Red);
+                Pen desvioPen = new Pen(Color.Green);
                 int radio = (int)(distanciaSeguridad * panel1.Width / 1000);
 
                 //Parametros para escribir el id
@@ -289,8 +290,8 @@ namespace Interfaz
 
                 for (int i = 0; i < miLista.NumElementosLista(); i++)
                 {
-                    graphics.DrawLine(rutaPen, Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetX() * panel1.Width / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetY() * panel1.Height / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetX() * panel1.Width / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetY() * panel1.Height / 500));
-
+                    graphics.DrawLine(rutaPen, Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetX() * panel1.Width / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetInitialPosition().GetY() * panel1.Height / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetOriginalFinalPosition().GetX() * panel1.Width / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetOriginalFinalPosition().GetY() * panel1.Height / 500));
+                    graphics.DrawLine(desvioPen, Convert.ToInt32(miLista.GetFlightPlan(i).GetCurrentPosition().GetX() * panel1.Width / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetCurrentPosition().GetY() * panel1.Height / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetX() * panel1.Width / 500), Convert.ToInt32(miLista.GetFlightPlan(i).GetFinalPosition().GetY() * panel1.Height / 500));
                     int x = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetX() * panel1.Width / 500);
                     int y = (int)(miLista.GetFlightPlan(i).GetCurrentPosition().GetY() * panel1.Height / 500);
                     graphics.DrawEllipse(zonaPen, x - radio, y - radio, radio * 2, radio * 2);
@@ -483,19 +484,6 @@ namespace Interfaz
             }
         }
 
-        private bool Desviados()
-        {
-            bool found = false;
-            for (int i = 0; i < miLista.NumElementosLista(); i++)
-            {
-                if (miLista.GetFlightPlan(i).GetFinalPosition() == miLista.GetFlightPlan(i).GetOriginalFinalPosition())
-                {
-                    found = true;
-                }
-            }
-            return found;
-        }
-        //es crea un txt amb un parte sobre el canvi de velocitats per evitar el conflicte
         private void button1_Click(object sender, EventArgs e)
         {
             StreamWriter W = new StreamWriter("parte.txt");

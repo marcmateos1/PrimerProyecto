@@ -300,6 +300,15 @@ namespace FlightLib
             return conflicto; //True si habra conflicto, no podran retomar rumbo
         }
 
+        public bool Desviado()
+        {
+            if(finalPosition == originalFinalPosition)
+            {
+                return false;
+            }
+            return true;
+        }
+
 
         public void EscribeConsola()
         // Escribe en consola los datos del plan de vuelo
