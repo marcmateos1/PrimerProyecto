@@ -85,7 +85,6 @@
             regMail.Name = "regMail";
             regMail.Size = new Size(125, 27);
             regMail.TabIndex = 7;
-            regMail.UseSystemPasswordChar = true;
             // 
             // label9
             // 
@@ -123,7 +122,6 @@
             regTel.Name = "regTel";
             regTel.Size = new Size(125, 27);
             regTel.TabIndex = 3;
-            regTel.UseSystemPasswordChar = true;
             // 
             // label10
             // 
@@ -181,7 +179,6 @@
             logInMail.Name = "logInMail";
             logInMail.Size = new Size(125, 27);
             logInMail.TabIndex = 7;
-            logInMail.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -219,7 +216,6 @@
             logInTel.Name = "logInTel";
             logInTel.Size = new Size(125, 27);
             logInTel.TabIndex = 3;
-            logInTel.UseSystemPasswordChar = true;
             // 
             // label5
             // 
