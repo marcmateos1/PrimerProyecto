@@ -38,8 +38,9 @@
             // 
             // botonDistancia
             // 
+            botonDistancia.Anchor = AnchorStyles.None;
             botonDistancia.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            botonDistancia.Location = new Point(72, 165);
+            botonDistancia.Location = new Point(135, 267);
             botonDistancia.Name = "botonDistancia";
             botonDistancia.Size = new Size(195, 82);
             botonDistancia.TabIndex = 0;
@@ -49,23 +50,26 @@
             // 
             // textDistancia
             // 
-            textDistancia.Location = new Point(89, 89);
+            textDistancia.Anchor = AnchorStyles.None;
+            textDistancia.Location = new Point(135, 138);
             textDistancia.Name = "textDistancia";
             textDistancia.Size = new Size(125, 27);
             textDistancia.TabIndex = 2;
             // 
             // textTiempo
             // 
-            textTiempo.Location = new Point(373, 89);
+            textTiempo.Anchor = AnchorStyles.None;
+            textTiempo.Location = new Point(506, 138);
             textTiempo.Name = "textTiempo";
             textTiempo.Size = new Size(125, 27);
             textTiempo.TabIndex = 3;
             // 
             // labelDistancia
             // 
+            labelDistancia.Anchor = AnchorStyles.None;
             labelDistancia.AutoSize = true;
             labelDistancia.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelDistancia.Location = new Point(27, 41);
+            labelDistancia.Location = new Point(70, 88);
             labelDistancia.Name = "labelDistancia";
             labelDistancia.Size = new Size(269, 26);
             labelDistancia.TabIndex = 4;
@@ -73,9 +77,10 @@
             // 
             // labelTiempo
             // 
+            labelTiempo.Anchor = AnchorStyles.None;
             labelTiempo.AutoSize = true;
             labelTiempo.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelTiempo.Location = new Point(337, 41);
+            labelTiempo.Location = new Point(460, 88);
             labelTiempo.Name = "labelTiempo";
             labelTiempo.Size = new Size(207, 26);
             labelTiempo.TabIndex = 5;
@@ -83,8 +88,9 @@
             // 
             // botonAtajo
             // 
+            botonAtajo.Anchor = AnchorStyles.None;
             botonAtajo.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            botonAtajo.Location = new Point(310, 165);
+            botonAtajo.Location = new Point(449, 267);
             botonAtajo.Name = "botonAtajo";
             botonAtajo.Size = new Size(161, 82);
             botonAtajo.TabIndex = 6;
@@ -96,7 +102,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(599, 286);
+            ClientSize = new Size(804, 444);
             Controls.Add(botonAtajo);
             Controls.Add(labelTiempo);
             Controls.Add(labelDistancia);
@@ -105,6 +111,7 @@
             Controls.Add(botonDistancia);
             Name = "Seguridad";
             Text = "Introduzca estos parametros";
+            WindowState = FormWindowState.Maximized;
             Load += Seguridad_Load;
             ResumeLayout(false);
             PerformLayout();

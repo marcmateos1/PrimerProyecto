@@ -34,12 +34,14 @@
             // 
             // Taula2
             // 
+            Taula2.Anchor = AnchorStyles.None;
             Taula2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Taula2.Location = new Point(69, 41);
+            Taula2.Location = new Point(182, 48);
             Taula2.Name = "Taula2";
             Taula2.RowHeadersWidth = 51;
             Taula2.Size = new Size(474, 232);
             Taula2.TabIndex = 0;
+            Taula2.CellContentClick += Taula2_CellContentClick;
             // 
             // ShowDistancePlans
             // 
@@ -50,6 +52,7 @@
             Margin = new Padding(4);
             Name = "ShowDistancePlans";
             Text = "ShowDistancePlans";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)Taula2).EndInit();
             ResumeLayout(false);
         }

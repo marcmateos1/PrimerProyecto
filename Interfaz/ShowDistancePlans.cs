@@ -33,7 +33,7 @@ namespace Interfaz
         }
 
 
-        public void ShowDistancePlans_Load() 
+        public void ShowDistancePlans_Load()
         {
             //Crear el estilo y medida del grid
             Taula2.RowCount = miLista.NumElementosLista();
@@ -56,6 +56,11 @@ namespace Interfaz
                     j = j + 1;
                 }
             }
+        }
+
+        private void Taula2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -49,12 +49,14 @@
             logInNom = new TextBox();
             label6 = new Label();
             label1 = new Label();
+            bttnCancelarDatosEmpresa = new Button();
             PanelRegEmpresa.SuspendLayout();
             PanelLogInEmpresa.SuspendLayout();
             SuspendLayout();
             // 
             // PanelRegEmpresa
             // 
+            PanelRegEmpresa.Anchor = AnchorStyles.None;
             PanelRegEmpresa.Controls.Add(label8);
             PanelRegEmpresa.Controls.Add(regMail);
             PanelRegEmpresa.Controls.Add(label9);
@@ -64,11 +66,10 @@
             PanelRegEmpresa.Controls.Add(label10);
             PanelRegEmpresa.Controls.Add(regNom);
             PanelRegEmpresa.Controls.Add(label11);
-            PanelRegEmpresa.Location = new Point(424, 116);
+            PanelRegEmpresa.Location = new Point(593, 311);
             PanelRegEmpresa.Name = "PanelRegEmpresa";
             PanelRegEmpresa.Size = new Size(327, 294);
             PanelRegEmpresa.TabIndex = 11;
-            PanelRegEmpresa.Paint += RegEmpresa_Paint;
             // 
             // label8
             // 
@@ -85,7 +86,6 @@
             regMail.Name = "regMail";
             regMail.Size = new Size(125, 27);
             regMail.TabIndex = 7;
-            regMail.UseSystemPasswordChar = true;
             // 
             // label9
             // 
@@ -123,7 +123,6 @@
             regTel.Name = "regTel";
             regTel.Size = new Size(125, 27);
             regTel.TabIndex = 3;
-            regTel.UseSystemPasswordChar = true;
             // 
             // label10
             // 
@@ -144,14 +143,16 @@
             // label11
             // 
             label11.AutoSize = true;
+            label11.Font = new Font("Sylfaen", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label11.Location = new Point(59, 93);
             label11.Name = "label11";
-            label11.Size = new Size(67, 20);
+            label11.Size = new Size(63, 19);
             label11.TabIndex = 0;
             label11.Text = "Nombre:";
             // 
             // PanelLogInEmpresa
             // 
+            PanelLogInEmpresa.Anchor = AnchorStyles.None;
             PanelLogInEmpresa.Controls.Add(label7);
             PanelLogInEmpresa.Controls.Add(logInMail);
             PanelLogInEmpresa.Controls.Add(label4);
@@ -161,7 +162,7 @@
             PanelLogInEmpresa.Controls.Add(label5);
             PanelLogInEmpresa.Controls.Add(logInNom);
             PanelLogInEmpresa.Controls.Add(label6);
-            PanelLogInEmpresa.Location = new Point(50, 116);
+            PanelLogInEmpresa.Location = new Point(21, 311);
             PanelLogInEmpresa.Name = "PanelLogInEmpresa";
             PanelLogInEmpresa.Size = new Size(327, 294);
             PanelLogInEmpresa.TabIndex = 10;
@@ -181,7 +182,6 @@
             logInMail.Name = "logInMail";
             logInMail.Size = new Size(125, 27);
             logInMail.TabIndex = 7;
-            logInMail.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -219,7 +219,6 @@
             logInTel.Name = "logInTel";
             logInTel.Size = new Size(125, 27);
             logInTel.TabIndex = 3;
-            logInTel.UseSystemPasswordChar = true;
             // 
             // label5
             // 
@@ -248,26 +247,38 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Font = new Font("Sitka Banner", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(77, 9);
+            label1.Location = new Point(176, 87);
             label1.Name = "label1";
-            label1.Size = new Size(640, 89);
+            label1.Size = new Size(638, 87);
             label1.TabIndex = 9;
             label1.Text = "DATOS DE LA EMPRESA";
+            // 
+            // bttnCancelarDatosEmpresa
+            // 
+            bttnCancelarDatosEmpresa.Anchor = AnchorStyles.None;
+            bttnCancelarDatosEmpresa.Location = new Point(394, 664);
+            bttnCancelarDatosEmpresa.Name = "bttnCancelarDatosEmpresa";
+            bttnCancelarDatosEmpresa.Size = new Size(146, 52);
+            bttnCancelarDatosEmpresa.TabIndex = 12;
+            bttnCancelarDatosEmpresa.Text = "Cancelar";
+            bttnCancelarDatosEmpresa.UseVisualStyleBackColor = true;
+            bttnCancelarDatosEmpresa.Click += bttnCancelarDatosEmpresa_Click;
             // 
             // Empresa
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(971, 762);
+            Controls.Add(bttnCancelarDatosEmpresa);
             Controls.Add(label1);
             Controls.Add(PanelRegEmpresa);
             Controls.Add(PanelLogInEmpresa);
             Name = "Empresa";
             Text = "Empresa";
-            Load += Empresa_Load;
+            WindowState = FormWindowState.Maximized;
             PanelRegEmpresa.ResumeLayout(false);
             PanelRegEmpresa.PerformLayout();
             PanelLogInEmpresa.ResumeLayout(false);
@@ -299,5 +310,6 @@
         private TextBox logInNom;
         private Label label6;
         private Label label1;
+        private Button bttnCancelarDatosEmpresa;
     }
 }
