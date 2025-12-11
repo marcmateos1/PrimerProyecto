@@ -16,6 +16,8 @@ namespace Interfaz
     public partial class GridForAirspace : Form
     {
         FlightPlanList miLista;
+        CompaniesList cList;
+        Companies c;
 
         public GridForAirspace()
         {
@@ -33,7 +35,7 @@ namespace Interfaz
                 //crear mides i disseny del datagridview
                 int j = this.miLista.NumElementosLista();
                 Taula.RowCount = j + 1;
-                Taula.ColumnCount = 5;
+                Taula.ColumnCount = 8;
                 Taula.ColumnHeadersVisible = false;
                 Taula.RowHeadersVisible = false;
                 Taula.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -42,6 +44,10 @@ namespace Interfaz
                 Taula[2, 0].Value = ("PosicionInicial");
                 Taula[3, 0].Value = ("PosicionFinal");
                 Taula[4, 0].Value = ("PosicionActual");
+                Taula[5, 0].Value = ("Nombre Empresa");
+                Taula[6, 0].Value = ("Teléfono Empresa");
+                Taula[7, 0].Value = ("Mail Empresa");
++
                 //posar els valors al datagridview
                 for (int i = 0; i < j; i++)
                 {
@@ -51,11 +57,20 @@ namespace Interfaz
                     string posicionInicial = $"({plan.GetInitialPosition().GetX()}  ,  {plan.GetInitialPosition().GetY()})";
                     string posicionFinal = $"({plan.GetOriginalFinalPosition().GetX()}  ,  {plan.GetOriginalFinalPosition().GetY()})";
                     string posicionActual = $"({Math.Round(plan.GetCurrentPosition().GetX(), 2)} , {Math.Round(plan.GetCurrentPosition().GetY(), 2)})";
+                    string nom = $"({c.GetName()})";
+                    int telf = c.GetTel();
+                    string mail = $"({c.GetEmail()})";
+
                     Taula[0, i + 1].Value = id;
                     Taula[1, i + 1].Value = velocidad;
                     Taula[2, i + 1].Value = posicionInicial;
                     Taula[3, i + 1].Value = posicionFinal;
                     Taula[4, i + 1].Value = posicionActual;
+                    Taula[5, i + 1].Value = nom;
+                    Taula[6, i + 1].Value = telf;
+                    Taula[7, i + 1].Value = mail;
+
+
                 }
             }
             catch (Exception) { MessageBox.Show("Informació no carregada correctament"); }
