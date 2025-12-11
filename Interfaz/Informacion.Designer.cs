@@ -42,11 +42,10 @@
             groupBox3 = new GroupBox();
             velocidadBox = new TextBox();
             button1 = new Button();
-            button2 = new Button();
             groupBox4 = new GroupBox();
+            mail = new Label();
             nom = new Label();
             telf = new Label();
-            mail = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -116,7 +115,7 @@
             // botonVolver
             // 
             botonVolver.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            botonVolver.Location = new Point(12, 678);
+            botonVolver.Location = new Point(62, 555);
             botonVolver.Name = "botonVolver";
             botonVolver.Size = new Size(94, 43);
             botonVolver.TabIndex = 6;
@@ -197,7 +196,7 @@
             // button1
             // 
             button1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(132, 678);
+            button1.Location = new Point(210, 556);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(197, 42);
@@ -205,16 +204,6 @@
             button1.Text = "Actualitzar velocitat";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
-            // 
-            // button2
-            // 
-            button2.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(365, 600);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 120);
-            button2.TabIndex = 14;
-            button2.Text = "Parte Cambio de Velocidad";
-            button2.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -230,6 +219,16 @@
             groupBox4.TabIndex = 12;
             groupBox4.TabStop = false;
             groupBox4.Text = "DATOS EMPRESA";
+            // 
+            // mail
+            // 
+            mail.AutoSize = true;
+            mail.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mail.Location = new Point(231, 48);
+            mail.Name = "mail";
+            mail.Size = new Size(60, 19);
+            mail.TabIndex = 6;
+            mail.Text = "label10";
             // 
             // nom
             // 
@@ -251,23 +250,12 @@
             telf.TabIndex = 5;
             telf.Text = "label10";
             // 
-            // mail
-            // 
-            mail.AutoSize = true;
-            mail.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            mail.Location = new Point(231, 48);
-            mail.Name = "mail";
-            mail.Size = new Size(60, 19);
-            mail.TabIndex = 6;
-            mail.Text = "label10";
-            // 
             // Informacion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(471, 733);
+            ClientSize = new Size(471, 627);
             Controls.Add(groupBox4);
-            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(velocidadBox);
             Controls.Add(groupBox3);
@@ -307,7 +295,6 @@
         private GroupBox groupBox3;
         private TextBox velocidadBox;
         private Button button1;
-        private Button button2;
         private GroupBox groupBox4;
         private Label mail;
         private Label nom;

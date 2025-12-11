@@ -19,6 +19,8 @@ namespace Interfaz
         //Atributos
         Interfaz.Principal principal;
         FlightPlanList miLista;
+        Companies c;
+        CompaniesList cList;
         int tiempoCiclo;
         float distanciaSeguridad;
         Stack<FlightPlanList> s = new Stack<FlightPlanList>();
@@ -61,7 +63,7 @@ namespace Interfaz
                                 else
                                 {
                                     MessageBox.Show("No se ha podido solucionar el conflicto reduciendo la velocidad, se cambiaran las rutas.");
-                                    if(!plan.CambiarRumbo(plan2, distanciaSeguridad)) //Resuelve el conflicto cambiando rutas
+                                    if (!plan.CambiarRumbo(plan2, distanciaSeguridad)) //Resuelve el conflicto cambiando rutas
                                     {
                                         MessageBox.Show("No se puede evitar el conflicto.");
                                     }
@@ -378,7 +380,7 @@ namespace Interfaz
         {
             Reloj.Stop();
             miLista.ReiniciarPlanes();
-            
+
             // Quitar todos los controles (vuelos, destinos, etc.)
             panel1.Controls.Clear();
             s.Clear(); // Limpiar la pila de estados
@@ -488,6 +490,14 @@ namespace Interfaz
                 }
             }
             return found;
+        }
+        //es crea un txt amb un parte sobre el canvi de velocitats per evitar el conflicte
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StreamWriter W = new StreamWriter("parte.txt");
+            W.WriteLine("Per evitar un conflicte entre avions, s'ha reduït la velocitat de l'avió",miLista.GetFlightPlan(0));
+            W.WriteLine("De l'empresa", c.GetName(), "Amb telèfon:", c.GetTel(), "Amb correu:", c.GetEmail());
+            W.Close();
         }
     }
 }

@@ -48,6 +48,7 @@
             label5 = new Label();
             buttonCerrarSesión = new Button();
             reloj2 = new System.Windows.Forms.Timer(components);
+            button1 = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -127,7 +128,7 @@
             // Parar
             // 
             Parar.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Parar.Location = new Point(964, 527);
+            Parar.Location = new Point(964, 448);
             Parar.Margin = new Padding(3, 4, 3, 4);
             Parar.Name = "Parar";
             Parar.Size = new Size(153, 76);
@@ -167,7 +168,7 @@
             // ButtonRestart
             // 
             ButtonRestart.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ButtonRestart.Location = new Point(964, 296);
+            ButtonRestart.Location = new Point(964, 243);
             ButtonRestart.Name = "ButtonRestart";
             ButtonRestart.Size = new Size(153, 76);
             ButtonRestart.TabIndex = 12;
@@ -178,7 +179,7 @@
             // Conflicte
             // 
             Conflicte.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Conflicte.Location = new Point(964, 411);
+            Conflicte.Location = new Point(964, 347);
             Conflicte.Margin = new Padding(3, 4, 3, 4);
             Conflicte.Name = "Conflicte";
             Conflicte.Size = new Size(153, 76);
@@ -201,7 +202,7 @@
             // Retroceder
             // 
             Retroceder.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Retroceder.Location = new Point(964, 179);
+            Retroceder.Location = new Point(964, 141);
             Retroceder.Margin = new Padding(3, 4, 3, 4);
             Retroceder.Name = "Retroceder";
             Retroceder.Size = new Size(153, 76);
@@ -243,11 +244,24 @@
             // 
             reloj2.Tick += reloj2_Tick;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(964, 565);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(153, 76);
+            button1.TabIndex = 19;
+            button1.Text = "Parte Cambio de Velocidad";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // EspacioAereo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1183, 757);
+            Controls.Add(button1);
             Controls.Add(buttonCerrarSesión);
             Controls.Add(label5);
             Controls.Add(botonMover);
@@ -295,5 +309,6 @@
         private Label label5;
         private Button buttonCerrarSesión;
         private System.Windows.Forms.Timer reloj2;
+        private Button button1;
     }
 }
