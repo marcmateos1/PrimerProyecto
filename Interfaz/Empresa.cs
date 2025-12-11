@@ -24,8 +24,11 @@ namespace Interfaz
 
             db = new BaseDeDatos(dbFile);
             companies = new CompaniesList(db);
-            logInWindow.Visible = true;
-            RegEmpresa.Visible = false;
+            PanelLogInEmpresa.BackColor = Color.FromArgb(255, Color.White); // visible
+            PanelRegEmpresa.BackColor = Color.FromArgb(100, Color.White);
+            PanelLogInEmpresa.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
+            PanelRegEmpresa.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
+ 
 
         }
 
@@ -65,8 +68,11 @@ namespace Interfaz
         //Ir a registrar empresa
         private void anarAreg_Click_1(object sender, EventArgs e)
         {
-            logInWindow.Visible = false;
-            RegEmpresa.Visible = true; //Ponemos invisible el panel de inicio de sesión y visible el de registro
+            PanelLogInEmpresa.BackColor = Color.FromArgb(255, Color.White); // visible
+            PanelRegEmpresa.BackColor = Color.FromArgb(100, Color.White);
+            PanelLogInEmpresa.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
+            PanelRegEmpresa.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
+ 
 
             regNom.Text = "";
             regTel.Text = "";
@@ -99,8 +105,12 @@ namespace Interfaz
             MessageBox.Show("Usuario creado correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Volver a pantalla de inicio de sesiónn
-            RegEmpresa.Visible = false;
-            logInWindow.Visible = true;
+
+            PanelRegEmpresa.BackColor = Color.FromArgb(255, Color.White); // visible
+            PanelLogInEmpresa.BackColor = Color.FromArgb(100, Color.White);
+            PanelRegEmpresa.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
+            PanelLogInEmpresa.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
+ 
 
             // Rellenar el campo de usuario y limpiar la contraseña
             logInNom.Text = name;
@@ -111,8 +121,15 @@ namespace Interfaz
         //cancelar registro
         private void Cancelar_Click(object sender, EventArgs e)
         {
-            logInWindow.Visible = true;
-            RegEmpresa.Visible=false;
+            PanelLogInEmpresa.BackColor = Color.FromArgb(255, Color.White); // visible
+            PanelRegEmpresa.BackColor = Color.FromArgb(100, Color.White);
+            PanelLogInEmpresa.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
+            PanelRegEmpresa.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
+        }
+
+        private void RegEmpresa_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

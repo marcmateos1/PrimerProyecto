@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            RegEmpresa = new Panel();
+            PanelRegEmpresa = new Panel();
             label8 = new Label();
             regMail = new TextBox();
             label9 = new Label();
@@ -38,7 +38,7 @@
             label10 = new Label();
             regNom = new TextBox();
             label11 = new Label();
-            logInWindow = new Panel();
+            PanelLogInEmpresa = new Panel();
             label7 = new Label();
             logInMail = new TextBox();
             label4 = new Label();
@@ -49,25 +49,26 @@
             logInNom = new TextBox();
             label6 = new Label();
             label1 = new Label();
-            RegEmpresa.SuspendLayout();
-            logInWindow.SuspendLayout();
+            PanelRegEmpresa.SuspendLayout();
+            PanelLogInEmpresa.SuspendLayout();
             SuspendLayout();
             // 
-            // RegEmpresa
+            // PanelRegEmpresa
             // 
-            RegEmpresa.Controls.Add(label8);
-            RegEmpresa.Controls.Add(regMail);
-            RegEmpresa.Controls.Add(label9);
-            RegEmpresa.Controls.Add(Cancelar);
-            RegEmpresa.Controls.Add(registrar);
-            RegEmpresa.Controls.Add(regTel);
-            RegEmpresa.Controls.Add(label10);
-            RegEmpresa.Controls.Add(regNom);
-            RegEmpresa.Controls.Add(label11);
-            RegEmpresa.Location = new Point(424, 116);
-            RegEmpresa.Name = "RegEmpresa";
-            RegEmpresa.Size = new Size(327, 294);
-            RegEmpresa.TabIndex = 11;
+            PanelRegEmpresa.Controls.Add(label8);
+            PanelRegEmpresa.Controls.Add(regMail);
+            PanelRegEmpresa.Controls.Add(label9);
+            PanelRegEmpresa.Controls.Add(Cancelar);
+            PanelRegEmpresa.Controls.Add(registrar);
+            PanelRegEmpresa.Controls.Add(regTel);
+            PanelRegEmpresa.Controls.Add(label10);
+            PanelRegEmpresa.Controls.Add(regNom);
+            PanelRegEmpresa.Controls.Add(label11);
+            PanelRegEmpresa.Location = new Point(424, 116);
+            PanelRegEmpresa.Name = "PanelRegEmpresa";
+            PanelRegEmpresa.Size = new Size(327, 294);
+            PanelRegEmpresa.TabIndex = 11;
+            PanelRegEmpresa.Paint += RegEmpresa_Paint;
             // 
             // label8
             // 
@@ -149,21 +150,21 @@
             label11.TabIndex = 0;
             label11.Text = "Nombre:";
             // 
-            // logInWindow
+            // PanelLogInEmpresa
             // 
-            logInWindow.Controls.Add(label7);
-            logInWindow.Controls.Add(logInMail);
-            logInWindow.Controls.Add(label4);
-            logInWindow.Controls.Add(anarAreg);
-            logInWindow.Controls.Add(logInBut);
-            logInWindow.Controls.Add(logInTel);
-            logInWindow.Controls.Add(label5);
-            logInWindow.Controls.Add(logInNom);
-            logInWindow.Controls.Add(label6);
-            logInWindow.Location = new Point(50, 116);
-            logInWindow.Name = "logInWindow";
-            logInWindow.Size = new Size(327, 294);
-            logInWindow.TabIndex = 10;
+            PanelLogInEmpresa.Controls.Add(label7);
+            PanelLogInEmpresa.Controls.Add(logInMail);
+            PanelLogInEmpresa.Controls.Add(label4);
+            PanelLogInEmpresa.Controls.Add(anarAreg);
+            PanelLogInEmpresa.Controls.Add(logInBut);
+            PanelLogInEmpresa.Controls.Add(logInTel);
+            PanelLogInEmpresa.Controls.Add(label5);
+            PanelLogInEmpresa.Controls.Add(logInNom);
+            PanelLogInEmpresa.Controls.Add(label6);
+            PanelLogInEmpresa.Location = new Point(50, 116);
+            PanelLogInEmpresa.Name = "PanelLogInEmpresa";
+            PanelLogInEmpresa.Size = new Size(327, 294);
+            PanelLogInEmpresa.TabIndex = 10;
             // 
             // label7
             // 
@@ -262,21 +263,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(label1);
-            Controls.Add(RegEmpresa);
-            Controls.Add(logInWindow);
+            Controls.Add(PanelRegEmpresa);
+            Controls.Add(PanelLogInEmpresa);
             Name = "Empresa";
             Text = "Empresa";
-            RegEmpresa.ResumeLayout(false);
-            RegEmpresa.PerformLayout();
-            logInWindow.ResumeLayout(false);
-            logInWindow.PerformLayout();
+            PanelRegEmpresa.ResumeLayout(false);
+            PanelRegEmpresa.PerformLayout();
+            PanelLogInEmpresa.ResumeLayout(false);
+            PanelLogInEmpresa.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Panel RegEmpresa;
+        private Panel PanelRegEmpresa;
         private Label label8;
         private TextBox regMail;
         private Label label9;
@@ -286,7 +287,7 @@
         private Label label10;
         private TextBox regNom;
         private Label label11;
-        private Panel logInWindow;
+        private Panel PanelLogInEmpresa;
         private Label label7;
         private TextBox logInMail;
         private Label label4;

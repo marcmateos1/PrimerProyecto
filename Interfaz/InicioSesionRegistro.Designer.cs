@@ -61,6 +61,7 @@
             // 
             // panelRegistro
             // 
+            panelRegistro.Anchor = AnchorStyles.None;
             panelRegistro.Controls.Add(label2);
             panelRegistro.Controls.Add(buttonCancelarRegistro);
             panelRegistro.Controls.Add(buttonCrearUsuario);
@@ -68,11 +69,11 @@
             panelRegistro.Controls.Add(textNuevoUsuario);
             panelRegistro.Controls.Add(labelNuevaContraseña);
             panelRegistro.Controls.Add(labelNuevoUsuario);
-            panelRegistro.Location = new Point(424, 111);
+            panelRegistro.Location = new Point(613, 351);
             panelRegistro.Name = "panelRegistro";
             panelRegistro.Size = new Size(345, 294);
             panelRegistro.TabIndex = 0;
-            panelRegistro.Visible = false;
+            panelRegistro.Paint += panelRegistro_Paint;
             // 
             // label2
             // 
@@ -140,6 +141,7 @@
             // 
             // panelInicioSesion
             // 
+            panelInicioSesion.Anchor = AnchorStyles.None;
             panelInicioSesion.Controls.Add(label3);
             panelInicioSesion.Controls.Add(buttonRegistrarse);
             panelInicioSesion.Controls.Add(buttonIniciarSesion);
@@ -147,7 +149,7 @@
             panelInicioSesion.Controls.Add(labelContraseña);
             panelInicioSesion.Controls.Add(textUsuario);
             panelInicioSesion.Controls.Add(labelInicioSesion);
-            panelInicioSesion.Location = new Point(50, 111);
+            panelInicioSesion.Location = new Point(153, 351);
             panelInicioSesion.Name = "panelInicioSesion";
             panelInicioSesion.Size = new Size(327, 294);
             panelInicioSesion.TabIndex = 1;
@@ -217,10 +219,11 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Font = new Font("Sitka Banner", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(222, 19);
+            label1.Location = new Point(370, 137);
             label1.Name = "label1";
             label1.Size = new Size(370, 89);
             label1.TabIndex = 2;
@@ -293,12 +296,14 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 430);
+            ClientSize = new Size(1116, 910);
             Controls.Add(label1);
             Controls.Add(panelInicioSesion);
             Controls.Add(panelRegistro);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "InicioSesionRegistro";
             Text = "Form1";
+            WindowState = FormWindowState.Maximized;
             panelRegistro.ResumeLayout(false);
             panelRegistro.PerformLayout();
             panelInicioSesion.ResumeLayout(false);

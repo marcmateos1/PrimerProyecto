@@ -31,8 +31,12 @@ namespace Interfaz
             db = new BaseDeDatos(dbFile);  // constructor modificado para aceptar ruta
             users = new ListaUsuarios(db);
 
-            panelInicioSesion.Visible = true;
-            panelRegistro.Visible = false;
+
+            panelInicioSesion.BackColor = Color.FromArgb(255, Color.White); // visible
+            panelRegistro.BackColor = Color.FromArgb(100, Color.White);
+            panelInicioSesion.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
+            panelRegistro.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
+
         }
 
 
@@ -69,8 +73,11 @@ namespace Interfaz
         // Registrarse
         private void buttonRegistrarse_Click(object sender, EventArgs e)
         {
-            panelInicioSesion.Visible = false;
-            panelRegistro.Visible = true; //Ponemos invisible el panel de inicio de sesión y visible el de registro
+
+            panelRegistro.BackColor = Color.FromArgb(255, Color.White); // visible
+            panelInicioSesion.BackColor = Color.FromArgb(100, Color.White);
+            panelRegistro.BorderStyle = BorderStyle.FixedSingle;    // ahora panel registro activo
+            panelInicioSesion.BorderStyle = BorderStyle.None;
 
             textNuevoUsuario.Text = "";
             NuevaContraseña.Text = "";
@@ -80,8 +87,12 @@ namespace Interfaz
         // Cancelar Registro
         private void buttonCancelarRegistro_Click(object sender, EventArgs e)
         {
-            panelRegistro.Visible = false;
-            panelInicioSesion.Visible = true;
+
+            panelInicioSesion.BackColor = Color.FromArgb(255, Color.White); // visible
+            panelRegistro.BackColor = Color.FromArgb(100, Color.White);
+            panelInicioSesion.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
+            panelRegistro.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
+
         }
 
 
@@ -113,13 +124,25 @@ namespace Interfaz
 
             MessageBox.Show("Usuario creado correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Volver a pantalla de inicio de sesiónn
-            panelRegistro.Visible = false;
-            panelInicioSesion.Visible = true;
+            // Volver a pantalla de inicio de sesión
+
+            panelInicioSesion.BackColor = Color.FromArgb(255, Color.White); // visible
+            panelRegistro.BackColor = Color.FromArgb(100, Color.White);
+            panelInicioSesion.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
+            panelRegistro.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
+
 
             // Rellenar el campo de usuario y limpiar la contraseña
             textUsuario.Text = user;
             textContraseña.Text = "";
+
+
+
+        }
+
+        private void panelRegistro_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
