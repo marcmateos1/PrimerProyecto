@@ -133,6 +133,7 @@ namespace Interfaz
             PanelLogInEmpresa.BorderStyle = BorderStyle.FixedSingle;
             PanelRegEmpresa.BorderStyle = BorderStyle.None;
 
+
             // Autorrellenar login con los datos recién registrados
             logInNom.Text = name;
             logInTel.Text = telf.ToString();
