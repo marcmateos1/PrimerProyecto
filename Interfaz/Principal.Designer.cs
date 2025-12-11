@@ -40,6 +40,7 @@
             cargarListaToolStripMenuItem = new ToolStripMenuItem();
             seguridadToolStripMenuItem1 = new ToolStripMenuItem();
             espacioAereoToolStripMenuItem1 = new ToolStripMenuItem();
+            registrarEmpresaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -90,7 +91,7 @@
             // 
             // opcionesToolStripMenuItem1
             // 
-            opcionesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { introducirDatosToolStripMenuItem, cargarListaToolStripMenuItem, seguridadToolStripMenuItem1, espacioAereoToolStripMenuItem1 });
+            opcionesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { introducirDatosToolStripMenuItem, cargarListaToolStripMenuItem, seguridadToolStripMenuItem1, espacioAereoToolStripMenuItem1, registrarEmpresaToolStripMenuItem });
             opcionesToolStripMenuItem1.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             opcionesToolStripMenuItem1.Name = "opcionesToolStripMenuItem1";
             opcionesToolStripMenuItem1.Size = new Size(134, 37);
@@ -99,30 +100,37 @@
             // introducirDatosToolStripMenuItem
             // 
             introducirDatosToolStripMenuItem.Name = "introducirDatosToolStripMenuItem";
-            introducirDatosToolStripMenuItem.Size = new Size(286, 38);
+            introducirDatosToolStripMenuItem.Size = new Size(307, 38);
             introducirDatosToolStripMenuItem.Text = "Introducir Datos";
             introducirDatosToolStripMenuItem.Click += introducirDatosToolStripMenuItem_Click;
             // 
             // cargarListaToolStripMenuItem
             // 
             cargarListaToolStripMenuItem.Name = "cargarListaToolStripMenuItem";
-            cargarListaToolStripMenuItem.Size = new Size(286, 38);
+            cargarListaToolStripMenuItem.Size = new Size(307, 38);
             cargarListaToolStripMenuItem.Text = "Cargar Lista";
             cargarListaToolStripMenuItem.Click += cargarListaToolStripMenuItem_Click;
             // 
             // seguridadToolStripMenuItem1
             // 
             seguridadToolStripMenuItem1.Name = "seguridadToolStripMenuItem1";
-            seguridadToolStripMenuItem1.Size = new Size(286, 38);
+            seguridadToolStripMenuItem1.Size = new Size(307, 38);
             seguridadToolStripMenuItem1.Text = "Seguridad";
             seguridadToolStripMenuItem1.Click += seguridadToolStripMenuItem1_Click;
             // 
             // espacioAereoToolStripMenuItem1
             // 
             espacioAereoToolStripMenuItem1.Name = "espacioAereoToolStripMenuItem1";
-            espacioAereoToolStripMenuItem1.Size = new Size(286, 38);
+            espacioAereoToolStripMenuItem1.Size = new Size(307, 38);
             espacioAereoToolStripMenuItem1.Text = "Espacio Aereo";
             espacioAereoToolStripMenuItem1.Click += espacioAereoToolStripMenuItem1_Click;
+            // 
+            // registrarEmpresaToolStripMenuItem
+            // 
+            registrarEmpresaToolStripMenuItem.Name = "registrarEmpresaToolStripMenuItem";
+            registrarEmpresaToolStripMenuItem.Size = new Size(307, 38);
+            registrarEmpresaToolStripMenuItem.Text = "Registrar Empresa";
+            registrarEmpresaToolStripMenuItem.Click += registrarEmpresaToolStripMenuItem_Click;
             // 
             // Principal
             // 
@@ -153,5 +161,6 @@
         private ToolStripMenuItem seguridadToolStripMenuItem1;
         private ToolStripMenuItem espacioAereoToolStripMenuItem1;
         private ToolStripMenuItem cargarListaToolStripMenuItem;
+        private ToolStripMenuItem registrarEmpresaToolStripMenuItem;
     }
 }

@@ -9,6 +9,9 @@ namespace Interfaz
         FlightPlanList lista = new FlightPlanList();
         public int distanciaSeguridad;
         public int tiempoCiclo;
+        BaseDeDatos db;
+        string a;
+        
 
 
         // Constructor
@@ -56,7 +59,7 @@ namespace Interfaz
             nuevoFormulario.Title = "Cargar Lista de Vuelos";
             nuevoFormulario.Filter = "Archivos de Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*"; //Muestra los archivos .txt
             nuevoFormulario.DefaultExt = "txt";
-            nuevoFormulario.CheckFileExists = true; 
+            nuevoFormulario.CheckFileExists = true;
             nuevoFormulario.CheckPathExists = true; //Existe el archivo y la ruta
 
             if (nuevoFormulario.ShowDialog() == DialogResult.OK) //El usuario abre el archivo
@@ -82,6 +85,12 @@ namespace Interfaz
                     lista.CargarLista(filePath);
                 }
             }
+        }
+
+        private void registrarEmpresaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Empresa empresa = new Empresa(a);
+            empresa.Show();
         }
     }
 }
