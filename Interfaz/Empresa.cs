@@ -84,40 +84,44 @@ namespace Interfaz
         //registrar nueva empresa
         private void registrar_Click_1(object sender, EventArgs e)
         {
-            string name = logInNom.Text.Trim();
-            int telf = Convert.ToInt32(logInTel.Text.Trim());
-            string mail = logInMail.Text;
-
-
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(Convert.ToString(telf)) || string.IsNullOrEmpty(mail))
+            try
             {
-                MessageBox.Show("Rellena todos los parámetros.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); //retorna el missatge si no sha entrat correctament
-                return;
+                string name = logInNom.Text.Trim();
+                int telf = Convert.ToInt32(logInTel.Text);
+                string mail = logInMail.Text;
+
+
+                if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(Convert.ToString(telf)) || string.IsNullOrEmpty(mail))
+                {
+                    MessageBox.Show("Rellena todos los parámetros.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); //retorna el missatge si no sha entrat correctament
+                    return;
+                }
+
+                if (companies.nameExsits(name))
+                {
+                    MessageBox.Show("Esta empresa ya existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                companies.AddCompany(new Companies(name, telf, mail));
+
+                MessageBox.Show("Usuario creado correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Volver a pantalla de inicio de sesión
+
+                PanelRegEmpresa.BackColor = Color.FromArgb(255, Color.White); // visible
+                PanelLogInEmpresa.BackColor = Color.FromArgb(100, Color.White);
+                PanelRegEmpresa.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
+                PanelLogInEmpresa.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
+
+
+                // Rellenar el campo de usuario y limpiar la contraseña
+                logInNom.Text = name;
+                logInTel.Text = Convert.ToString(telf);
+                logInMail.Text = mail;
             }
-
-            if (companies.nameExsits(name))
-            {
-                MessageBox.Show("Esta empresa ya existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-
-            companies.AddCompany(new Companies(name, telf, mail));
-
-            MessageBox.Show("Usuario creado correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Volver a pantalla de inicio de sesiónn
-
-            PanelRegEmpresa.BackColor = Color.FromArgb(255, Color.White); // visible
-            PanelLogInEmpresa.BackColor = Color.FromArgb(100, Color.White);
-            PanelRegEmpresa.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
-            PanelLogInEmpresa.BorderStyle = BorderStyle.None;           // panel inactivo sin borde
-
-
-            // Rellenar el campo de usuario y limpiar la contraseña
-            logInNom.Text = name;
-            logInTel.Text = Convert.ToString(telf);
-            logInMail.Text = mail;
+            catch (FormatException) { MessageBox.Show("Error de Formato"); }
         }
 
         //cancelar registro
