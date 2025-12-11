@@ -18,15 +18,17 @@ namespace Interfaz
         FlightPlanList miLista;
         CompaniesList cList;
         Companies c;
+        BaseDeDatos db;
 
         public GridForAirspace()
         {
             InitializeComponent();
         }
 
-        public void SetData(FlightLib.FlightPlanList lista)
+        public void SetData(FlightLib.FlightPlanList lista, BaseDeDatos db)
         {
             this.miLista = lista;
+            this.db = db;
         }
         private void GridForAirspace_Load(object sender, EventArgs e)
         {

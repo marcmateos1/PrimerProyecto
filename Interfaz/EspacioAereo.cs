@@ -21,6 +21,7 @@ namespace Interfaz
         FlightPlanList miLista;
         Companies c;
         CompaniesList cList;
+        BaseDeDatos db;
         int tiempoCiclo;
         float distanciaSeguridad;
         Stack<FlightPlanList> s = new Stack<FlightPlanList>();
@@ -81,11 +82,12 @@ namespace Interfaz
         }
 
 
-        public void SetData(FlightPlanList f, int c, float distancia) //inicializar los datos
+        public void SetData(FlightPlanList f, int c, float distancia, BaseDeDatos db) //inicializar los datos
         {
             miLista = f;
             tiempoCiclo = c;
             distanciaSeguridad = distancia;
+            this.db = db;
             if (miLista.NumElementosLista() != 0 && tiempoCiclo != 0 && distanciaSeguridad != 0)
             {
                 DetectarYResolverConflictos();
@@ -415,7 +417,7 @@ namespace Interfaz
             try
             {
                 GridForAirspace nuevoFormulario = new GridForAirspace();
-                nuevoFormulario.SetData(miLista);
+                nuevoFormulario.SetData(miLista, db);
                 nuevoFormulario.Show();
             }
             catch (Exception) { MessageBox.Show("Dades no entrades correctament"); }

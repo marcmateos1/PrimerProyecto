@@ -10,7 +10,6 @@ namespace Interfaz
         public int distanciaSeguridad;
         public int tiempoCiclo;
         BaseDeDatos db;
-        string a;
 
 
 
@@ -18,6 +17,11 @@ namespace Interfaz
         public Principal()
         {
             InitializeComponent();
+        }
+
+        public void SetDat(BaseDeDatos db)
+        {
+            this.db = db;
         }
 
 
@@ -42,7 +46,7 @@ namespace Interfaz
             try
             {
                 EspacioAereo nuevoFormulario = new EspacioAereo(this);
-                nuevoFormulario.SetData(lista, tiempoCiclo, distanciaSeguridad);
+                nuevoFormulario.SetData(lista, tiempoCiclo, distanciaSeguridad, db);
                 nuevoFormulario.Show();
             }
             catch (Exception)
@@ -89,7 +93,8 @@ namespace Interfaz
 
         private void registrarEmpresaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Empresa empresa = new Empresa(a);
+            Empresa empresa = new Empresa();
+            empresa.SetData(db);
             empresa.Show();
         }
 

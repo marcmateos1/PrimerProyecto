@@ -18,12 +18,10 @@ namespace Interfaz
         BaseDeDatos db;
         Companies c;
         CompaniesList companies;
-        public Empresa(string dbFile)
+        public Empresa()
         {
             InitializeComponent();
 
-            db = new BaseDeDatos(dbFile);
-            companies = new CompaniesList(db);
             PanelLogInEmpresa.BackColor = Color.FromArgb(255, Color.White); // visible
             PanelRegEmpresa.BackColor = Color.FromArgb(100, Color.White);
             PanelLogInEmpresa.BorderStyle = BorderStyle.FixedSingle; // panel activo con borde
@@ -31,7 +29,11 @@ namespace Interfaz
 
 
         }
-
+        public void SetData(BaseDeDatos db)
+        {
+            this.db = db;
+            companies = new CompaniesList(db);
+        }
 
 
         // Entrar empresa

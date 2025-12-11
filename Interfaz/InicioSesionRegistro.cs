@@ -62,6 +62,7 @@ namespace Interfaz
                 MessageBox.Show("Login correcto");
                 // Aquí abrirías el menú principal
                 Principal menu = new Principal();
+                menu.SetDat(db);
                 menu.Show();
                 this.Hide(); // Oculta el login
             }
