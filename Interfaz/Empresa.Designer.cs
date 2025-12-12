@@ -39,7 +39,7 @@
             label11 = new Label();
             label1 = new Label();
             bttnCancelarDatosEmpresa = new Button();
-            bttnEmpresasRegistradas = new Button();
+            bttnMostrarEmpresas = new Button();
             panel1 = new Panel();
             buttEliminarEmp = new Button();
             label2 = new Label();
@@ -160,15 +160,16 @@
             bttnCancelarDatosEmpresa.UseVisualStyleBackColor = true;
             bttnCancelarDatosEmpresa.Click += bttnCancelarDatosEmpresa_Click;
             // 
-            // bttnEmpresasRegistradas
+            // bttnMostrarEmpresas
             // 
-            bttnEmpresasRegistradas.Anchor = AnchorStyles.None;
-            bttnEmpresasRegistradas.Location = new Point(483, 656);
-            bttnEmpresasRegistradas.Name = "bttnEmpresasRegistradas";
-            bttnEmpresasRegistradas.Size = new Size(184, 52);
-            bttnEmpresasRegistradas.TabIndex = 13;
-            bttnEmpresasRegistradas.Text = "Empresas Registradas";
-            bttnEmpresasRegistradas.UseVisualStyleBackColor = true;
+            bttnMostrarEmpresas.Anchor = AnchorStyles.None;
+            bttnMostrarEmpresas.Location = new Point(483, 656);
+            bttnMostrarEmpresas.Name = "bttnMostrarEmpresas";
+            bttnMostrarEmpresas.Size = new Size(184, 52);
+            bttnMostrarEmpresas.TabIndex = 13;
+            bttnMostrarEmpresas.Text = "Empresas Registradas";
+            bttnMostrarEmpresas.UseVisualStyleBackColor = true;
+            bttnMostrarEmpresas.Click += bttnMostrarEmpresas_Click;
             // 
             // panel1
             // 
@@ -261,7 +262,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(971, 762);
             Controls.Add(panel1);
-            Controls.Add(bttnEmpresasRegistradas);
+            Controls.Add(bttnMostrarEmpresas);
             Controls.Add(bttnCancelarDatosEmpresa);
             Controls.Add(label1);
             Controls.Add(PanelRegEmpresa);
@@ -289,7 +290,7 @@
         private Label label11;
         private Label label1;
         private Button bttnCancelarDatosEmpresa;
-        private Button bttnEmpresasRegistradas;
+        private Button bttnMostrarEmpresas;
         private Panel panel1;
         private Label label2;
         private TextBox elimcorreu;
