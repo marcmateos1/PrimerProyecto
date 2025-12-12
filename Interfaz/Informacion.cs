@@ -137,8 +137,8 @@ namespace Interfaz
                     W.WriteLine("Se ha cambiado la velocidad del avión con ID {0}. La nueva velocidad es: {1}", ID, V);
                     W.WriteLine("   Para contactar con la compañía aérea: ");
                     W.WriteLine("       Nombre de la compañía: {0}",nom);
-                    W.WriteLine("       Nombre de la compañía: {0}",tel);
-                    W.WriteLine("       Nombre de la compañía: {0}",mail);
+                    W.WriteLine("       Teléfono de la compañía: {0}",tel);
+                    W.WriteLine("       Correo de la compañía: {0}",mail);
                     W.Close();
                 } catch(Exception ex) {MessageBox.Show("Error en crear el Fichero: "+ex.Message); }
 
