@@ -486,16 +486,6 @@ namespace Interfaz
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            StreamWriter W = new StreamWriter("parte.txt");
-            while (0 < llistaCf.Count)
-            {
-                W.WriteLine("S'ha reduït la velocitat de l'avió ",llistaCf.Dequeue().GetId(),"per tal d'evitar un xoc amb el vol ",llistaCf.Dequeue().GetId());
-                W.WriteLine("Contacteu amb l'empresa", c.GetName(), "  Amb telèfon:", c.GetTel(), "  Amb correu:", c.GetEmail());
-            }
 
-            W.Close();
-        }
     }
 }

@@ -46,6 +46,7 @@
             mail = new Label();
             nom = new Label();
             telf = new Label();
+            button3 = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -115,7 +116,7 @@
             // botonVolver
             // 
             botonVolver.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            botonVolver.Location = new Point(62, 555);
+            botonVolver.Location = new Point(86, 554);
             botonVolver.Name = "botonVolver";
             botonVolver.Size = new Size(94, 43);
             botonVolver.TabIndex = 6;
@@ -196,7 +197,7 @@
             // button1
             // 
             button1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(210, 556);
+            button1.Location = new Point(243, 555);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(197, 42);
@@ -250,11 +251,24 @@
             telf.TabIndex = 5;
             telf.Text = "label10";
             // 
+            // button3
+            // 
+            button3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.Location = new Point(86, 615);
+            button3.Margin = new Padding(3, 4, 3, 4);
+            button3.Name = "button3";
+            button3.Size = new Size(354, 57);
+            button3.TabIndex = 15;
+            button3.Text = "Parte Cambio de Velocidad";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // Informacion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(520, 627);
+            ClientSize = new Size(520, 694);
+            Controls.Add(button3);
             Controls.Add(groupBox4);
             Controls.Add(button1);
             Controls.Add(velocidadBox);
@@ -299,5 +313,6 @@
         private Label mail;
         private Label nom;
         private Label telf;
+        private Button button3;
     }
 }

@@ -40,6 +40,7 @@ namespace Interfaz
             FlightPlan plan = list.GetFlightPlan(posicion);
             // Rellenar los labels con la información del flightplan
             label1.Text = $"Id: {plan.GetId()}";
+            string ID = plan.GetId();
             velocidadBox.Text = Convert.ToString(plan.GetVelocidad());
             label3.Text = $"X actual: {plan.GetCurrentPosition().GetX():F2}";
             label4.Text = $"X final: {plan.GetFinalPosition().GetX():F2}";
@@ -53,8 +54,11 @@ namespace Interfaz
             if (emp != null)
             {
                 nom.Text = $"Nombre: {emp.GetName()}";
+                string name=emp.GetName();
                 telf.Text = $"Teléfono: {emp.GetTel()}";
+                string tel = emp.GetTel();
                 mail.Text = $"eMail: {emp.GetEmail()}";
+                string email=emp.GetEmail();
             }
             else
             {
@@ -104,5 +108,42 @@ namespace Interfaz
             return list;
         }
 
+        private void button3_Click(object sender, EventArgs e) 
+        {
+            //enviar un txt a la empresa con el cambio de velocidad
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Ficheros de texto (*.txt)|*.txt";
+            saveFileDialog.Title = "Guardar Fichero de Texto";
+
+            FlightPlan plan = list.GetFlightPlan(posicion); //declarar flightplan
+            Companies emp = new CompaniesList(db).GetCompanyByName(plan.GetNom()); //declarar compañias aereas
+
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string ruta=saveFileDialog.FileName;
+
+                string ID=plan.GetId();
+                string V = Convert.ToString(plan.GetVelocidad());
+                string nom=emp.GetName();
+                string tel=emp.GetTel();
+                string mail = emp.GetEmail();
+
+                //escribir contenido en el fichero
+
+                try
+                {
+                    StreamWriter W = new StreamWriter(ruta);
+                    W.WriteLine("Se ha cambiado la velocidad del avión con ID {0}. La nueva velocidad es: {1}", ID, V);
+                    W.WriteLine("   Para contactar con la compañía aérea: ");
+                    W.WriteLine("       Nombre de la compañía: {0}",nom);
+                    W.WriteLine("       Teléfono de la compañía: {0}",tel);
+                    W.WriteLine("       Correo de la compañía: {0}",mail);
+                    W.Close();
+                } catch(Exception ex) {MessageBox.Show("Error en crear el Fichero: "+ex.Message); }
+
+            }
+
+        }
     }
 }
