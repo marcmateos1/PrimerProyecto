@@ -34,6 +34,7 @@
             labelDistancia = new Label();
             labelTiempo = new Label();
             botonAtajo = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // botonDistancia
@@ -51,7 +52,7 @@
             // textDistancia
             // 
             textDistancia.Anchor = AnchorStyles.None;
-            textDistancia.Location = new Point(135, 138);
+            textDistancia.Location = new Point(135, 156);
             textDistancia.Name = "textDistancia";
             textDistancia.Size = new Size(125, 27);
             textDistancia.TabIndex = 2;
@@ -59,7 +60,7 @@
             // textTiempo
             // 
             textTiempo.Anchor = AnchorStyles.None;
-            textTiempo.Location = new Point(506, 138);
+            textTiempo.Location = new Point(503, 156);
             textTiempo.Name = "textTiempo";
             textTiempo.Size = new Size(125, 27);
             textTiempo.TabIndex = 3;
@@ -69,7 +70,7 @@
             labelDistancia.Anchor = AnchorStyles.None;
             labelDistancia.AutoSize = true;
             labelDistancia.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelDistancia.Location = new Point(70, 88);
+            labelDistancia.Location = new Point(70, 109);
             labelDistancia.Name = "labelDistancia";
             labelDistancia.Size = new Size(269, 26);
             labelDistancia.TabIndex = 4;
@@ -80,7 +81,7 @@
             labelTiempo.Anchor = AnchorStyles.None;
             labelTiempo.AutoSize = true;
             labelTiempo.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelTiempo.Location = new Point(460, 88);
+            labelTiempo.Location = new Point(460, 109);
             labelTiempo.Name = "labelTiempo";
             labelTiempo.Size = new Size(207, 26);
             labelTiempo.TabIndex = 5;
@@ -98,11 +99,23 @@
             botonAtajo.UseVisualStyleBackColor = true;
             botonAtajo.Click += botonAtajo_Click;
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(244, -6);
+            label1.Name = "label1";
+            label1.Size = new Size(293, 62);
+            label1.TabIndex = 7;
+            label1.Text = "SEGURIDAD";
+            // 
             // Seguridad
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(804, 444);
+            Controls.Add(label1);
             Controls.Add(botonAtajo);
             Controls.Add(labelTiempo);
             Controls.Add(labelDistancia);
@@ -125,5 +138,6 @@
         private Label labelDistancia;
         private Label labelTiempo;
         private Button botonAtajo;
+        private Label label1;
     }
 }

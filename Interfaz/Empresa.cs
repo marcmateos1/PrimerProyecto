@@ -1,6 +1,7 @@
-﻿using System;
+﻿using FlightLib;
+using System;
+using System.Data;
 using System.Windows.Forms;
-using FlightLib;
 
 namespace Interfaz
 {
@@ -107,6 +108,52 @@ namespace Interfaz
             catch (Exception ex)
             {
                 MessageBox.Show("Error al eliminar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bttnMostrarEmpresas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var dt = db.Select("SELECT * FROM Companies");
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hay empresas registradas.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Crear un nuevo formulario para mostrar los datos
+                Form f = new Form();
+                f.Text = "Empresas Registradas";
+                f.Size = new Size(800, 500); // un poco más grande y ancho
+                f.StartPosition = FormStartPosition.CenterScreen;
+
+                TextBox txt = new TextBox();
+                txt.Multiline = true;
+                txt.ScrollBars = ScrollBars.Vertical;
+                txt.Dock = DockStyle.Fill;
+                txt.Font = new Font("Consolas", 11, FontStyle.Italic); // fuente en cursiva
+                txt.ReadOnly = true;
+
+                // Construir texto con separación
+                string texto = "";
+                foreach (DataRow row in dt.Rows)
+                {
+                    string nombre = row["nom"].ToString();
+                    string telf = row["telf"].ToString();
+                    string correo = row["correu"].ToString();
+
+                    texto += $"Nombre: {nombre}    Tel: {telf}    Email: {correo}\r\n\r\n"; // doble salto para más separación
+                }
+
+                txt.Text = texto;
+                f.Controls.Add(txt);
+                f.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar empresas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
