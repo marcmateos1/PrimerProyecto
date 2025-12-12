@@ -17,12 +17,14 @@ namespace Interfaz
 
         public void SetData(BaseDeDatos db)
         {
+            //inicializar los datos
             this.db = db;
             companies = new CompaniesList(db);
         }
 
         private void registrar_Click_1(object sender, EventArgs e)
         {
+            //registrar empresa
             string name = regNom.Text.Trim();
             string mail = regMail.Text.Trim();
 
@@ -113,6 +115,7 @@ namespace Interfaz
 
         private void bttnMostrarEmpresas_Click(object sender, EventArgs e)
         {
+            //para mostrar la lista de empresa que tenemos (la base de datos)
             try
             {
                 var dt = db.Select("SELECT * FROM Companies");

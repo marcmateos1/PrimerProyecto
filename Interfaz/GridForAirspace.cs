@@ -27,6 +27,7 @@ namespace Interfaz
 
         public void SetData(FlightLib.FlightPlanList lista, BaseDeDatos db)
         {
+            //inicialitzar les dades
             this.miLista = lista;
             this.db = db;
         }

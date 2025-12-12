@@ -17,8 +17,6 @@ namespace Interfaz
         //Atributos
         Interfaz.EspacioAereo espacioAereo;
         FlightPlanList list;
-        CompaniesList cList;
-        Companies c;
         int posicion;
         BaseDeDatos db;
 
@@ -62,6 +60,7 @@ namespace Interfaz
             }
             else
             {
+                //si no se carga corectamente dice "DESCONOCIDO"
                 nom.Text = "Nombre: DESCONOCIDO";
                 telf.Text = "Teléfono: DESCONOCIDO";
                 mail.Text = "eMail: DESCONOCIDO";
@@ -147,7 +146,8 @@ namespace Interfaz
                     W.Close();
 
                     MessageBox.Show("Parte Generado Correctamente");
-                } catch(Exception ex) {MessageBox.Show("Error en crear el Fichero: "+ex.Message); }
+
+                } catch(Exception ex) {MessageBox.Show("Error en crear el Fichero: "+ex.Message); } //mensaje en caso de error
 
             }
 
