@@ -1,0 +1,5 @@
+Se ha cambiado la velocidad del avión con ID Avion2. La nueva velocidad es: 97,0299
+   Para contactar con la compañía aérea: 
+       Nombre de la compañía: Empresa2
+       Teléfono de la compañía: 987654321
+       Correo de la compañía: info@empresa2.com
