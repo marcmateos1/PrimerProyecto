@@ -36,7 +36,10 @@ namespace SimulatorConsole
                 double fx = Convert.ToDouble(trozos[0]);
                 double fy = Convert.ToDouble(trozos[1]);
 
-                FlightPlan plan_a = new FlightPlan(identificador, ix, iy, fx, fy, velocidad);
+                Console.WriteLine("Escribe el nombre de la empresa:");
+                string nom = Console.ReadLine();
+
+                FlightPlan plan_a = new FlightPlan(identificador, ix, iy, fx, fy, velocidad, nom);
 
 
                 //PLan del segundo vuelo
@@ -59,7 +62,10 @@ namespace SimulatorConsole
                 double fx_b = Convert.ToDouble(trozos_b[0]);
                 double fy_b = Convert.ToDouble(trozos_b[1]);
 
-                FlightPlan plan_b = new FlightPlan(identificador_b, ix_b, iy_b, fx_b, fy_b, velocidad_b);
+                Console.WriteLine("Escribe el nombre de la empresa:");
+                string nom_b = Console.ReadLine();
+
+                FlightPlan plan_b = new FlightPlan(identificador_b, ix_b, iy_b, fx_b, fy_b, velocidad_b, nom_b);
 
                 lista.AddFlightPlan(plan_a);
                 lista.AddFlightPlan(plan_b);

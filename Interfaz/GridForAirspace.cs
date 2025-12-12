@@ -59,9 +59,11 @@ namespace Interfaz
                     string posicionInicial = $"({plan.GetInitialPosition().GetX()}  ,  {plan.GetInitialPosition().GetY()})";
                     string posicionFinal = $"({plan.GetOriginalFinalPosition().GetX()}  ,  {plan.GetOriginalFinalPosition().GetY()})";
                     string posicionActual = $"({Math.Round(plan.GetCurrentPosition().GetX(), 2)} , {Math.Round(plan.GetCurrentPosition().GetY(), 2)})";
-                    string nom = $"({c.GetName()})";
-                    int telf = c.GetTel();
-                    string mail = $"({c.GetEmail()})";
+                    Companies emp = new CompaniesList(db).GetCompanyByName(plan.GetNom());
+
+                    string nom = emp?.GetName() ?? "NO ENCONTRADO";
+                    string telf = emp?.GetTel() ?? "NO ENCONTRADO";
+                    string mail = emp?.GetEmail() ?? "NO ENCONTRADO";
 
                     Taula[0, i + 1].Value = id;
                     Taula[1, i + 1].Value = velocidad;
@@ -89,13 +91,23 @@ namespace Interfaz
                 nuevoformulario.SetData(miLista, plan);
                 nuevoformulario.ShowDistancePlans_Load();
                 nuevoformulario.ShowDialog();
-                
+
             }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void VolverInfoVuelos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void volverbttndeInfoVuelos_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

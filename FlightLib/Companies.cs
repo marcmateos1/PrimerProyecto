@@ -11,12 +11,12 @@ namespace FlightLib
         //Atributos
 
         string name;
-        int telephone;
+        string telephone;
         string email;
 
 
         //Constructor
-        public Companies(string name, int telephone, string email)
+        public Companies(string name, string telephone, string email)
         {
             this.name = name;
             this.telephone = telephone;
@@ -27,7 +27,7 @@ namespace FlightLib
         // Getters / Métodos
         public string GetName()
         { return this.name; }
-        public int GetTel()
+        public string GetTel()
         { return this.telephone; }
         public string GetEmail()
         { return this.email; }

@@ -47,9 +47,18 @@ namespace Interfaz
             label6.Text = $"Y final: {plan.GetFinalPosition().GetY():F2}";
             label7.Text = $"X inicial: {plan.GetInitialPosition().GetX():F2}";
             label8.Text = $"Y inicial: {plan.GetInitialPosition().GetY():F2}";
-            nom.Text= $"Nombre: {c.GetName():F2}";
-            telf.Text = $"Teléfono; {c.GetTel()}";
-            mail.Text = $"eMail: {c.GetEmail():F2}";
+            if (c != null)
+            {
+                nom.Text = $"Nombre: {c.GetName()}";
+                telf.Text = $"Teléfono: {c.GetTel()}";
+                mail.Text = $"eMail: {c.GetEmail()}";
+            }
+            else
+            {
+                nom.Text = "Nombre: NO ENCONTRADO";
+                telf.Text = "Teléfono: NO ENCONTRADO";
+                mail.Text = "eMail: NO ENCONTRADO";
+            }
 
 
         }

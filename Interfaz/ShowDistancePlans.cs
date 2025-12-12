@@ -62,5 +62,10 @@ namespace Interfaz
         {
 
         }
+
+        private void VolverbttnDistanciaEntreVuelos_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

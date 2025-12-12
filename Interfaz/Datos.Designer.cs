@@ -57,6 +57,10 @@
             atajo = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            labelcompania1 = new Label();
+            textBoxcompania1 = new TextBox();
+            textBoxcompania2 = new TextBox();
+            labelcompania2 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -181,6 +185,7 @@
             TYF.Name = "TYF";
             TYF.Size = new Size(125, 39);
             TYF.TabIndex = 11;
+            TYF.TextChanged += TYF_TextChanged;
             // 
             // BCompilar
             // 
@@ -343,6 +348,8 @@
             // 
             groupBox1.Anchor = AnchorStyles.None;
             groupBox1.BackColor = SystemColors.ActiveCaption;
+            groupBox1.Controls.Add(textBoxcompania1);
+            groupBox1.Controls.Add(labelcompania1);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label5);
@@ -360,7 +367,7 @@
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(435, 329);
+            groupBox1.Size = new Size(435, 408);
             groupBox1.TabIndex = 30;
             groupBox1.TabStop = false;
             groupBox1.Text = "VUELO 1";
@@ -369,6 +376,8 @@
             // 
             groupBox2.Anchor = AnchorStyles.None;
             groupBox2.BackColor = SystemColors.ActiveCaption;
+            groupBox2.Controls.Add(labelcompania2);
+            groupBox2.Controls.Add(textBoxcompania2);
             groupBox2.Controls.Add(label15);
             groupBox2.Controls.Add(label14);
             groupBox2.Controls.Add(TYF2);
@@ -386,10 +395,55 @@
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(435, 329);
+            groupBox2.Size = new Size(435, 408);
             groupBox2.TabIndex = 31;
             groupBox2.TabStop = false;
             groupBox2.Text = "VUELO 2";
+            // 
+            // labelcompania1
+            // 
+            labelcompania1.Anchor = AnchorStyles.None;
+            labelcompania1.AutoSize = true;
+            labelcompania1.BackColor = SystemColors.Control;
+            labelcompania1.BorderStyle = BorderStyle.FixedSingle;
+            labelcompania1.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelcompania1.ForeColor = SystemColors.WindowText;
+            labelcompania1.Location = new Point(170, 321);
+            labelcompania1.Name = "labelcompania1";
+            labelcompania1.Size = new Size(85, 22);
+            labelcompania1.TabIndex = 12;
+            labelcompania1.Text = "Compañía";
+            // 
+            // textBoxcompania1
+            // 
+            textBoxcompania1.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxcompania1.Location = new Point(150, 355);
+            textBoxcompania1.Name = "textBoxcompania1";
+            textBoxcompania1.Size = new Size(125, 39);
+            textBoxcompania1.TabIndex = 13;
+            // 
+            // textBoxcompania2
+            // 
+            textBoxcompania2.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxcompania2.Location = new Point(155, 355);
+            textBoxcompania2.Name = "textBoxcompania2";
+            textBoxcompania2.Size = new Size(125, 39);
+            textBoxcompania2.TabIndex = 14;
+            // 
+            // labelcompania2
+            // 
+            labelcompania2.Anchor = AnchorStyles.None;
+            labelcompania2.AutoSize = true;
+            labelcompania2.BackColor = SystemColors.Control;
+            labelcompania2.BorderStyle = BorderStyle.FixedSingle;
+            labelcompania2.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelcompania2.ForeColor = SystemColors.WindowText;
+            labelcompania2.Location = new Point(175, 321);
+            labelcompania2.Name = "labelcompania2";
+            labelcompania2.Size = new Size(85, 22);
+            labelcompania2.TabIndex = 14;
+            labelcompania2.Text = "Compañía";
+            labelcompania2.Click += label9_Click;
             // 
             // Datos
             // 
@@ -444,5 +498,9 @@
         private Button atajo;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
+        private TextBox textBoxcompania1;
+        private Label labelcompania1;
+        private Label labelcompania2;
+        private TextBox textBoxcompania2;
     }
 }

@@ -33,6 +33,8 @@ namespace InterfazDatos
                 TY02.Text = lista.GetFlightPlan(1).GetInitialPosition().GetY().ToString();
                 TXF2.Text = lista.GetFlightPlan(1).GetFinalPosition().GetX().ToString();
                 TYF2.Text = lista.GetFlightPlan(1).GetFinalPosition().GetY().ToString();
+                textBoxcompania1.Text = lista.GetFlightPlan(0).GetNom();
+                textBoxcompania2.Text = lista.GetFlightPlan(1).GetNom();
             }
         }
 
@@ -45,9 +47,9 @@ namespace InterfazDatos
                 {
                     //Meter los valores a un flightpan, y después a un flightplanlist reals
                     lista.Clean();
-                    FlightPlan plan = new FlightPlan(TIdentificador.Text, Convert.ToDouble(TX0.Text), Convert.ToDouble(TY0.Text), Convert.ToDouble(TXF.Text), Convert.ToDouble(TYF.Text), Convert.ToDouble(TVelocidad.Text));
+                    FlightPlan plan = new FlightPlan(TIdentificador.Text, Convert.ToDouble(TX0.Text), Convert.ToDouble(TY0.Text), Convert.ToDouble(TXF.Text), Convert.ToDouble(TYF.Text), Convert.ToDouble(TVelocidad.Text), textBoxcompania1.Text);
                     lista.AddFlightPlan(plan);
-                    FlightPlan plan2 = new FlightPlan(TIdentificador2.Text, Convert.ToDouble(TX02.Text), Convert.ToDouble(TY02.Text), Convert.ToDouble(TXF2.Text), Convert.ToDouble(TYF2.Text), Convert.ToDouble(TVelocidad2.Text));
+                    FlightPlan plan2 = new FlightPlan(TIdentificador2.Text, Convert.ToDouble(TX02.Text), Convert.ToDouble(TY02.Text), Convert.ToDouble(TXF2.Text), Convert.ToDouble(TYF2.Text), Convert.ToDouble(TVelocidad2.Text), textBoxcompania2.Text);
                     lista.AddFlightPlan(plan2);
 
                     MessageBox.Show("Plan de vuelo añadido correctamente.");
@@ -74,6 +76,7 @@ namespace InterfazDatos
             TYF.Text = "200";
             TXF.Text = "400";
             TVelocidad.Text = "120";
+            textBoxcompania1.Text = "Empresa1";
 
             TIdentificador2.Text = "Avion2";
             TY02.Text = "400";
@@ -81,6 +84,7 @@ namespace InterfazDatos
             TYF2.Text = "200";
             TXF2.Text = "225";
             TVelocidad2.Text = "100";
+            textBoxcompania2.Text = "Empresa2";
         }
 
         private void Datos_Load(object sender, EventArgs e)
@@ -89,6 +93,16 @@ namespace InterfazDatos
         }
 
         private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TYF_TextChanged(object sender, EventArgs e)
         {
 
         }

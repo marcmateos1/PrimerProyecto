@@ -126,7 +126,7 @@ namespace FlightLib
                     string[] trozos = linea.Split(' ','\t');
                     if (Convert.ToDouble(trozos[5]) >= 0)
                     {
-                        FlightPlan plan = new FlightPlan(trozos[0], Convert.ToDouble(trozos[1]), Convert.ToDouble(trozos[2]), Convert.ToDouble(trozos[3]), Convert.ToDouble(trozos[4]), Convert.ToDouble(trozos[5]));
+                        FlightPlan plan = new FlightPlan(trozos[0], Convert.ToDouble(trozos[1]), Convert.ToDouble(trozos[2]), Convert.ToDouble(trozos[3]), Convert.ToDouble(trozos[4]), Convert.ToDouble(trozos[5]), trozos[6]);
                         this.AddFlightPlan(plan);
                     }
                     else

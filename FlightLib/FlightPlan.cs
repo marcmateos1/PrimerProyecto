@@ -16,9 +16,10 @@ namespace FlightLib
         Position finalPosition; // posicion final
         Position originalFinalPosition; 
         double velocidad;
+        private string nom;
 
         // Constructor
-        public FlightPlan(string id, double cpx, double cpy, double fpx, double fpy, double velocidad)
+        public FlightPlan(string id, double cpx, double cpy, double fpx, double fpy, double velocidad, string nom)
         {
             this.id = id;
             this.currentPosition = new Position(cpx, cpy);
@@ -26,12 +27,22 @@ namespace FlightLib
             this.finalPosition = new Position(fpx, fpy);
             this.velocidad = velocidad;
             originalFinalPosition = this.finalPosition;
+            this.nom = nom; // almacenar nombre de compañía
         }
 
 
         // Metodos
         //Gets i Sets
         
+        public string GetNom()
+        {
+            return nom;
+        }
+
+        public void SetNom(string nom)
+        {
+            this.nom = nom;
+        }
         public void SetId(string id)
         { this.id = id; }
         public void SetCurrentPosition(Position currentPosition)
@@ -344,7 +355,8 @@ namespace FlightLib
             FlightPlan clon;
 
             // Si company está vacía, usar constructor antiguo (para compatibilidad). Si no, usar el de 7 parámetros.
-            clon = new FlightPlan(this.id, copiaCurrent.GetX(), copiaCurrent.GetY(), copiaFinal.GetX(), copiaFinal.GetY(), this.velocidad);
+            clon = new FlightPlan(this.id, copiaCurrent.GetX(), copiaCurrent.GetY(), copiaFinal.GetX(), copiaFinal.GetY(), this.velocidad, this.nom);
+
 
             // Sobrescribimos las posiciones con las copias
             clon.currentPosition = copiaCurrent;
