@@ -123,7 +123,8 @@ namespace FlightLib
                         continue;
                     }
 
-                    string[] trozos = linea.Split(' ', '\t');
+                    // Ignorar elementos vacíos al separar
+                    string[] trozos = linea.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
 
                     if (trozos.Length < 6)
                     {

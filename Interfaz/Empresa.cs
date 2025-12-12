@@ -63,5 +63,52 @@ namespace Interfaz
             this.Close();
         }
 
+
+
+
+        // Eliminar empresa
+
+
+        private void buttEliminarEmp_Click(object sender, EventArgs e)
+        {
+            string nombre = elimnom.Text.Trim();
+            string telefono = elimtelf.Text.Trim();
+            string correo = elimcorreu.Text.Trim();
+
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(correo))
+            {
+                MessageBox.Show("Rellena todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Escapar comillas simples para evitar errores de SQL
+                nombre = nombre.Replace("'", "''");
+                telefono = telefono.Replace("'", "''");
+                correo = correo.Replace("'", "''");
+
+                // Ejecutar DELETE directamente en la base de datos
+                string sql = $"DELETE FROM Companies WHERE nom = '{nombre}' AND telf = '{telefono}' AND correu = '{correo}'";
+                int filas = db.Execute(sql);
+
+                if (filas > 0)
+                {
+                    MessageBox.Show("Empresa eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    elimnom.Text = "";
+                    elimtelf.Text = "";
+                    elimcorreu.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró la empresa con esos datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
+            
