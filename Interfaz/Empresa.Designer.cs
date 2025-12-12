@@ -92,6 +92,7 @@
             registrar.TabIndex = 4;
             registrar.Text = "Dar de alta";
             registrar.UseVisualStyleBackColor = true;
+            registrar.Click += registrar_Click_1;
             // 
             // regTel
             // 

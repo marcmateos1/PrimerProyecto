@@ -108,32 +108,51 @@ namespace FlightLib
 
 
         //METODOS CON RELACiÓN A FLIGHTPLANS EN UN ARXIVO TXT
-        public int CargarLista(string filename) //Carga la lista de flightplans des de un archivo txt
+        public int CargarLista(string filename) //Carga la lista de flightplans desde un archivo txt
         {
-            try //Comprueba que existe un archivo con ese nombre o con el formato adecuado
+            try
             {
                 StreamReader r = new StreamReader(filename);
-                string linea = r.ReadLine(); //Que ignore saltos de linea o otros al inicio y final del programa
+                string linea = r.ReadLine();
                 while (linea != null)
                 {
-                    linea = linea.Trim('\n', '\r',' ','\t');
+                    linea = linea.Trim('\n', '\r', ' ', '\t');
                     if (linea.Length == 0)
                     {
                         linea = r.ReadLine();
                         continue;
                     }
 
-                    string[] trozos = linea.Split(' ','\t');
+                    string[] trozos = linea.Split(' ', '\t');
+
+                    if (trozos.Length < 6)
+                    {
+                        linea = r.ReadLine();
+                        continue; // ignorar líneas inválidas
+                    }
+
                     if (Convert.ToDouble(trozos[5]) >= 0)
                     {
-                        FlightPlan plan = new FlightPlan(trozos[0], Convert.ToDouble(trozos[1]), Convert.ToDouble(trozos[2]), Convert.ToDouble(trozos[3]), Convert.ToDouble(trozos[4]), Convert.ToDouble(trozos[5]), trozos[6]);
+                        string nombreEmpresa = trozos.Length > 6 ? trozos[6] : "DESCONOCIDO";
+
+                        FlightPlan plan = new FlightPlan(
+                            trozos[0],
+                            Convert.ToDouble(trozos[1]),
+                            Convert.ToDouble(trozos[2]),
+                            Convert.ToDouble(trozos[3]),
+                            Convert.ToDouble(trozos[4]),
+                            Convert.ToDouble(trozos[5]),
+                            nombreEmpresa
+                        );
+
                         this.AddFlightPlan(plan);
                     }
                     else
                     {
                         return -3;
                     }
-                    linea = r.ReadLine(); //Por cada linea que lee crea un nuevo Flight plan con los parametros que se encuentran separados por un espacio
+
+                    linea = r.ReadLine();
                 }
 
                 r.Close();

@@ -41,6 +41,7 @@
             seguridadToolStripMenuItem1 = new ToolStripMenuItem();
             espacioAereoToolStripMenuItem1 = new ToolStripMenuItem();
             registrarEmpresaToolStripMenuItem = new ToolStripMenuItem();
+            volverToolStripMenuItem = new ToolStripMenuItem();
             menuStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             menuStrip1.Location = new Point(0, 43);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(372, 24);
+            menuStrip1.Size = new Size(454, 24);
             menuStrip1.TabIndex = 3;
             // 
             // opcionesToolStripMenuItem
@@ -85,13 +86,13 @@
             menuStrip2.Location = new Point(0, 0);
             menuStrip2.Name = "menuStrip2";
             menuStrip2.Padding = new Padding(7, 3, 0, 3);
-            menuStrip2.Size = new Size(372, 43);
+            menuStrip2.Size = new Size(454, 43);
             menuStrip2.TabIndex = 4;
             menuStrip2.Text = "menuStrip2";
             // 
             // opcionesToolStripMenuItem1
             // 
-            opcionesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { introducirDatosToolStripMenuItem, cargarListaToolStripMenuItem, seguridadToolStripMenuItem1, espacioAereoToolStripMenuItem1, registrarEmpresaToolStripMenuItem });
+            opcionesToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { introducirDatosToolStripMenuItem, cargarListaToolStripMenuItem, seguridadToolStripMenuItem1, espacioAereoToolStripMenuItem1, registrarEmpresaToolStripMenuItem, volverToolStripMenuItem });
             opcionesToolStripMenuItem1.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             opcionesToolStripMenuItem1.Name = "opcionesToolStripMenuItem1";
             opcionesToolStripMenuItem1.Size = new Size(134, 37);
@@ -133,11 +134,18 @@
             registrarEmpresaToolStripMenuItem.Text = "Registrar Empresa";
             registrarEmpresaToolStripMenuItem.Click += registrarEmpresaToolStripMenuItem_Click;
             // 
+            // volverToolStripMenuItem
+            // 
+            volverToolStripMenuItem.Name = "volverToolStripMenuItem";
+            volverToolStripMenuItem.Size = new Size(307, 38);
+            volverToolStripMenuItem.Text = "Volver";
+            volverToolStripMenuItem.Click += volverToolStripMenuItem_Click;
+            // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(372, 235);
+            ClientSize = new Size(454, 363);
             Controls.Add(menuStrip1);
             Controls.Add(menuStrip2);
             MainMenuStrip = menuStrip1;
@@ -164,5 +172,6 @@
         private ToolStripMenuItem espacioAereoToolStripMenuItem1;
         private ToolStripMenuItem cargarListaToolStripMenuItem;
         private ToolStripMenuItem registrarEmpresaToolStripMenuItem;
+        private ToolStripMenuItem volverToolStripMenuItem;
     }
 }

@@ -102,5 +102,13 @@ namespace Interfaz
         {
 
         }
+
+        private void volverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms["InicioSesionRegistro"]?.Show();
+
+            // Cerrar el formulario actual (Principal)
+            this.Close();
+        }
     }
 }

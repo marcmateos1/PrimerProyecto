@@ -27,7 +27,7 @@ namespace FlightLib
             this.finalPosition = new Position(fpx, fpy);
             this.velocidad = velocidad;
             originalFinalPosition = this.finalPosition;
-            this.nom = nom; // almacenar nombre de compañía
+            this.nom = nom ?? "DESCONOCIDO"; // <-- Aquí ponemos un valor por defecto
         }
 
 

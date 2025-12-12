@@ -66,7 +66,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(175, 29);
+            label2.Location = new Point(208, 29);
             label2.Name = "label2";
             label2.Size = new Size(112, 20);
             label2.TabIndex = 1;
@@ -96,7 +96,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(178, 47);
+            label5.Location = new Point(217, 47);
             label5.Name = "label5";
             label5.Size = new Size(51, 19);
             label5.TabIndex = 4;
@@ -106,7 +106,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(178, 47);
+            label6.Location = new Point(217, 47);
             label6.Name = "label6";
             label6.Size = new Size(51, 19);
             label6.TabIndex = 5;
@@ -137,7 +137,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(178, 45);
+            label8.Location = new Point(217, 45);
             label8.Name = "label8";
             label8.Size = new Size(51, 19);
             label8.TabIndex = 8;
@@ -152,7 +152,7 @@
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(345, 91);
+            groupBox1.Size = new Size(397, 91);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             groupBox1.Text = "POSICIONES INICIALES";
@@ -166,7 +166,7 @@
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(345, 91);
+            groupBox2.Size = new Size(397, 91);
             groupBox2.TabIndex = 10;
             groupBox2.TabStop = false;
             groupBox2.Text = "POSICIONES ACTUALES";
@@ -180,14 +180,14 @@
             groupBox3.Margin = new Padding(3, 4, 3, 4);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(3, 4, 3, 4);
-            groupBox3.Size = new Size(345, 91);
+            groupBox3.Size = new Size(397, 91);
             groupBox3.TabIndex = 11;
             groupBox3.TabStop = false;
             groupBox3.Text = "POSICIONES FINALES";
             // 
             // velocidadBox
             // 
-            velocidadBox.Location = new Point(293, 26);
+            velocidadBox.Location = new Point(326, 26);
             velocidadBox.Margin = new Padding(3, 4, 3, 4);
             velocidadBox.Name = "velocidadBox";
             velocidadBox.Size = new Size(114, 27);
@@ -215,7 +215,7 @@
             groupBox4.Margin = new Padding(3, 4, 3, 4);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(3, 4, 3, 4);
-            groupBox4.Size = new Size(345, 91);
+            groupBox4.Size = new Size(397, 91);
             groupBox4.TabIndex = 12;
             groupBox4.TabStop = false;
             groupBox4.Text = "DATOS EMPRESA";
@@ -224,7 +224,7 @@
             // 
             mail.AutoSize = true;
             mail.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            mail.Location = new Point(231, 48);
+            mail.Location = new Point(264, 48);
             mail.Name = "mail";
             mail.Size = new Size(60, 19);
             mail.TabIndex = 6;
@@ -234,7 +234,7 @@
             // 
             nom.AutoSize = true;
             nom.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nom.Location = new Point(24, 48);
+            nom.Location = new Point(6, 48);
             nom.Name = "nom";
             nom.Size = new Size(39, 19);
             nom.TabIndex = 3;
@@ -244,7 +244,7 @@
             // 
             telf.AutoSize = true;
             telf.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            telf.Location = new Point(99, 48);
+            telf.Location = new Point(113, 48);
             telf.Name = "telf";
             telf.Size = new Size(60, 19);
             telf.TabIndex = 5;
@@ -254,7 +254,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(471, 627);
+            ClientSize = new Size(520, 627);
             Controls.Add(groupBox4);
             Controls.Add(button1);
             Controls.Add(velocidadBox);

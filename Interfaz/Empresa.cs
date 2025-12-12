@@ -1,17 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FlightLib;
-using System.Data.SQLite;
-
-
-using System;
 using System.Windows.Forms;
 using FlightLib;
 
@@ -33,15 +20,16 @@ namespace Interfaz
             companies = new CompaniesList(db);
         }
 
-        private void registrar_Click(object sender, EventArgs e)
+        private void registrar_Click_1(object sender, EventArgs e)
         {
             string name = regNom.Text.Trim();
             string mail = regMail.Text.Trim();
 
             // Validación teléfono
-            if (!int.TryParse(regTel.Text.Trim(), out int telf))
+            string telfStr = regTel.Text.Trim();
+            if (string.IsNullOrEmpty(telfStr))
             {
-                MessageBox.Show("El teléfono debe ser un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El teléfono no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -55,7 +43,6 @@ namespace Interfaz
             try
             {
                 // Añadir empresa
-                string telfStr = regTel.Text.Trim();
                 companies.AddCompany(new Companies(name, telfStr, mail));
                 MessageBox.Show("Empresa registrada correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -75,5 +62,6 @@ namespace Interfaz
         {
             this.Close();
         }
+
     }
 }

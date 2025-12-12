@@ -13,7 +13,7 @@ namespace Interfaz
 {
     public partial class Informacion : Form
     {
-        
+
         //Atributos
         Interfaz.EspacioAereo espacioAereo;
         FlightPlanList list;
@@ -47,18 +47,22 @@ namespace Interfaz
             label6.Text = $"Y final: {plan.GetFinalPosition().GetY():F2}";
             label7.Text = $"X inicial: {plan.GetInitialPosition().GetX():F2}";
             label8.Text = $"Y inicial: {plan.GetInitialPosition().GetY():F2}";
-            if (c != null)
+            Companies emp = new CompaniesList(db).GetCompanyByName(plan.GetNom());
+
+            // Labels con información de empresa
+            if (emp != null)
             {
-                nom.Text = $"Nombre: {c.GetName()}";
-                telf.Text = $"Teléfono: {c.GetTel()}";
-                mail.Text = $"eMail: {c.GetEmail()}";
+                nom.Text = $"Nombre: {emp.GetName()}";
+                telf.Text = $"Teléfono: {emp.GetTel()}";
+                mail.Text = $"eMail: {emp.GetEmail()}";
             }
             else
             {
-                nom.Text = "Nombre: NO ENCONTRADO";
-                telf.Text = "Teléfono: NO ENCONTRADO";
-                mail.Text = "eMail: NO ENCONTRADO";
+                nom.Text = "Nombre: DESCONOCIDO";
+                telf.Text = "Teléfono: DESCONOCIDO";
+                mail.Text = "eMail: DESCONOCIDO";
             }
+
 
 
         }
@@ -76,7 +80,7 @@ namespace Interfaz
         {
             // Actualizar la velocidad dentro del forms
             try
-            { 
+            {
                 double speed = Convert.ToDouble(velocidadBox.Text);
 
                 if (speed >= 0)
@@ -84,8 +88,8 @@ namespace Interfaz
                     list.GetFlightPlan(posicion).SetVelocidad(speed);
                     MessageBox.Show("Velocidad actualizada");
                 }
-            else
-            MessageBox.Show("La velocidad debe ser un valor positivo");
+                else
+                    MessageBox.Show("La velocidad debe ser un valor positivo");
             }
 
             catch (FormatException)
@@ -99,5 +103,6 @@ namespace Interfaz
         {
             return list;
         }
+
     }
 }
