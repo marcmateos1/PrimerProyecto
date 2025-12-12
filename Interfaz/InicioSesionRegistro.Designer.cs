@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicioSesionRegistro));
             panelRegistro = new Panel();
             label2 = new Label();
             buttonCancelarRegistro = new Button();
@@ -56,8 +57,10 @@
             regNom = new TextBox();
             label11 = new Label();
             button1 = new Button();
+            pictureBox1 = new PictureBox();
             panelRegistro.SuspendLayout();
             panelInicioSesion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelRegistro
@@ -70,7 +73,7 @@
             panelRegistro.Controls.Add(textNuevoUsuario);
             panelRegistro.Controls.Add(labelNuevaContraseña);
             panelRegistro.Controls.Add(labelNuevoUsuario);
-            panelRegistro.Location = new Point(613, 351);
+            panelRegistro.Location = new Point(614, 169);
             panelRegistro.Name = "panelRegistro";
             panelRegistro.Size = new Size(345, 294);
             panelRegistro.TabIndex = 0;
@@ -149,7 +152,7 @@
             panelInicioSesion.Controls.Add(labelContraseña);
             panelInicioSesion.Controls.Add(textUsuario);
             panelInicioSesion.Controls.Add(labelInicioSesion);
-            panelInicioSesion.Location = new Point(153, 351);
+            panelInicioSesion.Location = new Point(154, 169);
             panelInicioSesion.Name = "panelInicioSesion";
             panelInicioSesion.Size = new Size(327, 294);
             panelInicioSesion.TabIndex = 1;
@@ -222,7 +225,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Sitka Banner", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(370, 137);
+            label1.Location = new Point(370, 26);
             label1.Name = "label1";
             label1.Size = new Size(368, 87);
             label1.TabIndex = 2;
@@ -295,7 +298,7 @@
             // 
             button1.Anchor = AnchorStyles.None;
             button1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(433, 752);
+            button1.Location = new Point(434, 764);
             button1.Name = "button1";
             button1.Size = new Size(229, 48);
             button1.TabIndex = 3;
@@ -303,11 +306,22 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.p8_wide__1_;
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(551, 675);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(805, 192);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // InicioSesionRegistro
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1116, 910);
+            Controls.Add(pictureBox1);
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(panelInicioSesion);
@@ -320,6 +334,7 @@
             panelRegistro.PerformLayout();
             panelInicioSesion.ResumeLayout(false);
             panelInicioSesion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -356,5 +371,6 @@
         private TextBox regNom;
         private Label label11;
         private Button button1;
+        private PictureBox pictureBox1;
     }
 }
