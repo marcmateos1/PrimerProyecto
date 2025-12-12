@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EspacioAereo));
             panel1 = new Panel();
             botonMover = new Button();
             label1 = new Label();
@@ -263,6 +264,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1329, 984);
             Controls.Add(buttonCerrarSesión);
             Controls.Add(label5);

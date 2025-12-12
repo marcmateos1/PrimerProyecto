@@ -123,16 +123,21 @@ namespace Interfaz
             {
                 string ruta=saveFileDialog.FileName;
 
-                string ID=plan.GetId();
-                string V = Convert.ToString(plan.GetVelocidad());
-                string nom=emp.GetName();
-                string tel=emp.GetTel();
-                string mail = emp.GetEmail();
 
-                //escribir contenido en el fichero
+
 
                 try
                 {
+
+                    //declarar los datos
+                    string ID = plan.GetId();
+                    string V = Convert.ToString(plan.GetVelocidad());
+                    string nom = emp.GetName();
+                    string tel = emp.GetTel();
+                    string mail = emp.GetEmail();
+
+                    //escribir contenido en el fichero
+
                     StreamWriter W = new StreamWriter(ruta);
                     W.WriteLine("Se ha cambiado la velocidad del avión con ID {0}. La nueva velocidad es: {1}", ID, V);
                     W.WriteLine("   Para contactar con la compañía aérea: ");
@@ -140,6 +145,8 @@ namespace Interfaz
                     W.WriteLine("       Teléfono de la compañía: {0}",tel);
                     W.WriteLine("       Correo de la compañía: {0}",mail);
                     W.Close();
+
+                    MessageBox.Show("Parte Generado Correctamente");
                 } catch(Exception ex) {MessageBox.Show("Error en crear el Fichero: "+ex.Message); }
 
             }
