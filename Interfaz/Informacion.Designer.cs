@@ -116,7 +116,7 @@
             // botonVolver
             // 
             botonVolver.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            botonVolver.Location = new Point(86, 554);
+            botonVolver.Location = new Point(86, 623);
             botonVolver.Name = "botonVolver";
             botonVolver.Size = new Size(94, 43);
             botonVolver.TabIndex = 6;
@@ -197,7 +197,7 @@
             // button1
             // 
             button1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(243, 555);
+            button1.Location = new Point(243, 623);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(197, 42);
@@ -216,7 +216,7 @@
             groupBox4.Margin = new Padding(3, 4, 3, 4);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(3, 4, 3, 4);
-            groupBox4.Size = new Size(397, 91);
+            groupBox4.Size = new Size(397, 165);
             groupBox4.TabIndex = 12;
             groupBox4.TabStop = false;
             groupBox4.Text = "DATOS EMPRESA";
@@ -225,7 +225,7 @@
             // 
             mail.AutoSize = true;
             mail.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            mail.Location = new Point(264, 48);
+            mail.Location = new Point(36, 127);
             mail.Name = "mail";
             mail.Size = new Size(60, 19);
             mail.TabIndex = 6;
@@ -235,7 +235,7 @@
             // 
             nom.AutoSize = true;
             nom.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nom.Location = new Point(6, 48);
+            nom.Location = new Point(36, 48);
             nom.Name = "nom";
             nom.Size = new Size(39, 19);
             nom.TabIndex = 3;
@@ -245,7 +245,7 @@
             // 
             telf.AutoSize = true;
             telf.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            telf.Location = new Point(113, 48);
+            telf.Location = new Point(36, 86);
             telf.Name = "telf";
             telf.Size = new Size(60, 19);
             telf.TabIndex = 5;
@@ -254,7 +254,7 @@
             // button3
             // 
             button3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(86, 615);
+            button3.Location = new Point(86, 693);
             button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
             button3.Size = new Size(354, 57);
@@ -267,7 +267,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(520, 694);
+            ClientSize = new Size(520, 777);
             Controls.Add(button3);
             Controls.Add(groupBox4);
             Controls.Add(button1);
