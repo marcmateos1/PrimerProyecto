@@ -75,6 +75,15 @@ namespace FlightLib
             return new Companies(nom, telf, mail);
         }
 
+
+        public bool RemoveCompany(Companies c)
+        {
+            string sql = $"DELETE FROM Companies WHERE Name = '{c.GetName()}' AND Tel = '{c.GetTel()}' AND Email = '{c.GetEmail()}'";
+            int filas = db.Execute(sql);
+            return filas > 0;
+        }
+
+
         // Escapa caracteres especiales para evitar inyecciones SQL
         private string Escape(string s)
         {
